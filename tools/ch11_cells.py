@@ -99,8 +99,10 @@ print("Chance de a próxima mãe admitida ter hemorragia:", round(100 * p_hemorr
     sec("11.3", "Hemorrhage or infection: count each mother once", "Hemorragia ou infecção: contar cada mãe uma vez",
         "What is the chance that the next mother admitted has a hemorrhage or an infection?", "Qual a chance de a próxima mãe admitida ter hemorragia ou infecção?")
     cell("""# 1. Cross the two columns: each delivery falls in exactly one of four cells
-print("Hemorrhage (rows) by infection (columns):")
-print(pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total"))
+table = pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total")
+table.index = ["No hemorrhage", "Hemorrhage", "Total"]      # rows
+table.columns = ["No infection", "Infection", "Total"]      # columns
+print(table)
 
 # 2. Count the mothers with each complication, and with both
 n_infection = I.sum()
@@ -109,8 +111,10 @@ print()
 print(n_hemorrhage, "mothers had a hemorrhage and", n_infection, "had an infection.")
 print("Adding the two gives", n_hemorrhage + n_infection, "but the", n_both, "mothers with both were counted twice.")
 """, """# 1. Cruzar as duas colunas: cada parto cai em exatamente uma de quatro células
-print("Hemorragia (linhas) por infecção (colunas):")
-print(pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total"))
+table = pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total")
+table.index = ["Sem hemorragia", "Hemorragia", "Total"]      # linhas
+table.columns = ["Sem infecção", "Infecção", "Total"]        # colunas
+print(table)
 
 # 2. Contar as mães com cada complicação e com ambas
 n_infection = I.sum()
@@ -219,15 +223,19 @@ print("P(C) x P(H|C) x P(I|C e H) =", round(chain, 4), "; contagem direta:", rou
     sec("11.6", "Among infections, how many followed cesareans?", "Entre as infecções, quantas ocorreram após cesáreas?",
         "Among the mothers with infection, what fraction had a cesarean?", "Entre as mães com infecção, que fração teve cesárea?")
     cell("""# 1. The table: rows are the delivery type, columns are infection
-print("Delivery type (rows) by infection (columns):")
-print(pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total"))
+table = pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total")
+table.index = ["Vaginal", "Cesarean", "Total"]              # rows
+table.columns = ["No infection", "Infection", "Total"]      # columns
+print(table)
 
 # 2. Counting directly among the infected mothers
 print()
 print("Among the", n_infection, "infections,", infected_cesarean, "followed a cesarean =", round(100 * infected_cesarean / n_infection, 2), "%")
 """, """# 1. A tabela: linhas são o tipo de parto, colunas são a infecção
-print("Tipo de parto (linhas) por infecção (colunas):")
-print(pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total"))
+table = pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total")
+table.index = ["Vaginal", "Cesárea", "Total"]                # linhas
+table.columns = ["Sem infecção", "Infecção", "Total"]        # colunas
+print(table)
 
 # 2. Contando diretamente entre as mães infectadas
 print()
