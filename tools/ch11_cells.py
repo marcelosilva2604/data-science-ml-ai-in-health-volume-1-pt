@@ -166,15 +166,21 @@ print("Infecção entre os partos cesárea:", infected_cesarean, "de", n_cesarea
 print("Infecção entre os partos vaginais:", infected_vaginal, "de", n_vaginal, "=", round(infected_vaginal / n_vaginal, 4))
 """)
     sec("11.4.1", "The same count can answer different questions", "A mesma contagem pode responder a perguntas diferentes")
-    cell("""# 1. The same infected cesareans over ALL deliveries (a different denominator)
+    cell("""# 1. A vaginal delivery AND then an infection: the mothers with both, over ALL deliveries
+print("Vaginal delivery and infection, among all deliveries:", infected_vaginal, "of", n, "=", round(infected_vaginal / n, 4))
+
+# 2. The same for a cesarean delivery
 print("Cesarean and infection, among all deliveries:", infected_cesarean, "of", n, "=", round(infected_cesarean / n, 4))
 
-# 2. Infection over all deliveries, whatever the delivery type
+# 3. Infection over all deliveries, whatever the delivery type: the sum of the two paths
 print("Infection, among all deliveries:", n_infection, "of", n, "=", round(n_infection / n, 4))
-""", """# 1. As mesmas cesáreas infectadas sobre TODOS os partos (outro denominador)
+""", """# 1. Parto vaginal E depois infecção: as mães com ambos, sobre TODOS os partos
+print("Parto vaginal e infecção, entre todos os partos:", infected_vaginal, "de", n, "=", round(infected_vaginal / n, 4))
+
+# 2. O mesmo para o parto cesárea
 print("Cesárea e infecção, entre todos os partos:", infected_cesarean, "de", n, "=", round(infected_cesarean / n, 4))
 
-# 2. Infecção sobre todos os partos, qualquer que seja o tipo
+# 3. Infecção sobre todos os partos, qualquer que seja o tipo: a soma dos dois caminhos
 print("Infecção, entre todos os partos:", n_infection, "de", n, "=", round(n_infection / n, 4))
 """)
 
