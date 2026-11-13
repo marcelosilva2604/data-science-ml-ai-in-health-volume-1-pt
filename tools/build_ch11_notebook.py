@@ -10,7 +10,7 @@ import sys
 import nbformat as nbf
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ch11_cells import cells as all_cells, PLOT, PLOT_PT
+from ch11_cells import cells as all_cells, PLOTCELL
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "chapters" / "ch11"
@@ -27,7 +27,7 @@ HEAD = {
 
 ## Part A. The case
 
-**Data.** `data/deliveries.csv`: 5,000 rows, one per delivery, and four columns: `delivery_id`, `cesarean`, `hemorrhage`, `infection` (yes/no). The six sections below follow the committee's questions, in the order of the chapter.""",
+**Data.** `data/deliveries.csv`: 5,000 rows, one per delivery, and four columns: `delivery_id`, `cesarean`, `hemorrhage`, `infection` (yes/no). Each cell carries the number of the book's section (11.1, 11.2, ...), so you can follow the chapter and the notebook side by side.""",
  "pt": """# Capítulo 11 · Probabilidade: caderno complementar
 *Ciência de Dados e Inteligência Artificial em Saúde, Volume 1*
 
@@ -37,7 +37,7 @@ A **Parte A** percorre o caso do capítulo, o registro de partos de uma maternid
 
 ## Parte A. O caso
 
-**Dados.** `data/deliveries.csv`: 5.000 linhas, uma por parto, e quatro colunas: `delivery_id`, `cesarean`, `hemorrhage`, `infection` (sim/não, escritos `yes`/`no`). As seis seções a seguir seguem as perguntas do comitê, na ordem do capítulo."""}
+**Dados.** `data/deliveries.csv`: 5.000 linhas, uma por parto, e quatro colunas: `delivery_id`, `cesarean`, `hemorrhage`, `infection` (sim/não, escritos `yes`/`no`). Cada célula leva o número da seção do livro (11.1, 11.2, ...), para você acompanhar o capítulo e o caderno lado a lado."""}
 Q = {
  "en": ["Q1. What fraction of deliveries were cesarean, and what fraction had a hemorrhage?",
         "Q2. How many mothers had a hemorrhage or an infection?",
@@ -63,22 +63,17 @@ def build(lang):
     md = lambda s: cells.append(nbf.v4.new_markdown_cell(s.strip("\n")))
     code = lambda s: cells.append(nbf.v4.new_code_cell(s.strip("\n")))
     md(HEAD[lang])
-    md("The first five rows of the register:" if lang == "en" else "As cinco primeiras linhas do registro:")
-    code('import pandas as pd\n\nregister = pd.read_csv("data/deliveries.csv")\n'
-         'rows, columns = register.shape\n'
-         + ('print("The register has", rows, "rows (one per delivery) and", columns, "columns.")\n' if lang == "en" else
-            'print("O registro tem", rows, "linhas (uma por parto) e", columns, "colunas.")\n')
-         + 'register.head()')
-    qs, exs = all_cells(lang)
-    for q, key in zip(Q[lang], ("Q1", "Q2", "Q3", "Q4", "Q5", "Q6")):
-        md("### " + q)
-        text = qs[key]
-        if key == "Q1":
-            text += "\n" + (PLOT if lang == "en" else PLOT_PT).strip("\n").replace("XLABEL", AXES[lang][0]).replace("YLABEL", AXES[lang][1])
-        code(text)
+    part_a, exs = all_cells(lang)
+    for kind, text in part_a:
+        if kind == "md":
+            md(text)
+        elif kind == "code":
+            code(text)
+        else:
+            code(PLOTCELL[lang])
     md("## Part B. Exercise solutions" if lang == "en" else "## Parte B. Soluções dos exercícios")
     for k, (title, block) in enumerate(exs, start=1):
-        md(f"### {'Exercise' if lang == 'en' else 'Exercício'} {k}. {title}")
+        md(f"### 11.9 {'Exercise' if lang == 'en' else 'Exercício'} {k}. {title}")
         code(block)
     md(FOOT[lang])
     nb = nbf.v4.new_notebook()

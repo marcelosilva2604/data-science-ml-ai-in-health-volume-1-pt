@@ -1,30 +1,76 @@
-"""All code cells of the Chapter 11 notebook (Q1 to Q6 and Part B): one cell each, reasoning as numbered
+"""All code cells of the Chapter 11 notebook (Part A by book section, and Part B): one cell each, reasoning as numbered
 comments, output as plain sentences. Beginner-friendly Python: print with commas, round(), no f-strings."""
 
 HELP = {"en": "", "pt": ""}
 
-PLOT = '''
-import matplotlib.pyplot as plt
+PLOTCELL = {
+ "en": """import matplotlib.pyplot as plt
 
-running = C.expanding().mean()        # fraction of cesareans among the rows read so far
+# 1. Read the register in order: does the fraction of cesareans settle?
+for k in [10, 50, 100, 500, 1000, 5000]:
+    first_k = C.iloc[:k]           # the first k rows
+    print("After", k, "rows:", first_k.sum(), "cesareans =", round(first_k.mean(), 4))
+
+# 2. The same fraction after every row, in a plot
+running = C.expanding().mean()     # fraction of cesareans among the rows read so far
 plt.plot(range(1, n + 1), running)
 plt.axhline(C.mean(), color="gray", linestyle="--")      # fraction in the whole register
 plt.xscale("log")
-plt.xlabel("XLABEL")
-plt.ylabel("YLABEL")
-plt.show()'''
-PLOT_PT = PLOT.replace("# fraction of cesareans among the rows read so far", "# fração de cesáreas entre as linhas lidas até agora").replace("# fraction in the whole register", "# fração no registro completo")
+plt.xlabel("Deliveries included so far (log scale)")
+plt.ylabel("Fraction cesarean")
+plt.show()""",
+ "pt": """import matplotlib.pyplot as plt
+
+# 1. Ler o registro em ordem: a fração de cesáreas se estabiliza?
+for k in [10, 50, 100, 500, 1000, 5000]:
+    first_k = C.iloc[:k]           # as k primeiras linhas
+    print("Após", k, "linhas:", first_k.sum(), "cesáreas =", round(first_k.mean(), 4))
+
+# 2. A mesma fração após cada linha, em um gráfico
+running = C.expanding().mean()     # fração de cesáreas entre as linhas lidas até agora
+plt.plot(range(1, n + 1), running)
+plt.axhline(C.mean(), color="gray", linestyle="--")      # fração no registro completo
+plt.xscale("log")
+plt.xlabel("Partos incluídos até então (escala log)")
+plt.ylabel("Fração de cesáreas")
+plt.show()""",
+}
 
 
 def cells(lang):
     en = lang == "en"
     T = lambda a, b: a if en else b
-    Q = {}
-    Q["Q1"] = T('''import pandas as pd
+    S = []   # Part A: list of (kind, text) in the order of the book's sections
+
+    def sec(num, title_en, title_pt, question_en=None, question_pt=None):
+        S.append(("md", "### " + num + " " + T(title_en, title_pt) + (("\n\n*" + T(question_en, question_pt) + "*") if question_en else "")))
+
+    def cell(en_code, pt_code):
+        S.append(("code", T(en_code, pt_code)))
+
+    sec("11.1", "Introduction: the data", "Introdução: os dados")
+    cell("""import pandas as pd
 
 df = pd.read_csv("data/deliveries.csv")
 
-# 1. Take all the rows: one row is one delivery
+# The size of the register: rows (deliveries) and columns
+rows, columns = df.shape
+print("The register has", rows, "rows (one per delivery) and", columns, "columns.")
+df.head()                          # the first five rows
+""", """import pandas as pd
+
+df = pd.read_csv("data/deliveries.csv")
+
+# O tamanho do registro: linhas (partos) e colunas
+rows, columns = df.shape
+print("O registro tem", rows, "linhas (uma por parto) e", columns, "colunas.")
+df.head()                          # as cinco primeiras linhas
+""")
+
+    sec("11.2", "Fractions in the register", "Frações no registro",
+        "What fraction of deliveries were cesarean, and what fraction had a hemorrhage?",
+        "Que fração dos partos foi cesárea e que fração teve hemorragia?")
+    cell("""# 1. Take all the rows: one row is one delivery
 n = len(df)
 print("The register has", n, "deliveries.")
 
@@ -39,16 +85,7 @@ print("Of the", n, "deliveries,", n_cesarean, "were cesarean and", n - n_cesarea
 n_hemorrhage = H.sum()
 print("Cesarean:", n_cesarean, "of", n, "deliveries =", round(100 * n_cesarean / n, 2), "%")
 print("Hemorrhage:", n_hemorrhage, "of", n, "deliveries =", round(100 * n_hemorrhage / n, 2), "%")
-
-# 4. Read the register in order: does the fraction of cesareans settle?
-for k in [10, 50, 100, 500, 1000, 5000]:
-    first_k = C.iloc[:k]           # the first k rows
-    print("After", k, "rows:", first_k.sum(), "cesareans =", round(first_k.mean(), 4))
-''', '''import pandas as pd
-
-df = pd.read_csv("data/deliveries.csv")
-
-# 1. Pegar todas as linhas: cada linha é um parto
+""", """# 1. Pegar todas as linhas: cada linha é um parto
 n = len(df)
 print("O registro tem", n, "partos.")
 
@@ -63,53 +100,73 @@ print("Dos", n, "partos,", n_cesarean, "foram cesáreas e", n - n_cesarean, "nã
 n_hemorrhage = H.sum()
 print("Cesárea:", n_cesarean, "de", n, "partos =", round(100 * n_cesarean / n, 2), "%")
 print("Hemorragia:", n_hemorrhage, "de", n, "partos =", round(100 * n_hemorrhage / n, 2), "%")
+""")
+    sec("11.2.1", "Experiment, sample space, and event", "Experimento, espaço amostral e evento")
+    cell("""# The sample space is the 5,000 records; the events H and C are the records with hemorrhage and with cesarean
+# With every record equally likely: P(event) = records in the event / all records
+p_hemorrhage = n_hemorrhage / n
+p_cesarean = n_cesarean / n
+print("P(H) =", round(p_hemorrhage, 4), "and P(C) =", round(p_cesarean, 4))
+print("Chance that the next mother admitted has a hemorrhage:", round(100 * p_hemorrhage, 2), "%")
+""", """# O espaço amostral são os 5.000 registros; os eventos H e C são os registros com hemorragia e com cesárea
+# Com todos os registros igualmente prováveis: P(evento) = registros no evento / todos os registros
+p_hemorrhage = n_hemorrhage / n
+p_cesarean = n_cesarean / n
+print("P(H) =", round(p_hemorrhage, 4), "e P(C) =", round(p_cesarean, 4))
+print("Chance de a próxima mãe admitida ter hemorragia:", round(100 * p_hemorrhage, 2), "%")
+""")
+    sec("11.2.2", "Why are many cases needed in a data analysis?", "Por que muitos casos são necessários em uma análise de dados?")
+    S.append(("plotcell", None))
 
-# 4. Ler o registro em ordem: a fração de cesáreas se estabiliza?
-for k in [10, 50, 100, 500, 1000, 5000]:
-    first_k = C.iloc[:k]           # as k primeiras linhas
-    print("Após", k, "linhas:", first_k.sum(), "cesáreas =", round(first_k.mean(), 4))
-''')
-    Q["Q2"] = T('''# 1. Cross the two columns: each delivery falls in exactly one of four cells
+    sec("11.3", "Hemorrhage or infection: count each mother once", "Hemorragia ou infecção: contar cada mãe uma vez",
+        "How many mothers had a hemorrhage or an infection?", "Quantas mães tiveram hemorragia ou infecção?")
+    cell("""# 1. Cross the two columns: each delivery falls in exactly one of four cells
 print("Hemorrhage (rows) by infection (columns):")
 print(pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total"))
 
-# 2. Add the two groups, then correct for the mothers counted twice
-n_hemorrhage = H.sum()
+# 2. Count the mothers with each complication, and with both
 n_infection = I.sum()
 n_both = (H & I).sum()             # "&" means "and": both at the same time
 print()
 print(n_hemorrhage, "mothers had a hemorrhage and", n_infection, "had an infection.")
 print("Adding the two gives", n_hemorrhage + n_infection, "but the", n_both, "mothers with both were counted twice.")
-print("Hemorrhage or infection:", n_hemorrhage, "+", n_infection, "-", n_both, "=", n_hemorrhage + n_infection - n_both, "mothers.")
-
-# 3. Check by counting directly, and count the mothers with neither
-either = H | I                     # "|" means "or": at least one of the two
-n_either = either.sum()
-print()
-print("Counted directly:", n_either, "of", n, "mothers =", round(100 * n_either / n, 2), "%")
-print("With neither:", n - n_either, "of", n, "mothers =", round(100 * (n - n_either) / n, 2), "%")
-''', '''# 1. Cruzar as duas colunas: cada parto cai em exatamente uma de quatro células
+""", """# 1. Cruzar as duas colunas: cada parto cai em exatamente uma de quatro células
 print("Hemorragia (linhas) por infecção (colunas):")
 print(pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total"))
 
-# 2. Somar os dois grupos e corrigir as mães contadas duas vezes
-n_hemorrhage = H.sum()
+# 2. Contar as mães com cada complicação e com ambas
 n_infection = I.sum()
 n_both = (H & I).sum()             # "&" significa "e": as duas ao mesmo tempo
 print()
 print(n_hemorrhage, "mães tiveram hemorragia e", n_infection, "tiveram infecção.")
 print("Somando as duas dá", n_hemorrhage + n_infection, "mas as", n_both, "mães com ambas foram contadas duas vezes.")
+""")
+    sec("11.3.1", "Rules for combining the counts", "Regras para combinar as contagens")
+    cell("""# 1. Addition rule: count the mothers with both only once
+print("Hemorrhage or infection:", n_hemorrhage, "+", n_infection, "-", n_both, "=", n_hemorrhage + n_infection - n_both, "mothers.")
+
+# 2. Check by counting directly
+either = H | I                     # "|" means "or": at least one of the two
+n_either = either.sum()
+print("Counted directly:", n_either, "of", n, "mothers =", round(100 * n_either / n, 2), "%")
+
+# 3. Complement: the mothers with neither
+print("With neither:", n - n_either, "of", n, "mothers =", round(100 * (n - n_either) / n, 2), "%")
+""", """# 1. Regra da adição: contar as mães com ambas uma única vez
 print("Hemorragia ou infecção:", n_hemorrhage, "+", n_infection, "-", n_both, "=", n_hemorrhage + n_infection - n_both, "mães.")
 
-# 3. Conferir contando diretamente e contar as mães sem nenhuma das duas
+# 2. Conferir contando diretamente
 either = H | I                     # "|" significa "ou": ao menos uma das duas
 n_either = either.sum()
-print()
 print("Contando direto:", n_either, "de", n, "mães =", round(100 * n_either / n, 2), "%")
+
+# 3. Complemento: as mães sem nenhuma das duas
 print("Sem nenhuma:", n - n_either, "de", n, "mães =", round(100 * (n - n_either) / n, 2), "%")
-''')
-    Q["Q3"] = T('''# 1. Split the deliveries by type: cesarean, and vaginal (not cesarean)
-n_cesarean = C.sum()
+""")
+
+    sec("11.4", "Infection within each delivery group", "Infecção dentro de cada grupo de parto",
+        "Is infection more frequent after a cesarean?", "A infecção é mais frequente após cesárea?")
+    cell("""# 1. Split the deliveries by type: cesarean, and vaginal (not cesarean)
 n_vaginal = (~C).sum()             # "~" means "not"
 
 # 2. Within each group, count the infections and divide by the size of that group
@@ -117,15 +174,7 @@ infected_cesarean = (C & I).sum()
 infected_vaginal = (~C & I).sum()
 print("Infection among cesarean deliveries:", infected_cesarean, "of", n_cesarean, "=", round(infected_cesarean / n_cesarean, 4))
 print("Infection among vaginal deliveries:", infected_vaginal, "of", n_vaginal, "=", round(infected_vaginal / n_vaginal, 4))
-
-# 3. The same 87 infected cesareans over ALL deliveries (a different denominator)
-print()
-print("Cesarean and infection, among all deliveries:", infected_cesarean, "of", n, "=", round(infected_cesarean / n, 4))
-
-# 4. Infection over all deliveries, whatever the delivery type
-print("Infection, among all deliveries:", I.sum(), "of", n, "=", round(I.sum() / n, 4))
-''', '''# 1. Separar os partos por tipo: cesárea e vaginal (não cesárea)
-n_cesarean = C.sum()
+""", """# 1. Separar os partos por tipo: cesárea e vaginal (não cesárea)
 n_vaginal = (~C).sum()             # "~" significa "não"
 
 # 2. Dentro de cada grupo, contar as infecções e dividir pelo tamanho desse grupo
@@ -133,143 +182,152 @@ infected_cesarean = (C & I).sum()
 infected_vaginal = (~C & I).sum()
 print("Infecção entre os partos cesárea:", infected_cesarean, "de", n_cesarean, "=", round(infected_cesarean / n_cesarean, 4))
 print("Infecção entre os partos vaginais:", infected_vaginal, "de", n_vaginal, "=", round(infected_vaginal / n_vaginal, 4))
+""")
+    sec("11.4.1", "The same count can answer different questions", "A mesma contagem pode responder a perguntas diferentes")
+    cell("""# 1. The same infected cesareans over ALL deliveries (a different denominator)
+print("Cesarean and infection, among all deliveries:", infected_cesarean, "of", n, "=", round(infected_cesarean / n, 4))
 
-# 3. As mesmas 87 cesáreas infectadas sobre TODOS os partos (outro denominador)
-print()
+# 2. Infection over all deliveries, whatever the delivery type
+print("Infection, among all deliveries:", n_infection, "of", n, "=", round(n_infection / n, 4))
+""", """# 1. As mesmas cesáreas infectadas sobre TODOS os partos (outro denominador)
 print("Cesárea e infecção, entre todos os partos:", infected_cesarean, "de", n, "=", round(infected_cesarean / n, 4))
 
-# 4. Infecção sobre todos os partos, qualquer que seja o tipo
-print("Infecção, entre todos os partos:", I.sum(), "de", n, "=", round(I.sum() / n, 4))
-''')
-    Q["Q4"] = T('''# 1. If hemorrhage and infection were independent, P(H and I) would equal P(H) x P(I)
-p_h = H.sum() / n
-p_i = I.sum() / n
+# 2. Infecção sobre todos os partos, qualquer que seja o tipo
+print("Infecção, entre todos os partos:", n_infection, "de", n, "=", round(n_infection / n, 4))
+""")
+
+    sec("11.5", "Do hemorrhage and infection occur independently?", "Hemorragia e infecção ocorrem de forma independente?",
+        "Do hemorrhage and infection come together or independently?", "Hemorragia e infecção vêm juntas ou de modo independente?")
+    cell("""# 1. If hemorrhage and infection were independent, P(H and I) would equal P(H) x P(I)
+p_h = n_hemorrhage / n
+p_i = n_infection / n
 print("Expected if independent:", round(p_h, 4), "x", round(p_i, 4), "=", round(p_h * p_i, 6))
 
 # 2. What the register shows
-n_both = (H & I).sum()
 print("Observed, both together:", n_both, "of", n, "=", round(n_both / n, 4))
 
 # 3. Infection within the mothers with and without hemorrhage
 print()
-print("Infection among mothers with hemorrhage:", n_both, "of", H.sum(), "=", round(n_both / H.sum(), 4))
+print("Infection among mothers with hemorrhage:", n_both, "of", n_hemorrhage, "=", round(n_both / n_hemorrhage, 4))
 print("Infection among mothers without hemorrhage:", (~H & I).sum(), "of", (~H).sum(), "=", round((~H & I).sum() / (~H).sum(), 4))
-
-# 4. Multiplying while keeping the conditions: cesarean, then hemorrhage, then infection
-n_c, n_ch, n_chi = C.sum(), (C & H).sum(), (C & H & I).sum()
-print()
-print("Of", n_c, "cesareans,", n_ch, "had a hemorrhage, and", n_chi, "of those also had an infection.")
-chain = (n_c / n) * (n_ch / n_c) * (n_chi / n_ch)
-print("P(C) x P(H|C) x P(I|C and H) =", round(chain, 4), "; direct count:", round(n_chi / n, 4))
-''', '''# 1. Se hemorragia e infecção fossem independentes, P(H e I) seria igual a P(H) x P(I)
-p_h = H.sum() / n
-p_i = I.sum() / n
+""", """# 1. Se hemorragia e infecção fossem independentes, P(H e I) seria igual a P(H) x P(I)
+p_h = n_hemorrhage / n
+p_i = n_infection / n
 print("Esperado se independentes:", round(p_h, 4), "x", round(p_i, 4), "=", round(p_h * p_i, 6))
 
 # 2. O que o registro mostra
-n_both = (H & I).sum()
 print("Observado, as duas juntas:", n_both, "de", n, "=", round(n_both / n, 4))
 
 # 3. Infecção entre as mães com e sem hemorragia
 print()
-print("Infecção entre as mães com hemorragia:", n_both, "de", H.sum(), "=", round(n_both / H.sum(), 4))
+print("Infecção entre as mães com hemorragia:", n_both, "de", n_hemorrhage, "=", round(n_both / n_hemorrhage, 4))
 print("Infecção entre as mães sem hemorragia:", (~H & I).sum(), "de", (~H).sum(), "=", round((~H & I).sum() / (~H).sum(), 4))
-
-# 4. Multiplicar mantendo as condições: cesárea, depois hemorragia, depois infecção
-n_c, n_ch, n_chi = C.sum(), (C & H).sum(), (C & H & I).sum()
-print()
-print("De", n_c, "cesáreas,", n_ch, "tiveram hemorragia, e", n_chi, "delas também tiveram infecção.")
-chain = (n_c / n) * (n_ch / n_c) * (n_chi / n_ch)
+""")
+    sec("11.5.1", "Multiplying while retaining the conditions", "Multiplicar preservando as condições")
+    cell("""# Cesarean, then hemorrhage among the cesareans, then infection among those
+n_ch = (C & H).sum()
+n_chi = (C & H & I).sum()
+print("Of", n_cesarean, "cesareans,", n_ch, "had a hemorrhage, and", n_chi, "of those also had an infection.")
+chain = (n_cesarean / n) * (n_ch / n_cesarean) * (n_chi / n_ch)
+print("P(C) x P(H|C) x P(I|C and H) =", round(chain, 4), "; direct count:", round(n_chi / n, 4))
+""", """# Cesárea, depois hemorragia entre as cesáreas, depois infecção entre essas
+n_ch = (C & H).sum()
+n_chi = (C & H & I).sum()
+print("De", n_cesarean, "cesáreas,", n_ch, "tiveram hemorragia, e", n_chi, "delas também tiveram infecção.")
+chain = (n_cesarean / n) * (n_ch / n_cesarean) * (n_chi / n_ch)
 print("P(C) x P(H|C) x P(I|C e H) =", round(chain, 4), "; contagem direta:", round(n_chi / n, 4))
-''')
-    Q["Q5"] = T('''# 1. The table: rows are the delivery type, columns are infection
+""")
+
+    sec("11.6", "Among infections, how many followed cesareans?", "Entre as infecções, quantas ocorreram após cesáreas?",
+        "Among the mothers with infection, what fraction had a cesarean?", "Entre as mães com infecção, que fração teve cesárea?")
+    cell("""# 1. The table: rows are the delivery type, columns are infection
 print("Delivery type (rows) by infection (columns):")
 print(pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total"))
 
-# 2. Rebuild the overall infection fraction from the two groups
-p_c = C.sum() / n                                  # P(C)
-p_i_given_c = (C & I).sum() / C.sum()              # P(I|C)
-p_i_given_not_c = (~C & I).sum() / (~C).sum()      # P(I|not C)
-p_i = p_i_given_c * p_c + p_i_given_not_c * (1 - p_c)
+# 2. Counting directly among the infected mothers
 print()
-print("P(I) = P(I|C) P(C) + P(I|not C) P(not C) =", round(p_i, 4))
-
-# 3. Reverse the condition (Bayes): from infection among cesareans to cesareans among infections
-p_c_given_i = p_i_given_c * p_c / p_i
-print("P(C|I) = P(I|C) P(C) / P(I) =", round(p_c_given_i, 4))
-
-# 4. Check by counting directly among the infected mothers
-print("Counting directly:", (C & I).sum(), "of the", I.sum(), "infections followed a cesarean =", round(100 * (C & I).sum() / I.sum(), 2), "%")
-''', '''# 1. A tabela: linhas são o tipo de parto, colunas são a infecção
+print("Among the", n_infection, "infections,", infected_cesarean, "followed a cesarean =", round(100 * infected_cesarean / n_infection, 2), "%")
+""", """# 1. A tabela: linhas são o tipo de parto, colunas são a infecção
 print("Tipo de parto (linhas) por infecção (colunas):")
 print(pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total"))
 
-# 2. Reconstruir a fração geral de infecção a partir dos dois grupos
-p_c = C.sum() / n                                  # P(C)
-p_i_given_c = (C & I).sum() / C.sum()              # P(I|C)
-p_i_given_not_c = (~C & I).sum() / (~C).sum()      # P(I|não C)
-p_i = p_i_given_c * p_c + p_i_given_not_c * (1 - p_c)
+# 2. Contando diretamente entre as mães infectadas
 print()
+print("Entre as", n_infection, "infecções,", infected_cesarean, "vieram depois de cesárea =", round(100 * infected_cesarean / n_infection, 2), "%")
+""")
+    sec("11.6.1", "Reconstruct the total before reversing the condition", "Reconstruir o total antes de inverter a condição")
+    cell("""# 1. Rebuild the overall infection fraction from the two groups (total probability)
+p_c = n_cesarean / n                               # P(C)
+p_i_given_c = infected_cesarean / n_cesarean       # P(I|C)
+p_i_given_not_c = infected_vaginal / n_vaginal     # P(I|not C)
+p_i = p_i_given_c * p_c + p_i_given_not_c * (1 - p_c)
+print("P(I) = P(I|C) P(C) + P(I|not C) P(not C) =", round(p_i, 4))
+
+# 2. Reverse the condition (Bayes): from infection among cesareans to cesareans among infections
+p_c_given_i = p_i_given_c * p_c / p_i
+print("P(C|I) = P(I|C) P(C) / P(I) =", round(p_c_given_i, 4), "; direct count:", round(infected_cesarean / n_infection, 4))
+""", """# 1. Reconstruir a fração geral de infecção a partir dos dois grupos (probabilidade total)
+p_c = n_cesarean / n                               # P(C)
+p_i_given_c = infected_cesarean / n_cesarean       # P(I|C)
+p_i_given_not_c = infected_vaginal / n_vaginal     # P(I|não C)
+p_i = p_i_given_c * p_c + p_i_given_not_c * (1 - p_c)
 print("P(I) = P(I|C) P(C) + P(I|não C) P(não C) =", round(p_i, 4))
 
-# 3. Inverter a condição (Bayes): da infecção entre as cesáreas para as cesáreas entre as infecções
+# 2. Inverter a condição (Bayes): da infecção entre as cesáreas para as cesáreas entre as infecções
 p_c_given_i = p_i_given_c * p_c / p_i
-print("P(C|I) = P(I|C) P(C) / P(I) =", round(p_c_given_i, 4))
+print("P(C|I) = P(I|C) P(C) / P(I) =", round(p_c_given_i, 4), "; contagem direta:", round(infected_cesarean / n_infection, 4))
+""")
 
-# 4. Conferir contando diretamente entre as mães infectadas
-print("Contando direto:", (C & I).sum(), "das", I.sum(), "infecções vieram depois de cesárea =", round(100 * (C & I).sum() / I.sum(), 2), "%")
-''')
-    Q["Q6"] = T('''from math import comb, factorial, perm
+    sec("11.7", "Choosing charts for review", "Escolher prontuários para revisão",
+        "In how many ways can 20 charts be chosen, and how likely is the sample to include an infection?",
+        "De quantas maneiras se escolhem 20 prontuários e qual a chance de a amostra incluir uma infecção?")
+    cell("""from math import comb, factorial, perm
 
 total = n                          # charts in the register
-with_infection = I.sum()           # charts with an infection
+without_infection = n - n_infection
 
-# 1. In how many ways can 20 charts be chosen? (order does not matter)
+# In how many ways can 20 charts be chosen? (order does not matter)
 sets = comb(total, 20)
 print("There are", sets, "different sets of 20 charts,", len(str(sets)), "digits.")
+""", """from math import comb, factorial, perm
 
-# 2. Orders of the 20 selected charts, and of the first two slots
+total = n                          # prontuários no registro
+without_infection = n - n_infection
+
+# De quantas maneiras se escolhem 20 prontuários? (a ordem não importa)
+sets = comb(total, 20)
+print("Há", sets, "conjuntos diferentes de 20 prontuários,", len(str(sets)), "algarismos.")
+""")
+    sec("11.7.1", "Does order matter?", "A ordem importa?")
+    cell("""# Orders of the 20 selected charts, and of the first two slots
 print("The 20 chosen charts can be put in", factorial(20), "orders; the first two slots, in", perm(20, 2))
-
-# 3. Chance of at least one infection = 1 - chance of none (all 20 from the charts without infection)
-without_infection = total - with_infection
+""", """# Ordens dos 20 prontuários escolhidos, e dos dois primeiros lugares
+print("Os 20 prontuários escolhidos podem ser postos em", factorial(20), "ordens; os dois primeiros lugares, em", perm(20, 2))
+""")
+    sec("11.7.2", "Use the sample with no infections as the complement", "Usar a amostra sem infecções como complementar")
+    cell("""# 1. Chance of at least one infection = 1 - chance of none (all 20 from the charts without infection)
 chance_none = comb(without_infection, 20) / comb(total, 20)
-print()
 print("Chance that 20 charts include at least one infection:", round(1 - chance_none, 4))
 
-# 4. Smallest sample with at least 90%: try sizes 1, 2, 3, ... until the chance of none is at most 10%
+# 2. Smallest sample with at least 90%: try sizes 1, 2, 3, ... until the chance of none is at most 10%
 size = 1
 while 10 * comb(without_infection, size) > comb(total, size):     # compares whole numbers, no rounding
     size = size + 1
 for m in [size - 1, size]:
     print("With", m, "charts the chance is", round(1 - comb(without_infection, m) / comb(total, m), 6))
 print("So", size, "is the smallest sample with at least 90%.")
-''', '''from math import comb, factorial, perm
-
-total = n                          # prontuários no registro
-with_infection = I.sum()           # prontuários com infecção
-
-# 1. De quantas maneiras se escolhem 20 prontuários? (a ordem não importa)
-sets = comb(total, 20)
-print("Há", sets, "conjuntos diferentes de 20 prontuários,", len(str(sets)), "algarismos.")
-
-# 2. Ordens dos 20 prontuários escolhidos, e dos dois primeiros lugares
-print("Os 20 prontuários escolhidos podem ser postos em", factorial(20), "ordens; os dois primeiros lugares, em", perm(20, 2))
-
-# 3. Chance de ao menos uma infecção = 1 - chance de nenhuma (os 20 entre os prontuários sem infecção)
-without_infection = total - with_infection
+""", """# 1. Chance de ao menos uma infecção = 1 - chance de nenhuma (os 20 entre os prontuários sem infecção)
 chance_none = comb(without_infection, 20) / comb(total, 20)
-print()
 print("Chance de 20 prontuários incluírem ao menos uma infecção:", round(1 - chance_none, 4))
 
-# 4. Menor amostra com ao menos 90%: testar tamanhos 1, 2, 3, ... até a chance de nenhuma ser no máximo 10%
+# 2. Menor amostra com ao menos 90%: testar tamanhos 1, 2, 3, ... até a chance de nenhuma ser no máximo 10%
 size = 1
 while 10 * comb(without_infection, size) > comb(total, size):     # compara números inteiros, sem arredondar
     size = size + 1
 for m in [size - 1, size]:
     print("Com", m, "prontuários a chance é", round(1 - comb(without_infection, m) / comb(total, m), 6))
 print("Logo", size, "é a menor amostra com ao menos 90%.")
-''')
+""")
     ex = []
     A = lambda te, tp, ce, cp: ex.append((T(te, tp), T(ce, cp)))
     A("Records and event descriptions", "Registros e descrições de eventos", '''from itertools import product
@@ -422,28 +480,20 @@ bayes = p_i_given_c * p_c / p_i
 print("Entre as infectadas: cesárea", round(bayes, 4), "; vaginal", round(1 - bayes, 4))
 print("Contagem direta entre as infectadas: cesárea", round((C & I).sum() / I.sum(), 4))
 ''')
-    A("Orders of the selected charts", "Ordens dos prontuários selecionados", '''from math import factorial, perm
-
-# 1. Orders of 20 charts, and ordered first two slots
+    A("Orders of the selected charts", "Ordens dos prontuários selecionados", '''# 1. Orders of 20 charts, and ordered first two slots
 print("20! =", factorial(20), "orders; first two slots:", perm(20, 2), "ordered choices")
 
 # 2. Chance that a given chart is first, and that two given charts are first and second
 print("A given chart is first with chance", round(factorial(19) / factorial(20), 4))
 print("Two given charts are first and second with chance", round(factorial(18) / factorial(20), 6))
-''', '''from math import factorial, perm
-
-# 1. Ordens de 20 prontuários, e dois primeiros lugares ordenados
+''', '''# 1. Ordens de 20 prontuários, e dois primeiros lugares ordenados
 print("20! =", factorial(20), "ordens; dois primeiros lugares:", perm(20, 2), "escolhas ordenadas")
 
 # 2. Chance de um prontuário dado ser o primeiro, e de dois dados serem o primeiro e o segundo
 print("Um prontuário dado é o primeiro com chance", round(factorial(19) / factorial(20), 4))
 print("Dois prontuários dados são o primeiro e o segundo com chance", round(factorial(18) / factorial(20), 6))
 ''')
-    A("A sample including an infection", "Uma amostra que inclui uma infecção", '''from math import comb
-
-total, without_infection = n, n - I.sum()
-
-# 1. Smallest sample with at least 90% chance of including an infection
+    A("A sample including an infection", "Uma amostra que inclui uma infecção", '''# 1. Smallest sample with at least 90% chance of including an infection (uses comb, total, without_infection from 11.7)
 size = 1
 while 10 * comb(without_infection, size) > comb(total, size):
     size = size + 1
@@ -451,11 +501,7 @@ while 10 * comb(without_infection, size) > comb(total, size):
 # 2. The chance for a sample of 20, for the size just below, and for the smallest size
 for m in [20, size - 1, size]:
     print(m, "charts: chance of at least one infection =", round(1 - comb(without_infection, m) / comb(total, m), 6))
-''', '''from math import comb
-
-total, without_infection = n, n - I.sum()
-
-# 1. Menor amostra com ao menos 90% de chance de incluir uma infecção
+''', '''# 1. Menor amostra com ao menos 90% de chance de incluir uma infecção
 size = 1
 while 10 * comb(without_infection, size) > comb(total, size):
     size = size + 1
@@ -483,22 +529,14 @@ upper = min(1, p_h + p_i)
 print("A probabilidade conjunta deve estar entre", lower, "e", upper)
 print("Se os eventos fossem independentes, P(H ou I) =", round(p_h + p_i - p_h * p_i, 4))
 ''')
-    A("Returning charts between draws (alt.)", "Devolver prontuários entre sorteios (alt.)", '''from math import comb
-
-total, without_infection = n, n - I.sum()
-
-# 1. Chance of at least one infection in 20 draws, with and without returning the chart
+    A("Returning charts between draws (alt.)", "Devolver prontuários entre sorteios (alt.)", '''# 1. Chance of at least one infection in 20 draws, with and without returning the chart
 with_replacement = 1 - (without_infection / total) ** 20
 without_replacement = 1 - comb(without_infection, 20) / comb(total, 20)
 print("Returning each chart:", round(with_replacement, 6), "| not returning:", round(without_replacement, 6))
 
 # 2. The difference between the two procedures
 print("The difference is only", round(without_replacement - with_replacement, 6))
-''', '''from math import comb
-
-total, without_infection = n, n - I.sum()
-
-# 1. Chance de ao menos uma infecção em 20 sorteios, com e sem devolver o prontuário
+''', '''# 1. Chance de ao menos uma infecção em 20 sorteios, com e sem devolver o prontuário
 with_replacement = 1 - (without_infection / total) ** 20
 without_replacement = 1 - comb(without_infection, 20) / comb(total, 20)
 print("Devolvendo cada prontuário:", round(with_replacement, 6), "| sem devolver:", round(without_replacement, 6))
@@ -506,4 +544,4 @@ print("Devolvendo cada prontuário:", round(with_replacement, 6), "| sem devolve
 # 2. A diferença entre os dois procedimentos
 print("A diferença é de apenas", round(without_replacement - with_replacement, 6))
 ''')
-    return Q, ex
+    return S, ex

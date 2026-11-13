@@ -7803,7 +7803,7 @@ a.anchor-link {
 </style></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light"><div class="vol-bar"><a href="index.html"><b>Volume 1</b></a><span>Capítulo 11. Probabilidade: a linguagem da incerteza</span><span class="grow"></span><a href="#Parte-A.-O-caso">Parte A. O caso</a><a href="#Parte-B.-Solu%C3%A7%C3%B5es-dos-exerc%C3%ADcios">Parte B. Soluções dos exercícios</a></div>
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ea374818">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1bbd0560">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7814,22 +7814,22 @@ a.anchor-link {
 <p><strong>Este caderno acompanha o capítulo do livro; não o reproduz.</strong> Definições, deduções e explicações estão no livro. Aqui você executa os cálculos do caso e confere os números. Todos os dados são <strong>sintéticos</strong> e os valores têm apenas finalidade didática; não possuem correlação com o mundo real.</p>
 </blockquote>
 <p>A <strong>Parte A</strong> percorre o caso do capítulo, o registro de partos de uma maternidade pública, pelas seis perguntas do comitê. A <strong>Parte B</strong> traz o código e o resultado de cada um dos doze exercícios do capítulo (os enunciados estão no livro). Execute as células em ordem. As saídas do código usam ponto decimal.</p>
-<h2 id="Parte-A.-O-caso">Parte A. O caso<a class="anchor-link" href="#Parte-A.-O-caso">¶</a></h2><p><strong>Dados.</strong> <code>data/deliveries.csv</code>: 5.000 linhas, uma por parto, e quatro colunas: <code>delivery_id</code>, <code>cesarean</code>, <code>hemorrhage</code>, <code>infection</code> (sim/não, escritos <code>yes</code>/<code>no</code>). As seis seções a seguir seguem as perguntas do comitê, na ordem do capítulo.</p>
+<h2 id="Parte-A.-O-caso">Parte A. O caso<a class="anchor-link" href="#Parte-A.-O-caso">¶</a></h2><p><strong>Dados.</strong> <code>data/deliveries.csv</code>: 5.000 linhas, uma por parto, e quatro colunas: <code>delivery_id</code>, <code>cesarean</code>, <code>hemorrhage</code>, <code>infection</code> (sim/não, escritos <code>yes</code>/<code>no</code>). Cada célula leva o número da seção do livro (11.1, 11.2, ...), para você acompanhar o capítulo e o caderno lado a lado.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ebf72b82">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=58c094af">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>As cinco primeiras linhas do registro:</p>
+<h3 id="11.1-Introdu%C3%A7%C3%A3o:-os-dados">11.1 Introdução: os dados<a class="anchor-link" href="#11.1-Introdu%C3%A7%C3%A3o:-os-dados">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8def379a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7dcc727e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7839,10 +7839,12 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="n">register</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/deliveries.csv"</span><span class="p">)</span>
-<span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">register</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/deliveries.csv"</span><span class="p">)</span>
+
+<span class="c1"># O tamanho do registro: linhas (partos) e colunas</span>
+<span class="n">rows</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"O registro tem"</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="s2">"linhas (uma por parto) e"</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="s2">"colunas."</span><span class="p">)</span>
-<span class="n">register</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>                          <span class="c1"># as cinco primeiras linhas</span>
 </pre></div>
 </div>
 </div>
@@ -7930,17 +7932,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=248b0a8c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=41553181">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="P1.-Que-fra%C3%A7%C3%A3o-dos-partos-foi-ces%C3%A1rea-e-que-fra%C3%A7%C3%A3o-teve-hemorragia?">P1. Que fração dos partos foi cesárea e que fração teve hemorragia?<a class="anchor-link" href="#P1.-Que-fra%C3%A7%C3%A3o-dos-partos-foi-ces%C3%A1rea-e-que-fra%C3%A7%C3%A3o-teve-hemorragia?">¶</a></h3>
+<h3 id="11.2-Fra%C3%A7%C3%B5es-no-registro">11.2 Frações no registro<a class="anchor-link" href="#11.2-Fra%C3%A7%C3%B5es-no-registro">¶</a></h3><p><em>Que fração dos partos foi cesárea e que fração teve hemorragia?</em></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f82cff2a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a38b7f1d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7948,11 +7950,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/deliveries.csv"</span><span class="p">)</span>
-
-<span class="c1"># 1. Pegar todas as linhas: cada linha é um parto</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Pegar todas as linhas: cada linha é um parto</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"O registro tem"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"partos."</span><span class="p">)</span>
 
@@ -7967,15 +7965,99 @@ a.anchor-link {
 <span class="n">n_hemorrhage</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Cesárea:"</span><span class="p">,</span> <span class="n">n_cesarean</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"partos ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">n_cesarean</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Hemorragia:"</span><span class="p">,</span> <span class="n">n_hemorrhage</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"partos ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">n_hemorrhage</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>O registro tem 5000 partos.
+Dos 5000 partos, 1313 foram cesáreas e 3687 não.
+Cesárea: 1313 de 5000 partos = 26.26 %
+Hemorragia: 290 de 5000 partos = 5.8 %
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a5bc81f9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="11.2.1-Experimento,-espa%C3%A7o-amostral-e-evento">11.2.1 Experimento, espaço amostral e evento<a class="anchor-link" href="#11.2.1-Experimento,-espa%C3%A7o-amostral-e-evento">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f955034c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># O espaço amostral são os 5.000 registros; os eventos H e C são os registros com hemorragia e com cesárea</span>
+<span class="c1"># Com todos os registros igualmente prováveis: P(evento) = registros no evento / todos os registros</span>
+<span class="n">p_hemorrhage</span> <span class="o">=</span> <span class="n">n_hemorrhage</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">p_cesarean</span> <span class="o">=</span> <span class="n">n_cesarean</span> <span class="o">/</span> <span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"P(H) ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p_hemorrhage</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">"e P(C) ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p_cesarean</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Chance de a próxima mãe admitida ter hemorragia:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">p_hemorrhage</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>P(H) = 0.058 e P(C) = 0.2626
+Chance de a próxima mãe admitida ter hemorragia: 5.8 %
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=41f3860f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="11.2.2-Por-que-muitos-casos-s%C3%A3o-necess%C3%A1rios-em-uma-an%C3%A1lise-de-dados?">11.2.2 Por que muitos casos são necessários em uma análise de dados?<a class="anchor-link" href="#11.2.2-Por-que-muitos-casos-s%C3%A3o-necess%C3%A1rios-em-uma-an%C3%A1lise-de-dados?">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5635014b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># 4. Ler o registro em ordem: a fração de cesáreas se estabiliza?</span>
+<span class="c1"># 1. Ler o registro em ordem: a fração de cesáreas se estabiliza?</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]:</span>
     <span class="n">first_k</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>           <span class="c1"># as k primeiras linhas</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Após"</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="s2">"linhas:"</span><span class="p">,</span> <span class="n">first_k</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="s2">"cesáreas ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">first_k</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="n">running</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">expanding</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>        <span class="c1"># fração de cesáreas entre as linhas lidas até agora</span>
+<span class="c1"># 2. A mesma fração após cada linha, em um gráfico</span>
+<span class="n">running</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">expanding</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>     <span class="c1"># fração de cesáreas entre as linhas lidas até agora</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">running</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">)</span>      <span class="c1"># fração no registro completo</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
@@ -7994,11 +8076,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>O registro tem 5000 partos.
-Dos 5000 partos, 1313 foram cesáreas e 3687 não.
-Cesárea: 1313 de 5000 partos = 26.26 %
-Hemorragia: 290 de 5000 partos = 5.8 %
-Após 10 linhas: 5 cesáreas = 0.5
+<pre>Após 10 linhas: 5 cesáreas = 0.5
 Após 50 linhas: 19 cesáreas = 0.38
 Após 100 linhas: 27 cesáreas = 0.27
 Após 500 linhas: 123 cesáreas = 0.246
@@ -8016,43 +8094,34 @@ Após 5000 linhas: 1313 cesáreas = 0.2626
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7b8e379c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2f00ab4e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="P2.-Quantas-m%C3%A3es-tiveram-hemorragia-ou-infec%C3%A7%C3%A3o?">P2. Quantas mães tiveram hemorragia ou infecção?<a class="anchor-link" href="#P2.-Quantas-m%C3%A3es-tiveram-hemorragia-ou-infec%C3%A7%C3%A3o?">¶</a></h3>
+<h3 id="11.3-Hemorragia-ou-infec%C3%A7%C3%A3o:-contar-cada-m%C3%A3e-uma-vez">11.3 Hemorragia ou infecção: contar cada mãe uma vez<a class="anchor-link" href="#11.3-Hemorragia-ou-infec%C3%A7%C3%A3o:-contar-cada-m%C3%A3e-uma-vez">¶</a></h3><p><em>Quantas mães tiveram hemorragia ou infecção?</em></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fa3814d0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b09f1192">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Cruzar as duas colunas: cada parto cai em exatamente uma de quatro células</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Hemorragia (linhas) por infecção (colunas):"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"hemorrhage"</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">"infection"</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">margins_name</span><span class="o">=</span><span class="s2">"Total"</span><span class="p">))</span>
 
-<span class="c1"># 2. Somar os dois grupos e corrigir as mães contadas duas vezes</span>
-<span class="n">n_hemorrhage</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="c1"># 2. Contar as mães com cada complicação e com ambas</span>
 <span class="n">n_infection</span> <span class="o">=</span> <span class="n">I</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">n_both</span> <span class="o">=</span> <span class="p">(</span><span class="n">H</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>             <span class="c1"># "&amp;" significa "e": as duas ao mesmo tempo</span>
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">n_hemorrhage</span><span class="p">,</span> <span class="s2">"mães tiveram hemorragia e"</span><span class="p">,</span> <span class="n">n_infection</span><span class="p">,</span> <span class="s2">"tiveram infecção."</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Somando as duas dá"</span><span class="p">,</span> <span class="n">n_hemorrhage</span> <span class="o">+</span> <span class="n">n_infection</span><span class="p">,</span> <span class="s2">"mas as"</span><span class="p">,</span> <span class="n">n_both</span><span class="p">,</span> <span class="s2">"mães com ambas foram contadas duas vezes."</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Hemorragia ou infecção:"</span><span class="p">,</span> <span class="n">n_hemorrhage</span><span class="p">,</span> <span class="s2">"+"</span><span class="p">,</span> <span class="n">n_infection</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">,</span> <span class="n">n_both</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="n">n_hemorrhage</span> <span class="o">+</span> <span class="n">n_infection</span> <span class="o">-</span> <span class="n">n_both</span><span class="p">,</span> <span class="s2">"mães."</span><span class="p">)</span>
-
-<span class="c1"># 3. Conferir contando diretamente e contar as mães sem nenhuma das duas</span>
-<span class="n">either</span> <span class="o">=</span> <span class="n">H</span> <span class="o">|</span> <span class="n">I</span>                     <span class="c1"># "|" significa "ou": ao menos uma das duas</span>
-<span class="n">n_either</span> <span class="o">=</span> <span class="n">either</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Contando direto:"</span><span class="p">,</span> <span class="n">n_either</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"mães ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">n_either</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Sem nenhuma:"</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">n_either</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"mães ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">n_either</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8074,8 +8143,53 @@ Total       4870  130   5000
 
 290 mães tiveram hemorragia e 130 tiveram infecção.
 Somando as duas dá 420 mas as 19 mães com ambas foram contadas duas vezes.
-Hemorragia ou infecção: 290 + 130 - 19 = 401 mães.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5704d894">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="11.3.1-Regras-para-combinar-as-contagens">11.3.1 Regras para combinar as contagens<a class="anchor-link" href="#11.3.1-Regras-para-combinar-as-contagens">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=728d2061">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Regra da adição: contar as mães com ambas uma única vez</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Hemorragia ou infecção:"</span><span class="p">,</span> <span class="n">n_hemorrhage</span><span class="p">,</span> <span class="s2">"+"</span><span class="p">,</span> <span class="n">n_infection</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">,</span> <span class="n">n_both</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="n">n_hemorrhage</span> <span class="o">+</span> <span class="n">n_infection</span> <span class="o">-</span> <span class="n">n_both</span><span class="p">,</span> <span class="s2">"mães."</span><span class="p">)</span>
 
+<span class="c1"># 2. Conferir contando diretamente</span>
+<span class="n">either</span> <span class="o">=</span> <span class="n">H</span> <span class="o">|</span> <span class="n">I</span>                     <span class="c1"># "|" significa "ou": ao menos uma das duas</span>
+<span class="n">n_either</span> <span class="o">=</span> <span class="n">either</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Contando direto:"</span><span class="p">,</span> <span class="n">n_either</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"mães ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">n_either</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
+
+<span class="c1"># 3. Complemento: as mães sem nenhuma das duas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Sem nenhuma:"</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">n_either</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"mães ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">n_either</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Hemorragia ou infecção: 290 + 130 - 19 = 401 mães.
 Contando direto: 401 de 5000 mães = 8.02 %
 Sem nenhuma: 4599 de 5000 mães = 91.98 %
 </pre>
@@ -8084,26 +8198,25 @@ Sem nenhuma: 4599 de 5000 mães = 91.98 %
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bf1d240f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27dee966">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="P3.-A-infec%C3%A7%C3%A3o-%C3%A9-mais-frequente-ap%C3%B3s-ces%C3%A1rea?">P3. A infecção é mais frequente após cesárea?<a class="anchor-link" href="#P3.-A-infec%C3%A7%C3%A3o-%C3%A9-mais-frequente-ap%C3%B3s-ces%C3%A1rea?">¶</a></h3>
+<h3 id="11.4-Infec%C3%A7%C3%A3o-dentro-de-cada-grupo-de-parto">11.4 Infecção dentro de cada grupo de parto<a class="anchor-link" href="#11.4-Infec%C3%A7%C3%A3o-dentro-de-cada-grupo-de-parto">¶</a></h3><p><em>A infecção é mais frequente após cesárea?</em></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c3db81c5">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=36c6c13d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Separar os partos por tipo: cesárea e vaginal (não cesárea)</span>
-<span class="n">n_cesarean</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">n_vaginal</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">C</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>             <span class="c1"># "~" significa "não"</span>
 
 <span class="c1"># 2. Dentro de cada grupo, contar as infecções e dividir pelo tamanho desse grupo</span>
@@ -8111,13 +8224,6 @@ Sem nenhuma: 4599 de 5000 mães = 91.98 %
 <span class="n">infected_vaginal</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">C</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Infecção entre os partos cesárea:"</span><span class="p">,</span> <span class="n">infected_cesarean</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n_cesarean</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">infected_cesarean</span> <span class="o">/</span> <span class="n">n_cesarean</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Infecção entre os partos vaginais:"</span><span class="p">,</span> <span class="n">infected_vaginal</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n_vaginal</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">infected_vaginal</span> <span class="o">/</span> <span class="n">n_vaginal</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># 3. As mesmas 87 cesáreas infectadas sobre TODOS os partos (outro denominador)</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Cesárea e infecção, entre todos os partos:"</span><span class="p">,</span> <span class="n">infected_cesarean</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">infected_cesarean</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># 4. Infecção sobre todos os partos, qualquer que seja o tipo</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Infecção, entre todos os partos:"</span><span class="p">,</span> <span class="n">I</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">I</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -8132,8 +8238,48 @@ Sem nenhuma: 4599 de 5000 mães = 91.98 %
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Infecção entre os partos cesárea: 87 de 1313 = 0.0663
 Infecção entre os partos vaginais: 43 de 3687 = 0.0117
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d32a93a4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="11.4.1-A-mesma-contagem-pode-responder-a-perguntas-diferentes">11.4.1 A mesma contagem pode responder a perguntas diferentes<a class="anchor-link" href="#11.4.1-A-mesma-contagem-pode-responder-a-perguntas-diferentes">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b0fc4e11">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. As mesmas cesáreas infectadas sobre TODOS os partos (outro denominador)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Cesárea e infecção, entre todos os partos:"</span><span class="p">,</span> <span class="n">infected_cesarean</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">infected_cesarean</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-Cesárea e infecção, entre todos os partos: 87 de 5000 = 0.0174
+<span class="c1"># 2. Infecção sobre todos os partos, qualquer que seja o tipo</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Infecção, entre todos os partos:"</span><span class="p">,</span> <span class="n">n_infection</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">n_infection</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Cesárea e infecção, entre todos os partos: 87 de 5000 = 0.0174
 Infecção, entre todos os partos: 130 de 5000 = 0.026
 </pre>
 </div>
@@ -8141,44 +8287,36 @@ Infecção, entre todos os partos: 130 de 5000 = 0.026
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a83ba693">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=be6ee196">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="P4.-Hemorragia-e-infec%C3%A7%C3%A3o-v%C3%AAm-juntas-ou-de-modo-independente?">P4. Hemorragia e infecção vêm juntas ou de modo independente?<a class="anchor-link" href="#P4.-Hemorragia-e-infec%C3%A7%C3%A3o-v%C3%AAm-juntas-ou-de-modo-independente?">¶</a></h3>
+<h3 id="11.5-Hemorragia-e-infec%C3%A7%C3%A3o-ocorrem-de-forma-independente?">11.5 Hemorragia e infecção ocorrem de forma independente?<a class="anchor-link" href="#11.5-Hemorragia-e-infec%C3%A7%C3%A3o-ocorrem-de-forma-independente?">¶</a></h3><p><em>Hemorragia e infecção vêm juntas ou de modo independente?</em></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6b8affb6">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=528ef183">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Se hemorragia e infecção fossem independentes, P(H e I) seria igual a P(H) x P(I)</span>
-<span class="n">p_h</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span>
-<span class="n">p_i</span> <span class="o">=</span> <span class="n">I</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">p_h</span> <span class="o">=</span> <span class="n">n_hemorrhage</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">p_i</span> <span class="o">=</span> <span class="n">n_infection</span> <span class="o">/</span> <span class="n">n</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Esperado se independentes:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p_h</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">"x"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p_i</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p_h</span> <span class="o">*</span> <span class="n">p_i</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># 2. O que o registro mostra</span>
-<span class="n">n_both</span> <span class="o">=</span> <span class="p">(</span><span class="n">H</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Observado, as duas juntas:"</span><span class="p">,</span> <span class="n">n_both</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">n_both</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># 3. Infecção entre as mães com e sem hemorragia</span>
 <span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Infecção entre as mães com hemorragia:"</span><span class="p">,</span> <span class="n">n_both</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">H</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">n_both</span> <span class="o">/</span> <span class="n">H</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Infecção entre as mães com hemorragia:"</span><span class="p">,</span> <span class="n">n_both</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="n">n_hemorrhage</span><span class="p">,</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">n_both</span> <span class="o">/</span> <span class="n">n_hemorrhage</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Infecção entre as mães sem hemorragia:"</span><span class="p">,</span> <span class="p">(</span><span class="o">~</span><span class="n">H</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="s2">"de"</span><span class="p">,</span> <span class="p">(</span><span class="o">~</span><span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="s2">"="</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="o">~</span><span class="n">H</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="o">~</span><span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># 4. Multiplicar mantendo as condições: cesárea, depois hemorragia, depois infecção</span>
-<span class="n">n_c</span><span class="p">,</span> <span class="n">n_ch</span><span class="p">,</span> <span class="n">n_chi</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="p">(</span><span class="n">C</span> <span class="o">&amp;</span> <span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="p">(</span><span class="n">C</span> <span class="o">&amp;</span> <span class="n">H</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"De"</span><span class="p">,</span> <span class="n">n_c</span><span class="p">,</span> <span class="s2">"cesáreas,"</span><span class="p">,</span> <span class="n">n_ch</span><span class="p">,</span> <span class="s2">"tiveram hemorragia, e"</span><span class="p">,</span> <span class="n">n_chi</span><span class="p">,</span> <span class="s2">"delas também tiveram infecção."</span><span class="p">)</span>
-<span class="n">chain</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_c</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_ch</span> <span class="o">/</span> <span class="n">n_c</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_chi</span> <span class="o">/</span> <span class="n">n_ch</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"P(C) x P(H|C) x P(I|C e H) ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">"; contagem direta:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">n_chi</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -8196,8 +8334,49 @@ Observado, as duas juntas: 19 de 5000 = 0.0038
 
 Infecção entre as mães com hemorragia: 19 de 290 = 0.0655
 Infecção entre as mães sem hemorragia: 111 de 4710 = 0.0236
-
-De 1313 cesáreas, 95 tiveram hemorragia, e 14 delas também tiveram infecção.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff1a0609">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="11.5.1-Multiplicar-preservando-as-condi%C3%A7%C3%B5es">11.5.1 Multiplicar preservando as condições<a class="anchor-link" href="#11.5.1-Multiplicar-preservando-as-condi%C3%A7%C3%B5es">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=825a0d1b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Cesárea, depois hemorragia entre as cesáreas, depois infecção entre essas</span>
+<span class="n">n_ch</span> <span class="o">=</span> <span class="p">(</span><span class="n">C</span> <span class="o">&amp;</span> <span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">n_chi</span> <span class="o">=</span> <span class="p">(</span><span class="n">C</span> <span class="o">&amp;</span> <span class="n">H</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"De"</span><span class="p">,</span> <span class="n">n_cesarean</span><span class="p">,</span> <span class="s2">"cesáreas,"</span><span class="p">,</span> <span class="n">n_ch</span><span class="p">,</span> <span class="s2">"tiveram hemorragia, e"</span><span class="p">,</span> <span class="n">n_chi</span><span class="p">,</span> <span class="s2">"delas também tiveram infecção."</span><span class="p">)</span>
+<span class="n">chain</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_cesarean</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_ch</span> <span class="o">/</span> <span class="n">n_cesarean</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_chi</span> <span class="o">/</span> <span class="n">n_ch</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"P(C) x P(H|C) x P(I|C e H) ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">"; contagem direta:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">n_chi</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>De 1313 cesáreas, 95 tiveram hemorragia, e 14 delas também tiveram infecção.
 P(C) x P(H|C) x P(I|C e H) = 0.0028 ; contagem direta: 0.0028
 </pre>
 </div>
@@ -8205,42 +8384,31 @@ P(C) x P(H|C) x P(I|C e H) = 0.0028 ; contagem direta: 0.0028
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e227fe1e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e199846">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="P5.-Entre-as-m%C3%A3es-com-infec%C3%A7%C3%A3o,-que-fra%C3%A7%C3%A3o-teve-ces%C3%A1rea?">P5. Entre as mães com infecção, que fração teve cesárea?<a class="anchor-link" href="#P5.-Entre-as-m%C3%A3es-com-infec%C3%A7%C3%A3o,-que-fra%C3%A7%C3%A3o-teve-ces%C3%A1rea?">¶</a></h3>
+<h3 id="11.6-Entre-as-infec%C3%A7%C3%B5es,-quantas-ocorreram-ap%C3%B3s-ces%C3%A1reas?">11.6 Entre as infecções, quantas ocorreram após cesáreas?<a class="anchor-link" href="#11.6-Entre-as-infec%C3%A7%C3%B5es,-quantas-ocorreram-ap%C3%B3s-ces%C3%A1reas?">¶</a></h3><p><em>Entre as mães com infecção, que fração teve cesárea?</em></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4e7a17b5">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cb7e4c4e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. A tabela: linhas são o tipo de parto, colunas são a infecção</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Tipo de parto (linhas) por infecção (colunas):"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"cesarean"</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">"infection"</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">margins_name</span><span class="o">=</span><span class="s2">"Total"</span><span class="p">))</span>
 
-<span class="c1"># 2. Reconstruir a fração geral de infecção a partir dos dois grupos</span>
-<span class="n">p_c</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">n</span>                                  <span class="c1"># P(C)</span>
-<span class="n">p_i_given_c</span> <span class="o">=</span> <span class="p">(</span><span class="n">C</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">C</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>              <span class="c1"># P(I|C)</span>
-<span class="n">p_i_given_not_c</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">C</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="o">~</span><span class="n">C</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>      <span class="c1"># P(I|não C)</span>
-<span class="n">p_i</span> <span class="o">=</span> <span class="n">p_i_given_c</span> <span class="o">*</span> <span class="n">p_c</span> <span class="o">+</span> <span class="n">p_i_given_not_c</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_c</span><span class="p">)</span>
+<span class="c1"># 2. Contando diretamente entre as mães infectadas</span>
 <span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"P(I) = P(I|C) P(C) + P(I|não C) P(não C) ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p_i</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># 3. Inverter a condição (Bayes): da infecção entre as cesáreas para as cesáreas entre as infecções</span>
-<span class="n">p_c_given_i</span> <span class="o">=</span> <span class="n">p_i_given_c</span> <span class="o">*</span> <span class="n">p_c</span> <span class="o">/</span> <span class="n">p_i</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"P(C|I) = P(I|C) P(C) / P(I) ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p_c_given_i</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="c1"># 4. Conferir contando diretamente entre as mães infectadas</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Contando direto:"</span><span class="p">,</span> <span class="p">(</span><span class="n">C</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="s2">"das"</span><span class="p">,</span> <span class="n">I</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="s2">"infecções vieram depois de cesárea ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">C</span> <span class="o">&amp;</span> <span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">I</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Entre as"</span><span class="p">,</span> <span class="n">n_infection</span><span class="p">,</span> <span class="s2">"infecções,"</span><span class="p">,</span> <span class="n">infected_cesarean</span><span class="p">,</span> <span class="s2">"vieram depois de cesárea ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">infected_cesarean</span> <span class="o">/</span> <span class="n">n_infection</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8260,52 +8428,168 @@ no         3644   43   3687
 yes        1226   87   1313
 Total      4870  130   5000
 
-P(I) = P(I|C) P(C) + P(I|não C) P(não C) = 0.026
-P(C|I) = P(I|C) P(C) / P(I) = 0.6692
-Contando direto: 87 das 130 infecções vieram depois de cesárea = 66.92 %
+Entre as 130 infecções, 87 vieram depois de cesárea = 66.92 %
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a9a77930">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b56f2446">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="P6.-De-quantas-maneiras-se-escolhem-20-prontu%C3%A1rios-e-qual-a-chance-de-a-amostra-incluir-uma-infec%C3%A7%C3%A3o?">P6. De quantas maneiras se escolhem 20 prontuários e qual a chance de a amostra incluir uma infecção?<a class="anchor-link" href="#P6.-De-quantas-maneiras-se-escolhem-20-prontu%C3%A1rios-e-qual-a-chance-de-a-amostra-incluir-uma-infec%C3%A7%C3%A3o?">¶</a></h3>
+<h3 id="11.6.1-Reconstruir-o-total-antes-de-inverter-a-condi%C3%A7%C3%A3o">11.6.1 Reconstruir o total antes de inverter a condição<a class="anchor-link" href="#11.6.1-Reconstruir-o-total-antes-de-inverter-a-condi%C3%A7%C3%A3o">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=59324201">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1a7022b9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Reconstruir a fração geral de infecção a partir dos dois grupos (probabilidade total)</span>
+<span class="n">p_c</span> <span class="o">=</span> <span class="n">n_cesarean</span> <span class="o">/</span> <span class="n">n</span>                               <span class="c1"># P(C)</span>
+<span class="n">p_i_given_c</span> <span class="o">=</span> <span class="n">infected_cesarean</span> <span class="o">/</span> <span class="n">n_cesarean</span>       <span class="c1"># P(I|C)</span>
+<span class="n">p_i_given_not_c</span> <span class="o">=</span> <span class="n">infected_vaginal</span> <span class="o">/</span> <span class="n">n_vaginal</span>     <span class="c1"># P(I|não C)</span>
+<span class="n">p_i</span> <span class="o">=</span> <span class="n">p_i_given_c</span> <span class="o">*</span> <span class="n">p_c</span> <span class="o">+</span> <span class="n">p_i_given_not_c</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"P(I) = P(I|C) P(C) + P(I|não C) P(não C) ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p_i</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># 2. Inverter a condição (Bayes): da infecção entre as cesáreas para as cesáreas entre as infecções</span>
+<span class="n">p_c_given_i</span> <span class="o">=</span> <span class="n">p_i_given_c</span> <span class="o">*</span> <span class="n">p_c</span> <span class="o">/</span> <span class="n">p_i</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"P(C|I) = P(I|C) P(C) / P(I) ="</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">p_c_given_i</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s2">"; contagem direta:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">infected_cesarean</span> <span class="o">/</span> <span class="n">n_infection</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>P(I) = P(I|C) P(C) + P(I|não C) P(não C) = 0.026
+P(C|I) = P(I|C) P(C) / P(I) = 0.6692 ; contagem direta: 0.6692
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b1311224">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="11.7-Escolher-prontu%C3%A1rios-para-revis%C3%A3o">11.7 Escolher prontuários para revisão<a class="anchor-link" href="#11.7-Escolher-prontu%C3%A1rios-para-revis%C3%A3o">¶</a></h3><p><em>De quantas maneiras se escolhem 20 prontuários e qual a chance de a amostra incluir uma infecção?</em></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=93a23a9e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">comb</span><span class="p">,</span> <span class="n">factorial</span><span class="p">,</span> <span class="n">perm</span>
 
 <span class="n">total</span> <span class="o">=</span> <span class="n">n</span>                          <span class="c1"># prontuários no registro</span>
-<span class="n">with_infection</span> <span class="o">=</span> <span class="n">I</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>           <span class="c1"># prontuários com infecção</span>
+<span class="n">without_infection</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">n_infection</span>
 
-<span class="c1"># 1. De quantas maneiras se escolhem 20 prontuários? (a ordem não importa)</span>
+<span class="c1"># De quantas maneiras se escolhem 20 prontuários? (a ordem não importa)</span>
 <span class="n">sets</span> <span class="o">=</span> <span class="n">comb</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Há"</span><span class="p">,</span> <span class="n">sets</span><span class="p">,</span> <span class="s2">"conjuntos diferentes de 20 prontuários,"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">sets</span><span class="p">)),</span> <span class="s2">"algarismos."</span><span class="p">)</span>
-
-<span class="c1"># 2. Ordens dos 20 prontuários escolhidos, e dos dois primeiros lugares</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Há 37735558620382470911680923426535607627307325009655406000 conjuntos diferentes de 20 prontuários, 56 algarismos.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8d1bb593">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="11.7.1-A-ordem-importa?">11.7.1 A ordem importa?<a class="anchor-link" href="#11.7.1-A-ordem-importa?">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=eab5152a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Ordens dos 20 prontuários escolhidos, e dos dois primeiros lugares</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Os 20 prontuários escolhidos podem ser postos em"</span><span class="p">,</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="s2">"ordens; os dois primeiros lugares, em"</span><span class="p">,</span> <span class="n">perm</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-
-<span class="c1"># 3. Chance de ao menos uma infecção = 1 - chance de nenhuma (os 20 entre os prontuários sem infecção)</span>
-<span class="n">without_infection</span> <span class="o">=</span> <span class="n">total</span> <span class="o">-</span> <span class="n">with_infection</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Os 20 prontuários escolhidos podem ser postos em 2432902008176640000 ordens; os dois primeiros lugares, em 380
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=78f85b3a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="11.7.2-Usar-a-amostra-sem-infec%C3%A7%C3%B5es-como-complementar">11.7.2 Usar a amostra sem infecções como complementar<a class="anchor-link" href="#11.7.2-Usar-a-amostra-sem-infec%C3%A7%C3%B5es-como-complementar">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e887d021">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Chance de ao menos uma infecção = 1 - chance de nenhuma (os 20 entre os prontuários sem infecção)</span>
 <span class="n">chance_none</span> <span class="o">=</span> <span class="n">comb</span><span class="p">(</span><span class="n">without_infection</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">/</span> <span class="n">comb</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Chance de 20 prontuários incluírem ao menos uma infecção:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">chance_none</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="c1"># 4. Menor amostra com ao menos 90%: testar tamanhos 1, 2, 3, ... até a chance de nenhuma ser no máximo 10%</span>
+<span class="c1"># 2. Menor amostra com ao menos 90%: testar tamanhos 1, 2, 3, ... até a chance de nenhuma ser no máximo 10%</span>
 <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">while</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">comb</span><span class="p">(</span><span class="n">without_infection</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">comb</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>     <span class="c1"># compara números inteiros, sem arredondar</span>
     <span class="n">size</span> <span class="o">=</span> <span class="n">size</span> <span class="o">+</span> <span class="mi">1</span>
@@ -8324,10 +8608,7 @@ Contando direto: 87 das 130 infecções vieram depois de cesárea = 66.92 %
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Há 37735558620382470911680923426535607627307325009655406000 conjuntos diferentes de 20 prontuários, 56 algarismos.
-Os 20 prontuários escolhidos podem ser postos em 2432902008176640000 ordens; os dois primeiros lugares, em 380
-
-Chance de 20 prontuários incluírem ao menos uma infecção: 0.4102
+<pre>Chance de 20 prontuários incluírem ao menos uma infecção: 0.4102
 Com 86 prontuários a chance é 0.898259
 Com 87 prontuários a chance é 0.90095
 Logo 87 é a menor amostra com ao menos 90%.
@@ -8337,7 +8618,7 @@ Logo 87 é a menor amostra com ao menos 90%.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a07e1de8">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=80c645cb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8348,22 +8629,22 @@ Logo 87 é a menor amostra com ao menos 90%.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f81f59ed">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b1890bf4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-1.-Registros-e-descri%C3%A7%C3%B5es-de-eventos">Exercício 1. Registros e descrições de eventos<a class="anchor-link" href="#Exerc%C3%ADcio-1.-Registros-e-descri%C3%A7%C3%B5es-de-eventos">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-1.-Registros-e-descri%C3%A7%C3%B5es-de-eventos">11.9 Exercício 1. Registros e descrições de eventos<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-1.-Registros-e-descri%C3%A7%C3%B5es-de-eventos">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9dd76f75">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8f1bb73e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">product</span>
@@ -8403,22 +8684,22 @@ As oito descrições:
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=591ad295">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ab2d34ca">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-2.-Fra%C3%A7%C3%B5es-acumuladas-e-ordem">Exercício 2. Frações acumuladas e ordem<a class="anchor-link" href="#Exerc%C3%ADcio-2.-Fra%C3%A7%C3%B5es-acumuladas-e-ordem">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-2.-Fra%C3%A7%C3%B5es-acumuladas-e-ordem">11.9 Exercício 2. Frações acumuladas e ordem<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-2.-Fra%C3%A7%C3%B5es-acumuladas-e-ordem">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5a3d2290">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=235d681c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Fração de cesáreas entre os k primeiros registros</span>
@@ -8455,22 +8736,22 @@ Ordem invertida: primeiros 100 registros 0.25 ; todos os 5000 registros 0.2626
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cd5ab41d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cbac09c6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-3.-Contar-a-sobreposi%C3%A7%C3%A3o-uma-vez">Exercício 3. Contar a sobreposição uma vez<a class="anchor-link" href="#Exerc%C3%ADcio-3.-Contar-a-sobreposi%C3%A7%C3%A3o-uma-vez">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-3.-Contar-a-sobreposi%C3%A7%C3%A3o-uma-vez">11.9 Exercício 3. Contar a sobreposição uma vez<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-3.-Contar-a-sobreposi%C3%A7%C3%A3o-uma-vez">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ecbe0bb8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dd0fc471">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Os quatro grupos: só hemorragia, só infecção, ambas, nenhuma</span>
@@ -8512,22 +8793,22 @@ Contagem direta: 401 mães
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=99c91e32">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a4bf587f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-4.-Nomear-o-denominador">Exercício 4. Nomear o denominador<a class="anchor-link" href="#Exerc%C3%ADcio-4.-Nomear-o-denominador">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-4.-Nomear-o-denominador">11.9 Exercício 4. Nomear o denominador<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-4.-Nomear-o-denominador">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=58b9f258">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=730e65fc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. As cinco frações: o numerador e o denominador de cada uma</span>
@@ -8559,22 +8840,22 @@ Contagem direta: 401 mães
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19401466">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=15a373a0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-5.-Comparar-dentro-dos-tipos-de-parto">Exercício 5. Comparar dentro dos tipos de parto<a class="anchor-link" href="#Exerc%C3%ADcio-5.-Comparar-dentro-dos-tipos-de-parto">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-5.-Comparar-dentro-dos-tipos-de-parto">11.9 Exercício 5. Comparar dentro dos tipos de parto<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-5.-Comparar-dentro-dos-tipos-de-parto">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8fe13500">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=62180d9c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Infecção em cada tipo de parto, e a razão das duas proporções</span>
@@ -8606,22 +8887,22 @@ Hemorragia, vaginal: 195 de 3687 = 0.0529
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=505c6405">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1cb66f5b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-6.-Depend%C3%AAncia-e-sobreposi%C3%A7%C3%A3o">Exercício 6. Dependência e sobreposição<a class="anchor-link" href="#Exerc%C3%ADcio-6.-Depend%C3%AAncia-e-sobreposi%C3%A7%C3%A3o">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-6.-Depend%C3%AAncia-e-sobreposi%C3%A7%C3%A3o">11.9 Exercício 6. Dependência e sobreposição<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-6.-Depend%C3%AAncia-e-sobreposi%C3%A7%C3%A3o">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5e57d26b">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8663eddc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Produto das marginais versus a fração conjunta observada</span>
@@ -8652,22 +8933,22 @@ Mães com ambas: 19
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ad2d8fb0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=66456f68">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-7.-Dois-caminhos-para-a-mesma-probabilidade-conjunta">Exercício 7. Dois caminhos para a mesma probabilidade conjunta<a class="anchor-link" href="#Exerc%C3%ADcio-7.-Dois-caminhos-para-a-mesma-probabilidade-conjunta">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-7.-Dois-caminhos-para-a-mesma-probabilidade-conjunta">11.9 Exercício 7. Dois caminhos para a mesma probabilidade conjunta<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-7.-Dois-caminhos-para-a-mesma-probabilidade-conjunta">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=68daf8ad">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d4848c2f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. As contagens pelo caminho</span>
@@ -8698,22 +8979,22 @@ Caminho C, H, I: 0.0028 | caminho H, C, I: 0.0028 | contagem direta: 0.0028
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=52627b55">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=369263fd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-8.-Probabilidade-total-e-invers%C3%A3o">Exercício 8. Probabilidade total e inversão<a class="anchor-link" href="#Exerc%C3%ADcio-8.-Probabilidade-total-e-invers%C3%A3o">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-8.-Probabilidade-total-e-invers%C3%A3o">11.9 Exercício 8. Probabilidade total e inversão<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-8.-Probabilidade-total-e-invers%C3%A3o">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=310d4348">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=899d6db7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Probabilidade total de infecção a partir dos dois tipos de parto</span>
@@ -8748,27 +9029,25 @@ Contagem direta entre as infectadas: cesárea 0.6692
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=13d6f460">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c44ea1f7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-9.-Ordens-dos-prontu%C3%A1rios-selecionados">Exercício 9. Ordens dos prontuários selecionados<a class="anchor-link" href="#Exerc%C3%ADcio-9.-Ordens-dos-prontu%C3%A1rios-selecionados">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-9.-Ordens-dos-prontu%C3%A1rios-selecionados">11.9 Exercício 9. Ordens dos prontuários selecionados<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-9.-Ordens-dos-prontu%C3%A1rios-selecionados">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e3508114">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2d9cb760">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span><span class="p">,</span> <span class="n">perm</span>
-
-<span class="c1"># 1. Ordens de 20 prontuários, e dois primeiros lugares ordenados</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Ordens de 20 prontuários, e dois primeiros lugares ordenados</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"20! ="</span><span class="p">,</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="s2">"ordens; dois primeiros lugares:"</span><span class="p">,</span> <span class="n">perm</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"escolhas ordenadas"</span><span class="p">)</span>
 
 <span class="c1"># 2. Chance de um prontuário dado ser o primeiro, e de dois dados serem o primeiro e o segundo</span>
@@ -8795,29 +9074,25 @@ Dois prontuários dados são o primeiro e o segundo com chance 0.002632
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a9d17fde">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8df440f2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-10.-Uma-amostra-que-inclui-uma-infec%C3%A7%C3%A3o">Exercício 10. Uma amostra que inclui uma infecção<a class="anchor-link" href="#Exerc%C3%ADcio-10.-Uma-amostra-que-inclui-uma-infec%C3%A7%C3%A3o">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-10.-Uma-amostra-que-inclui-uma-infec%C3%A7%C3%A3o">11.9 Exercício 10. Uma amostra que inclui uma infecção<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-10.-Uma-amostra-que-inclui-uma-infec%C3%A7%C3%A3o">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f56ddbf6">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b25e21f5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">comb</span>
-
-<span class="n">total</span><span class="p">,</span> <span class="n">without_infection</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">I</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-<span class="c1"># 1. Menor amostra com ao menos 90% de chance de incluir uma infecção</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Menor amostra com ao menos 90% de chance de incluir uma infecção</span>
 <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">while</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">comb</span><span class="p">(</span><span class="n">without_infection</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">comb</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
     <span class="n">size</span> <span class="o">=</span> <span class="n">size</span> <span class="o">+</span> <span class="mi">1</span>
@@ -8846,22 +9121,22 @@ Dois prontuários dados são o primeiro e o segundo com chance 0.002632
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7d7a0d4d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cbbc70e0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-11.-Probabilidades-marginais-alternativas-(alt.)">Exercício 11. Probabilidades marginais alternativas (alt.)<a class="anchor-link" href="#Exerc%C3%ADcio-11.-Probabilidades-marginais-alternativas-(alt.)">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-11.-Probabilidades-marginais-alternativas-(alt.)">11.9 Exercício 11. Probabilidades marginais alternativas (alt.)<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-11.-Probabilidades-marginais-alternativas-(alt.)">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4654b9ca">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=969157b9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Marginais alternativas: P(H) = 0,02 e P(I) = 0,03</span>
@@ -8893,29 +9168,25 @@ Se os eventos fossem independentes, P(H ou I) = 0.0494
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0877af64">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=60939bcf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-12.-Devolver-prontu%C3%A1rios-entre-sorteios-(alt.)">Exercício 12. Devolver prontuários entre sorteios (alt.)<a class="anchor-link" href="#Exerc%C3%ADcio-12.-Devolver-prontu%C3%A1rios-entre-sorteios-(alt.)">¶</a></h3>
+<h3 id="11.9-Exerc%C3%ADcio-12.-Devolver-prontu%C3%A1rios-entre-sorteios-(alt.)">11.9 Exercício 12. Devolver prontuários entre sorteios (alt.)<a class="anchor-link" href="#11.9-Exerc%C3%ADcio-12.-Devolver-prontu%C3%A1rios-entre-sorteios-(alt.)">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2e0542a8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=358048eb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">comb</span>
-
-<span class="n">total</span><span class="p">,</span> <span class="n">without_infection</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">I</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-<span class="c1"># 1. Chance de ao menos uma infecção em 20 sorteios, com e sem devolver o prontuário</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Chance de ao menos uma infecção em 20 sorteios, com e sem devolver o prontuário</span>
 <span class="n">with_replacement</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">without_infection</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span> <span class="o">**</span> <span class="mi">20</span>
 <span class="n">without_replacement</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">comb</span><span class="p">(</span><span class="n">without_infection</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">/</span> <span class="n">comb</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Devolvendo cada prontuário:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">with_replacement</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="s2">"| sem devolver:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">without_replacement</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -8942,7 +9213,7 @@ A diferença é de apenas 0.0006
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=97aff75e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=198663c2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
