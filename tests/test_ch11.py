@@ -22,7 +22,7 @@ print("all", len(checks), "checks pass")
 
 # The executed notebook outputs must carry the numbers quoted in the book
 expected = ["26.26%", "5.80%", "= 8.02%", "0.6692", "0.900950", "2,432,902,008,176,640,000", "0.0494", "0.0028", "0.4102"]
-expected_pt = [e.replace(",", "") if e.startswith("2,") else e for e in expected]
+expected_pt = ["26,26%", "5,80%", "= 8,02%", "0,6692", "0,900950", "2.432.902.008.176.640.000", "0,0494", "0,0028", "0,4102"]
 for name, items in (("ch11_probability_en.ipynb", expected), ("ch11_probabilidade_pt.ipynb", expected_pt)):
     path = ROOT / "chapters/ch11" / name
     if not path.exists():

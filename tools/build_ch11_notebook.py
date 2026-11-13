@@ -10,8 +10,7 @@ import sys
 import nbformat as nbf
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ch11_q12 import EN as Q12_EN, PT as Q12_PT
-from ch11_rest import cells as rest_cells
+from ch11_cells import cells as all_cells, HELP, PLOT
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "chapters" / "ch11"
@@ -34,7 +33,7 @@ HEAD = {
 
 > **Este caderno acompanha o capítulo do livro; não o reproduz.** Definições, deduções e explicações estão no livro. Aqui você executa os cálculos do caso e confere os números. Todos os dados são **sintéticos** e os valores têm apenas finalidade didática; não possuem correlação com o mundo real.
 
-A **Parte A** percorre o caso do capítulo, o registro de partos de uma maternidade pública, pelas seis perguntas do comitê. A **Parte B** traz o código e o resultado de cada um dos doze exercícios do capítulo (os enunciados estão no livro). Execute as células em ordem. As saídas do código usam ponto decimal.
+A **Parte A** percorre o caso do capítulo, o registro de partos de uma maternidade pública, pelas seis perguntas do comitê. A **Parte B** traz o código e o resultado de cada um dos doze exercícios do capítulo (os enunciados estão no livro). Execute as células em ordem.
 
 ## Parte A. O caso
 
@@ -52,16 +51,6 @@ Q = {
         "P4. Hemorragia e infecção vêm juntas ou de modo independente?",
         "P5. Entre as mães com infecção, que fração teve cesárea?",
         "P6. De quantas maneiras se escolhem 20 prontuários e qual a chance de a amostra incluir uma infecção?"]}
-PLOT = '''
-import matplotlib.pyplot as plt
-
-plt.rcParams.update({"figure.dpi": 110, "axes.spines.top": False, "axes.spines.right": False})
-fig, ax = plt.subplots(figsize=(5, 2.6))
-ax.plot(range(1, n + 1), running, color="#222222", linewidth=.9)
-ax.axhline(C.mean(), color="#8a8a8a", linewidth=.8, linestyle="--")
-ax.set(xscale="log", xlabel="%s", ylabel="%s")
-plt.show()
-'''
 AXES = {"en": ("Deliveries included so far (log scale)", "Fraction cesarean"),
         "pt": ("Partos incluídos até então (escala log)", "Fração de cesáreas")}
 FOOT = {"en": "---\n*Synthetic data (seed 11, `generate_data.py`). Teaching values only; nothing here is a clinical recommendation or an estimate for a real unit.*",
@@ -78,23 +67,17 @@ def build(lang):
     code('import pandas as pd\n\nregister = pd.read_csv("data/deliveries.csv")\n'
          'rows, columns = register.shape\n'
          + ('print(f"The register has {rows:,} rows (one per delivery) and {columns} columns.")\n' if lang == "en" else
-            'print(f"O registro tem {rows} linhas (uma por parto) e {columns} colunas.")\n')
+            'print(f"O registro tem {rows:,} linhas (uma por parto) e {columns} colunas.".replace(",", "."))\n')
          + 'register.head()')
-    # Q1 and Q2 follow the line of reasoning step by step; Q3 to Q6 reuse the chapter's code blocks
-    q12 = Q12_EN if lang == "en" else Q12_PT
-    for q, key in zip(Q[lang][:2], ("Q1", "Q2")):
+    qs, exs = all_cells(lang)
+    for q, key in zip(Q[lang], ("Q1", "Q2", "Q3", "Q4", "Q5", "Q6")):
         md("### " + q)
-        for kind, text in q12[key]:
-            if kind == "md":
-                md(text)
-            else:
-                code(text.replace("XLABEL", AXES[lang][0]).replace("YLABEL", AXES[lang][1]))
-    rest_q, rest_ex = rest_cells(lang)
-    for q, key in zip(Q[lang][2:], ("Q3", "Q4", "Q5", "Q6")):
-        md("### " + q)
-        code(rest_q[key])
+        text = qs[key].replace("HELP", HELP[lang], 1)
+        if key == "Q1":
+            text += "\n" + PLOT.strip("\n").replace("XLABEL", AXES[lang][0]).replace("YLABEL", AXES[lang][1])
+        code(text)
     md("## Part B. Exercise solutions" if lang == "en" else "## Parte B. Soluções dos exercícios")
-    for k, (title, block) in enumerate(rest_ex, start=1):
+    for k, (title, block) in enumerate(exs, start=1):
         md(f"### {'Exercise' if lang == 'en' else 'Exercício'} {k}. {title}")
         code(block)
     md(FOOT[lang])
