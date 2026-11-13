@@ -14,7 +14,7 @@ Todos os dados são **sintéticos**; nenhum paciente real aparece. Cada capítul
 | Capítulo | Caso | Caderno | Página |
 |---|---|---|---|
 | 10. Delineamentos experimentais e quase-experimentais em saúde | Serviço de hipertensão com dez ambulatórios: pílula única ou comprimidos separados | `chapters/ch10/ch10_delineamentos_experimentais_pt.ipynb` | `docs/ch10_pt.html` |
-| 11. Probabilidade: a linguagem da incerteza | Maternidade pública, 5.000 partos | `chapters/ch11/ch11_probabilidade_pt.ipynb` | `docs/ch11_pt.html` |
+| 11. Probabilidade: a linguagem da incerteza | Comitê de controle de infecção de uma maternidade pública, 5.000 partos | `chapters/ch11/ch11_probabilidade_pt.ipynb` | `docs/ch11_pt.html` |
 
 ## Estrutura
 
@@ -37,11 +37,11 @@ Reconstruir as páginas: `python tools/build_ch11_notebook.py && python tools/bu
 
 ## Revisão
 
-Os cadernos do Capítulo 11 seguem o rascunho revisado do capítulo de 12/11/2026 (caso da maternidade). Alguns insumos dos exercícios, como a prevalência exata de acidemia 0,0488 no Exercício 6 e a proporção exata de internações longas 0,2432 no Exercício 11, seguem esse rascunho.
+O caderno do Capítulo 11 segue o capítulo revisado de 13/11/2026 (registro da maternidade com quatro colunas e seis perguntas do comitê).
 
 ## Observações
 
-Os dados sintéticos e as hipóteses didáticas (os 4 dias financiados, a regra de um dia por alerta) estão declarados no caderno. Nada aqui é recomendação clínica nem estimativa para uma unidade real. As saídas do código usam ponto decimal.
+Os dados são sintéticos e os valores têm apenas finalidade didática; não possuem correlação com o mundo real. Nada aqui é recomendação clínica nem estimativa para uma unidade real. As saídas do código usam ponto decimal.
 
 ## Online
 

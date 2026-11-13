@@ -1,0 +1,98 @@
+{
+ "A": [
+  "import pandas as pd\n\ndf = pd.read_csv(\"data/deliveries.csv\")\nn = len(df)\nC = df[\"cesarean\"] == \"yes\"\nH = df[\"hemorrhage\"] == \"yes\"\nI = df[\"infection\"] == \"yes\"\nprint(n)\nprint(int(C.sum()), f\"{C.mean():.4f}\")\nprint(int(H.sum()), f\"{H.mean():.4f}\")\nrunning = C.cumsum() / range(1, n + 1)\nfor k in (10, 50, 100, 500, 1000, 5000):\n    print(k, f\"{running.iloc[k - 1]:.4f}\")",
+  "both = H & I\none_or_both = H | I\nprint(int(H.sum()), int(I.sum()), int(both.sum()))\nprint(int(H.sum() + I.sum() - both.sum()))\nprint(int(one_or_both.sum()), int((~one_or_both).sum()))\nprint(f\"{one_or_both.mean():.4f}\",\n      f\"{(~one_or_both).mean():.4f}\")",
+  "for group in (C, ~C):\n    print(int(group.sum()), int((group & I).sum()),\n          f\"{I[group].mean():.4f}\")\nprint(f\"{(C & I).mean():.4f}\", f\"{I.mean():.4f}\")",
+  "print(f\"{H.mean() * I.mean():.6f}\",\n      f\"{(H & I).mean():.4f}\")\nprint(f\"{I[H].mean():.4f}\", f\"{I[~H].mean():.4f}\")\nprint(int(C.sum()), int((C & H).sum()),\n      int((C & H & I).sum()))\nchain = C.mean() * H[C].mean() * I[C & H].mean()\nprint(f\"{H.mean() * I[H].mean():.4f}\")\nprint(f\"{chain:.4f}\", f\"{(C & H & I).mean():.4f}\")",
+  "p_i = I[C].mean() * C.mean() + I[~C].mean() * (~C).mean()\np_c_given_i = I[C].mean() * C.mean() / p_i\nprint(f\"{p_i:.4f}\")\nprint(int((C & I).sum()), int(I.sum()))\nprint(f\"{p_c_given_i:.4f}\", f\"{C[I].mean():.4f}\")\nprint(f\"{100 * p_c_given_i:.1f}%\")",
+  "from math import comb, factorial, perm\n\nN, K = n, int(I.sum())\ndef p_at_least_one(m):\n    return 1 - comb(N - K, m) / comb(N, m)\n\nprint(comb(N, 20), len(str(comb(N, 20))))\nprint(factorial(20), perm(20, 2))\nprint(f\"{p_at_least_one(20):.4f}\")\nm = next(m for m in range(1, N + 1)\n         if 10 * comb(N - K, m) <= comb(N, m))\nfor size in (m - 1, m):\n    print(size, f\"{p_at_least_one(size):.6f}\")"
+ ],
+ "B": [
+  "import pandas as pd\nfrom itertools import product\n\ndf = pd.read_csv(\"data/deliveries.csv\")\nn = len(df)\nC = df[\"cesarean\"] == \"yes\"\nH = df[\"hemorrhage\"] == \"yes\"\nI = df[\"infection\"] == \"yes\"\nprint(n, df[\"delivery_id\"].nunique())\nprint(\" \".join(\"\".join(map(str, bits))\n               for bits in product((0, 1), repeat=3)))",
+  "for k in (10, 50, 100, 500, 1000, 5000):\n    print(k, f\"{C.iloc[:k].mean():.4f}\")\nreverse = C.iloc[::-1]\nprint(f\"{reverse.iloc[:100].mean():.4f}\",\n      f\"{reverse.mean():.4f}\")",
+  "for group in (H & ~I, ~H & I, H & I, ~(H | I)):\n    print(int(group.sum()), f\"{group.mean():.4f}\")\nunion = H.sum() + I.sum() - (H & I).sum()\nprint(int(union), f\"{union / n:.4f}\")\nprint(int((H | I).sum()), f\"{1 - (H | I).mean():.4f}\")",
+  "values = (I[C].mean(), (C & I).mean(), I.mean(),\n          C[I].mean(), H[C].mean())\nfor letter, value in zip(\"abcde\", values):\n    print(letter, f\"{value:.4f}\")",
+  "print(f\"{I[C].mean():.4f}\", f\"{I[~C].mean():.4f}\")\nprint(f\"{I[C].mean() / I[~C].mean():.4f}\")\nfor group in (C, ~C):\n    print(int((H & group).sum()), int(group.sum()),\n          f\"{H[group].mean():.4f}\")",
+  "print(f\"{H.mean() * I.mean():.6f}\",\n      f\"{(H & I).mean():.4f}\")\nprint(f\"{I[H].mean():.4f}\", f\"{I[~H].mean():.4f}\")\nprint(int((H & I).sum()))",
+  "first = C.mean() * H[C].mean() * I[C & H].mean()\nsecond = H.mean() * C[H].mean() * I[C & H].mean()\nprint(int(C.sum()), int(H.sum()), int((C & H).sum()),\n      int((C & H & I).sum()))\nprint(f\"{first:.4f}\", f\"{second:.4f}\",\n      f\"{(C & H & I).mean():.4f}\")",
+  "p_i = I[C].mean() * C.mean() + I[~C].mean() * (~C).mean()\nbayes = I[C].mean() * C.mean() / p_i\nprint(f\"{p_i:.4f}\")\nprint(f\"{bayes:.4f}\", f\"{C[I].mean():.4f}\")\nprint(f\"{(~C)[I].mean():.4f}\")",
+  "from math import factorial, perm\n\nprint(factorial(20), perm(20, 2))\nprint(f\"{factorial(19) / factorial(20):.4f}\")\nprint(f\"{factorial(18) / factorial(20):.6f}\")",
+  "from math import comb\n\nN, K = n, int(I.sum())\ndef p_at_least_one(m):\n    return 1 - comb(N - K, m) / comb(N, m)\n\nm = next(m for m in range(1, N + 1)\n         if 10 * comb(N - K, m) <= comb(N, m))\nfor size in (20, m - 1, m):\n    print(size, f\"{p_at_least_one(size):.6f}\")",
+  "p_h, p_i = 0.02, 0.03\nlower = max(p_h, p_i)\nupper = min(1, p_h + p_i)\nprint(f\"{lower:.4f}\", f\"{upper:.4f}\")\nprint(f\"{p_h + p_i - p_h * p_i:.4f}\")",
+  "from math import comb\n\nN, K = n, int(I.sum())\nwith_replacement = 1 - ((N - K) / N) ** 20\nwithout_replacement = 1 - comb(N - K, 20) / comb(N, 20)\nprint(f\"{with_replacement:.6f}\",\n      f\"{without_replacement:.6f}\")\nprint(f\"{without_replacement - with_replacement:.6f}\")"
+ ],
+ "res": [
+  [
+   "Records and event descriptions",
+   "Registros e descrições de eventos",
+   "5,000 distinct identifiers; the eight (C, H, I) descriptions are listed above. Whether they are equally likely is discussed in the book.",
+   "5.000 identificadores distintos; as oito descrições (C, H, I) estão listadas acima. Se são equiprováveis é discutido no livro."
+  ],
+  [
+   "Running fractions and order",
+   "Frações acumuladas e ordem",
+   "0.5000, 0.3800, 0.2700, 0.2460, 0.2460, 0.2626; in reverse order, 0.2500 after 100 records and 0.2626 after 5,000.",
+   "0,5000, 0,3800, 0,2700, 0,2460, 0,2460, 0,2626; em ordem inversa, 0,2500 após 100 registros e 0,2626 após 5.000."
+  ],
+  [
+   "Count the overlap once",
+   "Contar a sobreposição uma vez",
+   "271, 111, 19, and 4,599 deliveries; 401 with hemorrhage or infection (0.0802); 0.9198 with neither.",
+   "271, 111, 19 e 4.599 partos; 401 com hemorragia ou infecção (0,0802); 0,9198 sem nenhuma."
+  ],
+  [
+   "Name the denominator",
+   "Nomear o denominador",
+   "(a) 0.0663 · (b) 0.0174 · (c) 0.0260 · (d) 0.6692 · (e) 0.0724. The classification is in the book.",
+   "(a) 0,0663 · (b) 0,0174 · (c) 0,0260 · (d) 0,6692 · (e) 0,0724. A classificação está no livro."
+  ],
+  [
+   "Compare within delivery types",
+   "Comparar dentro dos tipos de parto",
+   "Infection 0.0663 vs 0.0117 (ratio 5.6815); hemorrhage 95/1,313 = 0.0724 vs 195/3,687 = 0.0529.",
+   "Infecção 0,0663 vs 0,0117 (razão 5,6815); hemorragia 95/1.313 = 0,0724 vs 195/3.687 = 0,0529."
+  ],
+  [
+   "Dependence and overlap",
+   "Dependência e sobreposição",
+   "Product 0.001508 vs observed 0.0038; P(I|H) = 0.0655 vs P(I|not H) = 0.0236; 19 deliveries with both.",
+   "Produto 0,001508 vs observado 0,0038; P(I|H) = 0,0655 vs P(I|não H) = 0,0236; 19 partos com ambos."
+  ],
+  [
+   "Two routes to the same joint probability",
+   "Dois caminhos para a mesma probabilidade conjunta",
+   "1,313 → 95 → 14; both routes give 0.0028 = 14/5,000.",
+   "1.313 → 95 → 14; os dois caminhos dão 0,0028 = 14/5.000."
+  ],
+  [
+   "Total probability and reversal",
+   "Probabilidade total e inversão",
+   "P(I) = 0.0260; P(C|I) = 0.6692 (87/130); vaginal among infections 0.3308.",
+   "P(I) = 0,0260; P(C|I) = 0,6692 (87/130); parto vaginal entre as infecções 0,3308."
+  ],
+  [
+   "Orders of the selected charts",
+   "Ordens dos prontuários selecionados",
+   "20! = 2,432,902,008,176,640,000; 20 × 19 = 380; probabilities 0.0500 and 0.002632.",
+   "20! = 2.432.902.008.176.640.000; 20 × 19 = 380; probabilidades 0,0500 e 0,002632."
+  ],
+  [
+   "A sample including an infection",
+   "Uma amostra que inclui uma infecção",
+   "20 charts: 0.410156; 86: 0.898259; 87: 0.900950, the smallest sample with at least 90%.",
+   "20 prontuários: 0,410156; 86: 0,898259; 87: 0,900950, a menor amostra com ao menos 90%."
+  ],
+  [
+   "Alternative marginal probabilities (alt.)",
+   "Probabilidades marginais alternativas (alt.)",
+   "Joint probability between 0.0300 and 0.0500; if independent, P(H or I) = 0.0494.",
+   "Probabilidade conjunta entre 0,0300 e 0,0500; se independentes, P(H ou I) = 0,0494."
+  ],
+  [
+   "Returning charts between draws (alt.)",
+   "Devolver prontuários entre sorteios (alt.)",
+   "With replacement 0.409555; without 0.410156; difference 0.000600.",
+   "Com reposição 0,409555; sem 0,410156; diferença 0,000600."
+  ]
+ ]
+}

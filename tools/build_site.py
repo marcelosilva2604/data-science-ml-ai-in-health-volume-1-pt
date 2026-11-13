@@ -14,9 +14,9 @@ CHAPTERS = [
     ("ch10_pt", "pt", "Capítulo 10", "Delineamentos experimentais e quase-experimentais em saúde",
      "Caso: um serviço de hipertensão com dez ambulatórios decide se oferece pílula única em vez de comprimidos separados.", "chapters/ch10/ch10_delineamentos_experimentais_pt.ipynb"),
     ("ch11_en", "en", "Chapter 11", "Probability: The Language of Uncertainty",
-     "Case: a public maternity unit plans its postnatal beds.", "chapters/ch11/ch11_probability_en.ipynb"),
+     "Case: the infection-control committee of a public maternity unit reviews a register of 5,000 deliveries.", "chapters/ch11/ch11_probability_en.ipynb"),
     ("ch11_pt", "pt", "Capítulo 11", "Probabilidade: a linguagem da incerteza",
-     "Caso: uma maternidade pública planeja seus leitos de puerpério.", "chapters/ch11/ch11_probabilidade_pt.ipynb"),
+     "Caso: o comitê de controle de infecção de uma maternidade pública revisa um registro de 5.000 partos.", "chapters/ch11/ch11_probabilidade_pt.ipynb"),
 ]
 PARTS = {"en": ("Part A. The case", "Part B. Exercise solutions", "#Part-A.-The-case", "#Part-B.-Exercise-solutions"),
          "pt": ("Parte A. O caso", "Parte B. Soluções dos exercícios", "#Parte-A.-O-caso", "#Parte-B.-Solu%C3%A7%C3%B5es-dos-exerc%C3%ADcios")}
