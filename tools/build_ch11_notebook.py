@@ -86,10 +86,8 @@ def build(lang):
         for kind, text in q12[key]:
             if kind == "md":
                 md(text)
-            elif kind == "code":
-                code(text)
             else:
-                code(PLOT % AXES[lang])
+                code(text.replace("XLABEL", AXES[lang][0]).replace("YLABEL", AXES[lang][1]))
     for q, block in list(zip(Q[lang], BLOCKS["A"]))[2:]:
         md("### " + q)
         code(block)
