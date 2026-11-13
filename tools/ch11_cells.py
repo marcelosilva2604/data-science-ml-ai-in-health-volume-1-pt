@@ -179,9 +179,10 @@ print()
 print("Cesarean:", round(100 * p_cesarean, 2), "% of the mothers; infection among them:", round(100 * p_infection_after_cesarean, 2), "%")
 print("Cesarean and then infection:", round(p_cesarean, 4), "x", round(p_infection_after_cesarean, 4), "=", round(p_cesarean * p_infection_after_cesarean, 4), "(", infected_cesarean, "of", n, ")")
 
-# 3. Infection over all deliveries, whatever the delivery type: the sum of the two paths
+# 3. Total probability: the two paths added give the chance of an infection over all deliveries
+total_probability = p_vaginal * p_infection_after_vaginal + p_cesarean * p_infection_after_cesarean
 print()
-print("Infection, among all deliveries:", n_infection, "of", n, "=", round(n_infection / n, 4))
+print("Total probability of infection:", round(total_probability, 4), "; direct count:", n_infection, "of", n, "=", round(n_infection / n, 4))
 """, """# 1. Uma mãe admitida aqui tem um parto vaginal e, depois disso, uma infecção: dois passos
 p_vaginal = n_vaginal / n                                  # passo 1: parto vaginal
 p_infection_after_vaginal = infected_vaginal / n_vaginal   # passo 2: infecção, entre os partos vaginais
@@ -195,9 +196,10 @@ print()
 print("Cesárea:", round(100 * p_cesarean, 2), "% das mães; infecção entre elas:", round(100 * p_infection_after_cesarean, 2), "%")
 print("Cesárea e depois infecção:", round(p_cesarean, 4), "x", round(p_infection_after_cesarean, 4), "=", round(p_cesarean * p_infection_after_cesarean, 4), "(", infected_cesarean, "de", n, ")")
 
-# 3. Infecção sobre todos os partos, qualquer que seja o tipo: a soma dos dois caminhos
+# 3. Probabilidade total: somar os dois caminhos dá a chance de infecção entre todos os partos
+total_probability = p_vaginal * p_infection_after_vaginal + p_cesarean * p_infection_after_cesarean
 print()
-print("Infecção, entre todos os partos:", n_infection, "de", n, "=", round(n_infection / n, 4))
+print("Probabilidade total de infecção:", round(total_probability, 4), "; contagem direta:", n_infection, "de", n, "=", round(n_infection / n, 4))
 """)
 
     sec("11.5", "Do hemorrhage and infection occur independently?", "Hemorragia e infecção ocorrem de forma independente?",
@@ -264,29 +266,6 @@ display(table)                                             # mostra a tabela for
 print()
 print("Entre as", n_infection, "infecções,", infected_cesarean, "vieram depois de cesárea =", round(100 * infected_cesarean / n_infection, 2), "%")
 """)
-    sec("11.6.1", "Reconstruct the total before reversing the condition", "Reconstruir o total antes de inverter a condição")
-    cell("""# 1. Rebuild the overall infection fraction from the two groups (total probability)
-p_c = n_cesarean / n                               # P(C)
-p_i_given_c = infected_cesarean / n_cesarean       # P(I|C)
-p_i_given_not_c = infected_vaginal / n_vaginal     # P(I|not C)
-p_i = p_i_given_c * p_c + p_i_given_not_c * (1 - p_c)
-print("P(I) = P(I|C) P(C) + P(I|not C) P(not C) =", round(p_i, 4))
-
-# 2. Reverse the condition (Bayes): from infection among cesareans to cesareans among infections
-p_c_given_i = p_i_given_c * p_c / p_i
-print("P(C|I) = P(I|C) P(C) / P(I) =", round(p_c_given_i, 4), "; direct count:", round(infected_cesarean / n_infection, 4))
-""", """# 1. Reconstruir a fração geral de infecção a partir dos dois grupos (probabilidade total)
-p_c = n_cesarean / n                               # P(C)
-p_i_given_c = infected_cesarean / n_cesarean       # P(I|C)
-p_i_given_not_c = infected_vaginal / n_vaginal     # P(I|não C)
-p_i = p_i_given_c * p_c + p_i_given_not_c * (1 - p_c)
-print("P(I) = P(I|C) P(C) + P(I|não C) P(não C) =", round(p_i, 4))
-
-# 2. Inverter a condição (Bayes): da infecção entre as cesáreas para as cesáreas entre as infecções
-p_c_given_i = p_i_given_c * p_c / p_i
-print("P(C|I) = P(I|C) P(C) / P(I) =", round(p_c_given_i, 4), "; contagem direta:", round(infected_cesarean / n_infection, 4))
-""")
-
     sec("11.7", "Choosing charts for review", "Escolher prontuários para revisão",
         "In how many ways can 20 charts be chosen, and how likely is the sample to include an infection?",
         "De quantas maneiras se escolhem 20 prontuários e qual a chance de a amostra incluir uma infecção?")
