@@ -70,7 +70,11 @@ def build(lang):
     code = lambda s: cells.append(nbf.v4.new_code_cell(s.strip("\n")))
     md(HEAD[lang])
     md("The first five rows of the register:" if lang == "en" else "As cinco primeiras linhas do registro:")
-    code('import pandas as pd\n\npd.read_csv("data/deliveries.csv").head()')
+    code('import pandas as pd\n\nregister = pd.read_csv("data/deliveries.csv")\n'
+         'rows, columns = register.shape\n'
+         + ('print(f"The register has {rows:,} rows (one per delivery) and {columns} columns.")\n' if lang == "en" else
+            'print(f"O registro tem {rows} linhas (uma por parto) e {columns} colunas.")\n')
+         + 'register.head()')
     for q, block in zip(Q[lang], BLOCKS["A"]):
         md("### " + q)
         code(block)
