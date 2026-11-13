@@ -1,0 +1,1801 @@
+patient_id,practice,age_years,diabetes,kidney_disease,baseline_sbp,sbp_group,arm,uncontrolled_12w
+C0001,P10,75,no,yes,159,stage 1 (140-159),usual prescribing,yes
+C0002,P16,68,no,no,152,stage 1 (140-159),usual prescribing,yes
+C0003,P09,56,yes,no,167,stage 2 (160+),single pill first,no
+C0004,P04,57,no,yes,150,stage 1 (140-159),usual prescribing,no
+C0005,P16,66,no,no,145,stage 1 (140-159),usual prescribing,no
+C0006,P05,56,yes,no,155,stage 1 (140-159),usual prescribing,yes
+C0007,P01,71,no,no,165,stage 2 (160+),single pill first,yes
+C0008,P15,54,no,no,184,stage 2 (160+),single pill first,no
+C0009,P03,70,yes,no,141,stage 1 (140-159),usual prescribing,no
+C0010,P10,66,no,no,148,stage 1 (140-159),usual prescribing,no
+C0011,P10,81,no,no,140,stage 1 (140-159),usual prescribing,no
+C0012,P01,65,yes,no,160,stage 2 (160+),single pill first,yes
+C0013,P18,74,no,no,148,stage 1 (140-159),usual prescribing,no
+C0014,P04,70,no,no,156,stage 1 (140-159),usual prescribing,yes
+C0015,P18,63,no,no,159,stage 1 (140-159),usual prescribing,no
+C0016,P18,64,yes,no,152,stage 1 (140-159),usual prescribing,no
+C0017,P15,49,yes,no,160,stage 2 (160+),single pill first,yes
+C0018,P13,59,no,no,170,stage 2 (160+),single pill first,no
+C0019,P08,35,no,no,174,stage 2 (160+),usual prescribing,yes
+C0020,P01,75,yes,no,145,stage 1 (140-159),single pill first,no
+C0021,P08,61,yes,yes,146,stage 1 (140-159),usual prescribing,no
+C0022,P04,85,no,no,149,stage 1 (140-159),usual prescribing,no
+C0023,P15,64,yes,no,144,stage 1 (140-159),single pill first,no
+C0024,P12,48,yes,no,169,stage 2 (160+),single pill first,yes
+C0025,P15,50,no,no,171,stage 2 (160+),single pill first,no
+C0026,P05,43,no,no,161,stage 2 (160+),usual prescribing,no
+C0027,P08,53,no,no,165,stage 2 (160+),usual prescribing,no
+C0028,P18,46,no,no,143,stage 1 (140-159),usual prescribing,yes
+C0029,P08,74,no,no,153,stage 1 (140-159),usual prescribing,no
+C0030,P17,76,yes,yes,140,stage 1 (140-159),single pill first,no
+C0031,P08,83,no,no,157,stage 1 (140-159),usual prescribing,no
+C0032,P04,68,no,no,150,stage 1 (140-159),usual prescribing,no
+C0033,P18,81,no,no,159,stage 1 (140-159),usual prescribing,yes
+C0034,P09,50,no,no,179,stage 2 (160+),single pill first,no
+C0035,P13,54,no,yes,141,stage 1 (140-159),single pill first,no
+C0036,P12,68,no,no,148,stage 1 (140-159),single pill first,no
+C0037,P10,52,no,no,171,stage 2 (160+),usual prescribing,no
+C0038,P05,42,no,no,155,stage 1 (140-159),usual prescribing,no
+C0039,P06,63,no,no,182,stage 2 (160+),single pill first,no
+C0040,P14,70,no,no,159,stage 1 (140-159),single pill first,no
+C0041,P16,35,no,no,151,stage 1 (140-159),usual prescribing,yes
+C0042,P08,38,no,no,144,stage 1 (140-159),usual prescribing,no
+C0043,P14,46,no,yes,143,stage 1 (140-159),single pill first,no
+C0044,P02,52,no,yes,153,stage 1 (140-159),usual prescribing,no
+C0045,P03,58,no,yes,148,stage 1 (140-159),usual prescribing,no
+C0046,P17,81,yes,no,160,stage 2 (160+),single pill first,no
+C0047,P12,48,no,no,152,stage 1 (140-159),single pill first,yes
+C0048,P08,69,yes,no,157,stage 1 (140-159),usual prescribing,yes
+C0049,P18,56,no,no,143,stage 1 (140-159),usual prescribing,no
+C0050,P17,81,no,no,141,stage 1 (140-159),single pill first,yes
+C0051,P15,65,no,no,165,stage 2 (160+),single pill first,no
+C0052,P15,60,no,no,152,stage 1 (140-159),single pill first,no
+C0053,P15,62,yes,no,147,stage 1 (140-159),single pill first,yes
+C0054,P14,65,no,no,181,stage 2 (160+),single pill first,yes
+C0055,P01,68,no,no,150,stage 1 (140-159),single pill first,no
+C0056,P11,56,no,no,152,stage 1 (140-159),usual prescribing,yes
+C0057,P10,59,no,no,168,stage 2 (160+),usual prescribing,no
+C0058,P12,72,no,no,146,stage 1 (140-159),single pill first,no
+C0059,P02,73,no,yes,156,stage 1 (140-159),usual prescribing,yes
+C0060,P04,62,no,no,159,stage 1 (140-159),usual prescribing,no
+C0061,P05,50,yes,no,144,stage 1 (140-159),usual prescribing,yes
+C0062,P11,54,no,no,143,stage 1 (140-159),usual prescribing,no
+C0063,P06,68,no,no,144,stage 1 (140-159),single pill first,no
+C0064,P08,80,yes,no,152,stage 1 (140-159),usual prescribing,no
+C0065,P18,59,no,no,166,stage 2 (160+),usual prescribing,no
+C0066,P01,66,no,yes,160,stage 2 (160+),single pill first,yes
+C0067,P11,62,no,no,155,stage 1 (140-159),usual prescribing,no
+C0068,P01,45,yes,no,175,stage 2 (160+),single pill first,no
+C0069,P05,76,no,no,155,stage 1 (140-159),usual prescribing,no
+C0070,P04,59,no,no,160,stage 2 (160+),usual prescribing,no
+C0071,P15,70,yes,no,168,stage 2 (160+),single pill first,yes
+C0072,P14,50,no,no,144,stage 1 (140-159),single pill first,no
+C0073,P08,73,no,no,152,stage 1 (140-159),usual prescribing,no
+C0074,P08,81,no,no,143,stage 1 (140-159),usual prescribing,no
+C0075,P07,73,no,yes,165,stage 2 (160+),single pill first,no
+C0076,P08,59,no,no,142,stage 1 (140-159),usual prescribing,no
+C0077,P15,62,no,yes,157,stage 1 (140-159),single pill first,no
+C0078,P14,56,no,no,142,stage 1 (140-159),single pill first,no
+C0079,P17,55,yes,no,142,stage 1 (140-159),single pill first,no
+C0080,P13,50,yes,no,143,stage 1 (140-159),single pill first,no
+C0081,P16,79,yes,no,175,stage 2 (160+),usual prescribing,no
+C0082,P03,66,no,no,154,stage 1 (140-159),usual prescribing,yes
+C0083,P10,62,yes,no,168,stage 2 (160+),usual prescribing,no
+C0084,P11,68,no,no,147,stage 1 (140-159),usual prescribing,yes
+C0085,P06,46,yes,no,149,stage 1 (140-159),single pill first,no
+C0086,P08,59,yes,no,148,stage 1 (140-159),usual prescribing,no
+C0087,P13,59,no,no,170,stage 2 (160+),single pill first,yes
+C0088,P16,69,yes,no,175,stage 2 (160+),usual prescribing,yes
+C0089,P05,64,no,no,176,stage 2 (160+),usual prescribing,no
+C0090,P03,72,no,no,161,stage 2 (160+),usual prescribing,no
+C0091,P10,56,no,no,151,stage 1 (140-159),usual prescribing,no
+C0092,P12,49,yes,no,152,stage 1 (140-159),single pill first,no
+C0093,P08,63,yes,no,154,stage 1 (140-159),usual prescribing,yes
+C0094,P16,54,yes,no,175,stage 2 (160+),usual prescribing,yes
+C0095,P18,45,no,no,175,stage 2 (160+),usual prescribing,no
+C0096,P08,69,no,yes,169,stage 2 (160+),usual prescribing,no
+C0097,P05,50,yes,yes,156,stage 1 (140-159),usual prescribing,no
+C0098,P04,54,yes,no,162,stage 2 (160+),usual prescribing,yes
+C0099,P01,54,no,no,150,stage 1 (140-159),single pill first,yes
+C0100,P10,68,yes,no,167,stage 2 (160+),usual prescribing,no
+C0101,P02,50,no,yes,152,stage 1 (140-159),usual prescribing,yes
+C0102,P15,43,no,no,160,stage 2 (160+),single pill first,no
+C0103,P15,50,yes,no,175,stage 2 (160+),single pill first,yes
+C0104,P15,54,no,no,140,stage 1 (140-159),single pill first,no
+C0105,P02,52,no,no,169,stage 2 (160+),usual prescribing,yes
+C0106,P05,42,no,no,140,stage 1 (140-159),usual prescribing,no
+C0107,P09,60,no,no,171,stage 2 (160+),single pill first,yes
+C0108,P17,41,no,no,178,stage 2 (160+),single pill first,yes
+C0109,P13,63,no,no,153,stage 1 (140-159),single pill first,no
+C0110,P05,64,no,no,147,stage 1 (140-159),usual prescribing,no
+C0111,P11,50,no,no,151,stage 1 (140-159),usual prescribing,no
+C0112,P02,62,no,no,156,stage 1 (140-159),usual prescribing,yes
+C0113,P17,67,no,no,185,stage 2 (160+),single pill first,yes
+C0114,P03,53,no,no,140,stage 1 (140-159),usual prescribing,yes
+C0115,P01,79,no,no,156,stage 1 (140-159),single pill first,yes
+C0116,P04,50,no,no,141,stage 1 (140-159),usual prescribing,no
+C0117,P01,58,no,no,171,stage 2 (160+),single pill first,no
+C0118,P15,62,no,no,171,stage 2 (160+),single pill first,no
+C0119,P08,49,yes,yes,159,stage 1 (140-159),usual prescribing,yes
+C0120,P09,46,no,no,148,stage 1 (140-159),single pill first,no
+C0121,P14,60,yes,no,140,stage 1 (140-159),single pill first,yes
+C0122,P18,76,no,no,162,stage 2 (160+),usual prescribing,no
+C0123,P01,75,yes,no,145,stage 1 (140-159),single pill first,no
+C0124,P02,74,no,no,142,stage 1 (140-159),usual prescribing,yes
+C0125,P11,55,no,yes,180,stage 2 (160+),usual prescribing,yes
+C0126,P03,48,no,no,151,stage 1 (140-159),usual prescribing,no
+C0127,P16,41,no,no,160,stage 2 (160+),usual prescribing,no
+C0128,P14,72,no,no,175,stage 2 (160+),single pill first,no
+C0129,P16,60,yes,yes,154,stage 1 (140-159),usual prescribing,no
+C0130,P15,68,yes,no,160,stage 2 (160+),single pill first,no
+C0131,P01,65,no,no,158,stage 1 (140-159),single pill first,no
+C0132,P07,55,no,no,154,stage 1 (140-159),single pill first,no
+C0133,P08,68,yes,no,150,stage 1 (140-159),usual prescribing,no
+C0134,P15,48,no,yes,174,stage 2 (160+),single pill first,yes
+C0135,P18,52,no,no,185,stage 2 (160+),usual prescribing,yes
+C0136,P07,65,no,no,171,stage 2 (160+),single pill first,yes
+C0137,P08,60,no,no,169,stage 2 (160+),usual prescribing,no
+C0138,P02,62,no,no,157,stage 1 (140-159),usual prescribing,no
+C0139,P07,73,no,no,174,stage 2 (160+),single pill first,no
+C0140,P14,60,no,no,142,stage 1 (140-159),single pill first,no
+C0141,P15,88,no,yes,157,stage 1 (140-159),single pill first,no
+C0142,P01,45,yes,yes,155,stage 1 (140-159),single pill first,no
+C0143,P04,55,yes,no,155,stage 1 (140-159),usual prescribing,yes
+C0144,P14,57,no,no,179,stage 2 (160+),single pill first,no
+C0145,P05,47,no,no,141,stage 1 (140-159),usual prescribing,yes
+C0146,P17,66,no,no,149,stage 1 (140-159),single pill first,no
+C0147,P02,65,no,no,152,stage 1 (140-159),usual prescribing,no
+C0148,P01,86,no,no,147,stage 1 (140-159),single pill first,no
+C0149,P13,73,yes,yes,155,stage 1 (140-159),single pill first,yes
+C0150,P17,67,no,no,179,stage 2 (160+),single pill first,no
+C0151,P09,51,no,no,148,stage 1 (140-159),single pill first,yes
+C0152,P02,83,no,no,147,stage 1 (140-159),usual prescribing,no
+C0153,P18,63,no,no,152,stage 1 (140-159),usual prescribing,no
+C0154,P11,50,no,no,179,stage 2 (160+),usual prescribing,yes
+C0155,P02,70,no,no,157,stage 1 (140-159),usual prescribing,yes
+C0156,P05,51,yes,no,143,stage 1 (140-159),usual prescribing,no
+C0157,P18,49,no,no,142,stage 1 (140-159),usual prescribing,yes
+C0158,P04,58,no,no,168,stage 2 (160+),usual prescribing,yes
+C0159,P04,50,yes,no,165,stage 2 (160+),usual prescribing,no
+C0160,P04,40,yes,no,159,stage 1 (140-159),usual prescribing,no
+C0161,P08,52,no,yes,145,stage 1 (140-159),usual prescribing,no
+C0162,P13,87,no,yes,163,stage 2 (160+),single pill first,yes
+C0163,P01,73,no,yes,147,stage 1 (140-159),single pill first,yes
+C0164,P06,50,no,no,155,stage 1 (140-159),single pill first,no
+C0165,P05,46,yes,no,158,stage 1 (140-159),usual prescribing,no
+C0166,P08,72,no,no,155,stage 1 (140-159),usual prescribing,no
+C0167,P12,73,no,no,144,stage 1 (140-159),single pill first,yes
+C0168,P04,55,yes,no,145,stage 1 (140-159),usual prescribing,yes
+C0169,P05,66,no,no,152,stage 1 (140-159),usual prescribing,no
+C0170,P15,65,no,no,168,stage 2 (160+),single pill first,no
+C0171,P06,59,yes,no,179,stage 2 (160+),single pill first,no
+C0172,P02,61,no,no,158,stage 1 (140-159),usual prescribing,no
+C0173,P08,68,no,yes,148,stage 1 (140-159),usual prescribing,yes
+C0174,P06,69,yes,no,140,stage 1 (140-159),single pill first,no
+C0175,P10,57,no,no,141,stage 1 (140-159),usual prescribing,no
+C0176,P02,68,no,no,162,stage 2 (160+),usual prescribing,yes
+C0177,P04,54,no,no,141,stage 1 (140-159),usual prescribing,no
+C0178,P11,55,no,no,151,stage 1 (140-159),usual prescribing,yes
+C0179,P11,53,no,no,158,stage 1 (140-159),usual prescribing,no
+C0180,P16,67,no,no,174,stage 2 (160+),usual prescribing,yes
+C0181,P07,49,yes,no,156,stage 1 (140-159),single pill first,no
+C0182,P18,56,no,yes,169,stage 2 (160+),usual prescribing,yes
+C0183,P05,60,no,no,150,stage 1 (140-159),usual prescribing,no
+C0184,P11,57,yes,no,147,stage 1 (140-159),usual prescribing,yes
+C0185,P07,71,no,no,155,stage 1 (140-159),single pill first,no
+C0186,P01,63,no,yes,141,stage 1 (140-159),single pill first,no
+C0187,P06,49,no,no,173,stage 2 (160+),single pill first,no
+C0188,P02,68,yes,no,140,stage 1 (140-159),usual prescribing,yes
+C0189,P14,75,no,no,157,stage 1 (140-159),single pill first,no
+C0190,P04,53,no,no,158,stage 1 (140-159),usual prescribing,no
+C0191,P01,68,no,no,179,stage 2 (160+),single pill first,yes
+C0192,P07,61,no,no,152,stage 1 (140-159),single pill first,yes
+C0193,P01,50,no,no,166,stage 2 (160+),single pill first,yes
+C0194,P03,43,no,no,153,stage 1 (140-159),usual prescribing,no
+C0195,P01,45,no,no,183,stage 2 (160+),single pill first,yes
+C0196,P09,71,yes,no,149,stage 1 (140-159),single pill first,yes
+C0197,P03,64,no,yes,176,stage 2 (160+),usual prescribing,yes
+C0198,P12,50,yes,no,149,stage 1 (140-159),single pill first,no
+C0199,P01,65,no,no,148,stage 1 (140-159),single pill first,no
+C0200,P07,54,yes,no,179,stage 2 (160+),single pill first,no
+C0201,P15,59,no,yes,174,stage 2 (160+),single pill first,no
+C0202,P15,65,no,no,176,stage 2 (160+),single pill first,no
+C0203,P11,53,no,no,145,stage 1 (140-159),usual prescribing,no
+C0204,P07,61,yes,yes,165,stage 2 (160+),single pill first,no
+C0205,P03,68,no,no,140,stage 1 (140-159),usual prescribing,no
+C0206,P12,54,yes,no,155,stage 1 (140-159),single pill first,no
+C0207,P16,63,no,no,180,stage 2 (160+),usual prescribing,yes
+C0208,P01,63,no,no,150,stage 1 (140-159),single pill first,no
+C0209,P04,72,yes,no,148,stage 1 (140-159),usual prescribing,yes
+C0210,P03,61,yes,no,177,stage 2 (160+),usual prescribing,yes
+C0211,P10,53,yes,no,175,stage 2 (160+),usual prescribing,yes
+C0212,P12,76,yes,no,150,stage 1 (140-159),single pill first,yes
+C0213,P02,67,no,yes,142,stage 1 (140-159),usual prescribing,no
+C0214,P09,60,no,no,148,stage 1 (140-159),single pill first,no
+C0215,P05,74,no,no,152,stage 1 (140-159),usual prescribing,yes
+C0216,P10,68,no,no,159,stage 1 (140-159),usual prescribing,yes
+C0217,P03,80,yes,yes,145,stage 1 (140-159),usual prescribing,yes
+C0218,P14,67,yes,no,141,stage 1 (140-159),single pill first,no
+C0219,P13,69,no,yes,159,stage 1 (140-159),single pill first,no
+C0220,P07,58,no,no,153,stage 1 (140-159),single pill first,no
+C0221,P01,84,yes,no,147,stage 1 (140-159),single pill first,yes
+C0222,P03,68,yes,no,148,stage 1 (140-159),usual prescribing,yes
+C0223,P08,55,yes,no,170,stage 2 (160+),usual prescribing,yes
+C0224,P16,52,no,no,160,stage 2 (160+),usual prescribing,yes
+C0225,P04,66,yes,no,159,stage 1 (140-159),usual prescribing,yes
+C0226,P18,44,yes,no,166,stage 2 (160+),usual prescribing,no
+C0227,P05,55,no,no,169,stage 2 (160+),usual prescribing,yes
+C0228,P10,65,yes,no,163,stage 2 (160+),usual prescribing,no
+C0229,P15,63,no,no,173,stage 2 (160+),single pill first,yes
+C0230,P14,58,no,no,158,stage 1 (140-159),single pill first,yes
+C0231,P12,86,no,no,142,stage 1 (140-159),single pill first,no
+C0232,P01,65,yes,no,155,stage 1 (140-159),single pill first,no
+C0233,P14,62,no,no,181,stage 2 (160+),single pill first,no
+C0234,P08,51,no,yes,143,stage 1 (140-159),usual prescribing,no
+C0235,P07,77,no,no,148,stage 1 (140-159),single pill first,no
+C0236,P04,72,no,no,143,stage 1 (140-159),usual prescribing,no
+C0237,P08,70,no,no,163,stage 2 (160+),usual prescribing,yes
+C0238,P11,52,no,no,156,stage 1 (140-159),usual prescribing,no
+C0239,P15,46,yes,no,165,stage 2 (160+),single pill first,yes
+C0240,P05,65,no,yes,141,stage 1 (140-159),usual prescribing,yes
+C0241,P05,78,no,no,145,stage 1 (140-159),usual prescribing,yes
+C0242,P01,50,no,no,155,stage 1 (140-159),single pill first,no
+C0243,P08,62,no,no,156,stage 1 (140-159),usual prescribing,no
+C0244,P17,63,yes,no,173,stage 2 (160+),single pill first,yes
+C0245,P10,53,yes,no,159,stage 1 (140-159),usual prescribing,no
+C0246,P03,51,no,yes,176,stage 2 (160+),usual prescribing,yes
+C0247,P12,71,no,no,173,stage 2 (160+),single pill first,no
+C0248,P01,56,yes,no,175,stage 2 (160+),single pill first,yes
+C0249,P05,72,no,no,147,stage 1 (140-159),usual prescribing,no
+C0250,P02,65,no,yes,143,stage 1 (140-159),usual prescribing,no
+C0251,P17,54,no,no,181,stage 2 (160+),single pill first,no
+C0252,P13,56,no,no,145,stage 1 (140-159),single pill first,no
+C0253,P02,55,no,no,158,stage 1 (140-159),usual prescribing,yes
+C0254,P15,63,no,yes,144,stage 1 (140-159),single pill first,no
+C0255,P15,60,no,no,152,stage 1 (140-159),single pill first,no
+C0256,P02,64,no,no,153,stage 1 (140-159),usual prescribing,no
+C0257,P10,84,no,no,183,stage 2 (160+),usual prescribing,no
+C0258,P18,37,yes,no,175,stage 2 (160+),usual prescribing,yes
+C0259,P18,59,no,no,175,stage 2 (160+),usual prescribing,no
+C0260,P08,56,no,no,158,stage 1 (140-159),usual prescribing,yes
+C0261,P10,59,no,no,176,stage 2 (160+),usual prescribing,no
+C0262,P08,58,yes,yes,142,stage 1 (140-159),usual prescribing,no
+C0263,P05,66,no,no,159,stage 1 (140-159),usual prescribing,no
+C0264,P14,81,no,no,156,stage 1 (140-159),single pill first,no
+C0265,P07,68,no,no,141,stage 1 (140-159),single pill first,yes
+C0266,P15,81,no,no,151,stage 1 (140-159),single pill first,no
+C0267,P13,54,yes,no,178,stage 2 (160+),single pill first,no
+C0268,P08,64,no,no,182,stage 2 (160+),usual prescribing,yes
+C0269,P16,52,no,no,150,stage 1 (140-159),usual prescribing,no
+C0270,P03,72,no,no,154,stage 1 (140-159),usual prescribing,no
+C0271,P11,55,no,no,177,stage 2 (160+),usual prescribing,yes
+C0272,P13,69,no,no,143,stage 1 (140-159),single pill first,no
+C0273,P13,88,no,yes,168,stage 2 (160+),single pill first,no
+C0274,P09,60,no,yes,171,stage 2 (160+),single pill first,no
+C0275,P07,66,no,no,142,stage 1 (140-159),single pill first,no
+C0276,P02,51,no,no,157,stage 1 (140-159),usual prescribing,yes
+C0277,P02,50,no,no,155,stage 1 (140-159),usual prescribing,yes
+C0278,P14,72,yes,no,150,stage 1 (140-159),single pill first,no
+C0279,P14,50,no,no,147,stage 1 (140-159),single pill first,no
+C0280,P08,53,no,no,183,stage 2 (160+),usual prescribing,no
+C0281,P16,64,no,no,142,stage 1 (140-159),usual prescribing,no
+C0282,P08,54,no,no,173,stage 2 (160+),usual prescribing,no
+C0283,P16,49,no,yes,184,stage 2 (160+),usual prescribing,yes
+C0284,P05,54,no,no,155,stage 1 (140-159),usual prescribing,no
+C0285,P15,71,yes,no,181,stage 2 (160+),single pill first,yes
+C0286,P11,69,no,yes,156,stage 1 (140-159),usual prescribing,no
+C0287,P05,50,no,no,150,stage 1 (140-159),usual prescribing,no
+C0288,P08,71,no,no,140,stage 1 (140-159),usual prescribing,yes
+C0289,P12,52,yes,no,140,stage 1 (140-159),single pill first,yes
+C0290,P12,60,no,no,174,stage 2 (160+),single pill first,no
+C0291,P08,62,no,yes,160,stage 2 (160+),usual prescribing,yes
+C0292,P12,57,no,no,154,stage 1 (140-159),single pill first,no
+C0293,P14,68,yes,no,162,stage 2 (160+),single pill first,yes
+C0294,P09,50,yes,no,140,stage 1 (140-159),single pill first,no
+C0295,P07,71,yes,yes,140,stage 1 (140-159),single pill first,no
+C0296,P01,71,no,no,152,stage 1 (140-159),single pill first,no
+C0297,P07,62,no,no,154,stage 1 (140-159),single pill first,no
+C0298,P05,54,no,no,158,stage 1 (140-159),usual prescribing,yes
+C0299,P08,84,yes,no,158,stage 1 (140-159),usual prescribing,no
+C0300,P11,50,no,no,146,stage 1 (140-159),usual prescribing,yes
+C0301,P08,49,no,no,153,stage 1 (140-159),usual prescribing,no
+C0302,P09,43,yes,yes,141,stage 1 (140-159),single pill first,no
+C0303,P02,35,yes,no,176,stage 2 (160+),usual prescribing,no
+C0304,P01,69,no,no,159,stage 1 (140-159),single pill first,yes
+C0305,P02,58,no,no,159,stage 1 (140-159),usual prescribing,yes
+C0306,P11,68,no,yes,154,stage 1 (140-159),usual prescribing,yes
+C0307,P11,45,no,no,179,stage 2 (160+),usual prescribing,yes
+C0308,P05,45,no,no,158,stage 1 (140-159),usual prescribing,yes
+C0309,P16,57,no,yes,167,stage 2 (160+),usual prescribing,yes
+C0310,P16,71,yes,no,173,stage 2 (160+),usual prescribing,yes
+C0311,P11,80,no,no,144,stage 1 (140-159),usual prescribing,yes
+C0312,P14,73,no,yes,141,stage 1 (140-159),single pill first,no
+C0313,P06,49,no,no,179,stage 2 (160+),single pill first,no
+C0314,P02,41,no,no,143,stage 1 (140-159),usual prescribing,no
+C0315,P09,75,no,no,163,stage 2 (160+),single pill first,yes
+C0316,P10,56,no,no,162,stage 2 (160+),usual prescribing,yes
+C0317,P15,65,no,no,157,stage 1 (140-159),single pill first,no
+C0318,P07,79,no,no,143,stage 1 (140-159),single pill first,no
+C0319,P17,46,yes,no,162,stage 2 (160+),single pill first,yes
+C0320,P01,50,no,no,156,stage 1 (140-159),single pill first,no
+C0321,P09,67,no,no,150,stage 1 (140-159),single pill first,no
+C0322,P03,67,no,no,150,stage 1 (140-159),usual prescribing,no
+C0323,P04,78,no,no,157,stage 1 (140-159),usual prescribing,no
+C0324,P14,63,yes,no,156,stage 1 (140-159),single pill first,yes
+C0325,P18,54,no,yes,145,stage 1 (140-159),usual prescribing,no
+C0326,P15,43,yes,no,168,stage 2 (160+),single pill first,no
+C0327,P09,84,no,yes,162,stage 2 (160+),single pill first,no
+C0328,P01,54,no,no,148,stage 1 (140-159),single pill first,no
+C0329,P12,72,yes,no,152,stage 1 (140-159),single pill first,yes
+C0330,P16,74,no,no,162,stage 2 (160+),usual prescribing,yes
+C0331,P14,66,yes,no,162,stage 2 (160+),single pill first,yes
+C0332,P04,67,no,yes,150,stage 1 (140-159),usual prescribing,no
+C0333,P07,68,no,no,183,stage 2 (160+),single pill first,no
+C0334,P16,66,no,yes,143,stage 1 (140-159),usual prescribing,yes
+C0335,P08,59,no,no,162,stage 2 (160+),usual prescribing,yes
+C0336,P18,69,no,no,141,stage 1 (140-159),usual prescribing,yes
+C0337,P10,53,no,no,140,stage 1 (140-159),usual prescribing,no
+C0338,P14,48,no,no,147,stage 1 (140-159),single pill first,no
+C0339,P05,45,no,no,140,stage 1 (140-159),usual prescribing,no
+C0340,P08,66,no,yes,147,stage 1 (140-159),usual prescribing,yes
+C0341,P18,52,no,no,146,stage 1 (140-159),usual prescribing,yes
+C0342,P02,72,no,no,164,stage 2 (160+),usual prescribing,yes
+C0343,P12,56,yes,no,173,stage 2 (160+),single pill first,no
+C0344,P12,72,yes,no,173,stage 2 (160+),single pill first,yes
+C0345,P09,65,no,no,144,stage 1 (140-159),single pill first,no
+C0346,P18,68,no,no,175,stage 2 (160+),usual prescribing,yes
+C0347,P12,67,no,no,180,stage 2 (160+),single pill first,yes
+C0348,P18,64,no,no,179,stage 2 (160+),usual prescribing,yes
+C0349,P03,44,no,no,155,stage 1 (140-159),usual prescribing,yes
+C0350,P04,50,yes,no,178,stage 2 (160+),usual prescribing,no
+C0351,P17,61,no,no,146,stage 1 (140-159),single pill first,no
+C0352,P16,59,no,no,179,stage 2 (160+),usual prescribing,no
+C0353,P03,77,no,no,172,stage 2 (160+),usual prescribing,yes
+C0354,P14,51,no,yes,151,stage 1 (140-159),single pill first,no
+C0355,P16,66,no,no,170,stage 2 (160+),usual prescribing,yes
+C0356,P05,52,no,no,143,stage 1 (140-159),usual prescribing,no
+C0357,P11,61,no,no,173,stage 2 (160+),usual prescribing,yes
+C0358,P04,67,no,no,144,stage 1 (140-159),usual prescribing,no
+C0359,P15,61,yes,no,167,stage 2 (160+),single pill first,no
+C0360,P07,39,no,yes,156,stage 1 (140-159),single pill first,no
+C0361,P16,65,no,yes,159,stage 1 (140-159),usual prescribing,no
+C0362,P13,50,no,no,154,stage 1 (140-159),single pill first,no
+C0363,P05,64,no,no,143,stage 1 (140-159),usual prescribing,yes
+C0364,P12,58,yes,no,172,stage 2 (160+),single pill first,no
+C0365,P08,74,no,no,151,stage 1 (140-159),usual prescribing,no
+C0366,P15,62,no,no,153,stage 1 (140-159),single pill first,no
+C0367,P06,65,no,no,141,stage 1 (140-159),single pill first,no
+C0368,P03,44,no,no,142,stage 1 (140-159),usual prescribing,yes
+C0369,P10,49,no,no,174,stage 2 (160+),usual prescribing,no
+C0370,P09,44,no,no,155,stage 1 (140-159),single pill first,no
+C0371,P16,53,no,no,142,stage 1 (140-159),usual prescribing,no
+C0372,P15,56,no,yes,155,stage 1 (140-159),single pill first,no
+C0373,P09,47,no,no,144,stage 1 (140-159),single pill first,no
+C0374,P01,49,no,no,173,stage 2 (160+),single pill first,no
+C0375,P06,66,no,no,159,stage 1 (140-159),single pill first,no
+C0376,P08,71,no,yes,165,stage 2 (160+),usual prescribing,yes
+C0377,P07,46,yes,no,145,stage 1 (140-159),single pill first,no
+C0378,P01,66,yes,no,143,stage 1 (140-159),single pill first,yes
+C0379,P02,40,no,no,152,stage 1 (140-159),usual prescribing,yes
+C0380,P17,41,no,no,185,stage 2 (160+),single pill first,no
+C0381,P09,59,no,yes,149,stage 1 (140-159),single pill first,no
+C0382,P07,59,yes,no,147,stage 1 (140-159),single pill first,no
+C0383,P01,72,no,no,145,stage 1 (140-159),single pill first,yes
+C0384,P07,88,yes,no,170,stage 2 (160+),single pill first,yes
+C0385,P15,62,yes,no,140,stage 1 (140-159),single pill first,no
+C0386,P09,69,no,no,163,stage 2 (160+),single pill first,yes
+C0387,P02,43,no,no,157,stage 1 (140-159),usual prescribing,no
+C0388,P11,84,no,no,143,stage 1 (140-159),usual prescribing,no
+C0389,P02,78,no,no,176,stage 2 (160+),usual prescribing,yes
+C0390,P06,82,no,no,152,stage 1 (140-159),single pill first,yes
+C0391,P14,55,no,no,149,stage 1 (140-159),single pill first,no
+C0392,P05,54,no,no,155,stage 1 (140-159),usual prescribing,no
+C0393,P03,43,no,no,158,stage 1 (140-159),usual prescribing,no
+C0394,P11,72,no,yes,181,stage 2 (160+),usual prescribing,no
+C0395,P11,46,yes,no,156,stage 1 (140-159),usual prescribing,no
+C0396,P05,49,no,no,181,stage 2 (160+),usual prescribing,no
+C0397,P10,57,no,no,163,stage 2 (160+),usual prescribing,no
+C0398,P04,67,no,no,151,stage 1 (140-159),usual prescribing,no
+C0399,P07,43,no,no,172,stage 2 (160+),single pill first,no
+C0400,P15,59,no,no,162,stage 2 (160+),single pill first,no
+C0401,P12,51,no,no,168,stage 2 (160+),single pill first,no
+C0402,P12,60,no,no,141,stage 1 (140-159),single pill first,yes
+C0403,P03,60,no,no,154,stage 1 (140-159),usual prescribing,no
+C0404,P06,63,no,no,147,stage 1 (140-159),single pill first,no
+C0405,P09,63,no,no,140,stage 1 (140-159),single pill first,yes
+C0406,P07,63,no,no,178,stage 2 (160+),single pill first,no
+C0407,P01,56,no,no,154,stage 1 (140-159),single pill first,no
+C0408,P11,51,no,no,150,stage 1 (140-159),usual prescribing,no
+C0409,P04,55,no,no,156,stage 1 (140-159),usual prescribing,no
+C0410,P04,60,yes,no,149,stage 1 (140-159),usual prescribing,no
+C0411,P02,53,no,no,149,stage 1 (140-159),usual prescribing,yes
+C0412,P15,55,no,no,152,stage 1 (140-159),single pill first,no
+C0413,P13,60,no,no,171,stage 2 (160+),single pill first,yes
+C0414,P01,73,yes,no,153,stage 1 (140-159),single pill first,no
+C0415,P06,44,no,no,174,stage 2 (160+),single pill first,yes
+C0416,P13,60,yes,yes,162,stage 2 (160+),single pill first,yes
+C0417,P05,54,yes,no,154,stage 1 (140-159),usual prescribing,yes
+C0418,P12,75,no,no,163,stage 2 (160+),single pill first,no
+C0419,P01,57,no,no,164,stage 2 (160+),single pill first,no
+C0420,P18,53,no,no,144,stage 1 (140-159),usual prescribing,no
+C0421,P09,68,no,no,158,stage 1 (140-159),single pill first,no
+C0422,P06,62,no,no,146,stage 1 (140-159),single pill first,no
+C0423,P15,50,no,no,143,stage 1 (140-159),single pill first,no
+C0424,P17,66,yes,yes,178,stage 2 (160+),single pill first,no
+C0425,P15,45,no,no,148,stage 1 (140-159),single pill first,no
+C0426,P01,60,no,no,143,stage 1 (140-159),single pill first,yes
+C0427,P03,68,yes,no,145,stage 1 (140-159),usual prescribing,yes
+C0428,P06,58,no,no,168,stage 2 (160+),single pill first,no
+C0429,P18,68,no,no,178,stage 2 (160+),usual prescribing,no
+C0430,P15,52,no,yes,142,stage 1 (140-159),single pill first,no
+C0431,P15,64,no,yes,158,stage 1 (140-159),single pill first,no
+C0432,P11,60,no,no,174,stage 2 (160+),usual prescribing,yes
+C0433,P14,63,yes,yes,165,stage 2 (160+),single pill first,yes
+C0434,P04,70,no,no,151,stage 1 (140-159),usual prescribing,no
+C0435,P11,64,no,yes,155,stage 1 (140-159),usual prescribing,no
+C0436,P02,58,no,no,154,stage 1 (140-159),usual prescribing,no
+C0437,P08,87,no,yes,144,stage 1 (140-159),usual prescribing,yes
+C0438,P09,68,no,no,146,stage 1 (140-159),single pill first,no
+C0439,P10,50,yes,no,151,stage 1 (140-159),usual prescribing,no
+C0440,P06,44,no,no,146,stage 1 (140-159),single pill first,yes
+C0441,P11,59,no,no,155,stage 1 (140-159),usual prescribing,no
+C0442,P09,45,no,no,141,stage 1 (140-159),single pill first,no
+C0443,P15,51,no,yes,159,stage 1 (140-159),single pill first,no
+C0444,P18,59,no,yes,155,stage 1 (140-159),usual prescribing,no
+C0445,P06,70,yes,yes,144,stage 1 (140-159),single pill first,no
+C0446,P13,68,no,no,165,stage 2 (160+),single pill first,yes
+C0447,P18,77,no,no,147,stage 1 (140-159),usual prescribing,no
+C0448,P11,72,yes,no,158,stage 1 (140-159),usual prescribing,no
+C0449,P18,63,no,yes,178,stage 2 (160+),usual prescribing,yes
+C0450,P18,35,no,yes,165,stage 2 (160+),usual prescribing,yes
+C0451,P16,67,no,yes,148,stage 1 (140-159),usual prescribing,yes
+C0452,P02,56,no,no,158,stage 1 (140-159),usual prescribing,yes
+C0453,P05,65,no,no,143,stage 1 (140-159),usual prescribing,no
+C0454,P11,59,no,no,184,stage 2 (160+),usual prescribing,yes
+C0455,P04,74,no,no,153,stage 1 (140-159),usual prescribing,yes
+C0456,P17,84,no,no,153,stage 1 (140-159),single pill first,no
+C0457,P17,61,no,no,175,stage 2 (160+),single pill first,no
+C0458,P17,76,no,no,141,stage 1 (140-159),single pill first,no
+C0459,P11,78,no,yes,156,stage 1 (140-159),usual prescribing,yes
+C0460,P11,50,no,no,172,stage 2 (160+),usual prescribing,no
+C0461,P09,63,no,no,149,stage 1 (140-159),single pill first,no
+C0462,P12,65,yes,no,142,stage 1 (140-159),single pill first,yes
+C0463,P05,62,yes,no,141,stage 1 (140-159),usual prescribing,no
+C0464,P17,51,no,no,166,stage 2 (160+),single pill first,yes
+C0465,P02,59,yes,yes,162,stage 2 (160+),usual prescribing,yes
+C0466,P07,47,no,no,153,stage 1 (140-159),single pill first,no
+C0467,P10,83,no,no,163,stage 2 (160+),usual prescribing,no
+C0468,P15,61,no,no,151,stage 1 (140-159),single pill first,yes
+C0469,P01,73,yes,no,171,stage 2 (160+),single pill first,yes
+C0470,P09,74,no,yes,144,stage 1 (140-159),single pill first,yes
+C0471,P14,61,yes,no,183,stage 2 (160+),single pill first,yes
+C0472,P01,57,no,yes,145,stage 1 (140-159),single pill first,no
+C0473,P17,51,yes,no,154,stage 1 (140-159),single pill first,no
+C0474,P07,79,yes,no,166,stage 2 (160+),single pill first,yes
+C0475,P14,70,no,no,179,stage 2 (160+),single pill first,no
+C0476,P15,65,yes,no,152,stage 1 (140-159),single pill first,no
+C0477,P02,55,no,no,150,stage 1 (140-159),usual prescribing,yes
+C0478,P06,49,no,no,150,stage 1 (140-159),single pill first,no
+C0479,P10,64,yes,no,156,stage 1 (140-159),usual prescribing,yes
+C0480,P16,60,no,no,148,stage 1 (140-159),usual prescribing,no
+C0481,P08,66,no,no,179,stage 2 (160+),usual prescribing,no
+C0482,P06,82,yes,no,165,stage 2 (160+),single pill first,yes
+C0483,P06,68,yes,yes,162,stage 2 (160+),single pill first,no
+C0484,P17,56,yes,no,153,stage 1 (140-159),single pill first,yes
+C0485,P09,79,no,no,158,stage 1 (140-159),single pill first,no
+C0486,P15,70,no,no,156,stage 1 (140-159),single pill first,no
+C0487,P12,65,no,yes,157,stage 1 (140-159),single pill first,no
+C0488,P04,83,no,no,158,stage 1 (140-159),usual prescribing,no
+C0489,P15,79,no,no,163,stage 2 (160+),single pill first,no
+C0490,P01,56,yes,no,158,stage 1 (140-159),single pill first,no
+C0491,P05,59,no,yes,181,stage 2 (160+),usual prescribing,yes
+C0492,P11,62,no,no,141,stage 1 (140-159),usual prescribing,yes
+C0493,P09,62,no,no,168,stage 2 (160+),single pill first,no
+C0494,P11,56,no,no,140,stage 1 (140-159),usual prescribing,no
+C0495,P18,47,no,yes,176,stage 2 (160+),usual prescribing,yes
+C0496,P06,49,no,no,157,stage 1 (140-159),single pill first,no
+C0497,P13,60,no,yes,174,stage 2 (160+),single pill first,no
+C0498,P06,61,no,no,144,stage 1 (140-159),single pill first,no
+C0499,P18,71,yes,no,151,stage 1 (140-159),usual prescribing,no
+C0500,P15,48,no,no,158,stage 1 (140-159),single pill first,no
+C0501,P12,67,no,yes,147,stage 1 (140-159),single pill first,yes
+C0502,P03,57,no,no,150,stage 1 (140-159),usual prescribing,no
+C0503,P10,42,no,yes,174,stage 2 (160+),usual prescribing,yes
+C0504,P01,62,no,no,169,stage 2 (160+),single pill first,no
+C0505,P14,81,no,no,157,stage 1 (140-159),single pill first,yes
+C0506,P12,61,no,no,155,stage 1 (140-159),single pill first,no
+C0507,P02,59,yes,no,153,stage 1 (140-159),usual prescribing,no
+C0508,P14,35,no,no,142,stage 1 (140-159),single pill first,no
+C0509,P17,69,yes,no,181,stage 2 (160+),single pill first,no
+C0510,P01,52,no,no,177,stage 2 (160+),single pill first,no
+C0511,P10,69,yes,no,167,stage 2 (160+),usual prescribing,yes
+C0512,P18,54,yes,no,147,stage 1 (140-159),usual prescribing,yes
+C0513,P15,80,no,yes,180,stage 2 (160+),single pill first,yes
+C0514,P05,71,no,yes,140,stage 1 (140-159),usual prescribing,no
+C0515,P10,43,no,yes,180,stage 2 (160+),usual prescribing,no
+C0516,P03,75,yes,no,159,stage 1 (140-159),usual prescribing,no
+C0517,P02,74,no,no,148,stage 1 (140-159),usual prescribing,no
+C0518,P04,57,no,no,149,stage 1 (140-159),usual prescribing,yes
+C0519,P16,56,no,no,161,stage 2 (160+),usual prescribing,no
+C0520,P12,71,no,no,156,stage 1 (140-159),single pill first,no
+C0521,P15,48,no,no,162,stage 2 (160+),single pill first,no
+C0522,P17,78,no,no,161,stage 2 (160+),single pill first,no
+C0523,P10,56,no,no,154,stage 1 (140-159),usual prescribing,no
+C0524,P08,61,yes,no,146,stage 1 (140-159),usual prescribing,yes
+C0525,P16,78,yes,no,160,stage 2 (160+),usual prescribing,yes
+C0526,P10,41,yes,no,145,stage 1 (140-159),usual prescribing,no
+C0527,P17,43,no,no,174,stage 2 (160+),single pill first,no
+C0528,P03,62,yes,no,152,stage 1 (140-159),usual prescribing,yes
+C0529,P04,36,yes,no,159,stage 1 (140-159),usual prescribing,yes
+C0530,P05,63,no,no,141,stage 1 (140-159),usual prescribing,no
+C0531,P09,49,no,no,148,stage 1 (140-159),single pill first,no
+C0532,P11,54,no,no,141,stage 1 (140-159),usual prescribing,no
+C0533,P07,47,no,no,141,stage 1 (140-159),single pill first,no
+C0534,P04,73,no,yes,140,stage 1 (140-159),usual prescribing,no
+C0535,P18,67,yes,no,161,stage 2 (160+),usual prescribing,yes
+C0536,P15,54,no,yes,140,stage 1 (140-159),single pill first,no
+C0537,P11,63,no,no,141,stage 1 (140-159),usual prescribing,no
+C0538,P11,72,yes,no,147,stage 1 (140-159),usual prescribing,no
+C0539,P02,63,no,no,141,stage 1 (140-159),usual prescribing,no
+C0540,P15,67,yes,yes,176,stage 2 (160+),single pill first,yes
+C0541,P14,73,no,no,149,stage 1 (140-159),single pill first,yes
+C0542,P11,79,yes,no,167,stage 2 (160+),usual prescribing,yes
+C0543,P07,66,no,no,146,stage 1 (140-159),single pill first,no
+C0544,P11,69,no,no,153,stage 1 (140-159),usual prescribing,yes
+C0545,P06,82,yes,no,143,stage 1 (140-159),single pill first,no
+C0546,P18,85,no,no,185,stage 2 (160+),usual prescribing,yes
+C0547,P08,79,no,no,152,stage 1 (140-159),usual prescribing,no
+C0548,P12,75,no,no,157,stage 1 (140-159),single pill first,no
+C0549,P08,79,no,no,157,stage 1 (140-159),usual prescribing,no
+C0550,P11,80,no,yes,159,stage 1 (140-159),usual prescribing,no
+C0551,P11,56,no,no,155,stage 1 (140-159),usual prescribing,no
+C0552,P05,77,no,no,144,stage 1 (140-159),usual prescribing,no
+C0553,P01,40,yes,no,180,stage 2 (160+),single pill first,no
+C0554,P11,59,no,no,166,stage 2 (160+),usual prescribing,yes
+C0555,P05,71,yes,no,153,stage 1 (140-159),usual prescribing,no
+C0556,P10,73,no,no,148,stage 1 (140-159),usual prescribing,no
+C0557,P15,68,no,no,154,stage 1 (140-159),single pill first,no
+C0558,P15,87,yes,no,175,stage 2 (160+),single pill first,yes
+C0559,P14,55,no,yes,173,stage 2 (160+),single pill first,no
+C0560,P04,80,yes,yes,143,stage 1 (140-159),usual prescribing,yes
+C0561,P05,61,yes,no,173,stage 2 (160+),usual prescribing,yes
+C0562,P05,63,no,no,155,stage 1 (140-159),usual prescribing,no
+C0563,P04,68,yes,yes,167,stage 2 (160+),usual prescribing,no
+C0564,P03,67,no,no,179,stage 2 (160+),usual prescribing,yes
+C0565,P12,68,no,no,182,stage 2 (160+),single pill first,no
+C0566,P13,48,no,no,175,stage 2 (160+),single pill first,no
+C0567,P14,57,no,no,179,stage 2 (160+),single pill first,yes
+C0568,P05,71,no,yes,153,stage 1 (140-159),usual prescribing,no
+C0569,P06,57,yes,no,140,stage 1 (140-159),single pill first,no
+C0570,P11,63,no,no,143,stage 1 (140-159),usual prescribing,yes
+C0571,P14,50,no,no,153,stage 1 (140-159),single pill first,yes
+C0572,P10,73,yes,yes,156,stage 1 (140-159),usual prescribing,yes
+C0573,P10,65,no,no,143,stage 1 (140-159),usual prescribing,no
+C0574,P08,64,no,yes,162,stage 2 (160+),usual prescribing,no
+C0575,P16,72,yes,yes,173,stage 2 (160+),usual prescribing,yes
+C0576,P14,53,no,no,160,stage 2 (160+),single pill first,no
+C0577,P10,88,yes,no,149,stage 1 (140-159),usual prescribing,no
+C0578,P11,78,yes,no,160,stage 2 (160+),usual prescribing,no
+C0579,P17,59,no,no,153,stage 1 (140-159),single pill first,no
+C0580,P15,65,no,no,144,stage 1 (140-159),single pill first,no
+C0581,P04,42,no,no,151,stage 1 (140-159),usual prescribing,no
+C0582,P16,59,no,no,174,stage 2 (160+),usual prescribing,no
+C0583,P04,66,yes,no,150,stage 1 (140-159),usual prescribing,no
+C0584,P18,72,no,no,147,stage 1 (140-159),usual prescribing,yes
+C0585,P13,73,yes,yes,172,stage 2 (160+),single pill first,yes
+C0586,P07,45,yes,no,152,stage 1 (140-159),single pill first,no
+C0587,P07,44,no,no,153,stage 1 (140-159),single pill first,no
+C0588,P15,59,yes,no,150,stage 1 (140-159),single pill first,no
+C0589,P10,65,yes,no,185,stage 2 (160+),usual prescribing,yes
+C0590,P13,64,yes,no,158,stage 1 (140-159),single pill first,yes
+C0591,P04,65,no,no,166,stage 2 (160+),usual prescribing,yes
+C0592,P05,74,no,no,145,stage 1 (140-159),usual prescribing,yes
+C0593,P07,53,no,no,173,stage 2 (160+),single pill first,no
+C0594,P12,75,yes,no,143,stage 1 (140-159),single pill first,no
+C0595,P05,77,no,no,140,stage 1 (140-159),usual prescribing,no
+C0596,P12,55,no,no,178,stage 2 (160+),single pill first,no
+C0597,P12,70,yes,yes,174,stage 2 (160+),single pill first,no
+C0598,P17,67,no,no,157,stage 1 (140-159),single pill first,no
+C0599,P16,57,no,no,152,stage 1 (140-159),usual prescribing,no
+C0600,P01,55,no,yes,158,stage 1 (140-159),single pill first,no
+C0601,P08,84,no,no,144,stage 1 (140-159),usual prescribing,yes
+C0602,P05,49,no,no,148,stage 1 (140-159),usual prescribing,no
+C0603,P05,47,no,no,173,stage 2 (160+),usual prescribing,yes
+C0604,P07,64,no,no,183,stage 2 (160+),single pill first,no
+C0605,P09,71,no,yes,143,stage 1 (140-159),single pill first,yes
+C0606,P11,66,yes,no,158,stage 1 (140-159),usual prescribing,no
+C0607,P16,58,no,yes,175,stage 2 (160+),usual prescribing,yes
+C0608,P13,53,yes,yes,179,stage 2 (160+),single pill first,no
+C0609,P15,52,yes,yes,144,stage 1 (140-159),single pill first,yes
+C0610,P02,62,yes,no,141,stage 1 (140-159),usual prescribing,no
+C0611,P10,37,no,no,157,stage 1 (140-159),usual prescribing,yes
+C0612,P12,53,no,no,183,stage 2 (160+),single pill first,yes
+C0613,P18,81,no,no,178,stage 2 (160+),usual prescribing,no
+C0614,P11,50,no,no,140,stage 1 (140-159),usual prescribing,no
+C0615,P10,67,yes,no,157,stage 1 (140-159),usual prescribing,no
+C0616,P02,47,no,no,147,stage 1 (140-159),usual prescribing,no
+C0617,P18,54,no,no,148,stage 1 (140-159),usual prescribing,no
+C0618,P07,70,yes,no,153,stage 1 (140-159),single pill first,no
+C0619,P08,86,no,no,159,stage 1 (140-159),usual prescribing,yes
+C0620,P10,57,no,no,158,stage 1 (140-159),usual prescribing,no
+C0621,P16,69,no,no,165,stage 2 (160+),usual prescribing,no
+C0622,P17,58,no,yes,175,stage 2 (160+),single pill first,no
+C0623,P13,52,no,no,143,stage 1 (140-159),single pill first,no
+C0624,P08,65,no,no,154,stage 1 (140-159),usual prescribing,yes
+C0625,P01,84,no,no,148,stage 1 (140-159),single pill first,no
+C0626,P14,62,no,no,166,stage 2 (160+),single pill first,no
+C0627,P10,69,no,no,172,stage 2 (160+),usual prescribing,no
+C0628,P08,68,no,no,144,stage 1 (140-159),usual prescribing,no
+C0629,P02,64,no,yes,140,stage 1 (140-159),usual prescribing,yes
+C0630,P02,63,no,no,150,stage 1 (140-159),usual prescribing,no
+C0631,P16,66,yes,no,159,stage 1 (140-159),usual prescribing,no
+C0632,P03,50,no,no,155,stage 1 (140-159),usual prescribing,no
+C0633,P18,70,no,no,164,stage 2 (160+),usual prescribing,no
+C0634,P18,65,yes,no,147,stage 1 (140-159),usual prescribing,yes
+C0635,P09,44,no,yes,145,stage 1 (140-159),single pill first,yes
+C0636,P06,68,no,no,174,stage 2 (160+),single pill first,yes
+C0637,P14,58,no,no,143,stage 1 (140-159),single pill first,no
+C0638,P14,56,yes,yes,160,stage 2 (160+),single pill first,yes
+C0639,P15,75,no,no,169,stage 2 (160+),single pill first,yes
+C0640,P16,84,no,yes,165,stage 2 (160+),usual prescribing,no
+C0641,P18,57,no,no,167,stage 2 (160+),usual prescribing,yes
+C0642,P15,69,yes,no,144,stage 1 (140-159),single pill first,no
+C0643,P14,50,no,no,157,stage 1 (140-159),single pill first,no
+C0644,P12,59,yes,no,143,stage 1 (140-159),single pill first,no
+C0645,P15,73,no,yes,179,stage 2 (160+),single pill first,no
+C0646,P04,55,no,yes,185,stage 2 (160+),usual prescribing,yes
+C0647,P05,59,no,no,140,stage 1 (140-159),usual prescribing,no
+C0648,P18,53,yes,no,182,stage 2 (160+),usual prescribing,no
+C0649,P16,62,no,yes,185,stage 2 (160+),usual prescribing,yes
+C0650,P07,64,no,no,150,stage 1 (140-159),single pill first,yes
+C0651,P09,66,no,no,153,stage 1 (140-159),single pill first,no
+C0652,P04,68,no,no,149,stage 1 (140-159),usual prescribing,yes
+C0653,P02,53,no,yes,148,stage 1 (140-159),usual prescribing,yes
+C0654,P01,54,yes,yes,140,stage 1 (140-159),single pill first,yes
+C0655,P02,85,no,yes,150,stage 1 (140-159),usual prescribing,yes
+C0656,P08,62,no,no,158,stage 1 (140-159),usual prescribing,no
+C0657,P05,76,no,no,150,stage 1 (140-159),usual prescribing,no
+C0658,P01,52,no,yes,145,stage 1 (140-159),single pill first,no
+C0659,P05,66,no,no,146,stage 1 (140-159),usual prescribing,no
+C0660,P10,55,no,no,140,stage 1 (140-159),usual prescribing,no
+C0661,P18,67,no,no,147,stage 1 (140-159),usual prescribing,no
+C0662,P13,57,no,no,156,stage 1 (140-159),single pill first,no
+C0663,P11,88,no,no,144,stage 1 (140-159),usual prescribing,no
+C0664,P10,60,no,no,168,stage 2 (160+),usual prescribing,yes
+C0665,P11,47,yes,no,172,stage 2 (160+),usual prescribing,yes
+C0666,P04,75,no,no,154,stage 1 (140-159),usual prescribing,yes
+C0667,P12,53,yes,no,140,stage 1 (140-159),single pill first,yes
+C0668,P01,85,yes,no,146,stage 1 (140-159),single pill first,yes
+C0669,P03,77,no,no,144,stage 1 (140-159),usual prescribing,yes
+C0670,P09,73,yes,no,156,stage 1 (140-159),single pill first,yes
+C0671,P03,77,no,no,151,stage 1 (140-159),usual prescribing,no
+C0672,P17,47,no,no,144,stage 1 (140-159),single pill first,no
+C0673,P06,83,yes,no,142,stage 1 (140-159),single pill first,no
+C0674,P03,56,no,no,150,stage 1 (140-159),usual prescribing,no
+C0675,P06,76,no,no,142,stage 1 (140-159),single pill first,yes
+C0676,P09,69,no,no,153,stage 1 (140-159),single pill first,no
+C0677,P05,43,no,no,149,stage 1 (140-159),usual prescribing,yes
+C0678,P02,68,no,no,152,stage 1 (140-159),usual prescribing,no
+C0679,P08,74,yes,no,158,stage 1 (140-159),usual prescribing,no
+C0680,P14,55,no,no,170,stage 2 (160+),single pill first,no
+C0681,P09,58,no,yes,155,stage 1 (140-159),single pill first,yes
+C0682,P01,64,no,yes,140,stage 1 (140-159),single pill first,yes
+C0683,P12,69,no,no,173,stage 2 (160+),single pill first,no
+C0684,P01,72,no,no,151,stage 1 (140-159),single pill first,yes
+C0685,P13,59,no,no,158,stage 1 (140-159),single pill first,no
+C0686,P10,70,yes,no,151,stage 1 (140-159),usual prescribing,yes
+C0687,P01,63,no,no,185,stage 2 (160+),single pill first,yes
+C0688,P03,71,no,no,158,stage 1 (140-159),usual prescribing,no
+C0689,P16,57,yes,yes,172,stage 2 (160+),usual prescribing,yes
+C0690,P02,69,no,no,163,stage 2 (160+),usual prescribing,yes
+C0691,P02,67,no,yes,145,stage 1 (140-159),usual prescribing,no
+C0692,P05,60,no,no,152,stage 1 (140-159),usual prescribing,no
+C0693,P15,55,no,no,181,stage 2 (160+),single pill first,yes
+C0694,P03,56,no,no,142,stage 1 (140-159),usual prescribing,yes
+C0695,P09,58,yes,no,146,stage 1 (140-159),single pill first,yes
+C0696,P12,59,yes,no,151,stage 1 (140-159),single pill first,no
+C0697,P08,52,no,no,151,stage 1 (140-159),usual prescribing,yes
+C0698,P10,69,no,no,148,stage 1 (140-159),usual prescribing,yes
+C0699,P09,64,no,no,147,stage 1 (140-159),single pill first,no
+C0700,P11,55,no,no,165,stage 2 (160+),usual prescribing,yes
+C0701,P11,59,yes,no,154,stage 1 (140-159),usual prescribing,yes
+C0702,P01,68,yes,no,155,stage 1 (140-159),single pill first,no
+C0703,P04,66,no,no,143,stage 1 (140-159),usual prescribing,no
+C0704,P08,35,no,no,161,stage 2 (160+),usual prescribing,yes
+C0705,P02,77,yes,no,153,stage 1 (140-159),usual prescribing,no
+C0706,P09,48,no,no,156,stage 1 (140-159),single pill first,yes
+C0707,P13,64,no,no,154,stage 1 (140-159),single pill first,yes
+C0708,P02,77,no,no,158,stage 1 (140-159),usual prescribing,no
+C0709,P14,47,no,yes,166,stage 2 (160+),single pill first,no
+C0710,P11,41,no,yes,174,stage 2 (160+),usual prescribing,no
+C0711,P01,74,yes,no,152,stage 1 (140-159),single pill first,no
+C0712,P07,35,no,yes,165,stage 2 (160+),single pill first,no
+C0713,P10,52,no,no,154,stage 1 (140-159),usual prescribing,yes
+C0714,P06,64,yes,no,146,stage 1 (140-159),single pill first,no
+C0715,P01,60,yes,no,179,stage 2 (160+),single pill first,yes
+C0716,P16,69,no,no,141,stage 1 (140-159),usual prescribing,yes
+C0717,P18,63,no,yes,144,stage 1 (140-159),usual prescribing,no
+C0718,P14,48,no,yes,141,stage 1 (140-159),single pill first,no
+C0719,P03,58,no,no,142,stage 1 (140-159),usual prescribing,yes
+C0720,P06,61,no,yes,142,stage 1 (140-159),single pill first,no
+C0721,P13,66,no,no,166,stage 2 (160+),single pill first,no
+C0722,P03,60,no,no,162,stage 2 (160+),usual prescribing,no
+C0723,P16,74,no,no,153,stage 1 (140-159),usual prescribing,no
+C0724,P07,70,no,no,155,stage 1 (140-159),single pill first,yes
+C0725,P09,68,yes,no,143,stage 1 (140-159),single pill first,no
+C0726,P10,69,no,no,143,stage 1 (140-159),usual prescribing,no
+C0727,P03,68,no,no,172,stage 2 (160+),usual prescribing,no
+C0728,P09,69,no,no,183,stage 2 (160+),single pill first,yes
+C0729,P08,56,no,no,156,stage 1 (140-159),usual prescribing,no
+C0730,P04,62,no,no,149,stage 1 (140-159),usual prescribing,no
+C0731,P07,63,yes,no,185,stage 2 (160+),single pill first,no
+C0732,P16,87,no,yes,156,stage 1 (140-159),usual prescribing,no
+C0733,P04,81,no,no,160,stage 2 (160+),usual prescribing,no
+C0734,P11,62,no,no,150,stage 1 (140-159),usual prescribing,no
+C0735,P04,69,no,no,140,stage 1 (140-159),usual prescribing,no
+C0736,P16,70,no,no,162,stage 2 (160+),usual prescribing,no
+C0737,P18,52,no,no,169,stage 2 (160+),usual prescribing,no
+C0738,P03,51,no,no,156,stage 1 (140-159),usual prescribing,yes
+C0739,P03,49,no,no,157,stage 1 (140-159),usual prescribing,no
+C0740,P07,78,no,no,150,stage 1 (140-159),single pill first,no
+C0741,P05,61,yes,no,182,stage 2 (160+),usual prescribing,yes
+C0742,P13,62,no,yes,183,stage 2 (160+),single pill first,yes
+C0743,P03,67,no,no,150,stage 1 (140-159),usual prescribing,no
+C0744,P05,64,no,no,155,stage 1 (140-159),usual prescribing,yes
+C0745,P02,78,no,no,150,stage 1 (140-159),usual prescribing,no
+C0746,P05,82,no,no,153,stage 1 (140-159),usual prescribing,yes
+C0747,P10,60,yes,no,150,stage 1 (140-159),usual prescribing,no
+C0748,P12,52,no,yes,148,stage 1 (140-159),single pill first,no
+C0749,P01,40,no,yes,181,stage 2 (160+),single pill first,yes
+C0750,P11,42,no,no,158,stage 1 (140-159),usual prescribing,no
+C0751,P11,65,no,no,162,stage 2 (160+),usual prescribing,yes
+C0752,P07,70,no,no,182,stage 2 (160+),single pill first,no
+C0753,P12,49,yes,no,147,stage 1 (140-159),single pill first,yes
+C0754,P17,72,yes,no,161,stage 2 (160+),single pill first,yes
+C0755,P10,68,no,yes,144,stage 1 (140-159),usual prescribing,no
+C0756,P03,53,yes,yes,157,stage 1 (140-159),usual prescribing,no
+C0757,P08,53,yes,yes,144,stage 1 (140-159),usual prescribing,no
+C0758,P01,75,no,no,173,stage 2 (160+),single pill first,no
+C0759,P08,52,no,no,154,stage 1 (140-159),usual prescribing,no
+C0760,P09,63,no,yes,156,stage 1 (140-159),single pill first,no
+C0761,P12,57,no,no,147,stage 1 (140-159),single pill first,yes
+C0762,P05,58,yes,no,154,stage 1 (140-159),usual prescribing,yes
+C0763,P12,65,no,no,180,stage 2 (160+),single pill first,yes
+C0764,P10,50,no,yes,165,stage 2 (160+),usual prescribing,yes
+C0765,P08,66,no,no,163,stage 2 (160+),usual prescribing,yes
+C0766,P13,61,no,no,168,stage 2 (160+),single pill first,yes
+C0767,P02,46,no,yes,159,stage 1 (140-159),usual prescribing,no
+C0768,P08,69,no,no,180,stage 2 (160+),usual prescribing,no
+C0769,P01,71,no,no,141,stage 1 (140-159),single pill first,no
+C0770,P15,59,no,no,184,stage 2 (160+),single pill first,yes
+C0771,P02,52,no,no,140,stage 1 (140-159),usual prescribing,no
+C0772,P04,62,no,no,143,stage 1 (140-159),usual prescribing,yes
+C0773,P08,78,no,no,150,stage 1 (140-159),usual prescribing,yes
+C0774,P03,63,no,no,155,stage 1 (140-159),usual prescribing,yes
+C0775,P06,55,yes,no,177,stage 2 (160+),single pill first,yes
+C0776,P16,64,no,no,146,stage 1 (140-159),usual prescribing,no
+C0777,P13,72,no,yes,176,stage 2 (160+),single pill first,yes
+C0778,P13,62,yes,no,175,stage 2 (160+),single pill first,no
+C0779,P13,71,no,no,141,stage 1 (140-159),single pill first,no
+C0780,P01,69,yes,no,147,stage 1 (140-159),single pill first,no
+C0781,P07,56,yes,no,166,stage 2 (160+),single pill first,no
+C0782,P10,55,no,no,180,stage 2 (160+),usual prescribing,yes
+C0783,P03,53,yes,no,150,stage 1 (140-159),usual prescribing,no
+C0784,P13,63,yes,no,176,stage 2 (160+),single pill first,no
+C0785,P16,63,yes,yes,166,stage 2 (160+),usual prescribing,yes
+C0786,P18,64,yes,no,147,stage 1 (140-159),usual prescribing,no
+C0787,P14,66,no,no,156,stage 1 (140-159),single pill first,yes
+C0788,P09,62,yes,yes,148,stage 1 (140-159),single pill first,yes
+C0789,P10,76,no,no,143,stage 1 (140-159),usual prescribing,no
+C0790,P10,49,no,no,181,stage 2 (160+),usual prescribing,no
+C0791,P14,52,yes,yes,145,stage 1 (140-159),single pill first,no
+C0792,P12,60,no,no,140,stage 1 (140-159),single pill first,no
+C0793,P04,77,no,no,185,stage 2 (160+),usual prescribing,no
+C0794,P11,62,no,yes,148,stage 1 (140-159),usual prescribing,yes
+C0795,P02,56,yes,no,147,stage 1 (140-159),usual prescribing,no
+C0796,P17,83,no,no,176,stage 2 (160+),single pill first,no
+C0797,P14,79,no,no,184,stage 2 (160+),single pill first,no
+C0798,P05,66,yes,no,140,stage 1 (140-159),usual prescribing,yes
+C0799,P01,57,yes,yes,167,stage 2 (160+),single pill first,yes
+C0800,P12,77,no,no,143,stage 1 (140-159),single pill first,no
+C0801,P14,74,yes,no,142,stage 1 (140-159),single pill first,no
+C0802,P11,82,yes,no,157,stage 1 (140-159),usual prescribing,yes
+C0803,P16,71,yes,no,172,stage 2 (160+),usual prescribing,yes
+C0804,P04,55,no,no,153,stage 1 (140-159),usual prescribing,no
+C0805,P01,59,yes,no,141,stage 1 (140-159),single pill first,no
+C0806,P04,58,no,no,150,stage 1 (140-159),usual prescribing,yes
+C0807,P06,70,no,no,157,stage 1 (140-159),single pill first,no
+C0808,P06,64,no,no,155,stage 1 (140-159),single pill first,no
+C0809,P01,47,no,no,151,stage 1 (140-159),single pill first,no
+C0810,P07,58,yes,no,152,stage 1 (140-159),single pill first,no
+C0811,P09,78,no,no,142,stage 1 (140-159),single pill first,no
+C0812,P01,61,yes,no,150,stage 1 (140-159),single pill first,no
+C0813,P10,53,no,no,141,stage 1 (140-159),usual prescribing,no
+C0814,P09,88,no,no,183,stage 2 (160+),single pill first,no
+C0815,P06,52,yes,no,155,stage 1 (140-159),single pill first,no
+C0816,P18,58,no,no,177,stage 2 (160+),usual prescribing,yes
+C0817,P18,67,no,no,153,stage 1 (140-159),usual prescribing,no
+C0818,P15,78,no,yes,183,stage 2 (160+),single pill first,no
+C0819,P05,77,no,no,149,stage 1 (140-159),usual prescribing,no
+C0820,P12,75,no,yes,159,stage 1 (140-159),single pill first,no
+C0821,P11,65,yes,yes,174,stage 2 (160+),usual prescribing,yes
+C0822,P08,76,yes,no,153,stage 1 (140-159),usual prescribing,no
+C0823,P07,88,no,no,141,stage 1 (140-159),single pill first,no
+C0824,P05,68,no,yes,162,stage 2 (160+),usual prescribing,yes
+C0825,P13,72,no,no,160,stage 2 (160+),single pill first,no
+C0826,P11,70,no,yes,154,stage 1 (140-159),usual prescribing,no
+C0827,P08,69,no,no,153,stage 1 (140-159),usual prescribing,no
+C0828,P06,63,no,no,154,stage 1 (140-159),single pill first,no
+C0829,P17,53,no,no,148,stage 1 (140-159),single pill first,yes
+C0830,P09,49,no,no,168,stage 2 (160+),single pill first,yes
+C0831,P14,38,yes,yes,148,stage 1 (140-159),single pill first,yes
+C0832,P04,73,yes,yes,163,stage 2 (160+),usual prescribing,no
+C0833,P14,86,yes,yes,147,stage 1 (140-159),single pill first,yes
+C0834,P06,74,no,no,144,stage 1 (140-159),single pill first,no
+C0835,P04,74,no,no,173,stage 2 (160+),usual prescribing,no
+C0836,P02,56,no,no,152,stage 1 (140-159),usual prescribing,yes
+C0837,P13,78,no,no,159,stage 1 (140-159),single pill first,no
+C0838,P07,58,yes,no,185,stage 2 (160+),single pill first,no
+C0839,P04,42,no,yes,156,stage 1 (140-159),usual prescribing,yes
+C0840,P08,57,no,no,143,stage 1 (140-159),usual prescribing,yes
+C0841,P01,56,no,no,147,stage 1 (140-159),single pill first,no
+C0842,P10,59,no,no,163,stage 2 (160+),usual prescribing,no
+C0843,P10,59,no,no,140,stage 1 (140-159),usual prescribing,yes
+C0844,P09,65,no,yes,151,stage 1 (140-159),single pill first,no
+C0845,P09,63,no,no,148,stage 1 (140-159),single pill first,no
+C0846,P01,60,no,no,141,stage 1 (140-159),single pill first,no
+C0847,P12,53,no,no,154,stage 1 (140-159),single pill first,yes
+C0848,P01,72,no,no,145,stage 1 (140-159),single pill first,no
+C0849,P15,64,no,no,157,stage 1 (140-159),single pill first,no
+C0850,P03,80,no,no,158,stage 1 (140-159),usual prescribing,no
+C0851,P08,71,no,no,149,stage 1 (140-159),usual prescribing,yes
+C0852,P11,68,yes,no,146,stage 1 (140-159),usual prescribing,no
+C0853,P15,60,yes,no,159,stage 1 (140-159),single pill first,no
+C0854,P17,78,no,no,152,stage 1 (140-159),single pill first,no
+C0855,P15,70,yes,no,156,stage 1 (140-159),single pill first,no
+C0856,P05,56,no,no,148,stage 1 (140-159),usual prescribing,no
+C0857,P06,64,no,no,156,stage 1 (140-159),single pill first,yes
+C0858,P06,65,no,no,141,stage 1 (140-159),single pill first,no
+C0859,P07,56,no,no,176,stage 2 (160+),single pill first,no
+C0860,P15,58,no,no,178,stage 2 (160+),single pill first,no
+C0861,P05,54,no,no,158,stage 1 (140-159),usual prescribing,yes
+C0862,P02,54,no,no,165,stage 2 (160+),usual prescribing,yes
+C0863,P08,47,yes,no,157,stage 1 (140-159),usual prescribing,yes
+C0864,P16,50,no,no,163,stage 2 (160+),usual prescribing,yes
+C0865,P02,49,no,no,167,stage 2 (160+),usual prescribing,no
+C0866,P08,73,no,no,167,stage 2 (160+),usual prescribing,yes
+C0867,P12,63,yes,no,153,stage 1 (140-159),single pill first,no
+C0868,P05,50,yes,no,174,stage 2 (160+),usual prescribing,no
+C0869,P14,65,yes,no,145,stage 1 (140-159),single pill first,no
+C0870,P05,65,yes,no,159,stage 1 (140-159),usual prescribing,no
+C0871,P02,63,no,no,146,stage 1 (140-159),usual prescribing,yes
+C0872,P10,80,yes,no,160,stage 2 (160+),usual prescribing,yes
+C0873,P01,68,no,no,143,stage 1 (140-159),single pill first,no
+C0874,P10,53,yes,no,167,stage 2 (160+),usual prescribing,yes
+C0875,P08,43,yes,yes,152,stage 1 (140-159),usual prescribing,yes
+C0876,P13,67,no,no,167,stage 2 (160+),single pill first,no
+C0877,P15,69,no,no,164,stage 2 (160+),single pill first,yes
+C0878,P13,70,no,no,157,stage 1 (140-159),single pill first,yes
+C0879,P04,76,no,no,177,stage 2 (160+),usual prescribing,no
+C0880,P03,46,no,yes,141,stage 1 (140-159),usual prescribing,no
+C0881,P15,53,yes,no,158,stage 1 (140-159),single pill first,no
+C0882,P06,69,yes,yes,141,stage 1 (140-159),single pill first,no
+C0883,P16,50,no,no,151,stage 1 (140-159),usual prescribing,yes
+C0884,P09,53,no,no,146,stage 1 (140-159),single pill first,no
+C0885,P17,36,no,no,169,stage 2 (160+),single pill first,no
+C0886,P18,72,no,yes,182,stage 2 (160+),usual prescribing,yes
+C0887,P15,75,yes,no,178,stage 2 (160+),single pill first,no
+C0888,P03,54,no,yes,184,stage 2 (160+),usual prescribing,yes
+C0889,P08,55,no,yes,164,stage 2 (160+),usual prescribing,no
+C0890,P14,59,no,no,160,stage 2 (160+),single pill first,no
+C0891,P09,37,no,no,157,stage 1 (140-159),single pill first,no
+C0892,P04,59,no,no,158,stage 1 (140-159),usual prescribing,no
+C0893,P02,56,yes,yes,152,stage 1 (140-159),usual prescribing,no
+C0894,P04,53,no,no,151,stage 1 (140-159),usual prescribing,no
+C0895,P13,55,no,no,141,stage 1 (140-159),single pill first,no
+C0896,P06,53,no,no,143,stage 1 (140-159),single pill first,no
+C0897,P11,72,no,no,149,stage 1 (140-159),usual prescribing,no
+C0898,P17,65,no,no,150,stage 1 (140-159),single pill first,no
+C0899,P02,70,no,no,148,stage 1 (140-159),usual prescribing,yes
+C0900,P09,63,yes,no,140,stage 1 (140-159),single pill first,yes
+C0901,P04,77,no,yes,147,stage 1 (140-159),usual prescribing,no
+C0902,P13,73,no,no,147,stage 1 (140-159),single pill first,no
+C0903,P18,82,no,no,174,stage 2 (160+),usual prescribing,no
+C0904,P15,74,no,yes,152,stage 1 (140-159),single pill first,no
+C0905,P12,68,yes,yes,180,stage 2 (160+),single pill first,yes
+C0906,P02,54,no,no,147,stage 1 (140-159),usual prescribing,no
+C0907,P04,58,no,no,157,stage 1 (140-159),usual prescribing,no
+C0908,P13,60,yes,no,155,stage 1 (140-159),single pill first,no
+C0909,P04,66,no,yes,177,stage 2 (160+),usual prescribing,yes
+C0910,P04,44,no,no,175,stage 2 (160+),usual prescribing,yes
+C0911,P12,51,no,no,140,stage 1 (140-159),single pill first,no
+C0912,P02,65,no,no,144,stage 1 (140-159),usual prescribing,yes
+C0913,P05,47,no,no,148,stage 1 (140-159),usual prescribing,no
+C0914,P09,54,no,no,156,stage 1 (140-159),single pill first,no
+C0915,P06,48,no,no,149,stage 1 (140-159),single pill first,no
+C0916,P18,65,no,no,145,stage 1 (140-159),usual prescribing,yes
+C0917,P13,41,no,no,144,stage 1 (140-159),single pill first,no
+C0918,P15,61,no,no,185,stage 2 (160+),single pill first,yes
+C0919,P13,56,no,yes,146,stage 1 (140-159),single pill first,no
+C0920,P10,60,no,no,176,stage 2 (160+),usual prescribing,no
+C0921,P11,68,no,no,164,stage 2 (160+),usual prescribing,yes
+C0922,P09,72,no,no,141,stage 1 (140-159),single pill first,no
+C0923,P15,70,yes,no,144,stage 1 (140-159),single pill first,no
+C0924,P14,73,yes,no,150,stage 1 (140-159),single pill first,no
+C0925,P13,69,yes,no,157,stage 1 (140-159),single pill first,yes
+C0926,P09,79,yes,no,152,stage 1 (140-159),single pill first,no
+C0927,P08,65,no,no,142,stage 1 (140-159),usual prescribing,no
+C0928,P05,54,no,yes,159,stage 1 (140-159),usual prescribing,yes
+C0929,P16,52,no,no,178,stage 2 (160+),usual prescribing,no
+C0930,P18,67,no,no,149,stage 1 (140-159),usual prescribing,no
+C0931,P14,69,no,no,158,stage 1 (140-159),single pill first,no
+C0932,P06,68,yes,no,170,stage 2 (160+),single pill first,yes
+C0933,P05,59,no,no,155,stage 1 (140-159),usual prescribing,yes
+C0934,P06,64,no,no,153,stage 1 (140-159),single pill first,no
+C0935,P16,60,no,no,144,stage 1 (140-159),usual prescribing,no
+C0936,P05,44,yes,no,142,stage 1 (140-159),usual prescribing,no
+C0937,P01,75,no,yes,149,stage 1 (140-159),single pill first,no
+C0938,P15,62,no,no,159,stage 1 (140-159),single pill first,no
+C0939,P04,60,no,no,164,stage 2 (160+),usual prescribing,yes
+C0940,P02,47,no,no,159,stage 1 (140-159),usual prescribing,no
+C0941,P08,78,no,no,163,stage 2 (160+),usual prescribing,no
+C0942,P11,52,no,no,145,stage 1 (140-159),usual prescribing,no
+C0943,P06,75,no,yes,151,stage 1 (140-159),single pill first,no
+C0944,P03,61,no,no,152,stage 1 (140-159),usual prescribing,no
+C0945,P18,66,no,no,149,stage 1 (140-159),usual prescribing,no
+C0946,P14,67,no,no,165,stage 2 (160+),single pill first,no
+C0947,P16,79,no,yes,166,stage 2 (160+),usual prescribing,no
+C0948,P13,48,no,no,153,stage 1 (140-159),single pill first,no
+C0949,P12,68,no,no,144,stage 1 (140-159),single pill first,yes
+C0950,P18,81,no,yes,171,stage 2 (160+),usual prescribing,yes
+C0951,P03,73,no,no,172,stage 2 (160+),usual prescribing,yes
+C0952,P07,71,no,no,146,stage 1 (140-159),single pill first,no
+C0953,P11,52,no,no,181,stage 2 (160+),usual prescribing,no
+C0954,P05,61,yes,no,147,stage 1 (140-159),usual prescribing,yes
+C0955,P12,70,yes,no,167,stage 2 (160+),single pill first,yes
+C0956,P06,74,no,no,169,stage 2 (160+),single pill first,no
+C0957,P02,77,yes,no,149,stage 1 (140-159),usual prescribing,no
+C0958,P12,64,no,no,180,stage 2 (160+),single pill first,no
+C0959,P03,44,no,no,148,stage 1 (140-159),usual prescribing,no
+C0960,P01,50,yes,no,178,stage 2 (160+),single pill first,no
+C0961,P18,52,yes,no,144,stage 1 (140-159),usual prescribing,no
+C0962,P08,66,no,no,140,stage 1 (140-159),usual prescribing,no
+C0963,P16,78,no,yes,143,stage 1 (140-159),usual prescribing,no
+C0964,P04,88,no,no,166,stage 2 (160+),usual prescribing,no
+C0965,P04,70,no,no,155,stage 1 (140-159),usual prescribing,yes
+C0966,P09,70,no,no,142,stage 1 (140-159),single pill first,no
+C0967,P15,48,no,no,169,stage 2 (160+),single pill first,yes
+C0968,P13,55,no,no,180,stage 2 (160+),single pill first,no
+C0969,P12,71,no,no,147,stage 1 (140-159),single pill first,no
+C0970,P13,52,no,no,145,stage 1 (140-159),single pill first,no
+C0971,P17,35,no,no,181,stage 2 (160+),single pill first,no
+C0972,P16,63,no,no,185,stage 2 (160+),usual prescribing,yes
+C0973,P02,81,no,yes,161,stage 2 (160+),usual prescribing,yes
+C0974,P10,52,yes,no,180,stage 2 (160+),usual prescribing,no
+C0975,P15,58,no,yes,158,stage 1 (140-159),single pill first,yes
+C0976,P09,58,yes,no,166,stage 2 (160+),single pill first,no
+C0977,P12,46,no,no,160,stage 2 (160+),single pill first,yes
+C0978,P17,47,no,no,142,stage 1 (140-159),single pill first,no
+C0979,P05,65,no,no,155,stage 1 (140-159),usual prescribing,no
+C0980,P03,88,no,no,151,stage 1 (140-159),usual prescribing,yes
+C0981,P04,60,no,no,160,stage 2 (160+),usual prescribing,yes
+C0982,P01,51,no,no,183,stage 2 (160+),single pill first,no
+C0983,P03,47,no,no,156,stage 1 (140-159),usual prescribing,no
+C0984,P05,57,yes,no,152,stage 1 (140-159),usual prescribing,no
+C0985,P16,64,no,no,140,stage 1 (140-159),usual prescribing,no
+C0986,P05,60,yes,no,153,stage 1 (140-159),usual prescribing,no
+C0987,P18,75,no,no,152,stage 1 (140-159),usual prescribing,no
+C0988,P09,59,no,no,144,stage 1 (140-159),single pill first,no
+C0989,P12,39,yes,no,155,stage 1 (140-159),single pill first,no
+C0990,P04,54,yes,no,185,stage 2 (160+),usual prescribing,yes
+C0991,P18,53,no,no,153,stage 1 (140-159),usual prescribing,no
+C0992,P01,61,no,no,159,stage 1 (140-159),single pill first,yes
+C0993,P11,53,yes,no,166,stage 2 (160+),usual prescribing,yes
+C0994,P13,77,no,no,180,stage 2 (160+),single pill first,yes
+C0995,P08,57,yes,no,145,stage 1 (140-159),usual prescribing,yes
+C0996,P13,72,yes,no,173,stage 2 (160+),single pill first,no
+C0997,P13,47,no,yes,173,stage 2 (160+),single pill first,no
+C0998,P18,73,yes,no,146,stage 1 (140-159),usual prescribing,no
+C0999,P15,53,yes,no,154,stage 1 (140-159),single pill first,yes
+C1000,P16,62,no,no,185,stage 2 (160+),usual prescribing,no
+C1001,P12,70,no,no,152,stage 1 (140-159),single pill first,no
+C1002,P03,63,yes,no,144,stage 1 (140-159),usual prescribing,yes
+C1003,P12,71,no,no,146,stage 1 (140-159),single pill first,no
+C1004,P06,67,no,no,160,stage 2 (160+),single pill first,no
+C1005,P11,44,no,yes,142,stage 1 (140-159),usual prescribing,yes
+C1006,P13,68,no,no,147,stage 1 (140-159),single pill first,no
+C1007,P12,68,yes,no,147,stage 1 (140-159),single pill first,no
+C1008,P11,46,yes,no,166,stage 2 (160+),usual prescribing,yes
+C1009,P02,66,no,yes,164,stage 2 (160+),usual prescribing,no
+C1010,P17,65,no,no,148,stage 1 (140-159),single pill first,no
+C1011,P17,57,yes,yes,143,stage 1 (140-159),single pill first,yes
+C1012,P13,58,no,no,170,stage 2 (160+),single pill first,no
+C1013,P09,49,no,no,176,stage 2 (160+),single pill first,no
+C1014,P03,82,no,no,173,stage 2 (160+),usual prescribing,yes
+C1015,P14,63,no,no,149,stage 1 (140-159),single pill first,no
+C1016,P06,66,no,no,164,stage 2 (160+),single pill first,no
+C1017,P15,58,no,yes,149,stage 1 (140-159),single pill first,no
+C1018,P11,75,no,no,140,stage 1 (140-159),usual prescribing,yes
+C1019,P17,66,no,no,176,stage 2 (160+),single pill first,no
+C1020,P02,66,no,no,141,stage 1 (140-159),usual prescribing,no
+C1021,P10,83,yes,no,140,stage 1 (140-159),usual prescribing,no
+C1022,P18,64,yes,no,164,stage 2 (160+),usual prescribing,yes
+C1023,P14,48,no,no,147,stage 1 (140-159),single pill first,yes
+C1024,P04,79,no,no,150,stage 1 (140-159),usual prescribing,no
+C1025,P07,70,no,no,155,stage 1 (140-159),single pill first,no
+C1026,P11,66,yes,no,143,stage 1 (140-159),usual prescribing,no
+C1027,P03,62,no,no,176,stage 2 (160+),usual prescribing,no
+C1028,P01,65,no,no,140,stage 1 (140-159),single pill first,no
+C1029,P07,54,no,yes,154,stage 1 (140-159),single pill first,no
+C1030,P08,56,no,no,158,stage 1 (140-159),usual prescribing,no
+C1031,P13,57,no,no,169,stage 2 (160+),single pill first,no
+C1032,P13,69,yes,no,157,stage 1 (140-159),single pill first,yes
+C1033,P16,69,no,no,145,stage 1 (140-159),usual prescribing,no
+C1034,P01,60,no,yes,153,stage 1 (140-159),single pill first,yes
+C1035,P16,64,no,no,157,stage 1 (140-159),usual prescribing,yes
+C1036,P17,55,yes,no,176,stage 2 (160+),single pill first,yes
+C1037,P12,61,yes,no,172,stage 2 (160+),single pill first,no
+C1038,P05,57,no,no,154,stage 1 (140-159),usual prescribing,no
+C1039,P02,79,no,no,154,stage 1 (140-159),usual prescribing,no
+C1040,P12,54,yes,no,177,stage 2 (160+),single pill first,no
+C1041,P08,67,no,no,182,stage 2 (160+),usual prescribing,yes
+C1042,P03,39,no,no,158,stage 1 (140-159),usual prescribing,yes
+C1043,P11,55,no,no,176,stage 2 (160+),usual prescribing,no
+C1044,P03,59,no,no,149,stage 1 (140-159),usual prescribing,no
+C1045,P16,62,no,no,144,stage 1 (140-159),usual prescribing,yes
+C1046,P13,63,no,no,160,stage 2 (160+),single pill first,no
+C1047,P07,55,no,no,142,stage 1 (140-159),single pill first,no
+C1048,P11,59,no,no,177,stage 2 (160+),usual prescribing,yes
+C1049,P11,49,yes,no,144,stage 1 (140-159),usual prescribing,yes
+C1050,P07,74,no,no,141,stage 1 (140-159),single pill first,no
+C1051,P03,41,no,no,145,stage 1 (140-159),usual prescribing,no
+C1052,P02,52,no,no,149,stage 1 (140-159),usual prescribing,no
+C1053,P12,59,yes,no,158,stage 1 (140-159),single pill first,no
+C1054,P06,57,yes,no,145,stage 1 (140-159),single pill first,no
+C1055,P05,62,no,no,155,stage 1 (140-159),usual prescribing,yes
+C1056,P17,75,yes,no,146,stage 1 (140-159),single pill first,no
+C1057,P07,35,no,no,168,stage 2 (160+),single pill first,no
+C1058,P04,60,no,no,147,stage 1 (140-159),usual prescribing,no
+C1059,P12,76,no,yes,152,stage 1 (140-159),single pill first,no
+C1060,P13,71,no,no,142,stage 1 (140-159),single pill first,no
+C1061,P01,63,no,no,143,stage 1 (140-159),single pill first,no
+C1062,P03,78,no,no,162,stage 2 (160+),usual prescribing,yes
+C1063,P02,64,yes,no,146,stage 1 (140-159),usual prescribing,no
+C1064,P17,65,no,no,164,stage 2 (160+),single pill first,yes
+C1065,P02,67,yes,no,146,stage 1 (140-159),usual prescribing,no
+C1066,P05,62,no,no,151,stage 1 (140-159),usual prescribing,yes
+C1067,P08,66,yes,no,151,stage 1 (140-159),usual prescribing,no
+C1068,P06,59,yes,no,158,stage 1 (140-159),single pill first,no
+C1069,P06,70,no,no,151,stage 1 (140-159),single pill first,no
+C1070,P03,81,no,no,177,stage 2 (160+),usual prescribing,yes
+C1071,P11,58,no,no,174,stage 2 (160+),usual prescribing,no
+C1072,P08,76,no,no,152,stage 1 (140-159),usual prescribing,no
+C1073,P13,70,no,no,168,stage 2 (160+),single pill first,no
+C1074,P03,66,no,no,155,stage 1 (140-159),usual prescribing,yes
+C1075,P15,72,yes,no,150,stage 1 (140-159),single pill first,yes
+C1076,P11,52,no,no,179,stage 2 (160+),usual prescribing,no
+C1077,P13,49,yes,no,149,stage 1 (140-159),single pill first,no
+C1078,P09,67,yes,no,184,stage 2 (160+),single pill first,no
+C1079,P07,59,yes,no,144,stage 1 (140-159),single pill first,no
+C1080,P01,72,no,no,149,stage 1 (140-159),single pill first,no
+C1081,P03,67,no,no,174,stage 2 (160+),usual prescribing,yes
+C1082,P02,69,no,no,141,stage 1 (140-159),usual prescribing,yes
+C1083,P04,73,no,no,142,stage 1 (140-159),usual prescribing,no
+C1084,P04,74,yes,no,184,stage 2 (160+),usual prescribing,yes
+C1085,P05,66,yes,no,184,stage 2 (160+),usual prescribing,yes
+C1086,P15,82,no,no,167,stage 2 (160+),single pill first,yes
+C1087,P17,80,no,yes,156,stage 1 (140-159),single pill first,yes
+C1088,P08,78,no,no,148,stage 1 (140-159),usual prescribing,no
+C1089,P13,44,yes,no,154,stage 1 (140-159),single pill first,yes
+C1090,P17,43,yes,no,168,stage 2 (160+),single pill first,no
+C1091,P17,60,no,yes,169,stage 2 (160+),single pill first,no
+C1092,P08,67,yes,no,144,stage 1 (140-159),usual prescribing,yes
+C1093,P10,66,no,no,182,stage 2 (160+),usual prescribing,yes
+C1094,P02,73,yes,no,152,stage 1 (140-159),usual prescribing,no
+C1095,P01,53,no,yes,153,stage 1 (140-159),single pill first,yes
+C1096,P01,53,yes,yes,150,stage 1 (140-159),single pill first,no
+C1097,P17,54,no,no,165,stage 2 (160+),single pill first,yes
+C1098,P02,65,no,no,169,stage 2 (160+),usual prescribing,yes
+C1099,P07,65,no,no,153,stage 1 (140-159),single pill first,yes
+C1100,P03,77,no,yes,149,stage 1 (140-159),usual prescribing,no
+C1101,P06,52,no,no,142,stage 1 (140-159),single pill first,yes
+C1102,P15,78,no,no,173,stage 2 (160+),single pill first,yes
+C1103,P15,62,no,no,151,stage 1 (140-159),single pill first,no
+C1104,P02,67,no,no,176,stage 2 (160+),usual prescribing,yes
+C1105,P01,71,no,no,175,stage 2 (160+),single pill first,yes
+C1106,P07,66,yes,no,165,stage 2 (160+),single pill first,no
+C1107,P02,42,no,no,144,stage 1 (140-159),usual prescribing,yes
+C1108,P17,47,no,no,168,stage 2 (160+),single pill first,yes
+C1109,P15,82,no,no,151,stage 1 (140-159),single pill first,no
+C1110,P05,76,no,no,149,stage 1 (140-159),usual prescribing,yes
+C1111,P07,47,no,no,146,stage 1 (140-159),single pill first,no
+C1112,P13,36,no,no,172,stage 2 (160+),single pill first,no
+C1113,P05,77,no,no,141,stage 1 (140-159),usual prescribing,yes
+C1114,P07,70,no,no,148,stage 1 (140-159),single pill first,no
+C1115,P12,70,no,no,163,stage 2 (160+),single pill first,no
+C1116,P05,70,no,no,140,stage 1 (140-159),usual prescribing,no
+C1117,P08,56,no,no,157,stage 1 (140-159),usual prescribing,no
+C1118,P09,78,yes,no,156,stage 1 (140-159),single pill first,no
+C1119,P01,70,no,no,177,stage 2 (160+),single pill first,yes
+C1120,P08,73,no,no,150,stage 1 (140-159),usual prescribing,no
+C1121,P03,35,no,no,147,stage 1 (140-159),usual prescribing,yes
+C1122,P05,50,no,no,157,stage 1 (140-159),usual prescribing,yes
+C1123,P13,56,no,no,180,stage 2 (160+),single pill first,yes
+C1124,P12,59,no,no,143,stage 1 (140-159),single pill first,yes
+C1125,P09,61,no,no,142,stage 1 (140-159),single pill first,no
+C1126,P08,62,no,yes,154,stage 1 (140-159),usual prescribing,no
+C1127,P09,61,no,no,146,stage 1 (140-159),single pill first,yes
+C1128,P18,59,yes,no,156,stage 1 (140-159),usual prescribing,no
+C1129,P13,78,no,no,172,stage 2 (160+),single pill first,yes
+C1130,P08,51,no,yes,147,stage 1 (140-159),usual prescribing,yes
+C1131,P01,53,no,no,148,stage 1 (140-159),single pill first,no
+C1132,P09,45,no,no,159,stage 1 (140-159),single pill first,no
+C1133,P01,68,yes,no,158,stage 1 (140-159),single pill first,no
+C1134,P11,51,yes,no,175,stage 2 (160+),usual prescribing,yes
+C1135,P05,88,yes,no,170,stage 2 (160+),usual prescribing,yes
+C1136,P02,61,no,no,154,stage 1 (140-159),usual prescribing,yes
+C1137,P13,58,no,no,158,stage 1 (140-159),single pill first,no
+C1138,P05,62,no,no,140,stage 1 (140-159),usual prescribing,no
+C1139,P06,60,no,no,151,stage 1 (140-159),single pill first,no
+C1140,P07,60,no,no,159,stage 1 (140-159),single pill first,no
+C1141,P14,53,yes,yes,184,stage 2 (160+),single pill first,no
+C1142,P11,58,yes,no,168,stage 2 (160+),usual prescribing,yes
+C1143,P15,56,yes,no,157,stage 1 (140-159),single pill first,no
+C1144,P15,83,no,no,169,stage 2 (160+),single pill first,no
+C1145,P12,58,no,no,146,stage 1 (140-159),single pill first,no
+C1146,P02,58,no,no,140,stage 1 (140-159),usual prescribing,no
+C1147,P03,65,no,no,142,stage 1 (140-159),usual prescribing,yes
+C1148,P17,54,no,no,140,stage 1 (140-159),single pill first,no
+C1149,P07,50,yes,no,172,stage 2 (160+),single pill first,yes
+C1150,P10,35,yes,no,142,stage 1 (140-159),usual prescribing,no
+C1151,P17,82,no,yes,151,stage 1 (140-159),single pill first,no
+C1152,P14,66,yes,no,146,stage 1 (140-159),single pill first,yes
+C1153,P02,59,no,no,140,stage 1 (140-159),usual prescribing,no
+C1154,P11,58,yes,no,145,stage 1 (140-159),usual prescribing,no
+C1155,P16,60,no,yes,168,stage 2 (160+),usual prescribing,yes
+C1156,P03,46,yes,yes,142,stage 1 (140-159),usual prescribing,no
+C1157,P15,59,no,no,154,stage 1 (140-159),single pill first,yes
+C1158,P06,66,yes,no,150,stage 1 (140-159),single pill first,no
+C1159,P18,68,no,no,174,stage 2 (160+),usual prescribing,yes
+C1160,P09,56,yes,no,144,stage 1 (140-159),single pill first,no
+C1161,P08,79,no,no,149,stage 1 (140-159),usual prescribing,no
+C1162,P18,46,no,yes,163,stage 2 (160+),usual prescribing,no
+C1163,P15,53,yes,yes,159,stage 1 (140-159),single pill first,no
+C1164,P01,68,yes,no,147,stage 1 (140-159),single pill first,no
+C1165,P18,88,yes,no,177,stage 2 (160+),usual prescribing,yes
+C1166,P04,40,no,no,140,stage 1 (140-159),usual prescribing,no
+C1167,P08,53,no,no,145,stage 1 (140-159),usual prescribing,no
+C1168,P15,70,no,no,140,stage 1 (140-159),single pill first,no
+C1169,P03,84,yes,yes,146,stage 1 (140-159),usual prescribing,no
+C1170,P13,77,no,no,167,stage 2 (160+),single pill first,no
+C1171,P02,83,no,no,159,stage 1 (140-159),usual prescribing,no
+C1172,P12,59,no,no,146,stage 1 (140-159),single pill first,no
+C1173,P08,68,no,no,147,stage 1 (140-159),usual prescribing,yes
+C1174,P08,71,no,no,158,stage 1 (140-159),usual prescribing,yes
+C1175,P03,50,yes,yes,156,stage 1 (140-159),usual prescribing,no
+C1176,P15,51,no,no,157,stage 1 (140-159),single pill first,no
+C1177,P14,69,no,no,153,stage 1 (140-159),single pill first,yes
+C1178,P08,64,no,no,155,stage 1 (140-159),usual prescribing,no
+C1179,P17,74,yes,no,181,stage 2 (160+),single pill first,no
+C1180,P18,70,no,no,160,stage 2 (160+),usual prescribing,no
+C1181,P10,77,yes,no,153,stage 1 (140-159),usual prescribing,no
+C1182,P02,57,yes,no,176,stage 2 (160+),usual prescribing,yes
+C1183,P02,76,no,yes,150,stage 1 (140-159),usual prescribing,no
+C1184,P05,58,no,no,155,stage 1 (140-159),usual prescribing,yes
+C1185,P13,68,yes,no,165,stage 2 (160+),single pill first,no
+C1186,P06,46,yes,no,158,stage 1 (140-159),single pill first,yes
+C1187,P12,40,no,no,166,stage 2 (160+),single pill first,yes
+C1188,P18,67,no,no,176,stage 2 (160+),usual prescribing,no
+C1189,P14,59,yes,no,162,stage 2 (160+),single pill first,no
+C1190,P07,70,yes,no,142,stage 1 (140-159),single pill first,yes
+C1191,P11,55,no,yes,144,stage 1 (140-159),usual prescribing,no
+C1192,P12,69,no,no,167,stage 2 (160+),single pill first,yes
+C1193,P18,67,no,yes,154,stage 1 (140-159),usual prescribing,no
+C1194,P06,64,no,no,145,stage 1 (140-159),single pill first,no
+C1195,P13,66,no,no,147,stage 1 (140-159),single pill first,no
+C1196,P07,57,no,no,166,stage 2 (160+),single pill first,yes
+C1197,P10,66,yes,no,150,stage 1 (140-159),usual prescribing,no
+C1198,P12,59,no,no,156,stage 1 (140-159),single pill first,yes
+C1199,P07,42,yes,no,143,stage 1 (140-159),single pill first,yes
+C1200,P04,62,no,no,172,stage 2 (160+),usual prescribing,yes
+C1201,P14,51,no,no,153,stage 1 (140-159),single pill first,no
+C1202,P07,56,no,no,144,stage 1 (140-159),single pill first,no
+C1203,P05,60,no,no,171,stage 2 (160+),usual prescribing,no
+C1204,P13,39,no,no,151,stage 1 (140-159),single pill first,no
+C1205,P02,60,no,no,153,stage 1 (140-159),usual prescribing,no
+C1206,P10,54,yes,no,170,stage 2 (160+),usual prescribing,no
+C1207,P09,72,no,no,181,stage 2 (160+),single pill first,yes
+C1208,P18,42,no,yes,174,stage 2 (160+),usual prescribing,yes
+C1209,P18,50,no,no,151,stage 1 (140-159),usual prescribing,yes
+C1210,P06,60,yes,no,140,stage 1 (140-159),single pill first,no
+C1211,P18,67,no,no,156,stage 1 (140-159),usual prescribing,no
+C1212,P03,45,no,yes,151,stage 1 (140-159),usual prescribing,no
+C1213,P13,44,no,no,157,stage 1 (140-159),single pill first,no
+C1214,P16,69,no,yes,152,stage 1 (140-159),usual prescribing,no
+C1215,P15,74,no,no,142,stage 1 (140-159),single pill first,no
+C1216,P12,51,no,no,144,stage 1 (140-159),single pill first,no
+C1217,P08,73,no,no,155,stage 1 (140-159),usual prescribing,no
+C1218,P07,45,no,yes,162,stage 2 (160+),single pill first,yes
+C1219,P05,58,no,no,140,stage 1 (140-159),usual prescribing,no
+C1220,P04,35,no,no,151,stage 1 (140-159),usual prescribing,yes
+C1221,P08,57,no,no,144,stage 1 (140-159),usual prescribing,no
+C1222,P03,75,no,no,140,stage 1 (140-159),usual prescribing,no
+C1223,P08,58,no,no,161,stage 2 (160+),usual prescribing,no
+C1224,P13,49,no,no,164,stage 2 (160+),single pill first,no
+C1225,P08,54,yes,no,168,stage 2 (160+),usual prescribing,no
+C1226,P15,66,no,no,181,stage 2 (160+),single pill first,yes
+C1227,P09,74,no,no,143,stage 1 (140-159),single pill first,no
+C1228,P08,64,yes,no,175,stage 2 (160+),usual prescribing,yes
+C1229,P18,50,no,no,145,stage 1 (140-159),usual prescribing,no
+C1230,P04,52,no,no,156,stage 1 (140-159),usual prescribing,yes
+C1231,P12,65,no,no,158,stage 1 (140-159),single pill first,no
+C1232,P18,60,no,no,157,stage 1 (140-159),usual prescribing,no
+C1233,P16,61,yes,no,161,stage 2 (160+),usual prescribing,yes
+C1234,P15,71,no,yes,182,stage 2 (160+),single pill first,yes
+C1235,P03,55,yes,no,150,stage 1 (140-159),usual prescribing,yes
+C1236,P16,40,yes,no,166,stage 2 (160+),usual prescribing,no
+C1237,P18,55,no,no,144,stage 1 (140-159),usual prescribing,yes
+C1238,P08,57,no,yes,140,stage 1 (140-159),usual prescribing,no
+C1239,P15,76,no,no,179,stage 2 (160+),single pill first,yes
+C1240,P10,67,no,no,159,stage 1 (140-159),usual prescribing,no
+C1241,P07,59,no,no,167,stage 2 (160+),single pill first,no
+C1242,P10,71,no,yes,183,stage 2 (160+),usual prescribing,yes
+C1243,P15,50,no,no,148,stage 1 (140-159),single pill first,no
+C1244,P10,77,no,no,142,stage 1 (140-159),usual prescribing,no
+C1245,P07,53,no,no,147,stage 1 (140-159),single pill first,yes
+C1246,P17,50,no,no,151,stage 1 (140-159),single pill first,yes
+C1247,P15,62,yes,no,157,stage 1 (140-159),single pill first,no
+C1248,P09,64,no,no,153,stage 1 (140-159),single pill first,no
+C1249,P03,68,no,no,140,stage 1 (140-159),usual prescribing,no
+C1250,P09,66,no,no,163,stage 2 (160+),single pill first,yes
+C1251,P09,60,yes,no,179,stage 2 (160+),single pill first,yes
+C1252,P02,73,no,no,153,stage 1 (140-159),usual prescribing,no
+C1253,P05,64,no,yes,142,stage 1 (140-159),usual prescribing,yes
+C1254,P07,57,no,no,178,stage 2 (160+),single pill first,yes
+C1255,P01,62,no,no,153,stage 1 (140-159),single pill first,no
+C1256,P18,82,no,no,151,stage 1 (140-159),usual prescribing,no
+C1257,P10,39,no,no,151,stage 1 (140-159),usual prescribing,yes
+C1258,P16,65,yes,no,146,stage 1 (140-159),usual prescribing,no
+C1259,P11,64,no,no,151,stage 1 (140-159),usual prescribing,no
+C1260,P13,62,yes,no,141,stage 1 (140-159),single pill first,yes
+C1261,P06,71,no,no,173,stage 2 (160+),single pill first,yes
+C1262,P03,71,no,no,157,stage 1 (140-159),usual prescribing,no
+C1263,P03,51,no,no,177,stage 2 (160+),usual prescribing,yes
+C1264,P14,57,no,no,155,stage 1 (140-159),single pill first,yes
+C1265,P14,55,yes,no,156,stage 1 (140-159),single pill first,no
+C1266,P09,66,no,no,148,stage 1 (140-159),single pill first,no
+C1267,P08,53,no,no,174,stage 2 (160+),usual prescribing,yes
+C1268,P06,67,no,yes,154,stage 1 (140-159),single pill first,yes
+C1269,P03,67,no,no,155,stage 1 (140-159),usual prescribing,no
+C1270,P02,53,no,yes,149,stage 1 (140-159),usual prescribing,yes
+C1271,P16,54,no,no,165,stage 2 (160+),usual prescribing,yes
+C1272,P02,71,yes,no,152,stage 1 (140-159),usual prescribing,no
+C1273,P01,55,no,yes,152,stage 1 (140-159),single pill first,no
+C1274,P10,61,no,no,181,stage 2 (160+),usual prescribing,yes
+C1275,P07,67,no,no,172,stage 2 (160+),single pill first,no
+C1276,P10,51,no,no,146,stage 1 (140-159),usual prescribing,yes
+C1277,P09,81,no,no,140,stage 1 (140-159),single pill first,no
+C1278,P10,74,no,no,165,stage 2 (160+),usual prescribing,no
+C1279,P16,56,no,no,176,stage 2 (160+),usual prescribing,yes
+C1280,P05,59,no,no,141,stage 1 (140-159),usual prescribing,no
+C1281,P11,59,no,no,148,stage 1 (140-159),usual prescribing,yes
+C1282,P06,53,yes,no,151,stage 1 (140-159),single pill first,yes
+C1283,P11,61,no,no,149,stage 1 (140-159),usual prescribing,no
+C1284,P07,66,no,no,167,stage 2 (160+),single pill first,no
+C1285,P12,51,yes,no,141,stage 1 (140-159),single pill first,yes
+C1286,P18,77,no,no,158,stage 1 (140-159),usual prescribing,yes
+C1287,P07,58,no,no,176,stage 2 (160+),single pill first,yes
+C1288,P10,59,no,no,175,stage 2 (160+),usual prescribing,no
+C1289,P11,56,no,no,181,stage 2 (160+),usual prescribing,no
+C1290,P08,58,yes,no,156,stage 1 (140-159),usual prescribing,yes
+C1291,P10,58,no,yes,152,stage 1 (140-159),usual prescribing,yes
+C1292,P08,62,no,no,148,stage 1 (140-159),usual prescribing,no
+C1293,P08,61,no,no,148,stage 1 (140-159),usual prescribing,yes
+C1294,P05,74,no,no,150,stage 1 (140-159),usual prescribing,no
+C1295,P08,57,no,no,145,stage 1 (140-159),usual prescribing,yes
+C1296,P14,79,no,no,162,stage 2 (160+),single pill first,no
+C1297,P18,55,yes,no,185,stage 2 (160+),usual prescribing,yes
+C1298,P13,47,no,no,175,stage 2 (160+),single pill first,no
+C1299,P02,62,no,no,158,stage 1 (140-159),usual prescribing,no
+C1300,P03,64,no,no,147,stage 1 (140-159),usual prescribing,no
+C1301,P03,59,no,no,152,stage 1 (140-159),usual prescribing,yes
+C1302,P17,84,yes,no,146,stage 1 (140-159),single pill first,no
+C1303,P01,50,no,no,158,stage 1 (140-159),single pill first,no
+C1304,P01,44,no,yes,147,stage 1 (140-159),single pill first,no
+C1305,P03,64,no,no,150,stage 1 (140-159),usual prescribing,no
+C1306,P01,66,no,no,145,stage 1 (140-159),single pill first,yes
+C1307,P10,78,yes,no,142,stage 1 (140-159),usual prescribing,no
+C1308,P17,48,no,no,168,stage 2 (160+),single pill first,yes
+C1309,P09,61,yes,yes,168,stage 2 (160+),single pill first,no
+C1310,P18,63,yes,no,174,stage 2 (160+),usual prescribing,no
+C1311,P01,82,no,no,153,stage 1 (140-159),single pill first,no
+C1312,P11,76,no,no,172,stage 2 (160+),usual prescribing,no
+C1313,P02,62,no,no,152,stage 1 (140-159),usual prescribing,yes
+C1314,P07,55,no,yes,158,stage 1 (140-159),single pill first,yes
+C1315,P16,61,yes,no,148,stage 1 (140-159),usual prescribing,no
+C1316,P03,74,yes,no,175,stage 2 (160+),usual prescribing,no
+C1317,P16,43,no,no,158,stage 1 (140-159),usual prescribing,no
+C1318,P07,52,no,no,151,stage 1 (140-159),single pill first,no
+C1319,P07,63,no,yes,147,stage 1 (140-159),single pill first,no
+C1320,P17,72,yes,no,163,stage 2 (160+),single pill first,no
+C1321,P12,63,no,no,172,stage 2 (160+),single pill first,no
+C1322,P11,75,no,no,157,stage 1 (140-159),usual prescribing,no
+C1323,P09,53,no,no,166,stage 2 (160+),single pill first,yes
+C1324,P17,81,no,no,178,stage 2 (160+),single pill first,yes
+C1325,P14,55,no,no,162,stage 2 (160+),single pill first,no
+C1326,P18,86,no,no,164,stage 2 (160+),usual prescribing,yes
+C1327,P10,77,no,yes,150,stage 1 (140-159),usual prescribing,yes
+C1328,P04,49,yes,no,179,stage 2 (160+),usual prescribing,no
+C1329,P12,61,no,no,144,stage 1 (140-159),single pill first,no
+C1330,P08,69,no,yes,173,stage 2 (160+),usual prescribing,yes
+C1331,P14,60,no,no,170,stage 2 (160+),single pill first,no
+C1332,P07,57,no,no,184,stage 2 (160+),single pill first,yes
+C1333,P14,62,no,no,154,stage 1 (140-159),single pill first,no
+C1334,P09,47,no,yes,150,stage 1 (140-159),single pill first,no
+C1335,P03,62,no,no,158,stage 1 (140-159),usual prescribing,yes
+C1336,P05,73,yes,no,156,stage 1 (140-159),usual prescribing,no
+C1337,P07,52,no,no,149,stage 1 (140-159),single pill first,no
+C1338,P08,55,no,no,169,stage 2 (160+),usual prescribing,no
+C1339,P01,61,yes,no,158,stage 1 (140-159),single pill first,yes
+C1340,P02,59,no,no,152,stage 1 (140-159),usual prescribing,yes
+C1341,P05,65,no,no,143,stage 1 (140-159),usual prescribing,yes
+C1342,P07,69,no,no,153,stage 1 (140-159),single pill first,no
+C1343,P04,66,no,no,149,stage 1 (140-159),usual prescribing,no
+C1344,P09,62,no,no,147,stage 1 (140-159),single pill first,no
+C1345,P16,69,no,no,172,stage 2 (160+),usual prescribing,yes
+C1346,P04,54,no,no,143,stage 1 (140-159),usual prescribing,no
+C1347,P06,81,no,no,180,stage 2 (160+),single pill first,yes
+C1348,P01,66,no,no,159,stage 1 (140-159),single pill first,no
+C1349,P15,71,no,no,163,stage 2 (160+),single pill first,no
+C1350,P04,69,no,no,140,stage 1 (140-159),usual prescribing,yes
+C1351,P11,61,no,no,150,stage 1 (140-159),usual prescribing,no
+C1352,P16,64,no,no,161,stage 2 (160+),usual prescribing,no
+C1353,P05,64,yes,no,158,stage 1 (140-159),usual prescribing,yes
+C1354,P15,57,no,no,184,stage 2 (160+),single pill first,yes
+C1355,P06,54,no,yes,155,stage 1 (140-159),single pill first,no
+C1356,P07,54,no,no,148,stage 1 (140-159),single pill first,yes
+C1357,P09,56,yes,yes,144,stage 1 (140-159),single pill first,no
+C1358,P05,67,no,no,179,stage 2 (160+),usual prescribing,no
+C1359,P15,66,no,no,143,stage 1 (140-159),single pill first,no
+C1360,P02,74,yes,no,153,stage 1 (140-159),usual prescribing,yes
+C1361,P01,64,yes,yes,145,stage 1 (140-159),single pill first,yes
+C1362,P03,64,yes,no,155,stage 1 (140-159),usual prescribing,no
+C1363,P01,50,yes,yes,147,stage 1 (140-159),single pill first,no
+C1364,P01,55,no,no,150,stage 1 (140-159),single pill first,no
+C1365,P15,52,no,no,170,stage 2 (160+),single pill first,yes
+C1366,P11,57,no,no,151,stage 1 (140-159),usual prescribing,no
+C1367,P15,79,no,no,178,stage 2 (160+),single pill first,no
+C1368,P16,69,no,no,176,stage 2 (160+),usual prescribing,no
+C1369,P06,64,no,no,168,stage 2 (160+),single pill first,no
+C1370,P12,68,no,no,154,stage 1 (140-159),single pill first,no
+C1371,P10,52,no,no,160,stage 2 (160+),usual prescribing,no
+C1372,P04,64,no,no,152,stage 1 (140-159),usual prescribing,yes
+C1373,P07,77,no,no,160,stage 2 (160+),single pill first,yes
+C1374,P07,69,yes,no,177,stage 2 (160+),single pill first,no
+C1375,P18,58,yes,no,168,stage 2 (160+),usual prescribing,no
+C1376,P14,70,no,no,153,stage 1 (140-159),single pill first,no
+C1377,P13,71,no,no,149,stage 1 (140-159),single pill first,no
+C1378,P14,56,no,no,171,stage 2 (160+),single pill first,yes
+C1379,P16,44,no,yes,146,stage 1 (140-159),usual prescribing,no
+C1380,P03,59,yes,yes,152,stage 1 (140-159),usual prescribing,yes
+C1381,P17,69,yes,no,159,stage 1 (140-159),single pill first,no
+C1382,P16,53,no,no,152,stage 1 (140-159),usual prescribing,no
+C1383,P09,64,no,no,146,stage 1 (140-159),single pill first,no
+C1384,P02,60,no,no,145,stage 1 (140-159),usual prescribing,no
+C1385,P10,73,yes,no,182,stage 2 (160+),usual prescribing,yes
+C1386,P08,61,no,no,184,stage 2 (160+),usual prescribing,yes
+C1387,P17,44,no,no,144,stage 1 (140-159),single pill first,no
+C1388,P09,56,yes,no,150,stage 1 (140-159),single pill first,no
+C1389,P05,54,no,no,140,stage 1 (140-159),usual prescribing,no
+C1390,P15,64,no,no,158,stage 1 (140-159),single pill first,no
+C1391,P15,63,no,no,143,stage 1 (140-159),single pill first,yes
+C1392,P07,64,no,no,169,stage 2 (160+),single pill first,no
+C1393,P02,68,yes,no,140,stage 1 (140-159),usual prescribing,no
+C1394,P12,66,no,no,181,stage 2 (160+),single pill first,no
+C1395,P10,54,no,yes,149,stage 1 (140-159),usual prescribing,yes
+C1396,P10,70,no,no,172,stage 2 (160+),usual prescribing,yes
+C1397,P06,85,no,no,174,stage 2 (160+),single pill first,yes
+C1398,P07,88,no,no,152,stage 1 (140-159),single pill first,yes
+C1399,P07,58,no,no,184,stage 2 (160+),single pill first,no
+C1400,P09,67,no,no,150,stage 1 (140-159),single pill first,no
+C1401,P18,73,no,no,140,stage 1 (140-159),usual prescribing,no
+C1402,P13,71,no,no,163,stage 2 (160+),single pill first,yes
+C1403,P09,50,no,yes,155,stage 1 (140-159),single pill first,no
+C1404,P04,50,yes,no,153,stage 1 (140-159),usual prescribing,no
+C1405,P15,71,no,no,140,stage 1 (140-159),single pill first,no
+C1406,P07,69,yes,no,143,stage 1 (140-159),single pill first,no
+C1407,P16,48,no,no,167,stage 2 (160+),usual prescribing,yes
+C1408,P18,72,no,no,147,stage 1 (140-159),usual prescribing,no
+C1409,P16,60,no,no,143,stage 1 (140-159),usual prescribing,no
+C1410,P14,67,no,yes,162,stage 2 (160+),single pill first,no
+C1411,P02,58,no,no,145,stage 1 (140-159),usual prescribing,no
+C1412,P05,63,no,no,151,stage 1 (140-159),usual prescribing,yes
+C1413,P06,60,yes,no,172,stage 2 (160+),single pill first,yes
+C1414,P07,60,yes,no,140,stage 1 (140-159),single pill first,no
+C1415,P05,67,yes,no,145,stage 1 (140-159),usual prescribing,no
+C1416,P03,78,no,no,145,stage 1 (140-159),usual prescribing,no
+C1417,P09,58,no,no,147,stage 1 (140-159),single pill first,no
+C1418,P14,69,no,no,176,stage 2 (160+),single pill first,no
+C1419,P05,62,no,no,149,stage 1 (140-159),usual prescribing,yes
+C1420,P06,57,no,no,170,stage 2 (160+),single pill first,no
+C1421,P09,72,no,no,169,stage 2 (160+),single pill first,no
+C1422,P17,58,no,no,180,stage 2 (160+),single pill first,yes
+C1423,P05,49,yes,no,171,stage 2 (160+),usual prescribing,no
+C1424,P02,56,no,yes,141,stage 1 (140-159),usual prescribing,yes
+C1425,P06,60,yes,yes,167,stage 2 (160+),single pill first,no
+C1426,P14,69,no,no,145,stage 1 (140-159),single pill first,no
+C1427,P11,64,yes,no,184,stage 2 (160+),usual prescribing,yes
+C1428,P12,62,no,no,148,stage 1 (140-159),single pill first,no
+C1429,P11,47,no,no,165,stage 2 (160+),usual prescribing,no
+C1430,P03,59,yes,no,141,stage 1 (140-159),usual prescribing,yes
+C1431,P05,42,no,no,146,stage 1 (140-159),usual prescribing,no
+C1432,P07,56,no,no,143,stage 1 (140-159),single pill first,yes
+C1433,P18,51,no,no,182,stage 2 (160+),usual prescribing,yes
+C1434,P14,56,yes,no,145,stage 1 (140-159),single pill first,yes
+C1435,P01,71,yes,no,145,stage 1 (140-159),single pill first,yes
+C1436,P05,64,no,no,174,stage 2 (160+),usual prescribing,yes
+C1437,P16,66,no,no,173,stage 2 (160+),usual prescribing,no
+C1438,P05,52,yes,no,144,stage 1 (140-159),usual prescribing,yes
+C1439,P07,55,no,no,148,stage 1 (140-159),single pill first,no
+C1440,P10,62,no,no,149,stage 1 (140-159),usual prescribing,no
+C1441,P07,65,no,no,175,stage 2 (160+),single pill first,no
+C1442,P12,75,no,no,170,stage 2 (160+),single pill first,yes
+C1443,P18,71,no,no,155,stage 1 (140-159),usual prescribing,no
+C1444,P07,57,no,no,144,stage 1 (140-159),single pill first,no
+C1445,P02,62,no,yes,157,stage 1 (140-159),usual prescribing,yes
+C1446,P02,71,no,no,142,stage 1 (140-159),usual prescribing,no
+C1447,P11,67,no,no,182,stage 2 (160+),usual prescribing,no
+C1448,P01,69,yes,no,164,stage 2 (160+),single pill first,no
+C1449,P09,61,yes,no,147,stage 1 (140-159),single pill first,yes
+C1450,P16,52,no,no,185,stage 2 (160+),usual prescribing,yes
+C1451,P16,57,no,no,178,stage 2 (160+),usual prescribing,no
+C1452,P13,55,no,no,158,stage 1 (140-159),single pill first,no
+C1453,P10,67,no,yes,156,stage 1 (140-159),usual prescribing,no
+C1454,P18,49,no,no,153,stage 1 (140-159),usual prescribing,yes
+C1455,P14,45,no,no,149,stage 1 (140-159),single pill first,no
+C1456,P08,69,no,no,157,stage 1 (140-159),usual prescribing,yes
+C1457,P06,60,no,no,145,stage 1 (140-159),single pill first,no
+C1458,P06,62,no,no,178,stage 2 (160+),single pill first,no
+C1459,P05,81,no,no,147,stage 1 (140-159),usual prescribing,yes
+C1460,P01,61,no,yes,156,stage 1 (140-159),single pill first,yes
+C1461,P14,40,yes,no,145,stage 1 (140-159),single pill first,yes
+C1462,P09,52,no,no,141,stage 1 (140-159),single pill first,no
+C1463,P17,38,no,no,173,stage 2 (160+),single pill first,yes
+C1464,P12,57,no,no,159,stage 1 (140-159),single pill first,yes
+C1465,P02,50,no,no,158,stage 1 (140-159),usual prescribing,no
+C1466,P14,87,no,no,174,stage 2 (160+),single pill first,no
+C1467,P15,77,yes,no,157,stage 1 (140-159),single pill first,yes
+C1468,P07,58,yes,no,145,stage 1 (140-159),single pill first,yes
+C1469,P03,69,no,no,143,stage 1 (140-159),usual prescribing,no
+C1470,P12,75,no,no,157,stage 1 (140-159),single pill first,no
+C1471,P03,73,no,no,158,stage 1 (140-159),usual prescribing,yes
+C1472,P04,64,no,no,157,stage 1 (140-159),usual prescribing,yes
+C1473,P08,42,no,yes,152,stage 1 (140-159),usual prescribing,no
+C1474,P12,46,yes,no,153,stage 1 (140-159),single pill first,yes
+C1475,P04,64,yes,no,154,stage 1 (140-159),usual prescribing,yes
+C1476,P03,63,no,no,148,stage 1 (140-159),usual prescribing,yes
+C1477,P03,52,no,yes,146,stage 1 (140-159),usual prescribing,no
+C1478,P09,71,yes,no,167,stage 2 (160+),single pill first,no
+C1479,P15,48,no,no,144,stage 1 (140-159),single pill first,no
+C1480,P12,58,yes,no,154,stage 1 (140-159),single pill first,yes
+C1481,P03,86,no,no,156,stage 1 (140-159),usual prescribing,no
+C1482,P14,54,no,no,163,stage 2 (160+),single pill first,yes
+C1483,P06,64,no,no,154,stage 1 (140-159),single pill first,yes
+C1484,P06,58,no,yes,179,stage 2 (160+),single pill first,yes
+C1485,P08,51,no,no,164,stage 2 (160+),usual prescribing,yes
+C1486,P11,55,no,no,157,stage 1 (140-159),usual prescribing,no
+C1487,P16,48,no,no,167,stage 2 (160+),usual prescribing,yes
+C1488,P13,66,no,no,142,stage 1 (140-159),single pill first,no
+C1489,P18,80,no,yes,173,stage 2 (160+),usual prescribing,no
+C1490,P02,73,no,yes,149,stage 1 (140-159),usual prescribing,yes
+C1491,P11,73,no,no,142,stage 1 (140-159),usual prescribing,no
+C1492,P18,46,no,no,146,stage 1 (140-159),usual prescribing,no
+C1493,P17,49,yes,yes,159,stage 1 (140-159),single pill first,no
+C1494,P14,77,yes,no,162,stage 2 (160+),single pill first,no
+C1495,P17,77,no,no,142,stage 1 (140-159),single pill first,no
+C1496,P03,47,no,no,141,stage 1 (140-159),usual prescribing,no
+C1497,P18,60,no,no,146,stage 1 (140-159),usual prescribing,no
+C1498,P02,75,no,yes,176,stage 2 (160+),usual prescribing,no
+C1499,P01,71,yes,no,166,stage 2 (160+),single pill first,no
+C1500,P03,58,yes,yes,171,stage 2 (160+),usual prescribing,no
+C1501,P05,48,no,no,147,stage 1 (140-159),usual prescribing,no
+C1502,P17,40,no,no,157,stage 1 (140-159),single pill first,no
+C1503,P11,35,no,no,174,stage 2 (160+),usual prescribing,yes
+C1504,P05,68,yes,no,148,stage 1 (140-159),usual prescribing,no
+C1505,P09,46,no,no,145,stage 1 (140-159),single pill first,no
+C1506,P09,51,no,no,183,stage 2 (160+),single pill first,no
+C1507,P09,47,yes,no,179,stage 2 (160+),single pill first,yes
+C1508,P05,80,yes,yes,144,stage 1 (140-159),usual prescribing,yes
+C1509,P07,74,no,no,152,stage 1 (140-159),single pill first,yes
+C1510,P03,50,no,yes,167,stage 2 (160+),usual prescribing,no
+C1511,P12,43,no,no,154,stage 1 (140-159),single pill first,no
+C1512,P14,77,yes,no,152,stage 1 (140-159),single pill first,yes
+C1513,P05,71,yes,no,151,stage 1 (140-159),usual prescribing,yes
+C1514,P08,60,no,yes,150,stage 1 (140-159),usual prescribing,no
+C1515,P16,54,no,no,149,stage 1 (140-159),usual prescribing,yes
+C1516,P05,58,no,no,142,stage 1 (140-159),usual prescribing,no
+C1517,P15,75,no,no,158,stage 1 (140-159),single pill first,no
+C1518,P01,47,yes,no,151,stage 1 (140-159),single pill first,no
+C1519,P02,87,no,no,174,stage 2 (160+),usual prescribing,no
+C1520,P11,61,no,yes,175,stage 2 (160+),usual prescribing,no
+C1521,P05,47,no,no,159,stage 1 (140-159),usual prescribing,no
+C1522,P18,75,yes,no,141,stage 1 (140-159),usual prescribing,no
+C1523,P16,61,yes,no,155,stage 1 (140-159),usual prescribing,yes
+C1524,P02,49,no,no,171,stage 2 (160+),usual prescribing,no
+C1525,P08,75,no,no,141,stage 1 (140-159),usual prescribing,no
+C1526,P12,58,no,no,182,stage 2 (160+),single pill first,no
+C1527,P11,60,no,no,149,stage 1 (140-159),usual prescribing,yes
+C1528,P06,68,no,yes,140,stage 1 (140-159),single pill first,yes
+C1529,P11,71,yes,no,155,stage 1 (140-159),usual prescribing,yes
+C1530,P15,66,no,no,174,stage 2 (160+),single pill first,no
+C1531,P14,48,yes,no,157,stage 1 (140-159),single pill first,no
+C1532,P02,39,no,yes,149,stage 1 (140-159),usual prescribing,no
+C1533,P11,63,no,no,154,stage 1 (140-159),usual prescribing,yes
+C1534,P05,41,no,no,154,stage 1 (140-159),usual prescribing,no
+C1535,P06,76,no,no,152,stage 1 (140-159),single pill first,no
+C1536,P14,67,no,no,185,stage 2 (160+),single pill first,no
+C1537,P15,67,no,no,155,stage 1 (140-159),single pill first,yes
+C1538,P18,66,no,no,169,stage 2 (160+),usual prescribing,no
+C1539,P15,46,no,yes,147,stage 1 (140-159),single pill first,no
+C1540,P04,60,no,no,160,stage 2 (160+),usual prescribing,yes
+C1541,P15,85,no,no,141,stage 1 (140-159),single pill first,no
+C1542,P09,66,no,no,168,stage 2 (160+),single pill first,yes
+C1543,P15,63,yes,no,146,stage 1 (140-159),single pill first,yes
+C1544,P07,69,no,yes,146,stage 1 (140-159),single pill first,no
+C1545,P06,61,no,no,166,stage 2 (160+),single pill first,no
+C1546,P16,53,yes,no,149,stage 1 (140-159),usual prescribing,yes
+C1547,P13,88,yes,no,170,stage 2 (160+),single pill first,yes
+C1548,P18,36,no,no,144,stage 1 (140-159),usual prescribing,no
+C1549,P02,54,no,no,140,stage 1 (140-159),usual prescribing,no
+C1550,P12,65,no,yes,161,stage 2 (160+),single pill first,yes
+C1551,P11,60,no,no,157,stage 1 (140-159),usual prescribing,yes
+C1552,P04,58,no,yes,140,stage 1 (140-159),usual prescribing,yes
+C1553,P01,56,no,no,147,stage 1 (140-159),single pill first,no
+C1554,P01,50,no,no,148,stage 1 (140-159),single pill first,no
+C1555,P12,73,no,no,147,stage 1 (140-159),single pill first,no
+C1556,P06,43,no,no,146,stage 1 (140-159),single pill first,no
+C1557,P14,67,no,no,180,stage 2 (160+),single pill first,no
+C1558,P08,53,no,no,152,stage 1 (140-159),usual prescribing,no
+C1559,P18,75,yes,no,182,stage 2 (160+),usual prescribing,yes
+C1560,P12,70,no,yes,148,stage 1 (140-159),single pill first,yes
+C1561,P10,73,yes,no,148,stage 1 (140-159),usual prescribing,yes
+C1562,P01,59,yes,no,141,stage 1 (140-159),single pill first,no
+C1563,P18,62,no,no,145,stage 1 (140-159),usual prescribing,no
+C1564,P01,64,yes,no,159,stage 1 (140-159),single pill first,no
+C1565,P10,35,no,no,148,stage 1 (140-159),usual prescribing,yes
+C1566,P06,59,yes,no,142,stage 1 (140-159),single pill first,yes
+C1567,P10,59,no,no,176,stage 2 (160+),usual prescribing,yes
+C1568,P11,72,no,no,154,stage 1 (140-159),usual prescribing,no
+C1569,P04,69,yes,no,153,stage 1 (140-159),usual prescribing,no
+C1570,P06,74,no,no,159,stage 1 (140-159),single pill first,no
+C1571,P14,62,no,no,151,stage 1 (140-159),single pill first,no
+C1572,P09,81,no,yes,148,stage 1 (140-159),single pill first,no
+C1573,P01,72,no,no,155,stage 1 (140-159),single pill first,no
+C1574,P05,48,yes,yes,163,stage 2 (160+),usual prescribing,yes
+C1575,P15,85,no,no,162,stage 2 (160+),single pill first,yes
+C1576,P16,49,yes,no,185,stage 2 (160+),usual prescribing,no
+C1577,P18,49,no,no,154,stage 1 (140-159),usual prescribing,yes
+C1578,P08,60,yes,no,142,stage 1 (140-159),usual prescribing,no
+C1579,P04,56,no,no,140,stage 1 (140-159),usual prescribing,no
+C1580,P09,62,no,no,148,stage 1 (140-159),single pill first,no
+C1581,P06,46,no,no,150,stage 1 (140-159),single pill first,no
+C1582,P14,64,no,no,152,stage 1 (140-159),single pill first,no
+C1583,P07,74,no,yes,158,stage 1 (140-159),single pill first,no
+C1584,P15,68,no,no,162,stage 2 (160+),single pill first,no
+C1585,P08,58,yes,no,163,stage 2 (160+),usual prescribing,no
+C1586,P03,48,no,no,149,stage 1 (140-159),usual prescribing,yes
+C1587,P12,49,yes,no,173,stage 2 (160+),single pill first,yes
+C1588,P09,50,yes,yes,171,stage 2 (160+),single pill first,yes
+C1589,P07,44,yes,no,158,stage 1 (140-159),single pill first,no
+C1590,P04,55,no,no,158,stage 1 (140-159),usual prescribing,no
+C1591,P10,60,yes,no,166,stage 2 (160+),usual prescribing,no
+C1592,P07,76,no,no,154,stage 1 (140-159),single pill first,no
+C1593,P17,74,no,no,144,stage 1 (140-159),single pill first,no
+C1594,P14,59,no,no,157,stage 1 (140-159),single pill first,no
+C1595,P08,66,no,no,158,stage 1 (140-159),usual prescribing,no
+C1596,P18,60,yes,no,166,stage 2 (160+),usual prescribing,yes
+C1597,P04,61,no,no,154,stage 1 (140-159),usual prescribing,yes
+C1598,P05,66,no,no,177,stage 2 (160+),usual prescribing,no
+C1599,P11,80,no,no,162,stage 2 (160+),usual prescribing,yes
+C1600,P01,53,no,yes,143,stage 1 (140-159),single pill first,yes
+C1601,P13,81,no,no,154,stage 1 (140-159),single pill first,no
+C1602,P02,39,yes,no,181,stage 2 (160+),usual prescribing,yes
+C1603,P02,37,no,no,185,stage 2 (160+),usual prescribing,no
+C1604,P08,46,no,no,152,stage 1 (140-159),usual prescribing,no
+C1605,P04,65,no,no,147,stage 1 (140-159),usual prescribing,no
+C1606,P04,56,yes,no,140,stage 1 (140-159),usual prescribing,yes
+C1607,P02,74,no,yes,158,stage 1 (140-159),usual prescribing,no
+C1608,P02,69,no,no,150,stage 1 (140-159),usual prescribing,no
+C1609,P03,53,yes,no,141,stage 1 (140-159),usual prescribing,no
+C1610,P16,64,yes,no,175,stage 2 (160+),usual prescribing,yes
+C1611,P16,64,yes,no,142,stage 1 (140-159),usual prescribing,no
+C1612,P03,64,no,no,152,stage 1 (140-159),usual prescribing,no
+C1613,P02,63,no,no,149,stage 1 (140-159),usual prescribing,yes
+C1614,P17,52,yes,yes,174,stage 2 (160+),single pill first,yes
+C1615,P15,56,no,no,170,stage 2 (160+),single pill first,no
+C1616,P07,59,no,yes,172,stage 2 (160+),single pill first,no
+C1617,P04,63,no,no,165,stage 2 (160+),usual prescribing,no
+C1618,P13,77,no,no,155,stage 1 (140-159),single pill first,no
+C1619,P13,47,no,yes,144,stage 1 (140-159),single pill first,no
+C1620,P03,70,no,no,147,stage 1 (140-159),usual prescribing,no
+C1621,P05,67,no,no,159,stage 1 (140-159),usual prescribing,yes
+C1622,P16,60,no,no,184,stage 2 (160+),usual prescribing,yes
+C1623,P05,71,yes,no,145,stage 1 (140-159),usual prescribing,no
+C1624,P03,50,no,no,154,stage 1 (140-159),usual prescribing,no
+C1625,P05,52,no,no,157,stage 1 (140-159),usual prescribing,no
+C1626,P09,40,no,no,155,stage 1 (140-159),single pill first,yes
+C1627,P02,80,yes,no,172,stage 2 (160+),usual prescribing,no
+C1628,P14,61,no,no,174,stage 2 (160+),single pill first,no
+C1629,P03,41,yes,no,170,stage 2 (160+),usual prescribing,no
+C1630,P08,56,yes,yes,154,stage 1 (140-159),usual prescribing,no
+C1631,P16,54,no,no,179,stage 2 (160+),usual prescribing,yes
+C1632,P10,68,no,no,165,stage 2 (160+),usual prescribing,yes
+C1633,P09,51,no,no,166,stage 2 (160+),single pill first,no
+C1634,P01,61,no,no,151,stage 1 (140-159),single pill first,no
+C1635,P06,66,no,no,157,stage 1 (140-159),single pill first,no
+C1636,P15,71,yes,no,153,stage 1 (140-159),single pill first,yes
+C1637,P15,52,no,no,161,stage 2 (160+),single pill first,yes
+C1638,P02,54,yes,no,144,stage 1 (140-159),usual prescribing,no
+C1639,P09,63,no,no,164,stage 2 (160+),single pill first,no
+C1640,P04,74,no,no,149,stage 1 (140-159),usual prescribing,yes
+C1641,P07,53,no,no,172,stage 2 (160+),single pill first,yes
+C1642,P11,66,no,no,178,stage 2 (160+),usual prescribing,yes
+C1643,P05,64,no,no,155,stage 1 (140-159),usual prescribing,no
+C1644,P14,70,no,no,161,stage 2 (160+),single pill first,no
+C1645,P09,49,no,no,183,stage 2 (160+),single pill first,no
+C1646,P14,57,no,no,154,stage 1 (140-159),single pill first,yes
+C1647,P09,59,no,no,184,stage 2 (160+),single pill first,no
+C1648,P06,61,no,no,159,stage 1 (140-159),single pill first,no
+C1649,P11,44,no,no,144,stage 1 (140-159),usual prescribing,yes
+C1650,P17,68,yes,no,164,stage 2 (160+),single pill first,no
+C1651,P18,45,no,no,171,stage 2 (160+),usual prescribing,yes
+C1652,P11,40,no,yes,172,stage 2 (160+),usual prescribing,no
+C1653,P09,81,yes,no,145,stage 1 (140-159),single pill first,no
+C1654,P05,56,no,no,159,stage 1 (140-159),usual prescribing,yes
+C1655,P01,50,yes,no,146,stage 1 (140-159),single pill first,no
+C1656,P07,58,no,no,144,stage 1 (140-159),single pill first,no
+C1657,P13,72,no,no,143,stage 1 (140-159),single pill first,no
+C1658,P18,56,yes,no,183,stage 2 (160+),usual prescribing,no
+C1659,P05,70,yes,yes,159,stage 1 (140-159),usual prescribing,yes
+C1660,P16,81,yes,no,181,stage 2 (160+),usual prescribing,no
+C1661,P18,52,no,no,140,stage 1 (140-159),usual prescribing,no
+C1662,P12,52,no,yes,170,stage 2 (160+),single pill first,no
+C1663,P15,59,no,no,157,stage 1 (140-159),single pill first,no
+C1664,P06,85,no,no,172,stage 2 (160+),single pill first,yes
+C1665,P05,47,no,no,176,stage 2 (160+),usual prescribing,no
+C1666,P12,79,yes,no,180,stage 2 (160+),single pill first,no
+C1667,P14,65,no,no,146,stage 1 (140-159),single pill first,no
+C1668,P03,67,no,no,151,stage 1 (140-159),usual prescribing,yes
+C1669,P13,64,yes,no,150,stage 1 (140-159),single pill first,yes
+C1670,P08,58,yes,no,142,stage 1 (140-159),usual prescribing,no
+C1671,P11,79,no,no,143,stage 1 (140-159),usual prescribing,no
+C1672,P15,49,yes,no,150,stage 1 (140-159),single pill first,no
+C1673,P03,58,no,no,145,stage 1 (140-159),usual prescribing,yes
+C1674,P16,52,yes,yes,178,stage 2 (160+),usual prescribing,no
+C1675,P06,53,no,yes,155,stage 1 (140-159),single pill first,no
+C1676,P09,70,no,no,184,stage 2 (160+),single pill first,yes
+C1677,P08,52,yes,yes,164,stage 2 (160+),usual prescribing,yes
+C1678,P04,49,no,yes,159,stage 1 (140-159),usual prescribing,no
+C1679,P14,62,no,no,161,stage 2 (160+),single pill first,no
+C1680,P09,45,yes,yes,158,stage 1 (140-159),single pill first,no
+C1681,P16,55,no,no,163,stage 2 (160+),usual prescribing,yes
+C1682,P14,51,no,no,173,stage 2 (160+),single pill first,no
+C1683,P13,60,no,no,174,stage 2 (160+),single pill first,yes
+C1684,P16,50,no,no,146,stage 1 (140-159),usual prescribing,no
+C1685,P10,42,no,no,151,stage 1 (140-159),usual prescribing,no
+C1686,P09,35,no,no,140,stage 1 (140-159),single pill first,no
+C1687,P01,60,no,no,172,stage 2 (160+),single pill first,yes
+C1688,P14,55,no,no,141,stage 1 (140-159),single pill first,yes
+C1689,P16,76,no,no,156,stage 1 (140-159),usual prescribing,yes
+C1690,P03,55,yes,no,141,stage 1 (140-159),usual prescribing,no
+C1691,P07,66,yes,no,156,stage 1 (140-159),single pill first,no
+C1692,P08,66,no,no,168,stage 2 (160+),usual prescribing,yes
+C1693,P01,53,no,no,143,stage 1 (140-159),single pill first,no
+C1694,P02,79,no,no,148,stage 1 (140-159),usual prescribing,no
+C1695,P09,47,no,no,174,stage 2 (160+),single pill first,no
+C1696,P02,55,yes,no,149,stage 1 (140-159),usual prescribing,yes
+C1697,P14,60,no,no,179,stage 2 (160+),single pill first,yes
+C1698,P14,45,no,no,153,stage 1 (140-159),single pill first,no
+C1699,P17,74,no,no,153,stage 1 (140-159),single pill first,no
+C1700,P10,58,no,no,156,stage 1 (140-159),usual prescribing,no
+C1701,P07,51,yes,no,166,stage 2 (160+),single pill first,yes
+C1702,P10,50,yes,no,174,stage 2 (160+),usual prescribing,yes
+C1703,P18,71,no,yes,156,stage 1 (140-159),usual prescribing,no
+C1704,P09,64,no,no,180,stage 2 (160+),single pill first,no
+C1705,P16,58,no,no,166,stage 2 (160+),usual prescribing,yes
+C1706,P12,68,no,yes,148,stage 1 (140-159),single pill first,no
+C1707,P14,54,yes,no,147,stage 1 (140-159),single pill first,no
+C1708,P11,66,no,no,166,stage 2 (160+),usual prescribing,yes
+C1709,P07,65,no,no,159,stage 1 (140-159),single pill first,no
+C1710,P14,42,yes,no,167,stage 2 (160+),single pill first,yes
+C1711,P02,69,no,no,183,stage 2 (160+),usual prescribing,no
+C1712,P04,51,yes,no,168,stage 2 (160+),usual prescribing,no
+C1713,P18,60,no,no,152,stage 1 (140-159),usual prescribing,yes
+C1714,P13,72,no,no,166,stage 2 (160+),single pill first,no
+C1715,P11,74,yes,no,160,stage 2 (160+),usual prescribing,yes
+C1716,P14,61,no,no,177,stage 2 (160+),single pill first,no
+C1717,P06,63,yes,yes,140,stage 1 (140-159),single pill first,no
+C1718,P17,57,yes,no,145,stage 1 (140-159),single pill first,no
+C1719,P17,52,no,yes,169,stage 2 (160+),single pill first,no
+C1720,P03,40,no,no,140,stage 1 (140-159),usual prescribing,yes
+C1721,P05,64,yes,yes,159,stage 1 (140-159),usual prescribing,no
+C1722,P16,55,no,no,142,stage 1 (140-159),usual prescribing,yes
+C1723,P12,45,yes,no,145,stage 1 (140-159),single pill first,yes
+C1724,P15,71,no,no,154,stage 1 (140-159),single pill first,yes
+C1725,P01,81,no,no,168,stage 2 (160+),single pill first,yes
+C1726,P15,72,no,no,144,stage 1 (140-159),single pill first,no
+C1727,P07,49,yes,no,142,stage 1 (140-159),single pill first,no
+C1728,P02,55,no,no,142,stage 1 (140-159),usual prescribing,yes
+C1729,P13,51,no,no,143,stage 1 (140-159),single pill first,yes
+C1730,P04,70,no,no,146,stage 1 (140-159),usual prescribing,no
+C1731,P10,61,no,no,172,stage 2 (160+),usual prescribing,yes
+C1732,P11,64,no,no,176,stage 2 (160+),usual prescribing,yes
+C1733,P02,71,yes,yes,166,stage 2 (160+),usual prescribing,yes
+C1734,P02,63,no,no,141,stage 1 (140-159),usual prescribing,no
+C1735,P01,70,no,no,148,stage 1 (140-159),single pill first,no
+C1736,P07,68,no,no,155,stage 1 (140-159),single pill first,no
+C1737,P16,72,no,no,154,stage 1 (140-159),usual prescribing,yes
+C1738,P14,58,no,no,160,stage 2 (160+),single pill first,yes
+C1739,P10,60,no,yes,168,stage 2 (160+),usual prescribing,yes
+C1740,P16,56,yes,no,175,stage 2 (160+),usual prescribing,yes
+C1741,P07,65,no,no,143,stage 1 (140-159),single pill first,no
+C1742,P09,57,no,no,156,stage 1 (140-159),single pill first,no
+C1743,P09,88,no,no,160,stage 2 (160+),single pill first,yes
+C1744,P10,52,yes,no,140,stage 1 (140-159),usual prescribing,no
+C1745,P03,67,yes,no,142,stage 1 (140-159),usual prescribing,no
+C1746,P14,71,no,yes,156,stage 1 (140-159),single pill first,no
+C1747,P14,61,no,no,143,stage 1 (140-159),single pill first,no
+C1748,P06,52,no,yes,145,stage 1 (140-159),single pill first,no
+C1749,P17,74,no,yes,142,stage 1 (140-159),single pill first,yes
+C1750,P13,54,no,no,157,stage 1 (140-159),single pill first,yes
+C1751,P14,55,no,no,153,stage 1 (140-159),single pill first,no
+C1752,P01,62,no,no,145,stage 1 (140-159),single pill first,no
+C1753,P06,62,no,no,173,stage 2 (160+),single pill first,no
+C1754,P07,62,yes,no,142,stage 1 (140-159),single pill first,no
+C1755,P12,63,no,no,184,stage 2 (160+),single pill first,no
+C1756,P03,65,yes,no,153,stage 1 (140-159),usual prescribing,yes
+C1757,P08,49,no,no,158,stage 1 (140-159),usual prescribing,no
+C1758,P13,72,yes,no,173,stage 2 (160+),single pill first,no
+C1759,P08,36,yes,no,181,stage 2 (160+),usual prescribing,yes
+C1760,P13,66,yes,yes,152,stage 1 (140-159),single pill first,yes
+C1761,P08,35,no,no,161,stage 2 (160+),usual prescribing,yes
+C1762,P17,62,yes,no,171,stage 2 (160+),single pill first,no
+C1763,P17,53,no,no,151,stage 1 (140-159),single pill first,no
+C1764,P14,70,no,yes,179,stage 2 (160+),single pill first,yes
+C1765,P18,60,no,no,171,stage 2 (160+),usual prescribing,no
+C1766,P06,48,no,no,173,stage 2 (160+),single pill first,yes
+C1767,P11,62,yes,no,145,stage 1 (140-159),usual prescribing,no
+C1768,P08,73,yes,no,169,stage 2 (160+),usual prescribing,no
+C1769,P15,61,no,no,154,stage 1 (140-159),single pill first,no
+C1770,P07,72,yes,no,140,stage 1 (140-159),single pill first,no
+C1771,P15,45,no,no,143,stage 1 (140-159),single pill first,no
+C1772,P14,53,yes,no,150,stage 1 (140-159),single pill first,no
+C1773,P09,71,yes,no,169,stage 2 (160+),single pill first,no
+C1774,P04,50,no,no,145,stage 1 (140-159),usual prescribing,no
+C1775,P14,61,yes,no,169,stage 2 (160+),single pill first,no
+C1776,P04,53,no,no,143,stage 1 (140-159),usual prescribing,no
+C1777,P18,52,yes,yes,140,stage 1 (140-159),usual prescribing,no
+C1778,P04,72,no,yes,159,stage 1 (140-159),usual prescribing,no
+C1779,P03,63,no,no,148,stage 1 (140-159),usual prescribing,no
+C1780,P13,69,no,yes,166,stage 2 (160+),single pill first,no
+C1781,P08,60,no,no,166,stage 2 (160+),usual prescribing,yes
+C1782,P09,82,no,yes,144,stage 1 (140-159),single pill first,no
+C1783,P01,39,yes,yes,141,stage 1 (140-159),single pill first,yes
+C1784,P07,56,no,yes,155,stage 1 (140-159),single pill first,no
+C1785,P11,48,no,yes,158,stage 1 (140-159),usual prescribing,no
+C1786,P02,72,no,no,154,stage 1 (140-159),usual prescribing,no
+C1787,P11,62,no,no,157,stage 1 (140-159),usual prescribing,no
+C1788,P12,78,no,no,153,stage 1 (140-159),single pill first,no
+C1789,P07,58,no,no,148,stage 1 (140-159),single pill first,yes
+C1790,P07,56,yes,no,153,stage 1 (140-159),single pill first,no
+C1791,P09,59,no,no,179,stage 2 (160+),single pill first,no
+C1792,P17,82,no,no,178,stage 2 (160+),single pill first,no
+C1793,P15,40,no,yes,171,stage 2 (160+),single pill first,no
+C1794,P06,57,no,no,150,stage 1 (140-159),single pill first,no
+C1795,P15,48,no,no,170,stage 2 (160+),single pill first,no
+C1796,P05,56,no,no,143,stage 1 (140-159),usual prescribing,no
+C1797,P04,43,yes,no,156,stage 1 (140-159),usual prescribing,no
+C1798,P11,52,no,no,146,stage 1 (140-159),usual prescribing,yes
+C1799,P06,48,no,no,149,stage 1 (140-159),single pill first,yes
+C1800,P15,42,yes,no,163,stage 2 (160+),single pill first,yes

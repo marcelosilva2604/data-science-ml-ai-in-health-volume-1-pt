@@ -13,6 +13,7 @@ Todos os dados são **sintéticos**; nenhum paciente real aparece. Cada capítul
 
 | Capítulo | Caso | Caderno | Página |
 |---|---|---|---|
+| 10. Delineamentos experimentais e quase-experimentais em saúde | Ambulatório de hipertensão: pílula única ou comprimidos separados | `chapters/ch10/ch10_delineamentos_experimentais_pt.ipynb` | `docs/ch10_pt.html` |
 | 11. Probabilidade: a linguagem da incerteza | Maternidade pública, 5.000 partos | `chapters/ch11/ch11_probabilidade_pt.ipynb` | `docs/ch11_pt.html` |
 
 ## Estrutura
