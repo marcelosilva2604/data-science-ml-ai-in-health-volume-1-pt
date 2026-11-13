@@ -10,7 +10,7 @@ import sys
 import nbformat as nbf
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ch11_cells import cells as all_cells, HELP, PLOT
+from ch11_cells import cells as all_cells, PLOT, PLOT_PT
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "chapters" / "ch11"
@@ -33,7 +33,7 @@ HEAD = {
 
 > **Este caderno acompanha o capítulo do livro; não o reproduz.** Definições, deduções e explicações estão no livro. Aqui você executa os cálculos do caso e confere os números. Todos os dados são **sintéticos** e os valores têm apenas finalidade didática; não possuem correlação com o mundo real.
 
-A **Parte A** percorre o caso do capítulo, o registro de partos de uma maternidade pública, pelas seis perguntas do comitê. A **Parte B** traz o código e o resultado de cada um dos doze exercícios do capítulo (os enunciados estão no livro). Execute as células em ordem.
+A **Parte A** percorre o caso do capítulo, o registro de partos de uma maternidade pública, pelas seis perguntas do comitê. A **Parte B** traz o código e o resultado de cada um dos doze exercícios do capítulo (os enunciados estão no livro). Execute as células em ordem. As saídas do código usam ponto decimal.
 
 ## Parte A. O caso
 
@@ -66,15 +66,15 @@ def build(lang):
     md("The first five rows of the register:" if lang == "en" else "As cinco primeiras linhas do registro:")
     code('import pandas as pd\n\nregister = pd.read_csv("data/deliveries.csv")\n'
          'rows, columns = register.shape\n'
-         + ('print(f"The register has {rows:,} rows (one per delivery) and {columns} columns.")\n' if lang == "en" else
-            'print(f"O registro tem {rows:,} linhas (uma por parto) e {columns} colunas.".replace(",", "."))\n')
+         + ('print("The register has", rows, "rows (one per delivery) and", columns, "columns.")\n' if lang == "en" else
+            'print("O registro tem", rows, "linhas (uma por parto) e", columns, "colunas.")\n')
          + 'register.head()')
     qs, exs = all_cells(lang)
     for q, key in zip(Q[lang], ("Q1", "Q2", "Q3", "Q4", "Q5", "Q6")):
         md("### " + q)
-        text = qs[key].replace("HELP", HELP[lang], 1)
+        text = qs[key]
         if key == "Q1":
-            text += "\n" + PLOT.strip("\n").replace("XLABEL", AXES[lang][0]).replace("YLABEL", AXES[lang][1])
+            text += "\n" + (PLOT if lang == "en" else PLOT_PT).strip("\n").replace("XLABEL", AXES[lang][0]).replace("YLABEL", AXES[lang][1])
         code(text)
     md("## Part B. Exercise solutions" if lang == "en" else "## Parte B. Soluções dos exercícios")
     for k, (title, block) in enumerate(exs, start=1):
