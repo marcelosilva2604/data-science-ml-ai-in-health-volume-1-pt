@@ -8,11 +8,12 @@ import matplotlib.pyplot as plt
 
 running = C.expanding().mean()        # fraction of cesareans among the rows read so far
 plt.plot(range(1, n + 1), running)
+plt.axhline(C.mean(), color="gray", linestyle="--")      # fraction in the whole register
 plt.xscale("log")
 plt.xlabel("XLABEL")
 plt.ylabel("YLABEL")
 plt.show()'''
-PLOT_PT = PLOT.replace("# fraction of cesareans among the rows read so far", "# fração de cesáreas entre as linhas lidas até agora")
+PLOT_PT = PLOT.replace("# fraction of cesareans among the rows read so far", "# fração de cesáreas entre as linhas lidas até agora").replace("# fraction in the whole register", "# fração no registro completo")
 
 
 def cells(lang):
