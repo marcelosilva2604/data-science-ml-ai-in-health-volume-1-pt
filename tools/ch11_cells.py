@@ -166,21 +166,37 @@ print("Infecção entre os partos cesárea:", infected_cesarean, "de", n_cesarea
 print("Infecção entre os partos vaginais:", infected_vaginal, "de", n_vaginal, "=", round(infected_vaginal / n_vaginal, 4))
 """)
     sec("11.4.1", "The same count can answer different questions", "A mesma contagem pode responder a perguntas diferentes")
-    cell("""# 1. A vaginal delivery AND then an infection: the mothers with both, over ALL deliveries
-print("Vaginal delivery and infection, among all deliveries:", infected_vaginal, "of", n, "=", round(infected_vaginal / n, 4))
+    cell("""# 1. A mother admitted here has a vaginal delivery and, after that, an infection: two steps
+p_vaginal = n_vaginal / n                                  # step 1: vaginal delivery
+p_infection_after_vaginal = infected_vaginal / n_vaginal   # step 2: infection, among vaginal deliveries
+print("Vaginal delivery:", round(100 * p_vaginal, 2), "% of the mothers; infection among them:", round(100 * p_infection_after_vaginal, 2), "%")
+print("Vaginal delivery and then infection:", round(p_vaginal, 4), "x", round(p_infection_after_vaginal, 4), "=", round(p_vaginal * p_infection_after_vaginal, 4), "(", infected_vaginal, "of", n, ")")
 
-# 2. The same for a cesarean delivery
-print("Cesarean and infection, among all deliveries:", infected_cesarean, "of", n, "=", round(infected_cesarean / n, 4))
+# 2. Another mother has a cesarean and, after that, an infection: the two steps change
+p_cesarean = n_cesarean / n                                # step 1: cesarean
+p_infection_after_cesarean = infected_cesarean / n_cesarean  # step 2: infection, among cesareans
+print()
+print("Cesarean:", round(100 * p_cesarean, 2), "% of the mothers; infection among them:", round(100 * p_infection_after_cesarean, 2), "%")
+print("Cesarean and then infection:", round(p_cesarean, 4), "x", round(p_infection_after_cesarean, 4), "=", round(p_cesarean * p_infection_after_cesarean, 4), "(", infected_cesarean, "of", n, ")")
 
 # 3. Infection over all deliveries, whatever the delivery type: the sum of the two paths
+print()
 print("Infection, among all deliveries:", n_infection, "of", n, "=", round(n_infection / n, 4))
-""", """# 1. Parto vaginal E depois infecção: as mães com ambos, sobre TODOS os partos
-print("Parto vaginal e infecção, entre todos os partos:", infected_vaginal, "de", n, "=", round(infected_vaginal / n, 4))
+""", """# 1. Uma mãe admitida aqui tem um parto vaginal e, depois disso, uma infecção: dois passos
+p_vaginal = n_vaginal / n                                  # passo 1: parto vaginal
+p_infection_after_vaginal = infected_vaginal / n_vaginal   # passo 2: infecção, entre os partos vaginais
+print("Parto vaginal:", round(100 * p_vaginal, 2), "% das mães; infecção entre elas:", round(100 * p_infection_after_vaginal, 2), "%")
+print("Parto vaginal e depois infecção:", round(p_vaginal, 4), "x", round(p_infection_after_vaginal, 4), "=", round(p_vaginal * p_infection_after_vaginal, 4), "(", infected_vaginal, "de", n, ")")
 
-# 2. O mesmo para o parto cesárea
-print("Cesárea e infecção, entre todos os partos:", infected_cesarean, "de", n, "=", round(infected_cesarean / n, 4))
+# 2. Outra mãe tem uma cesárea e, depois disso, uma infecção: os dois passos mudam
+p_cesarean = n_cesarean / n                                # passo 1: cesárea
+p_infection_after_cesarean = infected_cesarean / n_cesarean  # passo 2: infecção, entre as cesáreas
+print()
+print("Cesárea:", round(100 * p_cesarean, 2), "% das mães; infecção entre elas:", round(100 * p_infection_after_cesarean, 2), "%")
+print("Cesárea e depois infecção:", round(p_cesarean, 4), "x", round(p_infection_after_cesarean, 4), "=", round(p_cesarean * p_infection_after_cesarean, 4), "(", infected_cesarean, "de", n, ")")
 
 # 3. Infecção sobre todos os partos, qualquer que seja o tipo: a soma dos dois caminhos
+print()
 print("Infecção, entre todos os partos:", n_infection, "de", n, "=", round(n_infection / n, 4))
 """)
 
