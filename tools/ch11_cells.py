@@ -318,43 +318,37 @@ print("Logo", size, "é a menor amostra com ao menos 90%.")
 """)
     ex = []
     A = lambda te, tp, ce, cp: ex.append((T(te, tp), T(ce, cp)))
-    A("Records and event descriptions", "Registros e descrições de eventos", '''from itertools import product
-
-# 1. The sample space: one of the 5,000 identifiers
-print(n, "records,", df["delivery_id"].nunique(), "distinct identifiers.")
-
-# 2. The eight descriptions (C, H, I), 1 = yes and 0 = no
-print("The eight descriptions:")
-for bits in product([0, 1], repeat=3):
-    print(bits)
-''', '''from itertools import product
-
-# 1. O espaço amostral: um dos 5.000 identificadores
-print(n, "registros,", df["delivery_id"].nunique(), "identificadores distintos.")
-
-# 2. As oito descrições (C, H, I), 1 = sim e 0 = não
-print("As oito descrições:")
-for bits in product([0, 1], repeat=3):
-    print(bits)
+    A("Experiment, sample space, and marginal probabilities", "Experimento, espaço amostral e probabilidades marginais", '''# 1. The sample space is the 5,000 records; the events H, C, and I are the records with each "yes"
+print("Records:", n)
+print("P(H) =", n_hemorrhage, "/", n, "=", round(n_hemorrhage / n, 4))
+print("P(C) =", n_cesarean, "/", n, "=", round(n_cesarean / n, 4))
+print("P(I) =", n_infection, "/", n, "=", round(n_infection / n, 4))
+''', '''# 1. O espaço amostral são os 5.000 registros; os eventos H, C e I são os registros com cada "yes"
+print("Registros:", n)
+print("P(H) =", n_hemorrhage, "/", n, "=", round(n_hemorrhage / n, 4))
+print("P(C) =", n_cesarean, "/", n, "=", round(n_cesarean / n, 4))
+print("P(I) =", n_infection, "/", n, "=", round(n_infection / n, 4))
 ''')
-    A("Running fractions and order", "Frações acumuladas e ordem", '''# 1. Fraction of cesareans among the first k records
+    A("Why many cases are needed", "Por que muitos casos são necessários", '''# 1. Fraction of hemorrhage among the first k records
 for k in [10, 50, 100, 500, 1000, 5000]:
-    print("First", k, "records:", round(100 * C.iloc[:k].mean(), 2), "%")
+    first_k = H.iloc[:k]
+    print("After", k, "rows:", first_k.sum(), "hemorrhages =", round(100 * first_k.mean(), 2), "%")
 
-# 2. Reverse the register order: first 100 records, and all 5,000
-reverse = C.iloc[::-1]             # the same rows, from last to first
+# 2. Change from 10 to 100 records and from 1,000 to 5,000 records, in percentage points
 print()
-print("Reversed order: first 100 records", round(100 * reverse.iloc[:100].mean(), 2), "% ; all", n, "records", round(100 * reverse.mean(), 2), "%")
-''', '''# 1. Fração de cesáreas entre os k primeiros registros
+print("From 10 to 100 records:", round(100 * (H.iloc[:100].mean() - H.iloc[:10].mean()), 2), "points")
+print("From 1000 to 5000 records:", round(100 * (H.mean() - H.iloc[:1000].mean()), 2), "points")
+''', '''# 1. Fração de hemorragia entre os k primeiros registros
 for k in [10, 50, 100, 500, 1000, 5000]:
-    print("Primeiros", k, "registros:", round(100 * C.iloc[:k].mean(), 2), "%")
+    first_k = H.iloc[:k]
+    print("Após", k, "linhas:", first_k.sum(), "hemorragias =", round(100 * first_k.mean(), 2), "%")
 
-# 2. Inverter a ordem do registro: primeiros 100 registros e todos os 5.000
-reverse = C.iloc[::-1]             # as mesmas linhas, da última para a primeira
+# 2. Mudança de 10 a 100 registros e de 1.000 a 5.000 registros, em pontos percentuais
 print()
-print("Ordem invertida: primeiros 100 registros", round(100 * reverse.iloc[:100].mean(), 2), "% ; todos os", n, "registros", round(100 * reverse.mean(), 2), "%")
+print("De 10 a 100 registros:", round(100 * (H.iloc[:100].mean() - H.iloc[:10].mean()), 2), "pontos")
+print("De 1000 a 5000 registros:", round(100 * (H.mean() - H.iloc[:1000].mean()), 2), "pontos")
 ''')
-    A("Count the overlap once", "Contar a sobreposição uma vez", '''# 1. The four groups: hemorrhage only, infection only, both, neither
+    A("OR, AND, NOT, and mutually exclusive events", "OU, E, NÃO e eventos mutuamente exclusivos", '''# 1. The four groups: hemorrhage only, infection only, both, neither
 only_h = (H & ~I).sum()
 only_i = (~H & I).sum()
 both = (H & I).sum()
@@ -364,10 +358,15 @@ print("Infection only:", only_i, "mothers =", round(only_i / n, 4))
 print("Both:", both, "mothers =", round(both / n, 4))
 print("Neither:", neither, "mothers =", round(neither / n, 4))
 
-# 2. Addition rule, and the same count done directly
+# 2. Addition rule for "hemorrhage or infection", and the direct count
 print()
-print("Addition rule:", H.sum() + I.sum() - both, "mothers with hemorrhage or infection =", round((H.sum() + I.sum() - both) / n, 4))
+print("Addition rule:", n_hemorrhage + n_infection - both, "mothers =", round((n_hemorrhage + n_infection - both) / n, 4))
 print("Direct count:", (H | I).sum(), "mothers")
+
+# 3. Mutually exclusive events cannot occur together: count the records with both
+print()
+print("Cesarean and vaginal together:", (C & ~C).sum(), "records")
+print("Hemorrhage and infection together:", both, "records")
 ''', '''# 1. Os quatro grupos: só hemorragia, só infecção, ambas, nenhuma
 only_h = (H & ~I).sum()
 only_i = (~H & I).sum()
@@ -378,143 +377,138 @@ print("Só infecção:", only_i, "mães =", round(only_i / n, 4))
 print("Ambas:", both, "mães =", round(both / n, 4))
 print("Nenhuma:", neither, "mães =", round(neither / n, 4))
 
-# 2. Regra da adição, e a mesma contagem feita diretamente
+# 2. Regra da adição para "hemorragia ou infecção", e a contagem direta
 print()
-print("Regra da adição:", H.sum() + I.sum() - both, "mães com hemorragia ou infecção =", round((H.sum() + I.sum() - both) / n, 4))
+print("Regra da adição:", n_hemorrhage + n_infection - both, "mães =", round((n_hemorrhage + n_infection - both) / n, 4))
 print("Contagem direta:", (H | I).sum(), "mães")
+
+# 3. Eventos mutuamente exclusivos não podem ocorrer juntos: contar os registros com ambos
+print()
+print("Cesárea e parto vaginal juntos:", (C & ~C).sum(), "registros")
+print("Hemorragia e infecção juntas:", both, "registros")
 ''')
-    A("Name the denominator", "Nomear o denominador", '''# 1. The five fractions: the numerator and the denominator of each
-print("(a) infection among cesareans:", (C & I).sum(), "/", C.sum(), "=", round((C & I).sum() / C.sum(), 4))
+    A("Marginal, joint, and conditional fractions", "Frações marginais, conjuntas e condicionais", '''# 1. The five fractions: the numerator and the denominator of each
+print("(a) infection among cesareans:", (C & I).sum(), "/", n_cesarean, "=", round((C & I).sum() / n_cesarean, 4))
 print("(b) cesarean and infection, among all:", (C & I).sum(), "/", n, "=", round((C & I).sum() / n, 4))
-print("(c) infection, among all:", I.sum(), "/", n, "=", round(I.sum() / n, 4))
-print("(d) cesarean among infections:", (C & I).sum(), "/", I.sum(), "=", round((C & I).sum() / I.sum(), 4))
-print("(e) hemorrhage among cesareans:", (C & H).sum(), "/", C.sum(), "=", round((C & H).sum() / C.sum(), 4))
+print("(c) infection, among all:", n_infection, "/", n, "=", round(n_infection / n, 4))
+print("(d) hemorrhage among cesareans:", (C & H).sum(), "/", n_cesarean, "=", round((C & H).sum() / n_cesarean, 4))
+print("(e) vaginal delivery and infection, among all:", (~C & I).sum(), "/", n, "=", round((~C & I).sum() / n, 4))
 ''', '''# 1. As cinco frações: o numerador e o denominador de cada uma
-print("(a) infecção entre as cesáreas:", (C & I).sum(), "/", C.sum(), "=", round((C & I).sum() / C.sum(), 4))
+print("(a) infecção entre as cesáreas:", (C & I).sum(), "/", n_cesarean, "=", round((C & I).sum() / n_cesarean, 4))
 print("(b) cesárea e infecção, entre todos:", (C & I).sum(), "/", n, "=", round((C & I).sum() / n, 4))
-print("(c) infecção, entre todos:", I.sum(), "/", n, "=", round(I.sum() / n, 4))
-print("(d) cesárea entre as infecções:", (C & I).sum(), "/", I.sum(), "=", round((C & I).sum() / I.sum(), 4))
-print("(e) hemorragia entre as cesáreas:", (C & H).sum(), "/", C.sum(), "=", round((C & H).sum() / C.sum(), 4))
+print("(c) infecção, entre todos:", n_infection, "/", n, "=", round(n_infection / n, 4))
+print("(d) hemorragia entre as cesáreas:", (C & H).sum(), "/", n_cesarean, "=", round((C & H).sum() / n_cesarean, 4))
+print("(e) parto vaginal e infecção, entre todos:", (~C & I).sum(), "/", n, "=", round((~C & I).sum() / n, 4))
 ''')
-    A("Compare within delivery types", "Comparar dentro dos tipos de parto", '''# 1. Infection in each delivery type, and the ratio of the two proportions
-p_cesarean = (C & I).sum() / C.sum()
-p_vaginal = (~C & I).sum() / (~C).sum()
-print("Infection: cesarean", round(p_cesarean, 4), "versus vaginal", round(p_vaginal, 4), "; ratio", round(p_cesarean / p_vaginal, 4))
+    A("Two-step chances and total probability", "Chances em dois passos e probabilidade total", '''# 1. Vaginal delivery, then infection; cesarean, then infection: first step times second step
+n_vaginal = (~C).sum()
+path_vaginal = (n_vaginal / n) * ((~C & I).sum() / n_vaginal)
+path_cesarean = (n_cesarean / n) * ((C & I).sum() / n_cesarean)
+print("Vaginal delivery, then infection:", round(path_vaginal, 4), "(direct count:", round((~C & I).sum() / n, 4), ")")
+print("Cesarean, then infection:", round(path_cesarean, 4), "(direct count:", round((C & I).sum() / n, 4), ")")
 
-# 2. Hemorrhage in each delivery type: count, group size, proportion
-print("Hemorrhage, cesarean:", (C & H).sum(), "of", C.sum(), "=", round((C & H).sum() / C.sum(), 4))
-print("Hemorrhage, vaginal:", (~C & H).sum(), "of", (~C).sum(), "=", round((~C & H).sum() / (~C).sum(), 4))
-''', '''# 1. Infecção em cada tipo de parto, e a razão das duas proporções
-p_cesarean = (C & I).sum() / C.sum()
-p_vaginal = (~C & I).sum() / (~C).sum()
-print("Infecção: cesárea", round(p_cesarean, 4), "versus vaginal", round(p_vaginal, 4), "; razão", round(p_cesarean / p_vaginal, 4))
+# 2. The two paths added are the total probability of infection, and their ratio
+print()
+print("Total probability of infection:", round(path_vaginal + path_cesarean, 4), "; direct count:", round(n_infection / n, 4))
+print("Cesarean path divided by vaginal path:", round(path_cesarean / path_vaginal, 2))
+''', '''# 1. Parto vaginal e depois infecção; cesárea e depois infecção: primeiro passo vezes segundo passo
+n_vaginal = (~C).sum()
+path_vaginal = (n_vaginal / n) * ((~C & I).sum() / n_vaginal)
+path_cesarean = (n_cesarean / n) * ((C & I).sum() / n_cesarean)
+print("Parto vaginal e depois infecção:", round(path_vaginal, 4), "(contagem direta:", round((~C & I).sum() / n, 4), ")")
+print("Cesárea e depois infecção:", round(path_cesarean, 4), "(contagem direta:", round((C & I).sum() / n, 4), ")")
 
-# 2. Hemorragia em cada tipo de parto: contagem, tamanho do grupo, proporção
-print("Hemorragia, cesárea:", (C & H).sum(), "de", C.sum(), "=", round((C & H).sum() / C.sum(), 4))
-print("Hemorragia, vaginal:", (~C & H).sum(), "de", (~C).sum(), "=", round((~C & H).sum() / (~C).sum(), 4))
+# 2. Os dois caminhos somados são a probabilidade total de infecção, e sua razão
+print()
+print("Probabilidade total de infecção:", round(path_vaginal + path_cesarean, 4), "; contagem direta:", round(n_infection / n, 4))
+print("Caminho da cesárea dividido pelo caminho vaginal:", round(path_cesarean / path_vaginal, 2))
 ''')
-    A("Dependence and overlap", "Dependência e sobreposição", '''# 1. Product of the marginals versus the observed joint fraction
-p_h, p_i = H.sum() / n, I.sum() / n
-print("Product of the marginals:", round(p_h * p_i, 6), "; observed joint fraction:", round((H & I).sum() / n, 4))
+    A("Independence", "Independência", '''# 1. An identifier tells nothing about hemorrhage: F = identifier in the first half of the register (D0001 to D2500)
+F = number <= 2500
+print("F and H:", (F & H).sum(), "of", n, "=", round((F & H).sum() / n, 4), "; P(F) x P(H) =", round(F.mean() * H.mean(), 4))
+print("Hemorrhage in the first half:", round(H[F].mean(), 4), "; in the second half:", round(H[~F].mean(), 4))
 
-# 2. Infection with and without hemorrhage, and the number with both
-print("Infection with hemorrhage:", round((H & I).sum() / H.sum(), 4), "; without hemorrhage:", round((~H & I).sum() / (~H).sum(), 4))
-print("Mothers with both:", (H & I).sum())
-''', '''# 1. Produto das marginais versus a fração conjunta observada
-p_h, p_i = H.sum() / n, I.sum() / n
-print("Produto das marginais:", round(p_h * p_i, 6), "; fração conjunta observada:", round((H & I).sum() / n, 4))
+# 2. Cesarean and hemorrhage
+print()
+print("C and H:", (C & H).sum(), "of", n, "=", round((C & H).sum() / n, 4), "; P(C) x P(H) =", round(C.mean() * H.mean(), 4))
+print("Hemorrhage among cesareans:", round(H[C].mean(), 4), "; among vaginal deliveries:", round(H[~C].mean(), 4))
+''', '''# 1. Um identificador não diz nada sobre hemorragia: F = identificador na primeira metade do registro (D0001 a D2500)
+F = number <= 2500
+print("F e H:", (F & H).sum(), "de", n, "=", round((F & H).sum() / n, 4), "; P(F) x P(H) =", round(F.mean() * H.mean(), 4))
+print("Hemorragia na primeira metade:", round(H[F].mean(), 4), "; na segunda metade:", round(H[~F].mean(), 4))
 
-# 2. Infecção com e sem hemorragia, e o número com ambas
-print("Infecção com hemorragia:", round((H & I).sum() / H.sum(), 4), "; sem hemorragia:", round((~H & I).sum() / (~H).sum(), 4))
-print("Mães com ambas:", (H & I).sum())
+# 2. Cesárea e hemorragia
+print()
+print("C e H:", (C & H).sum(), "de", n, "=", round((C & H).sum() / n, 4), "; P(C) x P(H) =", round(C.mean() * H.mean(), 4))
+print("Hemorragia entre as cesáreas:", round(H[C].mean(), 4), "; entre os partos vaginais:", round(H[~C].mean(), 4))
 ''')
-    A("Two routes to the same joint probability", "Dois caminhos para a mesma probabilidade conjunta", '''# 1. The counts along the way
-n_c, n_h, n_ch, n_chi = C.sum(), H.sum(), (C & H).sum(), (C & H & I).sum()
-print("Counts:", n_c, "cesareans,", n_h, "hemorrhages,", n_ch, "with both,", n_chi, "with all three.")
+    A("Reversing a condition", "Inverter uma condição", '''# 1. Among the mothers with hemorrhage, what fraction had a cesarean? Direct count
+print("Direct count:", (C & H).sum(), "of", n_hemorrhage, "=", round((C & H).sum() / n_hemorrhage, 4))
 
-# 2. Two ways to order the conditions: C, H, I and H, C, I (they must agree)
-first = (n_c / n) * (n_ch / n_c) * (n_chi / n_ch)
-second = (n_h / n) * (n_ch / n_h) * (n_chi / n_ch)
-print("Route C, H, I:", round(first, 4), "| route H, C, I:", round(second, 4), "| direct count:", round(n_chi / n, 4))
-''', '''# 1. As contagens pelo caminho
-n_c, n_h, n_ch, n_chi = C.sum(), H.sum(), (C & H).sum(), (C & H & I).sum()
-print("Contagens:", n_c, "cesáreas,", n_h, "hemorragias,", n_ch, "com ambas,", n_chi, "com as três.")
+# 2. The same by reversing the condition: P(C|H) = P(H|C) P(C) / P(H)
+p_h_given_c = (C & H).sum() / n_cesarean
+print("Reversal:", round(p_h_given_c, 4), "x", round(n_cesarean / n, 4), "/", round(n_hemorrhage / n, 4), "=", round(p_h_given_c * (n_cesarean / n) / (n_hemorrhage / n), 4))
 
-# 2. Duas ordens para as condições: C, H, I e H, C, I (devem coincidir)
-first = (n_c / n) * (n_ch / n_c) * (n_chi / n_ch)
-second = (n_h / n) * (n_ch / n_h) * (n_chi / n_ch)
-print("Caminho C, H, I:", round(first, 4), "| caminho H, C, I:", round(second, 4), "| contagem direta:", round(n_chi / n, 4))
+# 3. Compare with P(C), and look at the vaginal share among the infections
+print()
+print("P(C) =", round(n_cesarean / n, 4))
+print("Vaginal deliveries among the infections:", (~C & I).sum(), "of", n_infection, "=", round((~C & I).sum() / n_infection, 4))
+''', '''# 1. Entre as mães com hemorragia, que fração teve cesárea? Contagem direta
+print("Contagem direta:", (C & H).sum(), "de", n_hemorrhage, "=", round((C & H).sum() / n_hemorrhage, 4))
+
+# 2. O mesmo invertendo a condição: P(C|H) = P(H|C) P(C) / P(H)
+p_h_given_c = (C & H).sum() / n_cesarean
+print("Inversão:", round(p_h_given_c, 4), "x", round(n_cesarean / n, 4), "/", round(n_hemorrhage / n, 4), "=", round(p_h_given_c * (n_cesarean / n) / (n_hemorrhage / n), 4))
+
+# 3. Comparar com P(C), e ver a parcela de partos vaginais entre as infecções
+print()
+print("P(C) =", round(n_cesarean / n, 4))
+print("Partos vaginais entre as infecções:", (~C & I).sum(), "de", n_infection, "=", round((~C & I).sum() / n_infection, 4))
 ''')
-    A("Total probability and reversal", "Probabilidade total e inversão", '''# 1. Total probability of infection from the two delivery types
-p_c = C.sum() / n
-p_i_given_c = (C & I).sum() / C.sum()
-p_i_given_not_c = (~C & I).sum() / (~C).sum()
-p_i = p_i_given_c * p_c + p_i_given_not_c * (1 - p_c)
-print("Total probability of infection:", round(p_i, 4))
+    A("Counting a review of 10 charts", "Contar uma revisão de 10 prontuários", '''# 1. Sets of 10 charts, and orders of the 10 chosen charts
+sets_10 = comb(total, 10)
+print("Sets of 10 charts:", sets_10, "(", len(str(sets_10)), "digits )")
+print("Orders of the 10 chosen charts:", factorial(10))
 
-# 2. Bayes: cesareans among the infected, and vaginal deliveries among the infected
-bayes = p_i_given_c * p_c / p_i
-print("Among the infected: cesarean", round(bayes, 4), "; vaginal", round(1 - bayes, 4))
-print("Direct count among the infected: cesarean", round((C & I).sum() / I.sum(), 4))
-''', '''# 1. Probabilidade total de infecção a partir dos dois tipos de parto
-p_c = C.sum() / n
-p_i_given_c = (C & I).sum() / C.sum()
-p_i_given_not_c = (~C & I).sum() / (~C).sum()
-p_i = p_i_given_c * p_c + p_i_given_not_c * (1 - p_c)
-print("Probabilidade total de infecção:", round(p_i, 4))
+# 2. Chance that 10 charts include at least one infection (complement)
+print("Chance of at least one infection in 10 charts:", round(1 - comb(without_infection, 10) / comb(total, 10), 4))
 
-# 2. Bayes: cesáreas entre as infectadas e partos vaginais entre as infectadas
-bayes = p_i_given_c * p_c / p_i
-print("Entre as infectadas: cesárea", round(bayes, 4), "; vaginal", round(1 - bayes, 4))
-print("Contagem direta entre as infectadas: cesárea", round((C & I).sum() / I.sum(), 4))
-''')
-    A("Orders of the selected charts", "Ordens dos prontuários selecionados", '''# 1. Orders of 20 charts, and ordered first two slots
-print("20! =", factorial(20), "orders; first two slots:", perm(20, 2), "ordered choices")
-
-# 2. Chance that a given chart is first, and that two given charts are first and second
-print("A given chart is first with chance", round(factorial(19) / factorial(20), 4))
-print("Two given charts are first and second with chance", round(factorial(18) / factorial(20), 6))
-''', '''# 1. Ordens de 20 prontuários, e dois primeiros lugares ordenados
-print("20! =", factorial(20), "ordens; dois primeiros lugares:", perm(20, 2), "escolhas ordenadas")
-
-# 2. Chance de um prontuário dado ser o primeiro, e de dois dados serem o primeiro e o segundo
-print("Um prontuário dado é o primeiro com chance", round(factorial(19) / factorial(20), 4))
-print("Dois prontuários dados são o primeiro e o segundo com chance", round(factorial(18) / factorial(20), 6))
-''')
-    A("A sample including an infection", "Uma amostra que inclui uma infecção", '''# 1. Smallest sample with at least 90% chance of including an infection (uses comb, total, without_infection from 11.7)
+# 3. Smallest sample with at least a 50% chance
 size = 1
-while 10 * comb(without_infection, size) > comb(total, size):
+while 2 * comb(without_infection, size) > comb(total, size):
     size = size + 1
+print("Smallest sample with at least 50%:", size, "charts (", round(1 - comb(without_infection, size - 1) / comb(total, size - 1), 4), "with", size - 1, ")")
+''', '''# 1. Conjuntos de 10 prontuários, e ordens dos 10 prontuários escolhidos
+sets_10 = comb(total, 10)
+print("Conjuntos de 10 prontuários:", sets_10, "(", len(str(sets_10)), "algarismos )")
+print("Ordens dos 10 prontuários escolhidos:", factorial(10))
 
-# 2. The chance for a sample of 20, for the size just below, and for the smallest size
-for m in [20, size - 1, size]:
-    print(m, "charts: chance of at least one infection =", round(1 - comb(without_infection, m) / comb(total, m), 6))
-''', '''# 1. Menor amostra com ao menos 90% de chance de incluir uma infecção
+# 2. Chance de 10 prontuários incluírem ao menos uma infecção (complementar)
+print("Chance de ao menos uma infecção em 10 prontuários:", round(1 - comb(without_infection, 10) / comb(total, 10), 4))
+
+# 3. Menor amostra com ao menos 50% de chance
 size = 1
-while 10 * comb(without_infection, size) > comb(total, size):
+while 2 * comb(without_infection, size) > comb(total, size):
     size = size + 1
-
-# 2. A chance para uma amostra de 20, para o tamanho logo abaixo e para o menor tamanho
-for m in [20, size - 1, size]:
-    print(m, "prontuários: chance de ao menos uma infecção =", round(1 - comb(without_infection, m) / comb(total, m), 6))
+print("Menor amostra com ao menos 50%:", size, "prontuários (", round(1 - comb(without_infection, size - 1) / comb(total, size - 1), 4), "com", size - 1, ")")
 ''')
     A("Alternative marginal probabilities (alt.)", "Probabilidades marginais alternativas (alt.)", '''# 1. Alternative marginals: P(H) = 0.02 and P(I) = 0.03
 p_h = 0.02
 p_i = 0.03
 
-# 2. Smallest and largest possible joint probability, and P(H or I) if independent
+# 2. Smallest and largest possible value of P(H or I), and its value if H and I were independent
 lower = max(p_h, p_i)
 upper = min(1, p_h + p_i)
-print("The joint probability must lie between", lower, "and", upper)
+print("P(H or I) must lie between", lower, "and", upper)
 print("If the events were independent, P(H or I) =", round(p_h + p_i - p_h * p_i, 4))
 ''', '''# 1. Marginais alternativas: P(H) = 0,02 e P(I) = 0,03
 p_h = 0.02
 p_i = 0.03
 
-# 2. Menor e maior probabilidade conjunta possível, e P(H ou I) se independentes
+# 2. Menor e maior valor possível de P(H ou I), e seu valor se H e I fossem independentes
 lower = max(p_h, p_i)
 upper = min(1, p_h + p_i)
-print("A probabilidade conjunta deve estar entre", lower, "e", upper)
+print("P(H ou I) deve estar entre", lower, "e", upper)
 print("Se os eventos fossem independentes, P(H ou I) =", round(p_h + p_i - p_h * p_i, 4))
 ''')
     A("Returning charts between draws (alt.)", "Devolver prontuários entre sorteios (alt.)", '''# 1. Chance of at least one infection in 20 draws, with and without returning the chart

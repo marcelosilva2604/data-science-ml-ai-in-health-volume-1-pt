@@ -21,7 +21,7 @@ assert not bad, bad
 print("all", len(checks), "checks pass")
 
 # The executed notebook outputs must carry the numbers quoted in the book
-expected = ["26.26 %", "5.8 %", "= 8.02 %", "0.6692", "0.90095", "2432902008176640000", "0.0494", "0.0028", "0.4102"]
+expected = ["26.26 %", "5.8 %", "= 8.02 %", "66.92 %", "2432902008176640000", "0.0494", "0.4102", "0.0086", "0.0174", "0.2318"]
 expected_pt = list(expected)
 for name, items in (("ch11_probability_en.ipynb", expected), ("ch11_probabilidade_pt.ipynb", expected_pt)):
     path = ROOT / "chapters/ch11" / name
