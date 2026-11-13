@@ -97,7 +97,7 @@ print("Chance de a próxima mãe admitida ter hemorragia:", round(100 * p_hemorr
     S.append(("plotcell", None))
 
     sec("11.3", "Hemorrhage or infection: count each mother once", "Hemorragia ou infecção: contar cada mãe uma vez",
-        "How many mothers had a hemorrhage or an infection?", "Quantas mães tiveram hemorragia ou infecção?")
+        "What is the chance that the next mother admitted has a hemorrhage or an infection?", "Qual a chance de a próxima mãe admitida ter hemorragia ou infecção?")
     cell("""# 1. Cross the two columns: each delivery falls in exactly one of four cells
 print("Hemorrhage (rows) by infection (columns):")
 print(pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total"))
