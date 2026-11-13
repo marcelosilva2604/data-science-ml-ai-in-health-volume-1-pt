@@ -38,7 +38,7 @@ md(T(r"""
 
 > **This notebook accompanies the book chapter; it does not reproduce it.** Definitions, derivations, and explanations are in the book. Here you run the chapter's code on the case and check the numbers. All data are **synthetic**; no real patients appear.
 
-**The case.** A hypertension clinic and its 18 referring practices decide whether to offer two antihypertensive drugs as a single pill instead of separate tablets; the outcome is uncontrolled blood pressure at 12 weeks. Three files represent three alternative evaluations of that one decision (they are not linked follow-up of the same patients): `data/trial.csv` (individually randomized trial, 1,200 adults), `data/cluster.csv` (practice-randomized trial, 1,800 adults in practices P01-P18) and `data/monthly.csv` (24-month register, practices M01-M18).
+**The case.** A university hypertension service with ten outpatient clinics decides whether to offer two antihypertensive drugs as a single pill instead of separate tablets; the outcome is uncontrolled blood pressure at 12 weeks. One table, `data/clinic_patients.csv`, has one row per adult over 24 months: months 1-6 everyone on separate tablets; months 7-12 an individually randomized trial; from month 13 the clinics adopt the single pill in two steps (five clinics in month 13, five in month 19).
 
 **Part A** runs the chapter's code section by section. **Part B** gives the code and result for the chapter exercises that need code (statements are in the book). Run the cells in order.
 """, r"""
@@ -47,7 +47,7 @@ md(T(r"""
 
 > **Este caderno acompanha o capítulo do livro; não o reproduz.** Definições, deduções e explicações estão no livro. Aqui você executa o código do capítulo sobre o caso e confere os números. Todos os dados são **sintéticos**; nenhum paciente real aparece.
 
-**O caso.** Um ambulatório de hipertensão e seus 18 consultórios de referência decidem se oferecem dois anti-hipertensivos em uma pílula única em vez de comprimidos separados; o desfecho é a pressão arterial não controlada em 12 semanas. Três arquivos representam três avaliações alternativas dessa mesma decisão (não são seguimento vinculado dos mesmos pacientes): `data/trial.csv` (ensaio randomizado individual, 1.200 adultos), `data/cluster.csv` (ensaio randomizado por consultórios, 1.800 adultos nos consultórios P01-P18) e `data/monthly.csv` (registro de 24 meses, consultórios M01-M18).
+**O caso.** Um serviço universitário de hipertensão com dez ambulatórios decide se oferece dois anti-hipertensivos em uma pílula única em vez de comprimidos separados; o desfecho é a pressão arterial não controlada em 12 semanas. Uma única tabela, `data/clinic_patients.csv`, tem uma linha por adulto ao longo de 24 meses: nos meses 1-6 todos com comprimidos separados; nos meses 7-12, um ensaio randomizado individual; a partir do mês 13, os ambulatórios adotam a pílula única em duas etapas (cinco ambulatórios no mês 13 e cinco no mês 19).
 
 A **Parte A** executa o código do capítulo seção por seção. A **Parte B** traz o código e o resultado dos exercícios do capítulo que exigem código (os enunciados estão no livro). Execute as células em ordem. As saídas do código usam ponto decimal.
 """))
@@ -69,8 +69,8 @@ for title, blocks in sections(sol, r"\\subsection\*\{(.*?)\}\n"):
     for b in blocks:
         code(b)
 
-md(T("---\n*Synthetic data (seed 10, `generate_data.py`). Teaching assumptions only; nothing here is a clinical recommendation or an estimate for a real service.*",
-     "---\n*Dados sintéticos (semente 10, `generate_data.py`). Apenas hipóteses didáticas; nada aqui é recomendação clínica nem estimativa para um serviço real.*"))
+md(T("---\n*Synthetic data (seed 33, `generate_data.py`). Teaching assumptions only; nothing here is a clinical recommendation or an estimate for a real service.*",
+     "---\n*Dados sintéticos (semente 33, `generate_data.py`). Apenas hipóteses didáticas; nada aqui é recomendação clínica nem estimativa para um serviço real.*"))
 
 nb = nbf.v4.new_notebook()
 nb.cells = cells

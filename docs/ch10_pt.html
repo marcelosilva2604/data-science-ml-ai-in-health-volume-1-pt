@@ -7803,7 +7803,7 @@ a.anchor-link {
 </style></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light"><div class="vol-bar"><a href="index.html"><b>Volume 1</b></a><span>Capítulo 10. Delineamentos experimentais e quase-experimentais em saúde</span><span class="grow"></span><a href="#Parte-A.-O-caso">Parte A. O caso</a><a href="#Parte-B.-Solu%C3%A7%C3%B5es-dos-exerc%C3%ADcios">Parte B. Soluções dos exercícios</a></div>
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ef380f3e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8df27c4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7813,13 +7813,13 @@ a.anchor-link {
 <blockquote>
 <p><strong>Este caderno acompanha o capítulo do livro; não o reproduz.</strong> Definições, deduções e explicações estão no livro. Aqui você executa o código do capítulo sobre o caso e confere os números. Todos os dados são <strong>sintéticos</strong>; nenhum paciente real aparece.</p>
 </blockquote>
-<p><strong>O caso.</strong> Um ambulatório de hipertensão e seus 18 consultórios de referência decidem se oferecem dois anti-hipertensivos em uma pílula única em vez de comprimidos separados; o desfecho é a pressão arterial não controlada em 12 semanas. Três arquivos representam três avaliações alternativas dessa mesma decisão (não são seguimento vinculado dos mesmos pacientes): <code>data/trial.csv</code> (ensaio randomizado individual, 1.200 adultos), <code>data/cluster.csv</code> (ensaio randomizado por consultórios, 1.800 adultos nos consultórios P01-P18) e <code>data/monthly.csv</code> (registro de 24 meses, consultórios M01-M18).</p>
+<p><strong>O caso.</strong> Um serviço universitário de hipertensão com dez ambulatórios decide se oferece dois anti-hipertensivos em uma pílula única em vez de comprimidos separados; o desfecho é a pressão arterial não controlada em 12 semanas. Uma única tabela, <code>data/clinic_patients.csv</code>, tem uma linha por adulto ao longo de 24 meses: nos meses 1-6 todos com comprimidos separados; nos meses 7-12, um ensaio randomizado individual; a partir do mês 13, os ambulatórios adotam a pílula única em duas etapas (cinco ambulatórios no mês 13 e cinco no mês 19).</p>
 <p>A <strong>Parte A</strong> executa o código do capítulo seção por seção. A <strong>Parte B</strong> traz o código e o resultado dos exercícios do capítulo que exigem código (os enunciados estão no livro). Execute as células em ordem. As saídas do código usam ponto decimal.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=46a15a9f">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ccd19ea9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7830,7 +7830,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8b7611ce">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0c46622b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7840,7 +7840,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=202f966c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=af4ad41e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7849,7 +7849,8 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">trial</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/trial.csv"</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">trial</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"trial"</span><span class="p">)]</span>
 <span class="n">events</span> <span class="o">=</span> <span class="n">trial</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Patients: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span><span class="si">}</span><span class="s2">; uncontrolled: </span><span class="si">{</span><span class="n">events</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Overall risk: </span><span class="si">{</span><span class="n">events</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -7865,15 +7866,15 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Patients: 1200; uncontrolled: 424
-Overall risk: 0.3533
+<pre>Patients: 1716; uncontrolled: 478
+Overall risk: 0.2786
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7eac886a">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=53745113">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7883,7 +7884,7 @@ Overall risk: 0.3533
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7f1fafec">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c666fdb0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7892,7 +7893,8 @@ Overall risk: 0.3533
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">trial</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/trial.csv"</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">trial</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"trial"</span><span class="p">)]</span>
 <span class="k">for</span> <span class="n">arm</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">trial</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"allocated"</span><span class="p">):</span>
     <span class="n">high</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">"baseline_sbp"</span><span class="p">]</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="mi">160</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">arm</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">high</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">high</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
@@ -7908,15 +7910,15 @@ Overall risk: 0.3533
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>single pill: 205/596 = 34.4%
-two tablets: 223/604 = 36.9%
+<pre>separate tablets: 331/859 = 38.5%
+single pill: 341/857 = 39.8%
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3c3d9aed">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2bc030dc">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7926,7 +7928,7 @@ two tablets: 223/604 = 36.9%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f128bf55">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=172e1e1c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7935,10 +7937,11 @@ two tablets: 223/604 = 36.9%
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">trial</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/trial.csv"</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">trial</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"trial"</span><span class="p">)]</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">trial</span><span class="p">[</span><span class="s2">"allocated"</span><span class="p">],</span> <span class="n">trial</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">])</span>
 <span class="n">risks</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="s2">"yes"</span><span class="p">]</span> <span class="o">/</span> <span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">risks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">],</span> <span class="n">risks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"two tablets"</span><span class="p">]</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">risks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">],</span> <span class="n">risks</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"separate tablets"</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">arm</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">arm</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">arm</span><span class="p">,</span><span class="w"> </span><span class="s1">'yes'</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">arm</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Risk difference: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> percentage points"</span><span class="p">)</span>
@@ -7955,16 +7958,16 @@ two tablets: 223/604 = 36.9%
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>single pill: 184/596
-two tablets: 240/604
-Risk difference: -8.9 percentage points
-Risk ratio: 0.78
+<pre>separate tablets: 279/859
+single pill: 199/857
+Risk difference: -9.3 percentage points
+Risk ratio: 0.71
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3424976f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=cb764e42">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7975,10 +7978,11 @@ Risk ratio: 0.78
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">exp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">NormalDist</span>
-<span class="n">trial</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/trial.csv"</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">trial</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"trial"</span><span class="p">)]</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">trial</span><span class="p">[</span><span class="s2">"allocated"</span><span class="p">],</span> <span class="n">trial</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">])</span>
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"two tablets"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">]</span>
-<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"two tablets"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"separate tablets"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">]</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"separate tablets"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">b</span><span class="o">/</span><span class="n">m</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">()</span><span class="o">.</span><span class="n">inv_cdf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">q</span><span class="p">)</span>
@@ -8000,16 +8004,16 @@ Risk ratio: 0.78
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>SE: 2.7469; normal multiplier: 1.9600
-Difference: -8.9; 95% CI -14.2 to -3.5
-Ratio: 0.78; 95% CI 0.67 to 0.91
+<pre>SE: 2.1525; normal multiplier: 1.9600
+Difference: -9.3; 95% CI -13.5 to -5.0
+Ratio: 0.71; 95% CI 0.61 to 0.84
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6cedba73">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d0eb4532">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8019,7 +8023,7 @@ Ratio: 0.78; 95% CI 0.67 to 0.91
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=517bc7c8">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=295e3a81">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8030,12 +8034,13 @@ Ratio: 0.78; 95% CI 0.67 to 0.91
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">exp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">NormalDist</span>
-<span class="n">trial</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/trial.csv"</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">trial</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"trial"</span><span class="p">)]</span>
 <span class="n">same</span> <span class="o">=</span> <span class="n">trial</span><span class="p">[</span><span class="s2">"allocated"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"single pill"</span><span class="p">)</span> <span class="o">==</span> <span class="n">trial</span><span class="p">[</span><span class="s2">"received"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">trial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">same</span><span class="p">,</span> <span class="s2">"allocated"</span><span class="p">],</span>
                 <span class="n">trial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">same</span><span class="p">,</span> <span class="s2">"uncontrolled_12w"</span><span class="p">])</span>
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"two tablets"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">]</span>
-<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"two tablets"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"separate tablets"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">]</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"separate tablets"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">rr</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
 <span class="n">se</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">()</span><span class="o">.</span><span class="n">inv_cdf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">)</span>
@@ -8054,15 +8059,15 @@ Ratio: 0.78; 95% CI 0.67 to 0.91
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Retained: 1122; events/total: 162/544, 230/578
-Restricted ratio: 0.75; 95% CI 0.64 to 0.88
+<pre>Retained: 1610; events/total: 169/782, 270/828
+Restricted ratio: 0.66; 95% CI 0.56 to 0.78
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=96e73626">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1b9b0ec2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8072,7 +8077,7 @@ Restricted ratio: 0.75; 95% CI 0.64 to 0.88
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=549029e1">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=39a8939f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8081,14 +8086,14 @@ Restricted ratio: 0.75; 95% CI 0.64 to 0.88
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">cluster</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/cluster.csv"</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">arm</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">cluster</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"arm"</span><span class="p">):</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">"practice"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">arm</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> practices; </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">cluster</span><span class="p">[</span><span class="s2">"arm"</span><span class="p">],</span> <span class="n">cluster</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">])</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">rollout</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">arm</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">rollout</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"allocated"</span><span class="p">):</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">arm</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">group</span><span class="p">[</span><span class="s1">'clinic'</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> clinics; </span><span class="si">{</span><span class="n">events</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">rollout</span><span class="p">[</span><span class="s2">"allocated"</span><span class="p">],</span> <span class="n">rollout</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">])</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="s2">"yes"</span><span class="p">]</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Pooled ratio: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'single pill first'</span><span class="p">]</span><span class="o">/</span><span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'usual prescribing'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Pooled ratio: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'single pill'</span><span class="p">]</span><span class="o">/</span><span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">'separate tablets'</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8101,15 +8106,15 @@ Restricted ratio: 0.75; 95% CI 0.64 to 0.88
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>single pill first: 9 practices; 271/876
-usual prescribing: 9 practices; 395/924
-Pooled ratio: 0.72
+<pre>separate tablets: 5 clinics; 236/852
+single pill: 5 clinics; 179/819
+Pooled ratio: 0.79
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2ccb7b2f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3cdb538e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8120,15 +8125,16 @@ Pooled ratio: 0.72
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">t</span>
-<span class="n">cluster</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/cluster.csv"</span><span class="p">)</span>
-<span class="n">cluster</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"arm"</span><span class="p">,</span> <span class="s2">"practice"</span><span class="p">])[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill first"</span><span class="p">],</span> <span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"usual prescribing"</span><span class="p">]</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">rollout</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">rollout</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">rollout</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">rollout</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"allocated"</span><span class="p">,</span> <span class="s2">"clinic"</span><span class="p">])[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">],</span> <span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"separate tablets"</span><span class="p">]</span>
 <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">q</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="o">+</span><span class="n">v</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">u</span><span class="o">*</span><span class="n">u</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">d</span><span class="p">,</span> <span class="n">se</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">-</span><span class="n">q</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="mi">100</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="o">+</span><span class="n">v</span><span class="p">)</span>
 <span class="n">cut</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mean practice risks: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">q</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mean clinic risks: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">q</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SE: </span><span class="si">{</span><span class="n">se</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">; df: </span><span class="si">{</span><span class="n">df</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">; t cutoff: </span><span class="si">{</span><span class="n">cut</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Difference: </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">; 95% CI </span><span class="si">{</span><span class="n">d</span><span class="o">-</span><span class="n">cut</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">d</span><span class="o">+</span><span class="n">cut</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
@@ -8143,16 +8149,69 @@ Pooled ratio: 0.72
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Mean practice risks: 0.3092, 0.4281
-SE: 1.7601; df: 15.74; t cutoff: 2.1228
-Difference: -11.9; 95% CI -15.6 to -8.2
+<pre>Mean clinic risks: 0.2176, 0.2776
+SE: 1.6944; df: 8.00; t cutoff: 2.3061
+Difference: -6.0; 95% CI -9.9 to -2.1
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=30c83823">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da463a67">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Ensaios-por-conglomerados-em-degraus-escalonados">Ensaios por conglomerados em degraus escalonados<a class="anchor-link" href="#Ensaios-por-conglomerados-em-degraus-escalonados">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=620665a1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">records</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">risk</span><span class="p">(</span><span class="n">switch_month</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"clinic_start_month"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">switch_month</span><span class="p">)</span>
+                   <span class="o">&amp;</span> <span class="n">records</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">late</span> <span class="o">=</span> <span class="n">risk</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span> <span class="o">-</span> <span class="n">risk</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">early</span> <span class="o">=</span> <span class="n">risk</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span> <span class="o">-</span> <span class="n">risk</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Switched in month 13: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">risk</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">risk</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Switched in month 19: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">risk</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">risk</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Changes: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">late</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">early</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> points"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Stepped-wedge contrast: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">late</span><span class="o">-</span><span class="n">early</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> points"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Switched in month 13: 21.9%, 19.5%
+Switched in month 19: 27.7%, 21.0%
+Changes: -6.7, -2.4 points
+Stepped-wedge contrast: -4.3 points
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=295e2483">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8162,21 +8221,21 @@ Difference: -11.9; 95% CI -15.6 to -8.2
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9ce18bf0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1872feec">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">monthly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/monthly.csv"</span><span class="p">)</span>
-<span class="n">p18</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="n">monthly</span><span class="p">[</span><span class="s2">"practice"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"M18"</span><span class="p">)]</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">adopters</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"clinic_start_month"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">13</span><span class="p">)]</span>
 <span class="n">risks</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">rows</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"before"</span><span class="p">,</span> <span class="n">p18</span><span class="p">[</span><span class="n">p18</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">]),</span>
-                   <span class="p">(</span><span class="s2">"after"</span><span class="p">,</span> <span class="n">p18</span><span class="p">[</span><span class="n">p18</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">])]:</span>
-    <span class="n">a</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"uncontrolled"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"patients"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">rows</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"before"</span><span class="p">,</span> <span class="n">adopters</span><span class="p">[</span><span class="n">adopters</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]),</span>
+                   <span class="p">(</span><span class="s2">"after"</span><span class="p">,</span> <span class="n">adopters</span><span class="p">[</span><span class="n">adopters</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)])]:</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
     <span class="n">risks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">n</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">a</span><span class="o">/</span><span class="n">n</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"After/before: </span><span class="si">{</span><span class="n">risks</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">risks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -8192,16 +8251,16 @@ Difference: -11.9; 95% CI -15.6 to -8.2
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>before: 298/586 = 50.9%
-after: 533/1693 = 31.5%
-After/before: 0.62
+<pre>before: 311/830 = 37.5%
+after: 179/819 = 21.9%
+After/before: 0.58
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d5a2c1b5">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=beee6981">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8211,24 +8270,24 @@ After/before: 0.62
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=414e91f7">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9dafa009">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">monthly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/monthly.csv"</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">risk_in</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"uncontrolled"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"patients"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="n">monthly</span><span class="p">[</span><span class="s2">"practice"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"M18"</span><span class="p">)]</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="n">monthly</span><span class="p">[</span><span class="s2">"practice"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"M01"</span><span class="p">,</span> <span class="s2">"M02"</span><span class="p">,</span> <span class="s2">"M03"</span><span class="p">])]</span>
-<span class="n">a0</span><span class="p">,</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">]),</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">])</span>
-<span class="n">b0</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">]),</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">7</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"M18 risks: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">a0</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">a1</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Comparison risks: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">b0</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">b1</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">adopt</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"clinic_start_month"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">13</span><span class="p">)]</span>
+<span class="n">comp</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"clinic_start_month"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">19</span><span class="p">)]</span>
+<span class="n">a0</span><span class="p">,</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">adopt</span><span class="p">[</span><span class="n">adopt</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]),</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">adopt</span><span class="p">[</span><span class="n">adopt</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)])</span>
+<span class="n">b0</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">comp</span><span class="p">[</span><span class="n">comp</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]),</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">comp</span><span class="p">[</span><span class="n">comp</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Adopting clinics: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">a0</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">a1</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Comparison clinics: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">b0</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">b1</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Changes: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">a1</span><span class="o">-</span><span class="n">a0</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">b1</span><span class="o">-</span><span class="n">b0</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> points"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Difference in differences: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">((</span><span class="n">a1</span><span class="o">-</span><span class="n">a0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">b1</span><span class="o">-</span><span class="n">b0</span><span class="p">))</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> points"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Assumed untreated endpoint: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">a0</span><span class="o">+</span><span class="n">b1</span><span class="o">-</span><span class="n">b0</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
@@ -8245,19 +8304,19 @@ After/before: 0.62
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>M18 risks: 50.9%, 31.5%
-Comparison risks: 43.8%, 38.1%
-Changes: -19.4, -5.7 points
-Difference in differences: -13.7 points
-Assumed untreated endpoint: 45.2%
-Ratio of ratios: 0.71
+<pre>Adopting clinics: 37.5%, 21.9%
+Comparison clinics: 35.7%, 27.7%
+Changes: -15.6, -8.0 points
+Difference in differences: -7.6 points
+Assumed untreated endpoint: 29.5%
+Ratio of ratios: 0.75
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d14ebad4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c85c9b25">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8267,20 +8326,23 @@ Ratio of ratios: 0.71
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f9692a1c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f68edfd3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">monthly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/monthly.csv"</span><span class="p">)</span>
-<span class="n">p18</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="n">monthly</span><span class="p">[</span><span class="s2">"practice"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"M18"</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">"month"</span><span class="p">)</span>
-<span class="n">first</span> <span class="o">=</span> <span class="n">p18</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Before months: </span><span class="si">{</span><span class="p">(</span><span class="n">p18</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"After months: </span><span class="si">{</span><span class="p">(</span><span class="n">p18</span><span class="p">[</span><span class="s1">'month'</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">adopters</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"clinic_start_month"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">13</span><span class="p">)]</span>
+<span class="n">monthly</span> <span class="o">=</span> <span class="n">adopters</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"month"</span><span class="p">)[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">patients</span><span class="o">=</span><span class="s2">"size"</span><span class="p">,</span> <span class="n">uncontrolled</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">first</span> <span class="o">=</span> <span class="n">monthly</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Before months: </span><span class="si">{</span><span class="p">(</span><span class="n">monthly</span><span class="o">.</span><span class="n">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Trial months: </span><span class="si">{</span><span class="n">monthly</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"After months: </span><span class="si">{</span><span class="p">(</span><span class="n">monthly</span><span class="o">.</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">13</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"First risk: </span><span class="si">{</span><span class="n">first</span><span class="p">[</span><span class="s1">'uncontrolled'</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">first</span><span class="p">[</span><span class="s1">'patients'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
       <span class="sa">f</span><span class="s2">" = </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">first</span><span class="p">[</span><span class="s1">'uncontrolled'</span><span class="p">]</span><span class="o">/</span><span class="n">first</span><span class="p">[</span><span class="s1">'patients'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
 </pre></div>
@@ -8296,15 +8358,16 @@ Ratio of ratios: 0.71
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Before months: 6
-After months: 18
-First risk: 65/109 = 59.6%
+Trial months: 6
+After months: 12
+First risk: 54/134 = 40.3%
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=955b158e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8741a8da">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8315,7 +8378,7 @@ First risk: 65/109 = 59.6%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=406ce850">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=afd0a720">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8326,7 +8389,7 @@ First risk: 65/109 = 59.6%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=394f50e1">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=328329ff">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8336,16 +8399,17 @@ First risk: 65/109 = 59.6%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d782f497">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1188a7e4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">trial</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/trial.csv"</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">trial</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"trial"</span><span class="p">)]</span>
 <span class="k">for</span> <span class="n">arm</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">trial</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"allocated"</span><span class="p">):</span>
     <span class="n">high</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">"baseline_sbp"</span><span class="p">]</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="mi">160</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">arm</span><span class="si">}</span><span class="s2">: n=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span><span class="si">}</span><span class="s2">, age=</span><span class="si">{</span><span class="n">group</span><span class="p">[</span><span class="s1">'age_years'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, "</span>
@@ -8362,15 +8426,15 @@ First risk: 65/109 = 59.6%
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>single pill: n=596, age=61.7, high=205, share=34.4%
-two tablets: n=604, age=61.2, high=223, share=36.9%
+<pre>separate tablets: n=859, age=60.3, high=331, share=38.5%
+single pill: n=857, age=60.4, high=341, share=39.8%
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=834dc515">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da9ac619">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8380,60 +8444,7 @@ two tablets: n=604, age=61.2, high=223, share=36.9%
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1e61d275">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">exp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">NormalDist</span>
-<span class="n">trial</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/trial.csv"</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">trial</span><span class="p">[</span><span class="s2">"allocated"</span><span class="p">],</span> <span class="n">trial</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">])</span>
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"two tablets"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">]</span>
-<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"two tablets"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">b</span><span class="o">/</span><span class="n">m</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">()</span><span class="o">.</span><span class="n">inv_cdf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">)</span>
-<span class="n">d</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">q</span><span class="p">)</span>
-<span class="n">se</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="o">+</span><span class="n">q</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
-<span class="n">sl</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Difference: </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">; 95% CI </span><span class="si">{</span><span class="n">d</span><span class="o">-</span><span class="n">z</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">d</span><span class="o">+</span><span class="n">z</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ratio: </span><span class="si">{</span><span class="n">p</span><span class="o">/</span><span class="n">q</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">; 95% CI "</span>
-      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">exp</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="n">q</span><span class="p">)</span><span class="o">-</span><span class="n">z</span><span class="o">*</span><span class="n">sl</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">exp</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="n">q</span><span class="p">)</span><span class="o">+</span><span class="n">z</span><span class="o">*</span><span class="n">sl</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Difference: -8.9; 95% CI -14.2 to -3.5
-Ratio: 0.78; 95% CI 0.67 to 0.91
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3bb7a185">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-7.-Pacientes-dentro-dos-consult%C3%B3rios-alocados">Exercício 7. Pacientes dentro dos consultórios alocados<a class="anchor-link" href="#Exerc%C3%ADcio-7.-Pacientes-dentro-dos-consult%C3%B3rios-alocados">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d410a894">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3febb390">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8442,12 +8453,22 @@ Ratio: 0.78; 95% CI 0.67 to 0.91
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">cluster</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/cluster.csv"</span><span class="p">)</span>
-<span class="n">cluster</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span>
-<span class="n">by_practice</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"practice"</span><span class="p">,</span> <span class="s2">"arm"</span><span class="p">])[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
-    <span class="n">events</span><span class="o">=</span><span class="s2">"sum"</span><span class="p">,</span> <span class="n">patients</span><span class="o">=</span><span class="s2">"size"</span><span class="p">,</span> <span class="n">risk</span><span class="o">=</span><span class="s2">"mean"</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">by_practice</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">practice</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">events</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">patients</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">row</span><span class="o">.</span><span class="n">risk</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">exp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">NormalDist</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">trial</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"trial"</span><span class="p">)]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">trial</span><span class="p">[</span><span class="s2">"allocated"</span><span class="p">],</span> <span class="n">trial</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">])</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"separate tablets"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">]</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"separate tablets"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">b</span><span class="o">/</span><span class="n">m</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">()</span><span class="o">.</span><span class="n">inv_cdf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">)</span>
+<span class="n">se</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> <span class="o">+</span> <span class="n">q</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
+<span class="n">sl</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Risks: </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">q</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Difference: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">; 95% CI </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="o">-</span><span class="n">z</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">q</span><span class="p">)</span><span class="o">+</span><span class="n">z</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Ratio: </span><span class="si">{</span><span class="n">p</span><span class="o">/</span><span class="n">q</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">; 95% CI </span><span class="si">{</span><span class="n">exp</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="n">q</span><span class="p">)</span><span class="o">-</span><span class="n">z</span><span class="o">*</span><span class="n">sl</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">exp</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="n">q</span><span class="p">)</span><span class="o">+</span><span class="n">z</span><span class="o">*</span><span class="n">sl</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">same</span> <span class="o">=</span> <span class="n">trial</span><span class="p">[</span><span class="s2">"allocated"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"single pill"</span><span class="p">)</span> <span class="o">==</span> <span class="n">trial</span><span class="p">[</span><span class="s2">"received"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Receipt matches assignment in </span><span class="si">{</span><span class="n">same</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span><span class="si">}</span><span class="s2"> adults"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8460,30 +8481,27 @@ Ratio: 0.78; 95% CI 0.67 to 0.91
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>P01: 38/109 = 34.9%
-P02: 47/112 = 42.0%
-P03: 43/101 = 42.6%
-P04: 37/95 = 38.9%
-P05: 48/115 = 41.7%
-P06: 24/86 = 27.9%
-P07: 27/105 = 25.7%
-P08: 48/117 = 41.0%
-P09: 29/105 = 27.6%
-P10: 36/89 = 40.4%
-P11: 50/107 = 46.7%
-P12: 34/93 = 36.6%
-P13: 27/86 = 31.4%
-P14: 31/101 = 30.7%
-P15: 39/120 = 32.5%
-P16: 47/91 = 51.6%
-P17: 22/71 = 31.0%
-P18: 39/97 = 40.2%
+<pre>Risks: 0.2322, 0.3248
+Difference: -9.3; 95% CI -13.5 to -5.0
+Ratio: 0.71; 95% CI 0.61 to 0.84
+Receipt matches assignment in 1610 of 1716 adults
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3f28a62d">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=adadc5f9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Exerc%C3%ADcio-7.-Ambulat%C3%B3rios-dentro-dos-grupos-alocados">Exercício 7. Ambulatórios dentro dos grupos alocados<a class="anchor-link" href="#Exerc%C3%ADcio-7.-Ambulat%C3%B3rios-dentro-dos-grupos-alocados">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a7d29778">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8494,16 +8512,19 @@ P18: 39/97 = 40.2%
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">t</span>
-<span class="n">cluster</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/cluster.csv"</span><span class="p">)</span>
-<span class="n">cluster</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"arm"</span><span class="p">,</span> <span class="s2">"practice"</span><span class="p">])[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill first"</span><span class="p">],</span> <span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"usual prescribing"</span><span class="p">]</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">rollout</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">rollout</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">rollout</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">rollout</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"allocated"</span><span class="p">,</span> <span class="s2">"clinic"</span><span class="p">])[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">"sum"</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">])</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">"risk"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="s2">"sum"</span><span class="p">]</span> <span class="o">/</span> <span class="n">table</span><span class="p">[</span><span class="s2">"size"</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">rollout</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">"allocated"</span><span class="p">,</span> <span class="s2">"clinic"</span><span class="p">])[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"single pill"</span><span class="p">],</span> <span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"separate tablets"</span><span class="p">]</span>
 <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">q</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="o">+</span><span class="n">v</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">*</span><span class="n">u</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">v</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="o">+</span><span class="n">v</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">u</span><span class="o">*</span><span class="n">u</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">v</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">d</span><span class="p">,</span> <span class="n">se</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">-</span><span class="n">q</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span> <span class="mi">100</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u</span><span class="o">+</span><span class="n">v</span><span class="p">)</span>
 <span class="n">cut</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Difference: </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">; SE: </span><span class="si">{</span><span class="n">se</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">; df: </span><span class="si">{</span><span class="n">df</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"95% CI: </span><span class="si">{</span><span class="n">d</span><span class="o">-</span><span class="n">cut</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">d</span><span class="o">+</span><span class="n">cut</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> percentage points"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Difference: </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">; 95% CI </span><span class="si">{</span><span class="n">d</span><span class="o">-</span><span class="n">cut</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">d</span><span class="o">+</span><span class="n">cut</span><span class="o">*</span><span class="n">se</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8516,25 +8537,36 @@ P18: 39/97 = 40.2%
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Difference: -11.9; SE: 1.7601; df: 15.74
-95% CI: -15.6 to -8.2 percentage points
+<pre>                         sum  size  risk
+allocated        clinic                 
+separate tablets C01      50   167  29.9
+                 C02      42   180  23.3
+                 C05      50   167  29.9
+                 C07      45   163  27.6
+                 C10      49   175  28.0
+single pill      C03      37   167  22.2
+                 C04      35   171  20.5
+                 C06      36   160  22.5
+                 C08      27   148  18.2
+                 C09      44   173  25.4
+Difference: -6.0; 95% CI -9.9 to -2.1
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fe34dfa3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=5d93cc02">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-9.-A-mudan%C3%A7a-no-registro-como-um-todo">Exercício 9. A mudança no registro como um todo<a class="anchor-link" href="#Exerc%C3%ADcio-9.-A-mudan%C3%A7a-no-registro-como-um-todo">¶</a></h3>
+<h3 id="Exerc%C3%ADcio-9.-A-mudan%C3%A7a-no-servi%C3%A7o-inteiro">Exercício 9. A mudança no serviço inteiro<a class="anchor-link" href="#Exerc%C3%ADcio-9.-A-mudan%C3%A7a-no-servi%C3%A7o-inteiro">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=39fe7e62">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=367a4cbb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8543,11 +8575,12 @@ P18: 39/97 = 40.2%
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">monthly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/monthly.csv"</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">rows</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"months 1-12"</span><span class="p">,</span> <span class="n">monthly</span><span class="p">[</span><span class="n">monthly</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">]),</span>
-                   <span class="p">(</span><span class="s2">"months 13-24"</span><span class="p">,</span> <span class="n">monthly</span><span class="p">[</span><span class="n">monthly</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">13</span><span class="p">])]:</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"patients"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">a</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"uncontrolled"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"single_pill"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">rows</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"months 1-6"</span><span class="p">,</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]),</span>
+                   <span class="p">(</span><span class="s2">"months 19-24"</span><span class="p">,</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">)])]:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"received"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: uncontrolled </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">a</span><span class="o">/</span><span class="n">n</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%; "</span>
           <span class="sa">f</span><span class="s2">"uptake </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">s</span><span class="o">/</span><span class="n">n</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
 </pre></div>
@@ -8562,25 +8595,25 @@ P18: 39/97 = 40.2%
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>months 1-12: uncontrolled 9497/20414 = 46.5%; uptake 426/20414 = 2.1%
-months 13-24: uncontrolled 7763/20595 = 37.7%; uptake 1806/20595 = 8.8%
+<pre>months 1-6: uncontrolled 621/1698 = 36.6%; uptake 56/1698 = 3.3%
+months 19-24: uncontrolled 336/1659 = 20.3%; uptake 1527/1659 = 92.0%
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1de0c590">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2ae6bc62">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Exerc%C3%ADcio-10.-M09-e-sua-compara%C3%A7%C3%A3o-simult%C3%A2nea">Exercício 10. M09 e sua comparação simultânea<a class="anchor-link" href="#Exerc%C3%ADcio-10.-M09-e-sua-compara%C3%A7%C3%A3o-simult%C3%A2nea">¶</a></h3>
+<h3 id="Exerc%C3%ADcio-10.-O-contraste-em-degraus-escalonados-e-a-compara%C3%A7%C3%A3o-por-conglomerados">Exercício 10. O contraste em degraus escalonados e a comparação por conglomerados<a class="anchor-link" href="#Exerc%C3%ADcio-10.-O-contraste-em-degraus-escalonados-e-a-compara%C3%A7%C3%A3o-por-conglomerados">¶</a></h3>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4c4930f6">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f7709370">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8589,19 +8622,17 @@ months 13-24: uncontrolled 7763/20595 = 37.7%; uptake 1806/20595 = 8.8%
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">monthly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/monthly.csv"</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">risk_in</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"uncontrolled"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">rows</span><span class="p">[</span><span class="s2">"patients"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="n">monthly</span><span class="p">[</span><span class="s2">"practice"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"M09"</span><span class="p">)]</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="n">monthly</span><span class="p">[</span><span class="s2">"practice"</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">"M01"</span><span class="p">,</span> <span class="s2">"M02"</span><span class="p">,</span> <span class="s2">"M03"</span><span class="p">])]</span>
-<span class="n">a0</span><span class="p">,</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">13</span><span class="p">]),</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">13</span><span class="p">])</span>
-<span class="n">b0</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">13</span><span class="p">]),</span> <span class="n">risk_in</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">13</span><span class="p">])</span>
-<span class="n">after</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">13</span><span class="p">]</span>
-<span class="n">uptake</span> <span class="o">=</span> <span class="n">after</span><span class="p">[</span><span class="s2">"single_pill"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">after</span><span class="p">[</span><span class="s2">"patients"</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"M09: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">a0</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">a1</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%; ratio </span><span class="si">{</span><span class="n">a1</span><span class="o">/</span><span class="n">a0</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Comparison: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">b0</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%, </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">b1</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%; ratio </span><span class="si">{</span><span class="n">b1</span><span class="o">/</span><span class="n">b0</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Difference in differences: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">((</span><span class="n">a1</span><span class="o">-</span><span class="n">a0</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">b1</span><span class="o">-</span><span class="n">b0</span><span class="p">))</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> points"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"After uptake: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">uptake</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/clinic_patients.csv"</span><span class="p">)</span>
+<span class="n">records</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">"uncontrolled_12w"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">"yes"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">risk</span><span class="p">(</span><span class="n">switch_month</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">"clinic_start_month"</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">switch_month</span><span class="p">)</span>
+                   <span class="o">&amp;</span> <span class="n">records</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">rows</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">late</span> <span class="o">=</span> <span class="n">risk</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span> <span class="o">-</span> <span class="n">risk</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">early</span> <span class="o">=</span> <span class="n">risk</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span> <span class="o">-</span> <span class="n">risk</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">cluster</span> <span class="o">=</span> <span class="n">risk</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span> <span class="o">-</span> <span class="n">risk</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Stepped-wedge contrast: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">late</span><span class="o">-</span><span class="n">early</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> points"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Cluster comparison (pooled patients): </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">cluster</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> points"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8614,24 +8645,22 @@ months 13-24: uncontrolled 7763/20595 = 37.7%; uptake 1806/20595 = 8.8%
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>M09: 46.9%, 29.9%; ratio 0.64
-Comparison: 42.3%, 36.7%; ratio 0.87
-Difference in differences: -11.4 points
-After uptake: 77.1%
+<pre>Stepped-wedge contrast: -4.3 points
+Cluster comparison (pooled patients): -5.8 points
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3e9ffc4b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c45e1435">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<p><em>Dados sintéticos (semente 10, <code>generate_data.py</code>). Apenas hipóteses didáticas; nada aqui é recomendação clínica nem estimativa para um serviço real.</em></p>
+<p><em>Dados sintéticos (semente 33, <code>generate_data.py</code>). Apenas hipóteses didáticas; nada aqui é recomendação clínica nem estimativa para um serviço real.</em></p>
 </div>
 </div>
 </div>
