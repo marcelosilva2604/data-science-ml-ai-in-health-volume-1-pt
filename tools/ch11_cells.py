@@ -201,45 +201,46 @@ print("Infecção, entre todos os partos:", n_infection, "de", n, "=", round(n_i
 """)
 
     sec("11.5", "Do hemorrhage and infection occur independently?", "Hemorragia e infecção ocorrem de forma independente?",
-        "Do hemorrhage and infection come together or independently?", "Hemorragia e infecção vêm juntas ou de modo independente?")
-    cell("""# 1. If hemorrhage and infection were independent, P(H and I) would equal P(H) x P(I)
+        "Does knowing that the next mother admitted had a hemorrhage change her chance of an infection?",
+        "Saber que a próxima mãe admitida teve hemorragia muda a chance de ela ter infecção?")
+    cell("""# 1. An identifier tells nothing about the delivery: is "odd identifier" independent of cesarean?
+number = df["delivery_id"].str[1:].astype(int)       # D0001 -> 1
+O = number % 2 == 1                                   # True for odd identifiers
+n_odd = O.sum()
+n_odd_cesarean = (O & C).sum()
+print("Expected if independent:", round(n_odd / n, 4), "x", round(n_cesarean / n, 4), "=", round(n_odd / n * n_cesarean / n, 4))
+print("Observed, both together:", n_odd_cesarean, "of", n, "=", round(n_odd_cesarean / n, 4))
+print("Cesarean among odd identifiers:", round(n_odd_cesarean / n_odd, 4), "; among even identifiers:", round((~O & C).sum() / (~O).sum(), 4))
+
+# 2. The contrast: hemorrhage and infection
 p_h = n_hemorrhage / n
 p_i = n_infection / n
+print()
 print("Expected if independent:", round(p_h, 4), "x", round(p_i, 4), "=", round(p_h * p_i, 6))
-
-# 2. What the register shows
 print("Observed, both together:", n_both, "of", n, "=", round(n_both / n, 4))
 
 # 3. Infection within the mothers with and without hemorrhage
-print()
 print("Infection among mothers with hemorrhage:", n_both, "of", n_hemorrhage, "=", round(n_both / n_hemorrhage, 4))
 print("Infection among mothers without hemorrhage:", (~H & I).sum(), "of", (~H).sum(), "=", round((~H & I).sum() / (~H).sum(), 4))
-""", """# 1. Se hemorragia e infecção fossem independentes, P(H e I) seria igual a P(H) x P(I)
+""", """# 1. Um identificador não diz nada sobre o parto: "identificador ímpar" é independente de cesárea?
+number = df["delivery_id"].str[1:].astype(int)       # D0001 -> 1
+O = number % 2 == 1                                   # True para identificadores ímpares
+n_odd = O.sum()
+n_odd_cesarean = (O & C).sum()
+print("Esperado se independentes:", round(n_odd / n, 4), "x", round(n_cesarean / n, 4), "=", round(n_odd / n * n_cesarean / n, 4))
+print("Observado, os dois juntos:", n_odd_cesarean, "de", n, "=", round(n_odd_cesarean / n, 4))
+print("Cesárea entre identificadores ímpares:", round(n_odd_cesarean / n_odd, 4), "; entre pares:", round((~O & C).sum() / (~O).sum(), 4))
+
+# 2. O contraste: hemorragia e infecção
 p_h = n_hemorrhage / n
 p_i = n_infection / n
+print()
 print("Esperado se independentes:", round(p_h, 4), "x", round(p_i, 4), "=", round(p_h * p_i, 6))
-
-# 2. O que o registro mostra
 print("Observado, as duas juntas:", n_both, "de", n, "=", round(n_both / n, 4))
 
 # 3. Infecção entre as mães com e sem hemorragia
-print()
 print("Infecção entre as mães com hemorragia:", n_both, "de", n_hemorrhage, "=", round(n_both / n_hemorrhage, 4))
 print("Infecção entre as mães sem hemorragia:", (~H & I).sum(), "de", (~H).sum(), "=", round((~H & I).sum() / (~H).sum(), 4))
-""")
-    sec("11.5.1", "Multiplying while retaining the conditions", "Multiplicar preservando as condições")
-    cell("""# Cesarean, then hemorrhage among the cesareans, then infection among those
-n_ch = (C & H).sum()
-n_chi = (C & H & I).sum()
-print("Of", n_cesarean, "cesareans,", n_ch, "had a hemorrhage, and", n_chi, "of those also had an infection.")
-chain = (n_cesarean / n) * (n_ch / n_cesarean) * (n_chi / n_ch)
-print("P(C) x P(H|C) x P(I|C and H) =", round(chain, 4), "; direct count:", round(n_chi / n, 4))
-""", """# Cesárea, depois hemorragia entre as cesáreas, depois infecção entre essas
-n_ch = (C & H).sum()
-n_chi = (C & H & I).sum()
-print("De", n_cesarean, "cesáreas,", n_ch, "tiveram hemorragia, e", n_chi, "delas também tiveram infecção.")
-chain = (n_cesarean / n) * (n_ch / n_cesarean) * (n_chi / n_ch)
-print("P(C) x P(H|C) x P(I|C e H) =", round(chain, 4), "; contagem direta:", round(n_chi / n, 4))
 """)
 
     sec("11.6", "Among infections, how many followed cesareans?", "Entre as infecções, quantas ocorreram após cesáreas?",
