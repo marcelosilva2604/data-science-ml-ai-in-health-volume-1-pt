@@ -45,8 +45,7 @@ def generate_data(output_dir=HERE / "data", seed=33):
                 risk = min(max(risk, 0.02), 0.95)
                 rows.append({"patient_id": f"A{pid:05d}", "clinic": c, "month": month, "period": period,
                              "clinic_start_month": 13 if c in early else 19,
-                             "age_years": age, "diabetes": "yes" if diabetes else "no",
-                             "kidney_disease": "yes" if ckd else "no", "baseline_sbp": sbp,
+                             "diabetes": "yes" if diabetes else "no", "baseline_sbp": sbp,
                              "allocated": offer, "received": "yes" if received else "no",
                              "uncontrolled_12w": "yes" if rng.random() < risk else "no"})
     with open(out / "clinic_patients.csv", "w", newline="") as f:
