@@ -6,7 +6,11 @@ Run from the repository root:  python tools/build_ch11_notebook.py
 """
 import json
 from pathlib import Path
+import sys
 import nbformat as nbf
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from ch11_q12 import EN as Q12_EN, PT as Q12_PT
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "chapters" / "ch11"
@@ -75,11 +79,20 @@ def build(lang):
          + ('print(f"The register has {rows:,} rows (one per delivery) and {columns} columns.")\n' if lang == "en" else
             'print(f"O registro tem {rows} linhas (uma por parto) e {columns} colunas.")\n')
          + 'register.head()')
-    for q, block in zip(Q[lang], BLOCKS["A"]):
+    # Q1 and Q2 follow the line of reasoning step by step; Q3 to Q6 reuse the chapter's code blocks
+    q12 = Q12_EN if lang == "en" else Q12_PT
+    for q, key in zip(Q[lang][:2], ("Q1", "Q2")):
+        md("### " + q)
+        for kind, text in q12[key]:
+            if kind == "md":
+                md(text)
+            elif kind == "code":
+                code(text)
+            else:
+                code(PLOT % AXES[lang])
+    for q, block in list(zip(Q[lang], BLOCKS["A"]))[2:]:
         md("### " + q)
         code(block)
-        if q[:2] in ("Q1", "P1"):
-            code(PLOT % AXES[lang])
     md("## Part B. Exercise solutions" if lang == "en" else "## Parte B. Soluções dos exercícios")
     for k, (block, r) in enumerate(zip(BLOCKS["B"], BLOCKS["res"]), start=1):
         md(f"### {'Exercise' if lang == 'en' else 'Exercício'} {k}. {r[i]}")
