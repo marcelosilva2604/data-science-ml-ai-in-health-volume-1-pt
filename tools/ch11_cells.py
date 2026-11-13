@@ -102,7 +102,7 @@ print("Chance de a próxima mãe admitida ter hemorragia:", round(100 * p_hemorr
 table = pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total")
 table.index = ["No hemorrhage", "Hemorrhage", "Total"]      # rows
 table.columns = ["No infection", "Infection", "Total"]      # columns
-print(table)
+display(table)                                             # shows the table formatted
 
 # 2. Count the mothers with each complication, and with both
 n_infection = I.sum()
@@ -114,7 +114,7 @@ print("Adding the two gives", n_hemorrhage + n_infection, "but the", n_both, "mo
 table = pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total")
 table.index = ["Sem hemorragia", "Hemorragia", "Total"]      # linhas
 table.columns = ["Sem infecção", "Infecção", "Total"]        # colunas
-print(table)
+display(table)                                             # shows the table formatted
 
 # 2. Contar as mães com cada complicação e com ambas
 n_infection = I.sum()
@@ -226,7 +226,7 @@ print("P(C) x P(H|C) x P(I|C e H) =", round(chain, 4), "; contagem direta:", rou
 table = pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total")
 table.index = ["Vaginal", "Cesarean", "Total"]              # rows
 table.columns = ["No infection", "Infection", "Total"]      # columns
-print(table)
+display(table)                                             # mostra a tabela formatada
 
 # 2. Counting directly among the infected mothers
 print()
@@ -235,7 +235,7 @@ print("Among the", n_infection, "infections,", infected_cesarean, "followed a ce
 table = pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total")
 table.index = ["Vaginal", "Cesárea", "Total"]                # linhas
 table.columns = ["Sem infecção", "Infecção", "Total"]        # colunas
-print(table)
+display(table)                                             # mostra a tabela formatada
 
 # 2. Contando diretamente entre as mães infectadas
 print()
