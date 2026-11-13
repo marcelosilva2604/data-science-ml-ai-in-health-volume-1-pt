@@ -9,30 +9,30 @@ PLOTCELL = {
 # 1. Read the register in order: does the fraction of cesareans settle?
 for k in [10, 50, 100, 500, 1000, 5000]:
     first_k = C.iloc[:k]           # the first k rows
-    print("After", k, "rows:", first_k.sum(), "cesareans =", round(first_k.mean(), 4))
+    print("After", k, "rows:", first_k.sum(), "cesareans =", round(100 * first_k.mean(), 2), "%")
 
 # 2. The same fraction after every row, in a plot
-running = C.expanding().mean()     # fraction of cesareans among the rows read so far
+running = 100 * C.expanding().mean()     # % of cesareans among the rows read so far
 plt.plot(range(1, n + 1), running)
-plt.axhline(C.mean(), color="gray", linestyle="--")      # fraction in the whole register
+plt.axhline(100 * C.mean(), color="gray", linestyle="--")      # % in the whole register
 plt.xscale("log")
 plt.xlabel("Deliveries included so far (log scale)")
-plt.ylabel("Fraction cesarean")
+plt.ylabel("Cesareans so far (%)")
 plt.show()""",
  "pt": """import matplotlib.pyplot as plt
 
 # 1. Ler o registro em ordem: a fração de cesáreas se estabiliza?
 for k in [10, 50, 100, 500, 1000, 5000]:
     first_k = C.iloc[:k]           # as k primeiras linhas
-    print("Após", k, "linhas:", first_k.sum(), "cesáreas =", round(first_k.mean(), 4))
+    print("Após", k, "linhas:", first_k.sum(), "cesáreas =", round(100 * first_k.mean(), 2), "%")
 
 # 2. A mesma fração após cada linha, em um gráfico
-running = C.expanding().mean()     # fração de cesáreas entre as linhas lidas até agora
+running = 100 * C.expanding().mean()     # % de cesáreas entre as linhas lidas até agora
 plt.plot(range(1, n + 1), running)
-plt.axhline(C.mean(), color="gray", linestyle="--")      # fração no registro completo
+plt.axhline(100 * C.mean(), color="gray", linestyle="--")      # % no registro completo
 plt.xscale("log")
 plt.xlabel("Partos incluídos até então (escala log)")
-plt.ylabel("Fração de cesáreas")
+plt.ylabel("Cesáreas até então (%)")
 plt.show()""",
 }
 
@@ -351,20 +351,20 @@ for bits in product([0, 1], repeat=3):
 ''')
     A("Running fractions and order", "Frações acumuladas e ordem", '''# 1. Fraction of cesareans among the first k records
 for k in [10, 50, 100, 500, 1000, 5000]:
-    print("First", k, "records:", round(C.iloc[:k].mean(), 4))
+    print("First", k, "records:", round(100 * C.iloc[:k].mean(), 2), "%")
 
 # 2. Reverse the register order: first 100 records, and all 5,000
 reverse = C.iloc[::-1]             # the same rows, from last to first
 print()
-print("Reversed order: first 100 records", round(reverse.iloc[:100].mean(), 4), "; all", n, "records", round(reverse.mean(), 4))
+print("Reversed order: first 100 records", round(100 * reverse.iloc[:100].mean(), 2), "% ; all", n, "records", round(100 * reverse.mean(), 2), "%")
 ''', '''# 1. Fração de cesáreas entre os k primeiros registros
 for k in [10, 50, 100, 500, 1000, 5000]:
-    print("Primeiros", k, "registros:", round(C.iloc[:k].mean(), 4))
+    print("Primeiros", k, "registros:", round(100 * C.iloc[:k].mean(), 2), "%")
 
 # 2. Inverter a ordem do registro: primeiros 100 registros e todos os 5.000
 reverse = C.iloc[::-1]             # as mesmas linhas, da última para a primeira
 print()
-print("Ordem invertida: primeiros 100 registros", round(reverse.iloc[:100].mean(), 4), "; todos os", n, "registros", round(reverse.mean(), 4))
+print("Ordem invertida: primeiros 100 registros", round(100 * reverse.iloc[:100].mean(), 2), "% ; todos os", n, "registros", round(100 * reverse.mean(), 2), "%")
 ''')
     A("Count the overlap once", "Contar a sobreposição uma vez", '''# 1. The four groups: hemorrhage only, infection only, both, neither
 only_h = (H & ~I).sum()
