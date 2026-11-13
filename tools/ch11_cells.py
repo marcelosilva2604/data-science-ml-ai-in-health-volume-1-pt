@@ -114,7 +114,7 @@ print("Adding the two gives", n_hemorrhage + n_infection, "but the", n_both, "mo
 table = pd.crosstab(df["hemorrhage"], df["infection"], margins=True, margins_name="Total")
 table.index = ["Sem hemorragia", "Hemorragia", "Total"]      # linhas
 table.columns = ["Sem infecção", "Infecção", "Total"]        # colunas
-display(table)                                             # shows the table formatted
+display(table)                                             # mostra a tabela formatada
 
 # 2. Contar as mães com cada complicação e com ambas
 n_infection = I.sum()
@@ -205,14 +205,14 @@ print("Probabilidade total de infecção:", round(total_probability, 4), "; cont
     sec("11.5", "Do hemorrhage and infection occur independently?", "Hemorragia e infecção ocorrem de forma independente?",
         "Does knowing that the next mother admitted had a hemorrhage change her chance of an infection?",
         "Saber que a próxima mãe admitida teve hemorragia muda a chance de ela ter infecção?")
-    cell("""# 1. An identifier tells nothing about the delivery: is "odd identifier" independent of cesarean?
+    cell("""# 1. An identifier is only a label: is "identifier in the first half of the register" independent of hemorrhage?
 number = df["delivery_id"].str[1:].astype(int)       # D0001 -> 1
-O = number % 2 == 1                                   # True for odd identifiers
-n_odd = O.sum()
-n_odd_cesarean = (O & C).sum()
-print("Expected if independent:", round(n_odd / n, 4), "x", round(n_cesarean / n, 4), "=", round(n_odd / n * n_cesarean / n, 4))
-print("Observed, both together:", n_odd_cesarean, "of", n, "=", round(n_odd_cesarean / n, 4))
-print("Cesarean among odd identifiers:", round(n_odd_cesarean / n_odd, 4), "; among even identifiers:", round((~O & C).sum() / (~O).sum(), 4))
+F = number <= 2500                                    # True for D0001 to D2500
+n_first = F.sum()
+n_first_hemorrhage = (F & H).sum()
+print("Expected if independent:", round(n_first / n, 4), "x", round(n_hemorrhage / n, 4), "=", round(n_first / n * n_hemorrhage / n, 4))
+print("Observed, both together:", n_first_hemorrhage, "of", n, "=", round(n_first_hemorrhage / n, 4))
+print("Hemorrhage in the first half:", round(n_first_hemorrhage / n_first, 4), "; in the second half:", round((~F & H).sum() / (~F).sum(), 4))
 
 # 2. The contrast: hemorrhage and infection
 p_h = n_hemorrhage / n
@@ -224,14 +224,14 @@ print("Observed, both together:", n_both, "of", n, "=", round(n_both / n, 4))
 # 3. Infection within the mothers with and without hemorrhage
 print("Infection among mothers with hemorrhage:", n_both, "of", n_hemorrhage, "=", round(n_both / n_hemorrhage, 4))
 print("Infection among mothers without hemorrhage:", (~H & I).sum(), "of", (~H).sum(), "=", round((~H & I).sum() / (~H).sum(), 4))
-""", """# 1. Um identificador não diz nada sobre o parto: "identificador ímpar" é independente de cesárea?
+""", """# 1. Um identificador é só um rótulo: "identificador na primeira metade do registro" é independente de hemorragia?
 number = df["delivery_id"].str[1:].astype(int)       # D0001 -> 1
-O = number % 2 == 1                                   # True para identificadores ímpares
-n_odd = O.sum()
-n_odd_cesarean = (O & C).sum()
-print("Esperado se independentes:", round(n_odd / n, 4), "x", round(n_cesarean / n, 4), "=", round(n_odd / n * n_cesarean / n, 4))
-print("Observado, os dois juntos:", n_odd_cesarean, "de", n, "=", round(n_odd_cesarean / n, 4))
-print("Cesárea entre identificadores ímpares:", round(n_odd_cesarean / n_odd, 4), "; entre pares:", round((~O & C).sum() / (~O).sum(), 4))
+F = number <= 2500                                    # True para D0001 a D2500
+n_first = F.sum()
+n_first_hemorrhage = (F & H).sum()
+print("Esperado se independentes:", round(n_first / n, 4), "x", round(n_hemorrhage / n, 4), "=", round(n_first / n * n_hemorrhage / n, 4))
+print("Observado, os dois juntos:", n_first_hemorrhage, "de", n, "=", round(n_first_hemorrhage / n, 4))
+print("Hemorragia na primeira metade:", round(n_first_hemorrhage / n_first, 4), "; na segunda metade:", round((~F & H).sum() / (~F).sum(), 4))
 
 # 2. O contraste: hemorragia e infecção
 p_h = n_hemorrhage / n
@@ -251,11 +251,14 @@ print("Infecção entre as mães sem hemorragia:", (~H & I).sum(), "de", (~H).su
 table = pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total")
 table.index = ["Vaginal", "Cesarean", "Total"]              # rows
 table.columns = ["No infection", "Infection", "Total"]      # columns
-display(table)                                             # mostra a tabela formatada
+display(table)                                             # shows the table formatted
 
 # 2. Counting directly among the infected mothers
 print()
 print("Among the", n_infection, "infections,", infected_cesarean, "followed a cesarean =", round(100 * infected_cesarean / n_infection, 2), "%")
+
+# 3. The same by reversing the condition (Bayes): P(C|I) = P(I|C) P(C) / P(I)
+print("Reversal:", round(infected_cesarean / n_cesarean, 4), "x", round(n_cesarean / n, 4), "/", round(total_probability, 4), "=", round((infected_cesarean / n_cesarean) * (n_cesarean / n) / total_probability, 4))
 """, """# 1. A tabela: linhas são o tipo de parto, colunas são a infecção
 table = pd.crosstab(df["cesarean"], df["infection"], margins=True, margins_name="Total")
 table.index = ["Vaginal", "Cesárea", "Total"]                # linhas
@@ -265,6 +268,9 @@ display(table)                                             # mostra a tabela for
 # 2. Contando diretamente entre as mães infectadas
 print()
 print("Entre as", n_infection, "infecções,", infected_cesarean, "vieram depois de cesárea =", round(100 * infected_cesarean / n_infection, 2), "%")
+
+# 3. O mesmo invertendo a condição (Bayes): P(C|I) = P(I|C) P(C) / P(I)
+print("Inversão:", round(infected_cesarean / n_cesarean, 4), "x", round(n_cesarean / n, 4), "/", round(total_probability, 4), "=", round((infected_cesarean / n_cesarean) * (n_cesarean / n) / total_probability, 4))
 """)
     sec("11.7", "Choosing charts for review", "Escolher prontuários para revisão",
         "In how many ways can 20 charts be chosen, and how likely is the sample to include an infection?",
@@ -423,19 +429,19 @@ print()
 print("Probabilidade total de infecção:", round(path_vaginal + path_cesarean, 4), "; contagem direta:", round(n_infection / n, 4))
 print("Caminho da cesárea dividido pelo caminho vaginal:", round(path_cesarean / path_vaginal, 2))
 ''')
-    A("Independence", "Independência", '''# 1. An identifier tells nothing about hemorrhage: F = identifier in the first half of the register (D0001 to D2500)
-F = number <= 2500
-print("F and H:", (F & H).sum(), "of", n, "=", round((F & H).sum() / n, 4), "; P(F) x P(H) =", round(F.mean() * H.mean(), 4))
-print("Hemorrhage in the first half:", round(H[F].mean(), 4), "; in the second half:", round(H[~F].mean(), 4))
+    A("Independence", "Independência", '''# 1. O = the identifier is an odd number: compare P(O and C) with P(O) x P(C)
+O = number % 2 == 1
+print("O and C:", (O & C).sum(), "of", n, "=", round((O & C).sum() / n, 4), "; P(O) x P(C) =", round(O.mean() * C.mean(), 4))
+print("Cesarean among odd identifiers:", round(C[O].mean(), 4), "; among even identifiers:", round(C[~O].mean(), 4))
 
 # 2. Cesarean and hemorrhage
 print()
 print("C and H:", (C & H).sum(), "of", n, "=", round((C & H).sum() / n, 4), "; P(C) x P(H) =", round(C.mean() * H.mean(), 4))
 print("Hemorrhage among cesareans:", round(H[C].mean(), 4), "; among vaginal deliveries:", round(H[~C].mean(), 4))
-''', '''# 1. Um identificador não diz nada sobre hemorragia: F = identificador na primeira metade do registro (D0001 a D2500)
-F = number <= 2500
-print("F e H:", (F & H).sum(), "de", n, "=", round((F & H).sum() / n, 4), "; P(F) x P(H) =", round(F.mean() * H.mean(), 4))
-print("Hemorragia na primeira metade:", round(H[F].mean(), 4), "; na segunda metade:", round(H[~F].mean(), 4))
+''', '''# 1. O = o identificador é um número ímpar: comparar P(O e C) com P(O) x P(C)
+O = number % 2 == 1
+print("O e C:", (O & C).sum(), "de", n, "=", round((O & C).sum() / n, 4), "; P(O) x P(C) =", round(O.mean() * C.mean(), 4))
+print("Cesárea entre identificadores ímpares:", round(C[O].mean(), 4), "; entre pares:", round(C[~O].mean(), 4))
 
 # 2. Cesárea e hemorragia
 print()
