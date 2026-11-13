@@ -69,6 +69,8 @@ def build(lang):
     md = lambda s: cells.append(nbf.v4.new_markdown_cell(s.strip("\n")))
     code = lambda s: cells.append(nbf.v4.new_code_cell(s.strip("\n")))
     md(HEAD[lang])
+    md("The first five rows of the register:" if lang == "en" else "As cinco primeiras linhas do registro:")
+    code('import pandas as pd\n\npd.read_csv("data/deliveries.csv").head()')
     for q, block in zip(Q[lang], BLOCKS["A"]):
         md("### " + q)
         code(block)
