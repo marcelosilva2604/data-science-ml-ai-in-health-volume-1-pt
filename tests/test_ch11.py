@@ -20,14 +20,14 @@ bad = {k: v for k, v in checks.items() if v[0] != v[1]}
 assert not bad, bad
 print("all", len(checks), "checks pass")
 
-# The published result lines must carry the right numbers
-expected = {"ch11_probability_en.ipynb": ["0.0802", "0.6692", "0.900950", "2,432,902,008,176,640,000", "0.0494"],
-            "ch11_probabilidade_pt.ipynb": ["0,0802", "0,6692", "0,900950", "2.432.902.008.176.640.000", "0,0494"]}
-for name, items in expected.items():
+# The executed notebook outputs must carry the numbers quoted in the book
+expected = ["26.26%", "5.80%", "= 8.02%", "0.6692", "0.900950", "2,432,902,008,176,640,000", "0.0494", "0.0028", "0.4102"]
+expected_pt = [e.replace(",", "") if e.startswith("2,") else e for e in expected]
+for name, items in (("ch11_probability_en.ipynb", expected), ("ch11_probabilidade_pt.ipynb", expected_pt)):
     path = ROOT / "chapters/ch11" / name
     if not path.exists():
         continue
-    text = " ".join("".join(c["source"]) for c in json.load(open(path))["cells"] if c["cell_type"] == "markdown")
+    text = " ".join("".join(o.get("text", "")) for c in json.load(open(path))["cells"] if c["cell_type"] == "code" for o in c.get("outputs", []))
     missing = [i for i in items if i not in text]
     assert not missing, (name, missing)
-print("notebook result lines carry the expected numbers")
+print("notebook outputs carry the expected numbers")

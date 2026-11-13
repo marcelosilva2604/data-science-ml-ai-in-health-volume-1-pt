@@ -11,6 +11,7 @@ import nbformat as nbf
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from ch11_q12 import EN as Q12_EN, PT as Q12_PT
+from ch11_rest import cells as rest_cells
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "chapters" / "ch11"
@@ -88,14 +89,14 @@ def build(lang):
                 md(text)
             else:
                 code(text.replace("XLABEL", AXES[lang][0]).replace("YLABEL", AXES[lang][1]))
-    for q, block in list(zip(Q[lang], BLOCKS["A"]))[2:]:
+    rest_q, rest_ex = rest_cells(lang)
+    for q, key in zip(Q[lang][2:], ("Q3", "Q4", "Q5", "Q6")):
         md("### " + q)
-        code(block)
+        code(rest_q[key])
     md("## Part B. Exercise solutions" if lang == "en" else "## Parte B. Soluções dos exercícios")
-    for k, (block, r) in enumerate(zip(BLOCKS["B"], BLOCKS["res"]), start=1):
-        md(f"### {'Exercise' if lang == 'en' else 'Exercício'} {k}. {r[i]}")
+    for k, (title, block) in enumerate(rest_ex, start=1):
+        md(f"### {'Exercise' if lang == 'en' else 'Exercício'} {k}. {title}")
         code(block)
-        md(("**Result:** " if lang == "en" else "**Resultado:** ") + r[2 + i])
     md(FOOT[lang])
     nb = nbf.v4.new_notebook()
     nb.cells = cells
