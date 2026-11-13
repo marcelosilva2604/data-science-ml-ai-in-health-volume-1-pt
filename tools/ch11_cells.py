@@ -4,36 +4,14 @@ comments, output as plain sentences. Beginner-friendly Python: print with commas
 HELP = {"en": "", "pt": ""}
 
 PLOTCELL = {
- "en": """import matplotlib.pyplot as plt
-
-# 1. Read the register in order: does the fraction of cesareans settle?
+ "en": """# Read the register in order: does the fraction of cesareans settle?
 for k in [10, 50, 100, 500, 1000, 5000]:
     first_k = C.iloc[:k]           # the first k rows
-    print("After", k, "rows:", first_k.sum(), "cesareans =", round(100 * first_k.mean(), 2), "%")
-
-# 2. The same fraction after every row, in a plot
-running = 100 * C.expanding().mean()     # % of cesareans among the rows read so far
-plt.plot(range(1, n + 1), running)
-plt.axhline(100 * C.mean(), color="gray", linestyle="--")      # % in the whole register
-plt.xscale("log")
-plt.xlabel("Deliveries included so far (log scale)")
-plt.ylabel("Cesareans so far (%)")
-plt.show()""",
- "pt": """import matplotlib.pyplot as plt
-
-# 1. Ler o registro em ordem: a fração de cesáreas se estabiliza?
+    print("After", k, "rows:", first_k.sum(), "cesareans =", round(100 * first_k.mean(), 2), "%")""",
+ "pt": """# Ler o registro em ordem: a fração de cesáreas se estabiliza?
 for k in [10, 50, 100, 500, 1000, 5000]:
     first_k = C.iloc[:k]           # as k primeiras linhas
-    print("Após", k, "linhas:", first_k.sum(), "cesáreas =", round(100 * first_k.mean(), 2), "%")
-
-# 2. A mesma fração após cada linha, em um gráfico
-running = 100 * C.expanding().mean()     # % de cesáreas entre as linhas lidas até agora
-plt.plot(range(1, n + 1), running)
-plt.axhline(100 * C.mean(), color="gray", linestyle="--")      # % no registro completo
-plt.xscale("log")
-plt.xlabel("Partos incluídos até então (escala log)")
-plt.ylabel("Cesáreas até então (%)")
-plt.show()""",
+    print("Após", k, "linhas:", first_k.sum(), "cesáreas =", round(100 * first_k.mean(), 2), "%")""",
 }
 
 
