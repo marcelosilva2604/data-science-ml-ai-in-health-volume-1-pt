@@ -25,6 +25,8 @@ CHAPTERS = [
      "Caso: um pesquisador em formação confere o rascunho de um resumo a partir de um registro de 2.400 pacientes de cirurgia eletiva: diabetes, tabagismo, um pacote de descolonização e infecção.", "chapters/ch07/ch07_associacao_e_impacto_pt.ipynb"),
     ("ch08_pt", "pt", "Capítulo 8", "Delineamento de estudos observacionais em saúde",
      "Caso: a diretoria de qualidade de uma rede de doze hospitais pergunta que estudo mostraria que um pacote pré-operatório reduz a infecção de sítio cirúrgico.", "chapters/ch08/ch08_delineamentos_observacionais_pt.ipynb"),
+    ("ch09_pt", "pt", "Capítulo 9", "Avaliação de testes diagnósticos e rastreamento",
+     "Caso: uma rede de doze hospitais avalia um teste rápido de ferida para infecção de sítio cirúrgico, da sensibilidade e das curvas ROC ao rastreamento e aos limiares.", "chapters/ch09/ch09_testes_diagnosticos_pt.ipynb"),
     ("ch10_pt", "pt", "Capítulo 10", "Delineamentos experimentais e quase-experimentais em saúde",
      "Caso: um serviço de hipertensão com dez ambulatórios decide se oferece pílula única em vez de comprimidos separados.", "chapters/ch10/ch10_delineamentos_experimentais_pt.ipynb"),
     ("ch11_en", "en", "Chapter 11", "Probability: The Language of Uncertainty",
