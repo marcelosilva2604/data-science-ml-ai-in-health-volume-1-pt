@@ -14,6 +14,7 @@ Todos os dados são **sintéticos**; nenhum paciente real aparece. Cada capítul
 | Capítulo | Caso | Caderno | Página |
 |---|---|---|---|
 | 2. Populações, amostras e dados | Hospital de 500 leitos: auditoria de uma amostra das altas para casa de janeiro | `chapters/ch02/ch02_populacoes_amostras_dados_pt.ipynb` | `docs/ch02_pt.html` |
+| 3. Variáveis e escalas de medida | Pronto-socorro de adultos: registro de triagem de 200 atendimentos | `chapters/ch03/ch03_variaveis_escalas_pt.ipynb` | `docs/ch03_pt.html` |
 | 10. Delineamentos experimentais e quase-experimentais em saúde | Serviço de hipertensão com dez ambulatórios: pílula única ou comprimidos separados | `chapters/ch10/ch10_delineamentos_experimentais_pt.ipynb` | `docs/ch10_pt.html` |
 | 11. Probabilidade: a linguagem da incerteza | Comitê de controle de infecção de uma maternidade pública, 5.000 partos | `chapters/ch11/ch11_probabilidade_pt.ipynb` | `docs/ch11_pt.html` |
 | 13. Amostragem e estimação | Secretaria de saúde faz levantamento de saúde bucal de escolares: lista de 14.299 crianças em 48 escolas | `chapters/ch13/ch13_amostragem_estimacao_pt.ipynb` | `docs/ch13_pt.html` |

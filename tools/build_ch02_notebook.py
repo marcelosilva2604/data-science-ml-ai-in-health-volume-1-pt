@@ -53,7 +53,7 @@ def build(lang):
     code_of = {k: block for k, title, block in exs}
     for k in sorted(SOL[lang]):
         title, text = SOL[lang][k]
-        md(f"### 2.13 {'Exercise' if lang == 'en' else 'Exercício'} {k}. {title}")
+        md(f"### 2.12 {'Exercise' if lang == 'en' else 'Exercício'} {k}. {title}")
         md(text)
         if k in code_of:
             code(code_of[k])
