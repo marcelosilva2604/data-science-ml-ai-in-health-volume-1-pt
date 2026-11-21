@@ -18,6 +18,7 @@ Todos os dados são **sintéticos**; nenhum paciente real aparece. Cada capítul
 | 4. Descrevendo uma variável | Coorte de 300 adultos internados com pneumonia: descrição da amostra | `chapters/ch04/ch04_descrevendo_uma_variavel_pt.ipynb` | `docs/ch04_pt.html` |
 | 5. Medidas de frequência em saúde | Município de 200.000 habitantes: o relatório anual da secretaria de saúde | `chapters/ch05/ch05_medidas_de_frequencia_pt.ipynb` | `docs/ch05_pt.html` |
 | 6. Descrevendo duas variáveis | Pronto-socorro: um mês do registro de triagem, 1.263 atendimentos | `chapters/ch06/ch06_descrevendo_duas_variaveis_pt.ipynb` | `docs/ch06_pt.html` |
+| 7. Medidas de associação e impacto em saúde | Registro de 2.400 pacientes de cirurgia eletiva: diabetes, tabagismo, pacote de descolonização, infecção | `chapters/ch07/ch07_associacao_e_impacto_pt.ipynb` | `docs/ch07_pt.html` |
 | 10. Delineamentos experimentais e quase-experimentais em saúde | Serviço de hipertensão com dez ambulatórios: pílula única ou comprimidos separados | `chapters/ch10/ch10_delineamentos_experimentais_pt.ipynb` | `docs/ch10_pt.html` |
 | 11. Probabilidade: a linguagem da incerteza | Comitê de controle de infecção de uma maternidade pública, 5.000 partos | `chapters/ch11/ch11_probabilidade_pt.ipynb` | `docs/ch11_pt.html` |
 | 13. Amostragem e estimação | Secretaria de saúde faz levantamento de saúde bucal de escolares: lista de 14.299 crianças em 48 escolas | `chapters/ch13/ch13_amostragem_estimacao_pt.ipynb` | `docs/ch13_pt.html` |

@@ -21,6 +21,8 @@ CHAPTERS = [
      "Caso: a secretaria de saúde de um município de 200.000 habitantes confere os números de destaque do seu relatório anual.", "chapters/ch05/ch05_medidas_de_frequencia_pt.ipynb"),
     ("ch06_pt", "pt", "Capítulo 6", "Descrevendo duas variáveis",
      "Caso: o diretor médico de um pronto-socorro estuda um mês do registro de triagem: via de chegada, nível de triagem, internação e espera.", "chapters/ch06/ch06_descrevendo_duas_variaveis_pt.ipynb"),
+    ("ch07_pt", "pt", "Capítulo 7", "Medidas de associação e impacto em saúde",
+     "Caso: um pesquisador em formação confere o rascunho de um resumo a partir de um registro de 2.400 pacientes de cirurgia eletiva: diabetes, tabagismo, um pacote de descolonização e infecção.", "chapters/ch07/ch07_associacao_e_impacto_pt.ipynb"),
     ("ch10_pt", "pt", "Capítulo 10", "Delineamentos experimentais e quase-experimentais em saúde",
      "Caso: um serviço de hipertensão com dez ambulatórios decide se oferece pílula única em vez de comprimidos separados.", "chapters/ch10/ch10_delineamentos_experimentais_pt.ipynb"),
     ("ch11_en", "en", "Chapter 11", "Probability: The Language of Uncertainty",
