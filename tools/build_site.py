@@ -11,6 +11,8 @@ from nbconvert.preprocessors import ExecutePreprocessor
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 CHAPTERS = [
+    ("ch02_pt", "pt", "Capítulo 2", "Populações, amostras e dados",
+     "Caso: o gestor de um hospital de 500 leitos audita uma amostra das altas para casa de janeiro para saber com que frequência a alta atrasa.", "chapters/ch02/ch02_populacoes_amostras_dados_pt.ipynb"),
     ("ch10_pt", "pt", "Capítulo 10", "Delineamentos experimentais e quase-experimentais em saúde",
      "Caso: um serviço de hipertensão com dez ambulatórios decide se oferece pílula única em vez de comprimidos separados.", "chapters/ch10/ch10_delineamentos_experimentais_pt.ipynb"),
     ("ch11_en", "en", "Chapter 11", "Probability: The Language of Uncertainty",
