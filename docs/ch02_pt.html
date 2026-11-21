@@ -7803,7 +7803,7 @@ a.anchor-link {
 </style></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light"><div class="vol-bar"><a href="index.html"><b>Volume 1</b></a><span>Capítulo 2. Populações, amostras e dados</span><span class="grow"></span><a href="#Parte-A.-O-caso">Parte A. O caso</a><a href="#Parte-B.-Solu%C3%A7%C3%B5es-dos-exerc%C3%ADcios">Parte B. Soluções dos exercícios</a></div>
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0624c833">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8eac179d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7813,13 +7813,70 @@ a.anchor-link {
 <blockquote>
 <p><strong>Este caderno acompanha o capítulo do livro; não o reproduz.</strong> Definições, deduções e explicações estão no livro. Aqui você executa os cálculos do caso e confere os números. Todos os dados são <strong>sintéticos</strong> e os valores têm apenas finalidade didática.</p>
 </blockquote>
-<p>A <strong>Parte A</strong> percorre o caso do capítulo, a base de altas para casa de janeiro de um hospital de 500 leitos, pelas perguntas do gestor; aparecem só as seções com cálculo (2.7, 2.9 e 2.10). A <strong>Parte B</strong> traz a resolução escrita de todos os exercícios do capítulo (1 a 9; os enunciados estão no livro) e, nos exercícios cuja resolução precisa de cálculo (7, 8 e 9), o código e o resultado. O código é Python 3 simples, só com a biblioteca padrão. Execute as células em ordem.</p>
+<p>A <strong>Parte A</strong> percorre o caso do capítulo, a base de altas para casa de janeiro de um hospital de 500 leitos, pelas perguntas do gestor; aparecem só as seções com cálculo (2.1, 2.7, 2.9 e 2.10). A <strong>Parte B</strong> traz a resolução escrita de todos os exercícios do capítulo (1 a 9; os enunciados estão no livro) e, nos exercícios cuja resolução precisa de cálculo (7, 8 e 9), o código e o resultado. O código é Python 3 simples, só com a biblioteca padrão. Execute as células em ordem.</p>
 <h2 id="Parte-A.-O-caso">Parte A. O caso<a class="anchor-link" href="#Parte-A.-O-caso">¶</a></h2><p><strong>Dados.</strong> <code>data/register.csv</code>: 1.200 linhas, uma por episódio de alta de janeiro de 2026, e cinco colunas: <code>episode_id</code>, <code>patient_id</code>, <code>formalized_at</code> (quando a alta foi formalizada), <code>departed_at</code> (quando o paciente saiu) e <code>delayed</code> (já calculada a partir dos dois horários; a primeira célula a calcula de novo). Cada célula traz o número da seção do livro a que pertence.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a53b3f1e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=392a32d2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="2.1-Introdu%C3%A7%C3%A3o:-os-dados">2.1 Introdução: os dados<a class="anchor-link" href="#2.1-Introdu%C3%A7%C3%A3o:-os-dados">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f67943f4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Ler a base: cada linha é um episódio de alta</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"data/register.csv"</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
+    <span class="n">population</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">stream</span><span class="p">))</span>
+
+<span class="c1"># 2. Contar linhas e colunas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"A base tem"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">),</span> <span class="s2">"linhas (uma por episódio de alta) e"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s2">"colunas."</span><span class="p">)</span>
+
+<span class="c1"># 3. As cinco primeiras linhas</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">population</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"episode_id"</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">"patient_id"</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">"formalized_at"</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">"departed_at"</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>A base tem 1200 linhas (uma por episódio de alta) e 5 colunas.
+A0001 P0001 2026-01-04T08:00 2026-01-04T13:00
+A0002 P0002 2026-01-04T08:15 2026-01-04T14:15
+A0003 P0003 2026-01-04T08:30 2026-01-04T15:30
+A0004 P0004 2026-01-04T08:45 2026-01-04T16:45
+A0005 P0005 2026-01-04T08:00 2026-01-04T13:00
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=fbea87ed">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7829,39 +7886,18 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d19a24ad">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=54e5462e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># PROGRAMA DE AUDITORIA: quanto esperaram os pacientes sorteados depois de a</span>
-<span class="c1"># alta ser formalizada, e quantos esperaram mais de 2 horas?</span>
-<span class="c1">#</span>
-<span class="c1"># Pseudocódigo</span>
-<span class="c1">#   1. Ler a base de altas de janeiro, um registro por episódio.</span>
-<span class="c1">#   2. Para cada episódio, calcular a espera em horas, da alta formalizada</span>
-<span class="c1">#      até a saída. Um horário faltante deixa a espera desconhecida.</span>
-<span class="c1">#   3. Marcar o episódio como atrasado se a espera for MAIOR que 2 horas.</span>
-<span class="c1">#   4. Sortear a amostra da auditoria: 120 episódios, ao acaso, sem reposição.</span>
-<span class="c1">#   5. Relatar sobre a amostra: atrasados, porcentagem, mediana, maior, desconhecidos.</span>
-<span class="c1">#   6. Contar de novo pela regra "2 horas ou mais", para ver o que</span>
-<span class="c1">#      muda quando uma espera de exatamente 2 horas conta como atraso.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. A regra da auditoria: atrasado significa MAIS de 2 horas entre a alta formalizada e a saída</span>
+<span class="n">TARGET_HOURS</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">TARGET_HOURS</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># a regra da auditoria: atrasado significa MAIS de 2 horas</span>
-
-<span class="c1"># 1. Ler a base.</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"data/register.csv"</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
-    <span class="n">population</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">stream</span><span class="p">))</span>
-
-<span class="c1"># 2-3. Calcular cada espera e marcar os atrasos.</span>
+<span class="c1"># 2. Para cada episódio, calcular a espera em horas e marcar o atraso (um horário faltante deixa a espera desconhecida, nunca zero)</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">population</span><span class="p">:</span>
     <span class="n">row</span><span class="p">[</span><span class="s2">"wait"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -7873,26 +7909,35 @@ a.anchor-link {
             <span class="n">row</span><span class="p">[</span><span class="s2">"wait"</span><span class="p">]</span> <span class="o">=</span> <span class="n">wait</span>
             <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="o">=</span> <span class="n">wait</span> <span class="o">&gt;</span> <span class="n">TARGET_HOURS</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"Conferir horários:"</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"episode_id"</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Conferir os horários do episódio"</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"episode_id"</span><span class="p">])</span>
 
-<span class="c1"># 4. Sortear a amostra; a semente (11) torna o sorteio reproduzível.</span>
+<span class="c1"># 3. Sortear a amostra da auditoria: 120 episódios ao acaso, sem reposição (semente 11, para o sorteio poder ser repetido)</span>
 <span class="n">sample</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
 
-<span class="c1"># 5. Relatar sobre a amostra.</span>
-<span class="n">waits</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s2">"wait"</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sample</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"wait"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
-<span class="n">delayed</span> <span class="o">=</span> <span class="p">[</span><span class="n">wait</span> <span class="k">for</span> <span class="n">wait</span> <span class="ow">in</span> <span class="n">waits</span> <span class="k">if</span> <span class="n">wait</span> <span class="o">&gt;</span> <span class="n">TARGET_HOURS</span><span class="p">]</span>
+<span class="c1"># 4. As esperas da amostra (uma espera desconhecida fica de fora)</span>
+<span class="n">waits</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"wait"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">waits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"wait"</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Episódios revisados:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Espera desconhecida:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Acima de 2 horas:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">delayed</span><span class="p">),</span> <span class="s2">"de"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Porcentagem acima de 2 horas:"</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">delayed</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Episódios com espera desconhecida:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">))</span>
+
+<span class="c1"># 5. Atrasados: espera de MAIS de 2 horas</span>
+<span class="n">delayed</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">wait</span> <span class="ow">in</span> <span class="n">waits</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">wait</span> <span class="o">&gt;</span> <span class="n">TARGET_HOURS</span><span class="p">:</span>
+        <span class="n">delayed</span> <span class="o">=</span> <span class="n">delayed</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Atrasados (mais de 2 horas):"</span><span class="p">,</span> <span class="n">delayed</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">),</span> <span class="s2">"episódios, ou seja"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">delayed</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Espera mediana (horas):"</span><span class="p">,</span> <span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">waits</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Maior espera (horas):"</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">waits</span><span class="p">))</span>
 
-<span class="c1"># 6. As mesmas esperas pela regra "2 horas ou mais".</span>
-<span class="n">at_least_two</span> <span class="o">=</span> <span class="p">[</span><span class="n">wait</span> <span class="k">for</span> <span class="n">wait</span> <span class="ow">in</span> <span class="n">waits</span> <span class="k">if</span> <span class="n">wait</span> <span class="o">&gt;=</span> <span class="n">TARGET_HOURS</span><span class="p">]</span>
-<span class="n">share</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">at_least_two</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"2 horas ou mais:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">at_least_two</span><span class="p">),</span> <span class="s2">"de"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Porcentagem de 2 horas ou mais:"</span><span class="p">,</span> <span class="n">share</span><span class="p">)</span>
+<span class="c1"># 6. As mesmas esperas pela regra 2 horas ou mais</span>
+<span class="n">at_least_two</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">wait</span> <span class="ow">in</span> <span class="n">waits</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">wait</span> <span class="o">&gt;=</span> <span class="n">TARGET_HOURS</span><span class="p">:</span>
+        <span class="n">at_least_two</span> <span class="o">=</span> <span class="n">at_least_two</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Pela regra 2 horas ou mais:"</span><span class="p">,</span> <span class="n">at_least_two</span><span class="p">,</span> <span class="s2">"de"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">),</span> <span class="s2">"episódios, ou seja"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">at_least_two</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">waits</span><span class="p">),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Os"</span><span class="p">,</span> <span class="n">at_least_two</span> <span class="o">-</span> <span class="n">delayed</span><span class="p">,</span> <span class="s2">"episódios de diferença esperaram exatamente 2 horas."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7906,20 +7951,19 @@ a.anchor-link {
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Episódios revisados: 120
-Espera desconhecida: 0
-Acima de 2 horas: 24 de 120
-Porcentagem acima de 2 horas: 20.0
+Episódios com espera desconhecida: 0
+Atrasados (mais de 2 horas): 24 de 120 episódios, ou seja 20.0 %
 Espera mediana (horas): 1.5
 Maior espera (horas): 8.0
-2 horas ou mais: 45 de 120
-Porcentagem de 2 horas ou mais: 37.5
+Pela regra 2 horas ou mais: 45 de 120 episódios, ou seja 37.5 %
+Os 21 episódios de diferença esperaram exatamente 2 horas.
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=35ff0119">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d87becaa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7929,43 +7973,32 @@ Porcentagem de 2 horas ou mais: 37.5
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bf754b42">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=efbd1588">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># VARIAÇÃO AMOSTRAL: sorteios aleatórios diferentes dão a mesma proporção?</span>
-<span class="c1">#</span>
-<span class="c1"># Pseudocódigo</span>
-<span class="c1">#   1. Contar os episódios atrasados na base inteira (só é possível</span>
-<span class="c1">#      porque os dados são sintéticos; uma equipe de auditoria não a teria).</span>
-<span class="c1">#   2. Sortear três amostras de 120 episódios, cada uma com uma semente diferente.</span>
-<span class="c1">#   3. Em cada amostra, contar os episódios atrasados e a porcentagem.</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">count_delayed</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Número de registros cuja situação de atraso é True (desconhecida não é contada)."""</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">count</span>
-
-<span class="c1"># 1. A base inteira.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Contar os episódios atrasados na base inteira (só é possível porque os dados são sintéticos)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
-<span class="n">K</span> <span class="o">=</span> <span class="n">count_delayed</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Base inteira: </span><span class="si">{</span><span class="n">K</span><span class="si">}</span><span class="s2"> atrasados de </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">N</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">population</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">K</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Base inteira:"</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="s2">"atrasados de"</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="s2">"episódios, ou seja"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">K</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
 
-<span class="c1"># 2-3. Três amostras; as sementes 11, 17 e 42 tornam os sorteios reproduzíveis.</span>
+<span class="c1"># 2. Sortear três amostras de 120 episódios, cada uma com uma semente diferente (11, 17 e 42), e contar os atrasados</span>
 <span class="n">sample_number</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">42</span><span class="p">]:</span>
     <span class="n">sample_number</span> <span class="o">=</span> <span class="n">sample_number</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">draw</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">count_delayed</span><span class="p">(</span><span class="n">draw</span><span class="p">)</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">draw</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Amostra </span><span class="si">{</span><span class="n">sample_number</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> atrasados de </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">draw</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Amostra"</span><span class="p">,</span> <span class="n">sample_number</span><span class="p">,</span> <span class="s2">"tem"</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="s2">"atrasados de"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">draw</span><span class="p">),</span> <span class="s2">"episódios, ou seja"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">k</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">draw</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7978,17 +8011,17 @@ Porcentagem de 2 horas ou mais: 37.5
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Base inteira: 216 atrasados de 1200 (18.00%)
-Amostra 1: 24 atrasados de 120 (20.00%)
-Amostra 2: 22 atrasados de 120 (18.33%)
-Amostra 3: 18 atrasados de 120 (15.00%)
+<pre>Base inteira: 216 atrasados de 1200 episódios, ou seja 18.0 %
+Amostra 1 tem 24 atrasados de 120 episódios, ou seja 20.0 %
+Amostra 2 tem 22 atrasados de 120 episódios, ou seja 18.33 %
+Amostra 3 tem 18 atrasados de 120 episódios, ou seja 15.0 %
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8f7ec1dd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4321ec1f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7998,45 +8031,45 @@ Amostra 3: 18 atrasados de 120 (15.00%)
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5cd2c86c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=44eabe03">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># OBSERVAÇÕES FALTANTES: o que a equipe pode relatar quando faltam horários?</span>
-<span class="c1">#</span>
-<span class="c1"># Pseudocódigo</span>
-<span class="c1">#   1. Fazer uma cópia separada dos 120 registros sorteados.</span>
-<span class="c1">#   2. Na cópia, esconder a situação de atraso dos 12 primeiros episódios, como se</span>
-<span class="c1">#      o horário da alta formalizada não tivesse sido registrado.</span>
-<span class="c1">#   3. Contar as situações selecionadas, conhecidas e desconhecidas e os atrasos conhecidos.</span>
-<span class="c1">#   4. Relatar a proporção de atrasos entre as situações conhecidas.</span>
-<span class="c1">#   5. Relatar a faixa dos 120 episódios selecionados: toda situação desconhecida</span>
-<span class="c1">#      no prazo (mínimo) ou toda situação desconhecida atrasada (máximo).</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Fazer uma cópia separada dos 120 registros sorteados (os originais ficam intactos)</span>
+<span class="n">incomplete</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
+    <span class="n">incomplete</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
 
-<span class="c1"># 1-2. Copiar os registros (os originais ficam intactos) e esconder 12 situações.</span>
-<span class="n">incomplete</span> <span class="o">=</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">]</span>
+<span class="c1"># 2. Na cópia, esconder a situação de atraso dos 12 primeiros episódios, como se o horário da alta formalizada não tivesse sido registrado</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">incomplete</span><span class="p">[:</span><span class="mi">12</span><span class="p">]:</span>
     <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="c1"># 3. Contagens.</span>
+<span class="c1"># 3. Contar as situações selecionadas, conhecidas e desconhecidas e os atrasos conhecidos</span>
 <span class="n">selected</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">incomplete</span><span class="p">)</span>
-<span class="n">known</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">incomplete</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
-<span class="n">unknown</span> <span class="o">=</span> <span class="n">selected</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">known</span><span class="p">)</span>
-<span class="n">known_delays</span> <span class="o">=</span> <span class="n">count_delayed</span><span class="p">(</span><span class="n">known</span><span class="p">)</span>
-
-<span class="c1"># 4-5. Resultados.</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Selecionados:"</span><span class="p">,</span> <span class="n">selected</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Situação conhecida:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">known</span><span class="p">))</span>
+<span class="n">known_n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">known_delays</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">incomplete</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">known_n</span> <span class="o">=</span> <span class="n">known_n</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">known_delays</span> <span class="o">=</span> <span class="n">known_delays</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">unknown</span> <span class="o">=</span> <span class="n">selected</span> <span class="o">-</span> <span class="n">known_n</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Episódios selecionados:"</span><span class="p">,</span> <span class="n">selected</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Situação conhecida:"</span><span class="p">,</span> <span class="n">known_n</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Situação desconhecida:"</span><span class="p">,</span> <span class="n">unknown</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Atrasos conhecidos:"</span><span class="p">,</span> <span class="n">known_delays</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Atrasados entre os conhecidos: </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">known_delays</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">known</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+
+<span class="c1"># 4. A proporção de atrasos entre as situações conhecidas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Atrasados entre as situações conhecidas:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">known_delays</span> <span class="o">/</span> <span class="n">known_n</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
+
+<span class="c1"># 5. A faixa para todos os episódios selecionados: toda situação desconhecida no prazo (mínimo) ou toda situação desconhecida atrasada (máximo)</span>
 <span class="n">lowest</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">known_delays</span> <span class="o">/</span> <span class="n">selected</span>
 <span class="n">highest</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">known_delays</span> <span class="o">+</span> <span class="n">unknown</span><span class="p">)</span> <span class="o">/</span> <span class="n">selected</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Todos os selecionados: </span><span class="si">{</span><span class="n">lowest</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% a </span><span class="si">{</span><span class="n">highest</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Entre os"</span><span class="p">,</span> <span class="n">selected</span><span class="p">,</span> <span class="s2">"episódios selecionados:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">lowest</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"</span><span class="si">% a</span><span class="s2">"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">highest</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8049,19 +8082,19 @@ Amostra 3: 18 atrasados de 120 (15.00%)
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Selecionados: 120
+<pre>Episódios selecionados: 120
 Situação conhecida: 108
 Situação desconhecida: 12
 Atrasos conhecidos: 23
-Atrasados entre os conhecidos: 21.3%
-Todos os selecionados: 19.2% a 29.2%
+Atrasados entre as situações conhecidas: 21.3 %
+Entre os 120 episódios selecionados: 19.2 % a 29.2 %
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b26c86b0">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=66950c31">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8072,7 +8105,7 @@ Todos os selecionados: 19.2% a 29.2%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b981ff09">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=47ad2378">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8083,7 +8116,7 @@ Todos os selecionados: 19.2% a 29.2%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34d56743">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=471777cf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8103,7 +8136,7 @@ episódios não pode, por si só, fornecer a proporção no nível do paciente.<
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a593b75">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=76e062c0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8114,7 +8147,7 @@ episódios não pode, por si só, fornecer a proporção no nível do paciente.<
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c54d7061">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b49a723a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8128,7 +8161,7 @@ uma investigação separada de quando os leitos desocupados ficam disponíveis p
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=98a31cdd">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=737c4760">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8139,7 +8172,7 @@ uma investigação separada de quando os leitos desocupados ficam disponíveis p
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6b69c61">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d0541f25">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8157,7 +8190,7 @@ pergunta original.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ee3141bb">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=38eadd33">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8168,7 +8201,7 @@ pergunta original.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e07a61a3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=27b552f6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8187,7 +8220,7 @@ e aplicação a outro período são perguntas distintas.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6ce1be62">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b2c3bf53">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8198,7 +8231,7 @@ e aplicação a outro período são perguntas distintas.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=39d5243b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b99d74aa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8216,7 +8249,7 @@ nem recomendação de tamanho de amostra decorre apenas dessa comparação.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6bcc0ae3">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4dd5811d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8227,7 +8260,7 @@ nem recomendação de tamanho de amostra decorre apenas dessa comparação.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=88809cd7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=abd1b645">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8245,7 +8278,7 @@ separadas.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e5e6bf18">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=565a8165">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8256,7 +8289,7 @@ separadas.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b3ef62c4">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aeffe384">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8279,29 +8312,47 @@ amostras realizadas ilustram a variação; elas não caracterizam sua distribui�
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f6d1a3f6">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7398200d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">42</span><span class="p">]:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Para cada semente, conferir que o sorteio tem 120 episódios distintos (um conjunto guarda cada valor uma vez)</span>
+<span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">42</span><span class="p">]:</span>
     <span class="n">draw</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
     <span class="n">identifiers</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">draw</span><span class="p">:</span>
         <span class="n">identifiers</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"episode_id"</span><span class="p">])</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">draw</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">identifiers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span>
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1200</span>
-<span class="k">assert</span> <span class="n">K</span> <span class="o">==</span> <span class="mi">216</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Semente"</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span> <span class="s2">"tem"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">draw</span><span class="p">),</span> <span class="s2">"episódios,"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">identifiers</span><span class="p">),</span> <span class="s2">"distintos"</span><span class="p">)</span>
+
+<span class="c1"># 2. A base continua com 1.200 episódios, 216 deles atrasados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Base:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">),</span> <span class="s2">"episódios, dos quais"</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="s2">"atrasados."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ce181473">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Semente 11 tem 120 episódios, 120 distintos
+Semente 17 tem 120 episódios, 120 distintos
+Semente 42 tem 120 episódios, 120 distintos
+Base: 1200 episódios, dos quais 216 atrasados.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d64997fa">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8312,7 +8363,7 @@ amostras realizadas ilustram a variação; elas não caracterizam sua distribui�
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=445608cc">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=466a19b3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8331,21 +8382,25 @@ a pontual ou atrasado dá 19,2% ou 29,2%, respectivamente.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=35537c99">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=19836881">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Recriar a Amostra 1 e fazer uma cópia separada</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
 <span class="n">incomplete</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
     <span class="n">incomplete</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+
+<span class="c1"># 2. Esconder as 12 primeiras situações</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">incomplete</span><span class="p">[:</span><span class="mi">12</span><span class="p">]:</span>
     <span class="n">row</span><span class="p">[</span><span class="s2">"delayed"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
+<span class="c1"># 3. Contar as situações conhecidas e os atrasos conhecidos</span>
 <span class="n">known_n</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">known_delays</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">incomplete</span><span class="p">:</span>
@@ -8355,14 +8410,13 @@ a pontual ou atrasado dá 19,2% ou 29,2%, respectivamente.</p>
             <span class="n">known_delays</span> <span class="o">=</span> <span class="n">known_delays</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">selected_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">incomplete</span><span class="p">)</span>
 <span class="n">missing_n</span> <span class="o">=</span> <span class="n">selected_n</span> <span class="o">-</span> <span class="n">known_n</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">selected_n</span><span class="p">,</span> <span class="n">known_n</span><span class="p">,</span> <span class="n">missing_n</span><span class="p">,</span> <span class="n">known_delays</span><span class="p">)</span>
-<span class="c1"># 120 108 12 23</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Situações conhecidas: </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">known_delays</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">known_n</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
-<span class="c1"># Situações conhecidas: 21.3%</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Selecionados:"</span><span class="p">,</span> <span class="n">selected_n</span><span class="p">,</span> <span class="s2">"; conhecidas:"</span><span class="p">,</span> <span class="n">known_n</span><span class="p">,</span> <span class="s2">"; desconhecidas:"</span><span class="p">,</span> <span class="n">missing_n</span><span class="p">,</span> <span class="s2">"; atrasos conhecidos:"</span><span class="p">,</span> <span class="n">known_delays</span><span class="p">)</span>
+
+<span class="c1"># 4. A proporção entre as situações conhecidas e os dois limites para todos os episódios selecionados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Entre as situações conhecidas:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">known_delays</span> <span class="o">/</span> <span class="n">known_n</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
 <span class="n">lower</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">known_delays</span> <span class="o">/</span> <span class="n">selected_n</span>
 <span class="n">upper</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">known_delays</span> <span class="o">+</span> <span class="n">missing_n</span><span class="p">)</span> <span class="o">/</span> <span class="n">selected_n</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Grupo selecionado: </span><span class="si">{</span><span class="n">lower</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%-</span><span class="si">{</span><span class="n">upper</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
-<span class="c1"># Grupo selecionado: 19.2%-29.2%</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Entre os"</span><span class="p">,</span> <span class="n">selected_n</span><span class="p">,</span> <span class="s2">"episódios selecionados:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"</span><span class="si">% a</span><span class="s2">"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">upper</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">"%"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8375,16 +8429,16 @@ a pontual ou atrasado dá 19,2% ou 29,2%, respectivamente.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>120 108 12 23
-Situações conhecidas: 21.3%
-Grupo selecionado: 19.2%-29.2%
+<pre>Selecionados: 120 ; conhecidas: 108 ; desconhecidas: 12 ; atrasos conhecidos: 23
+Entre as situações conhecidas: 21.3 %
+Entre os 120 episódios selecionados: 19.2 % a 29.2 %
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b52a75cf">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=780c1340">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8395,7 +8449,7 @@ Grupo selecionado: 19.2%-29.2%
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=211eedf7">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=dbd1f8c1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8413,12 +8467,12 @@ Um evento ilustrado identifica um intervalo a estudar, não a sua frequência em
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c9a64978">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=51d48e76">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># 1. Os seis eventos de um episódio sintético de desocupação de leito (da Figura 2.2)</span>
@@ -8471,7 +8525,7 @@ Maior intervalo: limpeza solicitada até limpeza iniciada (50.0 minutos)
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f676ed5b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d3a73fe8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>

@@ -1,69 +1,69 @@
-"""All code cells of the Chapter 2 notebook (Part A by book section, and Part B): one cell each. Chapter 2 is the first contact with Python,
-so the code is the plain standard-library program the chapter explains (csv, random, statistics, datetime), with its comments as numbered steps.
+"""All code cells of the Chapter 2 notebook (Part A by book section, and Part B): one cell each, reasoning as numbered comments, output as plain
+sentences. Beginner-friendly Python in the style of Chapters 10 to 17: print with commas, round(), no f-strings, no helper functions. Chapter 2 is the first
+contact with Python, so only the standard library is used (csv, random, statistics, datetime).
 The cells are written once in English; the Portuguese cell is the same code with the comments and printed text translated
 through the TR table (exact substrings, longest first)."""
 
 TR = [
- ("# AUDIT PROGRAM: how long did the sampled patients wait after the", "# PROGRAMA DE AUDITORIA: quanto esperaram os pacientes sorteados depois de a"),
- ("# discharge was formalized, and how many waited more than 2 hours?", "# alta ser formalizada, e quantos esperaram mais de 2 horas?"),
- ("# Pseudocode", "# Pseudocódigo"),
- ("#   1. Read the register of January discharges, one record per episode.", "#   1. Ler a base de altas de janeiro, um registro por episódio."),
- ("#   2. For each episode, compute the wait in hours, from the formalized", "#   2. Para cada episódio, calcular a espera em horas, da alta formalizada"),
- ("#      discharge to the departure. A missing time leaves it unknown.", "#      até a saída. Um horário faltante deixa a espera desconhecida."),
- ("#   3. Mark the episode as delayed if the wait is MORE than 2 hours.", "#   3. Marcar o episódio como atrasado se a espera for MAIOR que 2 horas."),
- ("#   4. Draw the audit sample: 120 episodes, at random, without replacement.", "#   4. Sortear a amostra da auditoria: 120 episódios, ao acaso, sem reposição."),
- ("#   5. Report on the sample: delayed, percentage, median, longest, unknown.", "#   5. Relatar sobre a amostra: atrasados, porcentagem, mediana, maior, desconhecidos."),
- ("#   6. Count again under the rule \"2 hours or more\", to see what", "#   6. Contar de novo pela regra \"2 horas ou mais\", para ver o que"),
- ("#      changes when a wait of exactly 2 hours counts as delayed.", "#      muda quando uma espera de exatamente 2 horas conta como atraso."),
- ("# the audit's rule: delayed means MORE than 2 hours", "# a regra da auditoria: atrasado significa MAIS de 2 horas"),
- ("# 1. Read the register.", "# 1. Ler a base."),
- ("# 2-3. Compute each wait and mark the delays.", "# 2-3. Calcular cada espera e marcar os atrasos."),
- ("Check timestamps:", "Conferir horários:"),
- ("# 4. Draw the sample; the seed (11) makes the draw reproducible.", "# 4. Sortear a amostra; a semente (11) torna o sorteio reproduzível."),
- ("# 5. Report on the sample.", "# 5. Relatar sobre a amostra."),
+ ("# 1. Read the register: one row is one discharge episode", "# 1. Ler a base: cada linha é um episódio de alta"),
+ ("# 2. Count rows and columns", "# 2. Contar linhas e colunas"),
+ ("The register has", "A base tem"),
+ ("rows (one per discharge episode) and", "linhas (uma por episódio de alta) e"),
+ ("columns.", "colunas."),
+ ("# 3. The first five rows", "# 3. As cinco primeiras linhas"),
+ ("# 1. The audit's rule: delayed means MORE than 2 hours between the formalized discharge and the departure", "# 1. A regra da auditoria: atrasado significa MAIS de 2 horas entre a alta formalizada e a saída"),
+ ("# 2. For each episode, compute the wait in hours and mark the delay (a missing time leaves the wait unknown, never zero)", "# 2. Para cada episódio, calcular a espera em horas e marcar o atraso (um horário faltante deixa a espera desconhecida, nunca zero)"),
+ ("Check the times of episode", "Conferir os horários do episódio"),
+ ("# 3. Draw the audit sample: 120 episodes at random, without replacement (seed 11, so the draw can be repeated)", "# 3. Sortear a amostra da auditoria: 120 episódios ao acaso, sem reposição (semente 11, para o sorteio poder ser repetido)"),
+ ("# 4. The waits of the sample (an unknown wait is left out)", "# 4. As esperas da amostra (uma espera desconhecida fica de fora)"),
  ("Episodes reviewed:", "Episódios revisados:"),
- ("Wait unknown:", "Espera desconhecida:"),
- ("Percentage over 2 hours:", "Porcentagem acima de 2 horas:"),
- ("Over 2 hours:", "Acima de 2 horas:"),
+ ("Episodes with unknown wait:", "Episódios com espera desconhecida:"),
+ ("# 5. Delayed: wait of MORE than 2 hours", "# 5. Atrasados: espera de MAIS de 2 horas"),
+ ("Delayed (more than 2 hours):", "Atrasados (mais de 2 horas):"),
  ("\"of\"", "\"de\""),
+ ("\"episodes, which is\"", "\"episódios, ou seja\""),
  ("Median wait (hours):", "Espera mediana (horas):"),
  ("Longest wait (hours):", "Maior espera (horas):"),
- ("# 6. The same waits under the rule \"2 hours or more\".", "# 6. As mesmas esperas pela regra \"2 horas ou mais\"."),
- ("Percentage 2 hours or more:", "Porcentagem de 2 horas ou mais:"),
- ("2 hours or more:", "2 horas ou mais:"),
- ("# SAMPLING VARIATION: do different random draws give the same proportion?", "# VARIAÇÃO AMOSTRAL: sorteios aleatórios diferentes dão a mesma proporção?"),
- ("#   1. Count the delayed episodes in the whole register (possible only", "#   1. Contar os episódios atrasados na base inteira (só é possível"),
- ("#      because the data are synthetic; an audit team would not have it).", "#      porque os dados são sintéticos; uma equipe de auditoria não a teria)."),
- ("#   2. Draw three samples of 120 episodes, each with a different seed.", "#   2. Sortear três amostras de 120 episódios, cada uma com uma semente diferente."),
- ("#   3. For each sample, count the delayed episodes and the percentage.", "#   3. Em cada amostra, contar os episódios atrasados e a porcentagem."),
- ("Number of records whose delay status is True (unknown is not counted).", "Número de registros cuja situação de atraso é True (desconhecida não é contada)."),
- ("# 1. The whole register.", "# 1. A base inteira."),
+ ("# 6. The same waits under the rule 2 hours or more", "# 6. As mesmas esperas pela regra 2 horas ou mais"),
+ ("With the rule 2 hours or more:", "Pela regra 2 horas ou mais:"),
+ ("\"The\"", "\"Os\""),
+ ("\"episodes of difference waited exactly 2 hours.\"", "\"episódios de diferença esperaram exatamente 2 horas.\""),
+ ("# 1. Count the delayed episodes in the whole register (possible only because the data are synthetic)", "# 1. Contar os episódios atrasados na base inteira (só é possível porque os dados são sintéticos)"),
  ("Whole register:", "Base inteira:"),
- (" delayed of ", " atrasados de "),
- ("# 2-3. Three samples; the seeds 11, 17, and 42 make the draws reproducible.", "# 2-3. Três amostras; as sementes 11, 17 e 42 tornam os sorteios reproduzíveis."),
- ("Sample {sample_number}:", "Amostra {sample_number}:"),
- ("# MISSING OBSERVATIONS: what can the team report when times are missing?", "# OBSERVAÇÕES FALTANTES: o que a equipe pode relatar quando faltam horários?"),
- ("#   1. Make a separate copy of the 120 sampled records.", "#   1. Fazer uma cópia separada dos 120 registros sorteados."),
- ("#   2. In the copy, hide the delay status of the first 12 episodes, as if", "#   2. Na cópia, esconder a situação de atraso dos 12 primeiros episódios, como se"),
- ("#      their formalized discharge time had not been recorded.", "#      o horário da alta formalizada não tivesse sido registrado."),
- ("#   3. Count the selected, known, and unknown statuses and the known delays.", "#   3. Contar as situações selecionadas, conhecidas e desconhecidas e os atrasos conhecidos."),
- ("#   4. Report the proportion delayed among the known statuses.", "#   4. Relatar a proporção de atrasos entre as situações conhecidas."),
- ("#   5. Report the range for all 120 selected episodes: every unknown status", "#   5. Relatar a faixa dos 120 episódios selecionados: toda situação desconhecida"),
- ("#      timely (lowest) or every unknown status delayed (highest).", "#      no prazo (mínimo) ou toda situação desconhecida atrasada (máximo)."),
- ("# 1-2. Copy the records (the originals stay intact) and hide 12 statuses.", "# 1-2. Copiar os registros (os originais ficam intactos) e esconder 12 situações."),
- ("# 3. Counts.", "# 3. Contagens."),
- ("# 4-5. Results.", "# 4-5. Resultados."),
- ("Selected:", "Selecionados:"),
+ ("\"delayed of\"", "\"atrasados de\""),
+ ("# 2. Draw three samples of 120 episodes, each with a different seed (11, 17, and 42), and count the delayed ones", "# 2. Sortear três amostras de 120 episódios, cada uma com uma semente diferente (11, 17 e 42), e contar os atrasados"),
+ ("\"Sample\"", "\"Amostra\""),
+ ("\"has\"", "\"tem\""),
+ ("# 1. Make a separate copy of the 120 sampled records (the originals stay intact)", "# 1. Fazer uma cópia separada dos 120 registros sorteados (os originais ficam intactos)"),
+ ("# 2. In the copy, hide the delay status of the first 12 episodes, as if the formalized discharge time had not been recorded", "# 2. Na cópia, esconder a situação de atraso dos 12 primeiros episódios, como se o horário da alta formalizada não tivesse sido registrado"),
+ ("# 3. Count the selected, known, and unknown statuses and the known delays", "# 3. Contar as situações selecionadas, conhecidas e desconhecidas e os atrasos conhecidos"),
+ ("Selected episodes:", "Episódios selecionados:"),
  ("Known status:", "Situação conhecida:"),
  ("Unknown status:", "Situação desconhecida:"),
  ("Known delays:", "Atrasos conhecidos:"),
- ("Delayed among known:", "Atrasados entre os conhecidos:"),
- ("All selected:", "Todos os selecionados:"),
- ("% to ", "% a "),
- ("Known statuses:", "Situações conhecidas:"),
- ("Selected group:", "Grupo selecionado:"),
- ("# Known statuses: 21.3%", "# Situações conhecidas: 21.3%"),
- ("# Selected group: 19.2%-29.2%", "# Grupo selecionado: 19.2%-29.2%"),
+ ("# 4. The proportion delayed among the known statuses", "# 4. A proporção de atrasos entre as situações conhecidas"),
+ ("Delayed among the known statuses:", "Atrasados entre as situações conhecidas:"),
+ ("# 5. The range for all selected episodes: every unknown status timely (lowest) or every unknown status delayed (highest)", "# 5. A faixa para todos os episódios selecionados: toda situação desconhecida no prazo (mínimo) ou toda situação desconhecida atrasada (máximo)"),
+ ("\"Among all\"", "\"Entre os\""),
+ ("\"selected episodes:\"", "\"episódios selecionados:\""),
+ ("\"% to\"", "\"% a\""),
+ ("# 1. For each seed, check that the draw has 120 distinct episodes (a set keeps each value once)", "# 1. Para cada semente, conferir que o sorteio tem 120 episódios distintos (um conjunto guarda cada valor uma vez)"),
+ ("\"Seed\"", "\"Semente\""),
+ ("\"episodes,\"", "\"episódios,\""),
+ ("\"distinct\"", "\"distintos\""),
+ ("# 2. The register still has 1,200 episodes, 216 of them delayed", "# 2. A base continua com 1.200 episódios, 216 deles atrasados"),
+ ("Register:", "Base:"),
+ ("\"episodes, of which\"", "\"episódios, dos quais\""),
+ ("\"delayed.\"", "\"atrasados.\""),
+ ("# 1. Recreate Sample 1 and make a separate copy", "# 1. Recriar a Amostra 1 e fazer uma cópia separada"),
+ ("# 2. Hide the first 12 statuses", "# 2. Esconder as 12 primeiras situações"),
+ ("# 3. Count the known statuses and the known delays", "# 3. Contar as situações conhecidas e os atrasos conhecidos"),
+ ("Selected:", "Selecionados:"),
+ ("\"; known:\"", "\"; conhecidas:\""),
+ ("\"; unknown:\"", "\"; desconhecidas:\""),
+ ("\"; known delays:\"", "\"; atrasos conhecidos:\""),
+ ("# 4. The proportion among the known statuses and the two bounds for all selected episodes", "# 4. A proporção entre as situações conhecidas e os dois limites para todos os episódios selecionados"),
+ ("Among the known statuses:", "Entre as situações conhecidas:"),
  ("# 1. The six events of one synthetic bed-vacating episode (from Figure 2.2)", "# 1. Os seis eventos de um episódio sintético de desocupação de leito (da Figura 2.2)"),
  ("\"vacated\"", "\"leito desocupado\""),
  ("\"cleaning requested\"", "\"limpeza solicitada\""),
@@ -72,8 +72,8 @@ TR = [
  ("\"bed ready\"", "\"leito pronto\""),
  ("\"next patient in\"", "\"próximo paciente entra\""),
  ("# 2. Minutes between each event and the next, with the longest interval", "# 2. Minutos entre cada evento e o seguinte, com o maior intervalo"),
- ("\"to\"", "\"até\""),
  ("\" to \" + name_b", "\" até \" + name_b"),
+ ("\"to\"", "\"até\""),
  ("\"minutes\"", "\"minutos\""),
  ("Total from bed vacating to the next patient:", "Total da desocupação do leito até a entrada do próximo paciente:"),
  ("Longest interval:", "Maior intervalo:"),
@@ -87,31 +87,27 @@ def tr(code):
     return code
 
 
-AUDIT = '''# AUDIT PROGRAM: how long did the sampled patients wait after the
-# discharge was formalized, and how many waited more than 2 hours?
-#
-# Pseudocode
-#   1. Read the register of January discharges, one record per episode.
-#   2. For each episode, compute the wait in hours, from the formalized
-#      discharge to the departure. A missing time leaves it unknown.
-#   3. Mark the episode as delayed if the wait is MORE than 2 hours.
-#   4. Draw the audit sample: 120 episodes, at random, without replacement.
-#   5. Report on the sample: delayed, percentage, median, longest, unknown.
-#   6. Count again under the rule "2 hours or more", to see what
-#      changes when a wait of exactly 2 hours counts as delayed.
-
+LOAD = '''# 1. Read the register: one row is one discharge episode
 import csv
 import random
 import statistics
 from datetime import datetime
 
-TARGET_HOURS = 2  # the audit's rule: delayed means MORE than 2 hours
-
-# 1. Read the register.
 with open("data/register.csv", newline="") as stream:
     population = list(csv.DictReader(stream))
 
-# 2-3. Compute each wait and mark the delays.
+# 2. Count rows and columns
+print("The register has", len(population), "rows (one per discharge episode) and", len(population[0]), "columns.")
+
+# 3. The first five rows
+for row in population[:5]:
+    print(row["episode_id"], row["patient_id"], row["formalized_at"], row["departed_at"])
+'''
+
+AUDIT = '''# 1. The audit's rule: delayed means MORE than 2 hours between the formalized discharge and the departure
+TARGET_HOURS = 2
+
+# 2. For each episode, compute the wait in hours and mark the delay (a missing time leaves the wait unknown, never zero)
 for row in population:
     row["wait"] = None
     row["delayed"] = None
@@ -123,109 +119,113 @@ for row in population:
             row["wait"] = wait
             row["delayed"] = wait > TARGET_HOURS
         else:
-            print("Check timestamps:", row["episode_id"])
+            print("Check the times of episode", row["episode_id"])
 
-# 4. Draw the sample; the seed (11) makes the draw reproducible.
+# 3. Draw the audit sample: 120 episodes at random, without replacement (seed 11, so the draw can be repeated)
 sample = random.Random(11).sample(population, 120)
 
-# 5. Report on the sample.
-waits = [row["wait"] for row in sample if row["wait"] is not None]
-delayed = [wait for wait in waits if wait > TARGET_HOURS]
+# 4. The waits of the sample (an unknown wait is left out)
+waits = []
+for row in sample:
+    if row["wait"] is not None:
+        waits.append(row["wait"])
 print("Episodes reviewed:", len(sample))
-print("Wait unknown:", len(sample) - len(waits))
-print("Over 2 hours:", len(delayed), "of", len(waits))
-print("Percentage over 2 hours:", 100 * len(delayed) / len(waits))
+print("Episodes with unknown wait:", len(sample) - len(waits))
+
+# 5. Delayed: wait of MORE than 2 hours
+delayed = 0
+for wait in waits:
+    if wait > TARGET_HOURS:
+        delayed = delayed + 1
+print("Delayed (more than 2 hours):", delayed, "of", len(waits), "episodes, which is", round(100 * delayed / len(waits), 1), "%")
 print("Median wait (hours):", statistics.median(waits))
 print("Longest wait (hours):", max(waits))
 
-# 6. The same waits under the rule "2 hours or more".
-at_least_two = [wait for wait in waits if wait >= TARGET_HOURS]
-share = 100 * len(at_least_two) / len(waits)
-print("2 hours or more:", len(at_least_two), "of", len(waits))
-print("Percentage 2 hours or more:", share)
+# 6. The same waits under the rule 2 hours or more
+at_least_two = 0
+for wait in waits:
+    if wait >= TARGET_HOURS:
+        at_least_two = at_least_two + 1
+print("With the rule 2 hours or more:", at_least_two, "of", len(waits), "episodes, which is", round(100 * at_least_two / len(waits), 1), "%")
+print("The", at_least_two - delayed, "episodes of difference waited exactly 2 hours.")
 '''
 
-VARIATION = '''# SAMPLING VARIATION: do different random draws give the same proportion?
-#
-# Pseudocode
-#   1. Count the delayed episodes in the whole register (possible only
-#      because the data are synthetic; an audit team would not have it).
-#   2. Draw three samples of 120 episodes, each with a different seed.
-#   3. For each sample, count the delayed episodes and the percentage.
-
-def count_delayed(records):
-    """Number of records whose delay status is True (unknown is not counted)."""
-    count = 0
-    for row in records:
-        if row["delayed"] is True:
-            count = count + 1
-    return count
-
-# 1. The whole register.
+VARIATION = '''# 1. Count the delayed episodes in the whole register (possible only because the data are synthetic)
 N = len(population)
-K = count_delayed(population)
-print(f"Whole register: {K} delayed of {N} ({100 * K / N:.2f}%)")
+K = 0
+for row in population:
+    if row["delayed"] is True:
+        K = K + 1
+print("Whole register:", K, "delayed of", N, "episodes, which is", round(100 * K / N, 2), "%")
 
-# 2-3. Three samples; the seeds 11, 17, and 42 make the draws reproducible.
+# 2. Draw three samples of 120 episodes, each with a different seed (11, 17, and 42), and count the delayed ones
 sample_number = 0
 for seed in [11, 17, 42]:
     sample_number = sample_number + 1
     draw = random.Random(seed).sample(population, 120)
-    k = count_delayed(draw)
-    n = len(draw)
-    print(f"Sample {sample_number}: {k} delayed of {n} ({100 * k / n:.2f}%)")
+    k = 0
+    for row in draw:
+        if row["delayed"] is True:
+            k = k + 1
+    print("Sample", sample_number, "has", k, "delayed of", len(draw), "episodes, which is", round(100 * k / len(draw), 2), "%")
 '''
 
-MISSING = '''# MISSING OBSERVATIONS: what can the team report when times are missing?
-#
-# Pseudocode
-#   1. Make a separate copy of the 120 sampled records.
-#   2. In the copy, hide the delay status of the first 12 episodes, as if
-#      their formalized discharge time had not been recorded.
-#   3. Count the selected, known, and unknown statuses and the known delays.
-#   4. Report the proportion delayed among the known statuses.
-#   5. Report the range for all 120 selected episodes: every unknown status
-#      timely (lowest) or every unknown status delayed (highest).
+MISSING = '''# 1. Make a separate copy of the 120 sampled records (the originals stay intact)
+incomplete = []
+for row in sample:
+    incomplete.append(dict(row))
 
-# 1-2. Copy the records (the originals stay intact) and hide 12 statuses.
-incomplete = [dict(row) for row in sample]
+# 2. In the copy, hide the delay status of the first 12 episodes, as if the formalized discharge time had not been recorded
 for row in incomplete[:12]:
     row["delayed"] = None
 
-# 3. Counts.
+# 3. Count the selected, known, and unknown statuses and the known delays
 selected = len(incomplete)
-known = [row for row in incomplete if row["delayed"] is not None]
-unknown = selected - len(known)
-known_delays = count_delayed(known)
-
-# 4-5. Results.
-print("Selected:", selected)
-print("Known status:", len(known))
+known_n = 0
+known_delays = 0
+for row in incomplete:
+    if row["delayed"] is not None:
+        known_n = known_n + 1
+        if row["delayed"] is True:
+            known_delays = known_delays + 1
+unknown = selected - known_n
+print("Selected episodes:", selected)
+print("Known status:", known_n)
 print("Unknown status:", unknown)
 print("Known delays:", known_delays)
-print(f"Delayed among known: {100 * known_delays / len(known):.1f}%")
+
+# 4. The proportion delayed among the known statuses
+print("Delayed among the known statuses:", round(100 * known_delays / known_n, 1), "%")
+
+# 5. The range for all selected episodes: every unknown status timely (lowest) or every unknown status delayed (highest)
 lowest = 100 * known_delays / selected
 highest = 100 * (known_delays + unknown) / selected
-print(f"All selected: {lowest:.1f}% to {highest:.1f}%")
+print("Among all", selected, "selected episodes:", round(lowest, 1), "% to", round(highest, 1), "%")
 '''
 
-EX7 = '''for seed in [11, 17, 42]:
+EX7 = '''# 1. For each seed, check that the draw has 120 distinct episodes (a set keeps each value once)
+for seed in [11, 17, 42]:
     draw = random.Random(seed).sample(population, 120)
     identifiers = set()
     for row in draw:
         identifiers.add(row["episode_id"])
-    assert len(draw) == len(identifiers) == 120
-assert len(population) == 1200
-assert K == 216
+    print("Seed", seed, "has", len(draw), "episodes,", len(identifiers), "distinct")
+
+# 2. The register still has 1,200 episodes, 216 of them delayed
+print("Register:", len(population), "episodes, of which", K, "delayed.")
 '''
 
-EX8 = '''sample = random.Random(11).sample(population, 120)
+EX8 = '''# 1. Recreate Sample 1 and make a separate copy
+sample = random.Random(11).sample(population, 120)
 incomplete = []
 for row in sample:
     incomplete.append(dict(row))
+
+# 2. Hide the first 12 statuses
 for row in incomplete[:12]:
     row["delayed"] = None
 
+# 3. Count the known statuses and the known delays
 known_n = 0
 known_delays = 0
 for row in incomplete:
@@ -235,14 +235,13 @@ for row in incomplete:
             known_delays = known_delays + 1
 selected_n = len(incomplete)
 missing_n = selected_n - known_n
-print(selected_n, known_n, missing_n, known_delays)
-# 120 108 12 23
-print(f"Known statuses: {100 * known_delays / known_n:.1f}%")
-# Known statuses: 21.3%
+print("Selected:", selected_n, "; known:", known_n, "; unknown:", missing_n, "; known delays:", known_delays)
+
+# 4. The proportion among the known statuses and the two bounds for all selected episodes
+print("Among the known statuses:", round(100 * known_delays / known_n, 1), "%")
 lower = 100 * known_delays / selected_n
 upper = 100 * (known_delays + missing_n) / selected_n
-print(f"Selected group: {lower:.1f}%-{upper:.1f}%")
-# Selected group: 19.2%-29.2%
+print("Among all", selected_n, "selected episodes:", round(lower, 1), "% to", round(upper, 1), "%")
 '''
 
 EX9 = '''# 1. The six events of one synthetic bed-vacating episode (from Figure 2.2)
@@ -285,6 +284,8 @@ def cells(lang):
     def cell(c):
         S.append(("code", code(c)))
 
+    sec("2.1", "Introduction: the data", "Introdução: os dados")
+    cell(LOAD)
     sec("2.7", "Defining the event to be counted", "Definindo o evento a ser contado",
         "When does a discharge count as delayed, and how many of the 120 sampled episodes were?",
         "Quando uma alta conta como atrasada, e quantos dos 120 episódios sorteados foram?")
@@ -297,9 +298,5 @@ def cells(lang):
         "What can the team report when the time of the formalized discharge is missing for 12 of the 120 records?",
         "O que a equipe pode relatar quando falta o horário da alta formalizada em 12 dos 120 registros?")
     cell(MISSING)
-    exs = [
-        (7, T("Three draws from one target population", "Três sorteios de uma população-alvo"), EX7),
-        (8, T("An incomplete sample", "Uma amostra incompleta"), EX8),
-        (9, T("Define the next process audit", "Definir a próxima auditoria de processo"), EX9),
-    ]
+    exs = [(7, "", EX7), (8, "", EX8), (9, "", EX9)]
     return S, [(k, title, code(block)) for k, title, block in exs]

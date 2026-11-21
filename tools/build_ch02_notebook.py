@@ -22,7 +22,7 @@ HEAD = {
 
 > **This notebook accompanies the book chapter; it does not reproduce it.** Definitions, derivations, and explanations are in the book. Here you run the calculations on the case and check the numbers. All data are **synthetic**, and the values are for teaching purposes only.
 
-**Part A** follows the chapter's case, the January register of discharges to home of a 500-bed hospital, through the manager's questions; only the sections with a calculation appear (2.7, 2.9, and 2.10). **Part B** gives the written solution of every chapter exercise (1 to 9; statements are in the book) and, for the exercises whose solution needs a calculation (7, 8, and 9), its code and result. The code is plain Python 3 with its standard library only. Run the cells in order.
+**Part A** follows the chapter's case, the January register of discharges to home of a 500-bed hospital, through the manager's questions; only the sections with a calculation appear (2.1, 2.7, 2.9, and 2.10). **Part B** gives the written solution of every chapter exercise (1 to 9; statements are in the book) and, for the exercises whose solution needs a calculation (7, 8, and 9), its code and result. The code is plain Python 3 with its standard library only. Run the cells in order.
 
 ## Part A. The case
 
@@ -32,7 +32,7 @@ HEAD = {
 
 > **Este caderno acompanha o capítulo do livro; não o reproduz.** Definições, deduções e explicações estão no livro. Aqui você executa os cálculos do caso e confere os números. Todos os dados são **sintéticos** e os valores têm apenas finalidade didática.
 
-A **Parte A** percorre o caso do capítulo, a base de altas para casa de janeiro de um hospital de 500 leitos, pelas perguntas do gestor; aparecem só as seções com cálculo (2.7, 2.9 e 2.10). A **Parte B** traz a resolução escrita de todos os exercícios do capítulo (1 a 9; os enunciados estão no livro) e, nos exercícios cuja resolução precisa de cálculo (7, 8 e 9), o código e o resultado. O código é Python 3 simples, só com a biblioteca padrão. Execute as células em ordem.
+A **Parte A** percorre o caso do capítulo, a base de altas para casa de janeiro de um hospital de 500 leitos, pelas perguntas do gestor; aparecem só as seções com cálculo (2.1, 2.7, 2.9 e 2.10). A **Parte B** traz a resolução escrita de todos os exercícios do capítulo (1 a 9; os enunciados estão no livro) e, nos exercícios cuja resolução precisa de cálculo (7, 8 e 9), o código e o resultado. O código é Python 3 simples, só com a biblioteca padrão. Execute as células em ordem.
 
 ## Parte A. O caso
 

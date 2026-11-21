@@ -36,7 +36,7 @@ bad = {k: v for k, v in checks.items() if v[0] != v[1]}
 assert not bad, bad
 print("all", len(checks), "checks pass")
 
-expected = ["120", "24", "20.0", "1.5", "8.0", "45", "37.5", "216", "18.00", "22", "18.33", "18", "15.00", "108", "12", "23", "21.3", "19.2", "29.2", "150.0", "50.0"]
+expected = ["120", "24", "20.0", "1.5", "8.0", "45", "37.5", "216", "18.0", "22", "18.33", "18", "15.0", "108", "12", "23", "21.3", "19.2", "29.2", "150.0", "50.0"]
 for name in ("ch02_populations_samples_data_en.ipynb", "ch02_populacoes_amostras_dados_pt.ipynb"):
     path = ROOT / "chapters/ch02" / name
     if not path.exists():
