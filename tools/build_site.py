@@ -17,6 +17,8 @@ CHAPTERS = [
      "Caso: um médico assistente começa o plantão da manhã de um pronto-socorro de adultos e lê um registro de triagem de 200 atendimentos.", "chapters/ch03/ch03_variaveis_escalas_pt.ipynb"),
     ("ch04_pt", "pt", "Capítulo 4", "Descrevendo uma variável",
      "Caso: um autor descreve uma coorte de 300 adultos internados com pneumonia adquirida na comunidade para a primeira tabela de um manuscrito.", "chapters/ch04/ch04_descrevendo_uma_variavel_pt.ipynb"),
+    ("ch05_pt", "pt", "Capítulo 5", "Medidas de frequência em saúde",
+     "Caso: a secretaria de saúde de um município de 200.000 habitantes confere os números de destaque do seu relatório anual.", "chapters/ch05/ch05_medidas_de_frequencia_pt.ipynb"),
     ("ch10_pt", "pt", "Capítulo 10", "Delineamentos experimentais e quase-experimentais em saúde",
      "Caso: um serviço de hipertensão com dez ambulatórios decide se oferece pílula única em vez de comprimidos separados.", "chapters/ch10/ch10_delineamentos_experimentais_pt.ipynb"),
     ("ch11_en", "en", "Chapter 11", "Probability: The Language of Uncertainty",
